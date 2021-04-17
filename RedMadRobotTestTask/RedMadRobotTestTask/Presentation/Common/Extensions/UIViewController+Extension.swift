@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import SafariServices
 
 extension UIViewController {
@@ -23,7 +24,7 @@ extension UIViewController {
     }
 }
 
-//MARK: - Present Safari
+// MARK: - Present Safari
 extension UIViewController {
     func presentSafari(with link: String) {
         guard let url = URL(string: link) else { return }
@@ -42,7 +43,7 @@ extension String {
     }
 }
 
-//MARK: - Helpful Childs Extension
+// MARK: - Helpful Childs Extension
 extension UIViewController {
     func addChild (controller: UIViewController, rootView: UIView) {
         addChild(controller)

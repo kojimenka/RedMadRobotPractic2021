@@ -19,12 +19,14 @@ extension UIView {
                        cornerRadius: CGFloat? = nil,
                        position: GradientPosition = .topToBottom) {
         
-        if let _ = layer.sublayers?.first as? CAGradientLayer {
+        if layer.sublayers?.first as? CAGradientLayer != nil {
             layer.sublayers?.first?.removeFromSuperlayer()
         }
         
+        let finalCornerRadios: CGFloat? = cornerRadius == nil ? self.layer.cornerRadius : cornerRadius
+        
         let gradientLayer = CAGradientLayer.createGradient(colors: colors,
-                                                           cornerRadius: cornerRadius == nil ? self.layer.cornerRadius : cornerRadius,
+                                                           cornerRadius: finalCornerRadios,
                                                            position: position)
         
         gradientLayer.frame = self.bounds
@@ -59,4 +61,3 @@ extension CAGradientLayer {
         return gradientLayer
     }
 }
-

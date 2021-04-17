@@ -15,6 +15,7 @@ extension UIDevice {
 }
 
 extension UIDevice {
+    // swiftlint:disable discouraged_direct_init
     var iPhone: Bool {
         return UIDevice().userInterfaceIdiom == .phone
     }
@@ -30,11 +31,12 @@ extension UIDevice {
         case iPhone12
         case iPhone12Pro
         case iPhone12Mini
-        case Unknown
+        case unknown
     }
 
     var screenType: ScreenType {
-        guard iPhone else { return .Unknown}
+        
+        guard iPhone else { return .unknown }
         
         switch UIScreen.main.nativeBounds.height {
         case 1136:
@@ -56,7 +58,7 @@ extension UIDevice {
         case 1792:
             return .iPhone11
         default:
-            return .Unknown
+            return .unknown
         }
     }
     
@@ -70,4 +72,3 @@ extension UIDevice {
     }
 
 }
-
