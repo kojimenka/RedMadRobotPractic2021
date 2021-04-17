@@ -18,6 +18,8 @@
 		2C7E12CC262B4E0600CA4073 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E12CE262B4E0600CA4073 /* Localizable.strings */; };
 		2C7E12DC262B4F8300CA4073 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E12DB262B4F8300CA4073 /* ColorPalette.swift */; };
 		2C7E130F262B5D8E00CA4073 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E130E262B5D8E00CA4073 /* R.generated.swift */; };
+		2C7E1324262B6C8A00CA4073 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E1322262B6C8A00CA4073 /* IBMPlexSans-Regular.ttf */; };
+		2C7E1325262B6C8A00CA4073 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E1323262B6C8A00CA4073 /* IBMPlexSans-Medium.ttf */; };
 		2CDD2454262B3E5400501E77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD2453262B3E5400501E77 /* AppDelegate.swift */; };
 		2CDD2456262B3E5400501E77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD2455262B3E5400501E77 /* SceneDelegate.swift */; };
 		2CDD2458262B3E5400501E77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD2457262B3E5400501E77 /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 		2C7E12CF262B4E0900CA4073 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C7E12DB262B4F8300CA4073 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		2C7E130E262B5D8E00CA4073 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		2C7E1322262B6C8A00CA4073 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
+		2C7E1323262B6C8A00CA4073 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
 		2CDD2450262B3E5400501E77 /* RedMadRobotTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedMadRobotTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDD2453262B3E5400501E77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CDD2455262B3E5400501E77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 		2C7E12A4262B475900CA4073 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				2C7E1321262B6C7300CA4073 /* IBM_Plex_Sans */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -148,6 +153,15 @@
 				2C7E12DB262B4F8300CA4073 /* ColorPalette.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		2C7E1321262B6C7300CA4073 /* IBM_Plex_Sans */ = {
+			isa = PBXGroup;
+			children = (
+				2C7E1323262B6C8A00CA4073 /* IBMPlexSans-Medium.ttf */,
+				2C7E1322262B6C8A00CA4073 /* IBMPlexSans-Regular.ttf */,
+			);
+			path = IBM_Plex_Sans;
 			sourceTree = "<group>";
 		};
 		2CDD2447262B3E5400501E77 = {
@@ -257,9 +271,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7E1324262B6C8A00CA4073 /* IBMPlexSans-Regular.ttf in Resources */,
 				2CDD2460262B3E5600501E77 /* LaunchScreen.storyboard in Resources */,
 				2C7E12CC262B4E0600CA4073 /* Localizable.strings in Resources */,
 				2CDD245D262B3E5600501E77 /* Assets.xcassets in Resources */,
+				2C7E1325262B6C8A00CA4073 /* IBMPlexSans-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
