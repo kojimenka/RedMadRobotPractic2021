@@ -12,7 +12,7 @@ extension UIView.AnimationTransition {
         UIView.transition(with: label,
                           duration: 0.3,
                           options: .transitionCrossDissolve,
-                          animations: { label.text = text},
+                          animations: { label.text = text },
                           completion: nil)
     }
     
@@ -20,7 +20,7 @@ extension UIView.AnimationTransition {
         UIView.transition(with: label,
                           duration: duration == nil ? 0.3 : duration ?? 0.3,
                           options: .transitionCrossDissolve,
-                          animations: { label.textColor = color},
+                          animations: { label.textColor = color },
                           completion: nil)
     }
     
@@ -28,7 +28,7 @@ extension UIView.AnimationTransition {
         UIView.transition(with: label,
                           duration: 0.3,
                           options: .transitionCrossDissolve,
-                          animations: { label.attributedText = attributedText},
+                          animations: { label.attributedText = attributedText },
                           completion: nil)
     }
     
@@ -73,5 +73,3 @@ extension UIView.AnimationTransition {
     }
     
 }
-
-

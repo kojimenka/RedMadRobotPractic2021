@@ -21,7 +21,7 @@ extension UIView {
     }
 }
 
-//MARK: - Shadows
+// MARK: - Shadows
 extension UIView {
     func applyShadow(shadowOffSet: CGSize, shadowOpacity: Float, shadowRadius: CGFloat, color: UIColor) {
         layer.shadowColor = color.cgColor
@@ -32,4 +32,3 @@ extension UIView {
         layer.shadowRadius = shadowRadius
     }
 }
-

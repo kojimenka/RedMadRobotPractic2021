@@ -15,7 +15,7 @@ extension UIColor {
             hex.remove(at: hex.startIndex)
         }
         
-        var rgbValue:UInt64 = 0
+        var rgbValue: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&rgbValue)
         
         var a: UInt64
@@ -31,7 +31,7 @@ extension UIColor {
             (a, r, g, b) = (255, 123, 123, 129)
         }
         
-        if let alpha = alpha, alpha >= 0, alpha <= 1  {
+        if let alpha = alpha, alpha >= 0, alpha <= 1 {
             a = UInt64(alpha * 255)
         }
         
@@ -52,4 +52,3 @@ extension UIColor {
         return (red, green, blue, alpha)
     }
 }
-
