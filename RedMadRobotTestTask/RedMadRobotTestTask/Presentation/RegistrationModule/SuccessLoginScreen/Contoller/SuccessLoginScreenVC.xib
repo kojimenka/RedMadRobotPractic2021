@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SuccessLoginScreenVC" customModule="RedMadRobotTestTask" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ed8-US-v1L" customClass="RegistrationNextButton" customModule="RedMadRobotTestTask" customModuleProvider="target">
+                    <rect key="frame" x="16" y="720.5" width="382" height="62.5"/>
+                    <color key="backgroundColor" name="tintOrange"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Ed8-US-v1L" secondAttribute="height" multiplier="343:56" id="F2c-ed-XE2"/>
+                    </constraints>
+                    <state key="normal" title="Перейти к ленте">
+                        <color key="titleColor" red="0.98823529409999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
+                    <connections>
+                        <action selector="presentFeedAction:" destination="-1" eventType="touchUpInside" id="Dq0-Ly-h0h"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="successAuthorizationImage" translatesAutoresizingMaskIntoConstraints="NO" id="Qcq-0n-AdI">
+                    <rect key="frame" x="97.5" y="184.5" width="219" height="219.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Qcq-0n-AdI" secondAttribute="height" multiplier="1:1" id="McQ-I9-32R"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice to meet you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcY-Vx-00b">
+                    <rect key="frame" x="16" y="404" width="382" height="43"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Теперь ты можешь смотреть и делать публикации  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBl-hY-usP">
+                    <rect key="frame" x="16" y="455" width="382" height="38.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" name="middle_grey"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="wcY-Vx-00b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="2QF-8L-TMT"/>
+                <constraint firstItem="VBl-hY-usP" firstAttribute="top" secondItem="wcY-Vx-00b" secondAttribute="bottom" constant="8" id="2VR-6n-McF"/>
+                <constraint firstItem="Qcq-0n-AdI" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.65" id="6SP-aC-pYr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ed8-US-v1L" secondAttribute="trailing" constant="16" id="DdP-X7-wnu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ed8-US-v1L" secondAttribute="bottom" constant="79" id="HME-gi-48G"/>
+                <constraint firstItem="wcY-Vx-00b" firstAttribute="top" secondItem="Qcq-0n-AdI" secondAttribute="bottom" id="HOo-Yx-87D"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VBl-hY-usP" secondAttribute="trailing" constant="16" id="TE7-UB-get"/>
+                <constraint firstItem="Ed8-US-v1L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="WcX-sa-nbd"/>
+                <constraint firstItem="Qcq-0n-AdI" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="akM-tR-Xzs"/>
+                <constraint firstItem="Qcq-0n-AdI" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.53" id="ids-HR-Qsv"/>
+                <constraint firstItem="VBl-hY-usP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="lXY-vs-Ft7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wcY-Vx-00b" secondAttribute="trailing" constant="16" id="vv1-bb-tSh"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="153"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="Ed8-US-v1L">
+            <size key="intrinsicContentSize" width="119" height="30"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="successAuthorizationImage" width="600" height="600"/>
+        <namedColor name="middle_grey">
+            <color red="0.63529411764705879" green="0.67450980392156867" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tintOrange">
+            <color red="0.99599999189376831" green="0.2669999897480011" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

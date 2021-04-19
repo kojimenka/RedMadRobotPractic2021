@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpFirstView" customModule="RedMadRobotTestTask" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="RSj-54-WFJ"/>
+                <outlet property="emailTextView" destination="YRX-hy-5ns" id="Yr1-LY-4bq"/>
+                <outlet property="loginTextView" destination="zk4-ZB-6Ma" id="Kbc-kY-kmB"/>
+                <outlet property="passwordTextView" destination="fla-GX-ZOi" id="GLI-om-rjH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="184"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zk4-ZB-6Ma" customClass="AuthorizationTextField" customModule="RedMadRobotTestTask" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="343" height="48"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="zk4-ZB-6Ma" secondAttribute="height" multiplier="343:48" id="bud-4g-aAg"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YRX-hy-5ns" customClass="AuthorizationTextField" customModule="RedMadRobotTestTask" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="68" width="343" height="48"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="YRX-hy-5ns" secondAttribute="height" multiplier="343:48" id="1Vk-Y8-gZz"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fla-GX-ZOi" customClass="AuthorizationTextField" customModule="RedMadRobotTestTask" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="136" width="343" height="48"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="fla-GX-ZOi" secondAttribute="height" multiplier="343:48" id="ndI-gb-L4B"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="YRX-hy-5ns" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="3ew-ev-SWZ"/>
+                <constraint firstItem="fla-GX-ZOi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="72H-0r-bLx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fla-GX-ZOi" secondAttribute="trailing" id="E8T-kZ-z9i"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YRX-hy-5ns" secondAttribute="trailing" id="HSv-QO-aCQ"/>
+                <constraint firstItem="YRX-hy-5ns" firstAttribute="top" secondItem="zk4-ZB-6Ma" secondAttribute="bottom" constant="20" id="YLm-Tk-SzX"/>
+                <constraint firstItem="zk4-ZB-6Ma" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aWb-nI-6qG"/>
+                <constraint firstItem="fla-GX-ZOi" firstAttribute="top" secondItem="YRX-hy-5ns" secondAttribute="bottom" constant="20" id="grM-fZ-7FS"/>
+                <constraint firstItem="zk4-ZB-6Ma" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nEa-YQ-fjX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zk4-ZB-6Ma" secondAttribute="trailing" id="nhu-6G-oyf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-3902" y="-71"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

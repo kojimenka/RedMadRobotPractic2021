@@ -5,3 +5,45 @@
   Created by Дмитрий Марченков on 17.04.2021.
   
 */
+
+// MARK: - TabBar
+"feedTabBarTitle" = "Лента";
+"profileTabBarTitle" = "Профиль";
+
+// MARK: - RegistrationModule
+// Login
+"loginScreenTitle" = "Найди своё место";
+"loginRegistrationWithMail" = "Регистрация по почте";
+
+// SignInScreen
+"signInNavBarTitle" = "Вход по логину";
+"signInEmailPlaceHolder" = "Ваш e-mail или логин";
+"signInPasswordPlaceHolder" = "Пароль";
+"signInRegistrationButton" = "Регистрация";
+"signInEnterButton" = "Войти";
+
+// SignUpScreen
+"signUpNavBarTitle" = "Регистрация";
+"signUpLoginPlaceHolder" = "Придумайте логин";
+"signUpEmailPlaceHolder" = "E-mail";
+"signUpPasswordPlaceHolder" = "Пароль";
+"signUpAlreadyRegistration" = "Уже зарегистрирован";
+"signUpNextButtonTitle" = "Далее";
+"signUpNamePlaceHolder" = "Имя";
+"signUpBirthDayPlaceHolder" = "Дата рождения";
+"signUpCityPlaceHolder" = "Город";
+"signUpRegistrationButton" = "Зарегистрироваться";
+
+// Success Login
+"successLoginDescriptionTitle" = "Теперь ты можешь смотреть\nи делать публикации";
+"successLoginButtonTitle" = "Перейти к ленте";
+
+// MARK: - Feed Screen
+"feedScreenZeroScreenTitle" = "Упс...";
+"feedScreenZeroScreenDescription" = "Что-то пошло не так";
+"feedScreenZeroScreenTitle" = "Обновить";
+
+// MARK: - Profile Screen
+"feedScreenZeroScreenTitle" = "Пустота";
+"feedScreenZeroScreenDescription" = "Если молчать, люди никогда\nне узнают о вас";
+"feedScreenZeroScreenTitle" = "Создать пост";

@@ -6,7 +6,11 @@ target 'RedMadRobotTestTask' do
   use_frameworks!
 
   # Pods for RedMadRobotTestTask
+
   pod 'SwiftLint'
   pod 'R.swift'
+
+  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
 
 end
