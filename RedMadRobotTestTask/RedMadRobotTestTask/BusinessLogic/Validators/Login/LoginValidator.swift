@@ -33,6 +33,7 @@ final class UserRegistrationLoginValidator: LoginValidator {
                 errorManager.presentError(error: .errorWithTitle(title: "Логин Должен содержать больше 7 символов"))
                 return true
             }
+            return false
         }
         
         return isNeedToShowError ? false : true

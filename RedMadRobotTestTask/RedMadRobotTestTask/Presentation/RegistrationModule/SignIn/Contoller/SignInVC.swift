@@ -12,6 +12,7 @@ final class SignInVC: UIViewController {
     // MARK: - Properties
     private let uiViewModel: SignInViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
+    private let registrationService = RegistrationService.shared
         
     @IBOutlet private weak var enterButton: RegistrationNextButton!
     @IBOutlet private weak var signInView: RegistrationView!
@@ -40,19 +41,6 @@ final class SignInVC: UIViewController {
     }
     
     // MARK: - Methods
-    @IBAction private func signUpButtonAction(_ sender: Any) {
-        let signUpVC = SignUpContainerVC(viewModel: SetupNavBarViewModel(),
-                                         checkKeyboardViewModel: CheckKeyboardViewModel(subscriber: nil))
-        navigationController?.pushViewController(signUpVC, animated: true)
-    }
-    
-    @IBAction private func enterButtonAction(_ sender: Any) {
-        guard enterButton.isButtonEnable == true else { signInView.checkForWarning(); return }
-        let successLogicVC = SuccessLoginScreenVC()
-        view.endEditing(true) // Dismiss keyboard
-        navigationController?.pushViewController(successLogicVC, animated: true)
-    }
-    
     private func navBarSetup() {
         navigationController?.navigationBar.isHidden = false
         uiViewModel?.customizeNavBar(navigationBar: navigationController?.navigationBar,
@@ -64,8 +52,40 @@ final class SignInVC: UIViewController {
         checkKeyboardViewModel.delegate = self
         signInView.delegate = self
         enterButton.setState(isButtonEnabled: false)
+        self.hideKeyboardWhenTappedAround()
     }
     
+    @IBAction private func signUpButtonAction(_ sender: Any) {
+        let signUpVC = SignUpContainerVC(viewModel: SetupNavBarViewModel(),
+                                         checkKeyboardViewModel: CheckKeyboardViewModel(subscriber: nil))
+        navigationController?.pushViewController(signUpVC, animated: true)
+    }
+    
+    @IBAction private func enterButtonAction(_ sender: Any) {
+        guard enterButton.isButtonEnable == true else { signInView.checkForWarning(); return }
+        registrateUser()
+    }
+    
+    private func registrateUser() {
+        view.endEditing(true)
+        let loaderView = RegistrationLoaderView()
+        view.addSubview(loaderView)
+        loaderView.startLoading(with: view)
+        
+        registrationService.registrateUser(user: MockData.shared.testUser) { [weak self] res in
+            guard let self = self else { return }
+            loaderView.endLoading()
+            switch res {
+            case .success(_ ):
+                let successLogicVC = SuccessLoginScreenVC()
+                self.view.endEditing(true) // Dismiss keyboard
+                self.navigationController?.pushViewController(successLogicVC, animated: true)
+            case .failure(_ ):
+                break
+            }
+        }
+    }
+
 }
 
 // MARK: - Check user state

@@ -13,6 +13,7 @@ final class SignUpContainerVC: UIViewController {
     private let navBarViewModel: SignInViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
     private let uiViewModel = SignUpContainerViewModel()
+    private let registrationService = RegistrationService.shared
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var registeredButton: UIButton!
@@ -56,6 +57,26 @@ final class SignUpContainerVC: UIViewController {
     }
     
     // MARK: - Methods
+    private func navBarSetup() {
+        navigationController?.navigationBar.isHidden = false
+        navBarViewModel?.customizeNavBar(navigationBar: navigationController?.navigationBar,
+                                         navigationItem: navigationItem,
+                                         title: R.string.localizable.signUpNavBarTitle())
+    }
+    
+    private func initialSetup() {
+        nextButton.setState(isButtonEnabled: false)
+        checkKeyboardViewModel.delegate = self
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    private func setupScrollView() {
+        uiViewModel.setupScrollView(rootVC: self,
+                                    signUpFirstScreen: signUpFirstScreen,
+                                    signUpSecondScreen: signUpSecondScreen,
+                                    scrollView: scrollView)
+    }
+    
     @IBAction private func isAlreadyRegisteredAction(_ sender: Any) {
         let signInVC = SignInVC(uiViewModel: SetupNavBarViewModel(),
                                 checkKeyboardViewModel: CheckKeyboardViewModel(subscriber: nil))
@@ -79,30 +100,28 @@ final class SignUpContainerVC: UIViewController {
                                            registeredButton: registeredButton,
                                            nextButton: nextButton) == true else { return }
         
-        let successLogin = SuccessLoginScreenVC()
+        registrateUser()
+    }
+    
+    private func registrateUser() {
         view.endEditing(true)
-        self.navigationController?.pushViewController(successLogin, animated: true)
+        let loaderView = RegistrationLoaderView()
+        view.addSubview(loaderView)
+        loaderView.startLoading(with: view)
+        
+        registrationService.registrateUser(user: MockData.shared.testUser) { [weak self] res in
+            guard let self = self else { return }
+            loaderView.endLoading()
+            switch res {
+            case .success(_ ):
+                let successLogin = SuccessLoginScreenVC()
+                self.view.endEditing(true)
+                self.navigationController?.pushViewController(successLogin, animated: true)
+            case .failure(_ ):
+                break
+            }
+        }
     }
-    
-    private func navBarSetup() {
-        navigationController?.navigationBar.isHidden = false
-        navBarViewModel?.customizeNavBar(navigationBar: navigationController?.navigationBar,
-                                         navigationItem: navigationItem,
-                                         title: R.string.localizable.signUpNavBarTitle())
-    }
-    
-    private func initialSetup() {
-        nextButton.setState(isButtonEnabled: false)
-        checkKeyboardViewModel.delegate = self
-    }
-    
-    private func setupScrollView() {
-        uiViewModel.setupScrollView(rootVC: self,
-                                    signUpFirstScreen: signUpFirstScreen,
-                                    signUpSecondScreen: signUpSecondScreen,
-                                    scrollView: scrollView)
-    }
-    
 }
 
 // MARK: - Check user state

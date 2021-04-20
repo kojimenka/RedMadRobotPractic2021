@@ -11,6 +11,9 @@
 		2C025EBE262E0CB90035B84E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C025EBD262E0CB90035B84E /* RegistrationView.swift */; };
 		2C04C0D7262E2E14005F493D /* SignUpContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */; };
 		2C04C0DB262E3D7C005F493D /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0DA262E3D7C005F493D /* Validator.swift */; };
+		2C04C0E1262EC082005F493D /* RegistrationSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0E0262EC082005F493D /* RegistrationSevice.swift */; };
+		2C04C0EB262EC50C005F493D /* RegistrationLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C04C0EA262EC50C005F493D /* RegistrationLoaderView.xib */; };
+		2C04C0EE262EC51E005F493D /* RegistrationLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0ED262EC51E005F493D /* RegistrationLoaderView.swift */; };
 		2C1ACF42262DEFA800371065 /* SignUpFirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1ACF41262DEFA700371065 /* SignUpFirstView.xib */; };
 		2C1ACF46262DEFBC00371065 /* SignUpFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ACF45262DEFBC00371065 /* SignUpFirstView.swift */; };
 		2C1ACF4B262DF4EE00371065 /* SignUpSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ACF4A262DF4EE00371065 /* SignUpSecondView.swift */; };
@@ -78,6 +81,9 @@
 		2C025EBD262E0CB90035B84E /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContainerViewModel.swift; sourceTree = "<group>"; };
 		2C04C0DA262E3D7C005F493D /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		2C04C0E0262EC082005F493D /* RegistrationSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSevice.swift; sourceTree = "<group>"; };
+		2C04C0EA262EC50C005F493D /* RegistrationLoaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationLoaderView.xib; sourceTree = "<group>"; };
+		2C04C0ED262EC51E005F493D /* RegistrationLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationLoaderView.swift; sourceTree = "<group>"; };
 		2C1ACF41262DEFA700371065 /* SignUpFirstView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFirstView.xib; sourceTree = "<group>"; };
 		2C1ACF45262DEFBC00371065 /* SignUpFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFirstView.swift; sourceTree = "<group>"; };
 		2C1ACF4A262DF4EE00371065 /* SignUpSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSecondView.swift; sourceTree = "<group>"; };
@@ -204,6 +210,31 @@
 				2C04C0DA262E3D7C005F493D /* Validator.swift */,
 			);
 			path = Validaror;
+			sourceTree = "<group>";
+		};
+		2C04C0DF262EC068005F493D /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				2C04C0E0262EC082005F493D /* RegistrationSevice.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		2C04C0E4262EC4D0005F493D /* LoaderView */ = {
+			isa = PBXGroup;
+			children = (
+				2C04C0E5262EC4E2005F493D /* RegistrationLoader */,
+			);
+			path = LoaderView;
+			sourceTree = "<group>";
+		};
+		2C04C0E5262EC4E2005F493D /* RegistrationLoader */ = {
+			isa = PBXGroup;
+			children = (
+				2C04C0EA262EC50C005F493D /* RegistrationLoaderView.xib */,
+				2C04C0ED262EC51E005F493D /* RegistrationLoaderView.swift */,
+			);
+			path = RegistrationLoader;
 			sourceTree = "<group>";
 		};
 		2C1ACF40262DEF9000371065 /* View */ = {
@@ -379,6 +410,7 @@
 		2C48089D262C53480075C0B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2C04C0E4262EC4D0005F493D /* LoaderView */,
 				2C025EBC262E0C9E0035B84E /* Views */,
 				2C4808FD262DA8E40075C0B3 /* TextFields */,
 				2C4808E0262CBCCE0075C0B3 /* Buttons */,
@@ -471,6 +503,7 @@
 				2CCA9120262E1CC800D6A635 /* Validators */,
 				2CCA911C262E16C400D6A635 /* Errors */,
 				2C4808F3262CC5BA0075C0B3 /* Authorization */,
+				2C04C0DF262EC068005F493D /* Registration */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -826,6 +859,7 @@
 				2C4808D4262CB2600075C0B3 /* credentials.plist in Resources */,
 				2C3B72A6262C2C1E0076DF18 /* LoginScreenVC.xib in Resources */,
 				2C1ACF50262DF51200371065 /* SignUpSecondView.xib in Resources */,
+				2C04C0EB262EC50C005F493D /* RegistrationLoaderView.xib in Resources */,
 				2C7E12CC262B4E0600CA4073 /* Localizable.strings in Resources */,
 				2C8A73AE262DB34000A68761 /* SignInRegistrationView.xib in Resources */,
 				2C1ACF42262DEFA800371065 /* SignUpFirstView.xib in Resources */,
@@ -952,6 +986,7 @@
 				2C7E12B5262B47DA00CA4073 /* UIColor+Extensions.swift in Sources */,
 				2C025EB9262E05860035B84E /* CheckKeyboardViewModel.swift in Sources */,
 				2C7E12AF262B47DA00CA4073 /* UICollectionView_UITableView+Extension.swift in Sources */,
+				2C04C0EE262EC51E005F493D /* RegistrationLoaderView.swift in Sources */,
 				2CCA9131262E28BC00D6A635 /* NameValidator.swift in Sources */,
 				2C4808A1262C53F70075C0B3 /* SignInViewModel.swift in Sources */,
 				2C7E12B0262B47DA00CA4073 /* UIView.AnimationTransition+Extension.swift in Sources */,
@@ -977,6 +1012,7 @@
 				2C4808B1262C5BC10075C0B3 /* SignUpContainerVC.swift in Sources */,
 				2CDD2454262B3E5400501E77 /* AppDelegate.swift in Sources */,
 				2C7E12DC262B4F8300CA4073 /* ColorPalette.swift in Sources */,
+				2C04C0E1262EC082005F493D /* RegistrationSevice.swift in Sources */,
 				2C04C0D7262E2E14005F493D /* SignUpContainerViewModel.swift in Sources */,
 				2C480894262C52210075C0B3 /* FeedScreenVC.swift in Sources */,
 				2C3B72BF262C3FAF0076DF18 /* AppTabBarController.swift in Sources */,

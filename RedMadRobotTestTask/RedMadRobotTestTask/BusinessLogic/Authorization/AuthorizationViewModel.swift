@@ -16,7 +16,7 @@ protocol AuthorizationViewModelProtocol {
 final class AuthorizationViewModel: NSObject, AuthorizationViewModelProtocol {
     
     // MARK: - Properties
-    public var endAuthorize: ((Result<String, Error>) -> Void)?
+    public var endAuthorise: ((Result<String, Error>) -> Void)?
     
     enum AuthorizationMethods {
         case google(presentationController: UIViewController)
