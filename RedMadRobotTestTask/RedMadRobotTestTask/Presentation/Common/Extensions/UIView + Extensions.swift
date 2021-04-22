@@ -32,3 +32,19 @@ extension UIView {
         layer.shadowRadius = shadowRadius
     }
 }
+
+extension UIView {
+    func setInView(_ container: UIView) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.frame = container.frame
+        container.addSubview(self)
+        
+        NSLayoutConstraint.activate([
+            self.topAnchor.constraint(equalTo: container.topAnchor),
+            self.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            self.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            self.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+        ])
+        
+    }
+}

@@ -5,3 +5,45 @@
   Created by Дмитрий Марченков on 17.04.2021.
   
 */
+
+// MARK: - TabBar
+"feedTabBarTitle" = "Feed";
+"profileTabBarTitle" = "Profile";
+
+// MARK: - RegistrationModule
+// Login
+"loginScreenTitle" = "Find your place";
+"loginRegistrationWithMail" = "RegistrationWithMail";
+
+// SignInScreen
+"signInNavBarTitle" = "Enter with login";
+"signInEmailPlaceHolder" = "Your e-mail or login";
+"signInPasswordPlaceHolder" = "Password";
+"signInRegistrationButton" = "Registration";
+"signInEnterButton" = "Enter";
+
+// SignUpScreen
+"signUpNavBarTitle" = "Registation";
+"signUpLoginPlaceHolder" = "Create Login";
+"signUpEmailPlaceHolder" = "E-mail";
+"signUpPasswordPlaceHolder" = "Password";
+"signUpAlreadyRegistration" = "Already Registration";
+"signUpNextButtonTitle" = "Next";
+"signUpNamePlaceHolder" = "Name";
+"signUpBirthDayPlaceHolder" = "Birthday";
+"signUpCityPlaceHolder" = "City";
+"signUpRegistrationButton" = "Registrate";
+
+// Success Login
+"successLoginDescriptionTitle" = "Now you can watch \nand post publication";
+"successLoginButtonTitle" = "Go to feed";
+
+// MARK: - Feed Screen
+"feedScreenZeroScreenTitle" = "Oops...";
+"feedScreenZeroScreenDescription" = "Something wrong";
+"feedScreenZeroScreenTitle" = "Update";
+
+// MARK: - Profile Screen
+"feedScreenZeroScreenTitle" = "Empty";
+"feedScreenZeroScreenDescription" = "If you keep silent, other people\nwill not know about you";
+"feedScreenZeroScreenTitle" = "Create post";

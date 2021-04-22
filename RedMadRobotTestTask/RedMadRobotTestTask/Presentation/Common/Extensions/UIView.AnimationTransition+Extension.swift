@@ -56,6 +56,14 @@ extension UIView.AnimationTransition {
                           completion: nil)
     }
     
+    static func transitionChangeButtonTitleColor(button: UIButton, color: UIColor?, duration: Double = 0.3) {
+        UIView.transition(with: button,
+                          duration: duration,
+                          options: .transitionCrossDissolve,
+                          animations: { button.setTitleColor(color, for: .normal) },
+                          completion: nil)
+    }
+    
     static func transitionChangeBackgroundColor(view: UIView, color: UIColor, duration: Double = 0.3) {
         UIView.transition(with: view,
                           duration: duration,
