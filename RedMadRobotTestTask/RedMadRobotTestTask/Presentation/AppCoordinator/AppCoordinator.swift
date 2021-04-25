@@ -9,10 +9,12 @@ import UIKit
 
 final class AppCoordinator {
     
-    // MARK: - Properties
+    // MARK: - Private Properties
+    
     private let isLaunchedBefore = false
     
-    // MARK: - Methods
+    // MARK: - Public Properties
+    
     public func startFlow() -> UIViewController {
         if !isLaunchedBefore {
             return createLoginScreenWithNavController()
@@ -21,6 +23,8 @@ final class AppCoordinator {
         }
     }
     
+    // MARK: - Private Properties
+    
     private func createLoginScreenWithNavController() -> UINavigationController {
         
         let navController = UINavigationController()
@@ -28,7 +32,7 @@ final class AppCoordinator {
         navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navController.navigationBar.shadowImage = UIImage()
         
-        let authorizationViewModel = AuthorizationViewModel()
+        let authorizationViewModel = AuthorizationServices()
         
         let loginVC = LoginScreenVC(authorizationViewModel: authorizationViewModel)
         navController.pushViewController(loginVC, animated: false)

@@ -9,16 +9,18 @@ import UIKit
 
 final class SignUpSecondView: RegistrationView {
     
-    // MARK: - Properties
+    // MARK: - IBOutlet
     @IBOutlet private var contentView: UIView!
     
     @IBOutlet private weak var nameTextField: AuthorizationTextField!
     @IBOutlet private weak var birthDayTextField: AuthorizationTextField!
     @IBOutlet private weak var cityTextField: AuthorizationTextField!
 
-    private let nameValidator: NameValidator = RegistrationNameValidator()
-    private let dateValidator: DayValidator = RegistrationBirthdayValidator()
-    private let cityValidator: CityValidator = RegistrationCityValidator()
+    // MARK: - Private Properties
+    
+    private let nameValidator = RegistrationNameValidator().validator
+    private let dateValidator = RegistrationBirthdayValidator().validator
+    private let cityValidator = RegistrationCityValidator().validator
     
     private var isScreenFilled: Bool = false {
         didSet {
@@ -28,32 +30,41 @@ final class SignUpSecondView: RegistrationView {
         }
     }
     
-    private var isNameFilled: Bool = false {
-        didSet {
-            checkFullValidation()
-        }
-    }
+    private var isNameValid = false
+    private var isBirthDayValid = false
+    private var isCityValid = false
     
-    private var isBirthDayFilled: Bool = false {
-        didSet {
-            checkFullValidation()
-        }
-    }
+    // MARK: - Initializers
     
-    private var isCityFilled: Bool = false {
-        didSet {
-            checkFullValidation()
-        }
-    }
-    
-    // MARK: - Init
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupView()
-        allValidators = [nameValidator, dateValidator, cityValidator]
     }
     
-    // MARK: - Methods
+    // MARK: - UIView(RegistrationView)
+    
+    override func setupValidators() {
+        stringValidators = Validated([nameValidator, cityValidator])
+        dateValidators = Validated([dateValidator])
+    }
+    
+    override func changeText(view: AuthorizationTextField, text: String) {
+        switch view {
+        case nameTextField:
+            isNameValid = nameValidator.isValid(value: text)
+        case birthDayTextField:
+            isBirthDayValid = dateValidator.isValid(value: Date())
+        case cityTextField:
+            isCityValid = cityValidator.isValid(value: text)
+        default:
+            return
+        }
+        
+        isScreenFilled = isNameValid && isBirthDayValid && isCityValid
+    }
+    
+    // MARK: - Private Methods
+    
     private func setupView() {
         Bundle.main.loadNibNamed(R.nib.signUpSecondView.name, owner: self)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -67,21 +78,4 @@ final class SignUpSecondView: RegistrationView {
         cityTextField.setupView(subscriber: self, placeholder: "Город")
     }
     
-    // MARK: - Validation
-    override func changeText(view: AuthorizationTextField, text: String) {
-        switch view {
-        case nameTextField:
-            isNameFilled = nameValidator.checkName(name: text)
-        case birthDayTextField:
-            isBirthDayFilled = dateValidator.checkDay(date: Date())
-        case cityTextField:
-            isCityFilled = cityValidator.checkCity(city: text)
-        default:
-            return
-        }
-    }
-    
-    private func checkFullValidation() {
-        isScreenFilled = isNameFilled && isBirthDayFilled && isCityFilled
-    }
 }

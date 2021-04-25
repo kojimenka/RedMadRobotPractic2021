@@ -14,11 +14,10 @@ import FBSDKCoreKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    // swiftlint:disable line_length
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        // Google
-        initiateGoogleAuth()
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
+    -> Bool {
         
         // Facebook
         ApplicationDelegate.shared.application(
@@ -30,8 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - UISceneSession Lifecycle
-    // swiftlint:disable line_length
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    
+    func application(
+        _ application: UIApplication,
+        configurationForConnecting connectingSceneSession: UISceneSession,
+        options: UIScene.ConnectionOptions)
+    -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
@@ -49,18 +52,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return GIDSignIn.sharedInstance().handle(url)
     }
 
-}
-
-// MARK: - Google Authorisation
-extension AppDelegate: GIDSignInDelegate {
-    @available(iOS 9.0, *)
-    
-    private func initiateGoogleAuth() {
-        // Initialize sign-in
-        GIDSignIn.sharedInstance().clientID = "595173877503-1onfl4cl6cnj4isap013fvcq85goqa9j.apps.googleusercontent.com"
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        print(error.localizedDescription)
-    }
 }

@@ -9,18 +9,22 @@ import UIKit
 
 final class SuccessLoginScreenVC: UIViewController {
 
-    // MARK: - Life cycle
+    // MARK: - UIViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navBarSetup()
     }
     
-    // MARK: - Methods
+    // MARK: - IBAction
+    
     @IBAction private func presentFeedAction(_ sender: Any) {
         let tabBarVC = AppTabBarController()
         tabBarVC.modalPresentationStyle = .fullScreen
         navigationController?.present(tabBarVC, animated: true)
     }
+    
+    // MARK: - Private Methods
     
     private func navBarSetup() {
         navigationController?.navigationBar.isHidden = true

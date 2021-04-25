@@ -19,28 +19,32 @@ final class SignUpContainerViewModel {
     }
     
     // MARK: - Methods
-    // swiftlint:disable line_length
-    public func nextButtonAction(rootView: UIView,
-                                 scrollView: UIScrollView,
-                                 progressViewTrailingConstraint: NSLayoutConstraint,
-                                 registeredButton: UIButton,
-                                 nextButton: RegistrationNextButton) -> Bool {
+    public func nextButtonAction(
+        rootView: UIView,
+        scrollView: UIScrollView,
+        progressViewTrailingConstraint: NSLayoutConstraint,
+        registeredButton: UIButton,
+        nextButton: RegistrationNextButton)
+    -> Bool {
         
         switch currentScreen {
         case .firstScreen:
             scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: true)
             progressViewTrailingConstraint.constant = -width
             
-            UIView.AnimationTransition.transitionChangeButtonTitle(button: nextButton,
-                                                                   title: R.string.localizable.signUpRegistrationButton())
+            UIView.AnimationTransition.transitionChangeButtonTitle(
+                button: nextButton,
+                title: R.string.localizable.signUpRegistrationButton()
+            )
+            
             UIView.animate(withDuration: 0.3) {
                 registeredButton.alpha = 0.0
                 rootView.layoutIfNeeded()
             } completion: { _ in
                 registeredButton.isHidden = true
             }
-            
-            nextButton.setState(isButtonEnabled: false)
+        
+            nextButton.isButtonEnable = false
             currentScreen = .secondScreen
             return false
         case .secondScreen:
@@ -48,10 +52,12 @@ final class SignUpContainerViewModel {
         }
     }
     
-    public func setupScrollView(rootVC: UIViewController,
-                                signUpFirstScreen: UIViewController,
-                                signUpSecondScreen: UIViewController,
-                                scrollView: UIScrollView) {
+    public func setupScrollView(
+        rootVC: UIViewController,
+        signUpFirstScreen: UIViewController,
+        signUpSecondScreen: UIViewController,
+        scrollView: UIScrollView
+    ) {
         
         width = rootVC.view.frame.width
         scrollView.contentSize = CGSize(width: width * 2, height: scrollView.frame.height)

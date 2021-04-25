@@ -11,7 +11,11 @@ import UIKit
 final class RegistrationNextButton: UIButton {
     
     // MARK: - Properties
-    public var isButtonEnable: Bool = true
+    public var isButtonEnable: Bool = true {
+        didSet {
+            setState(isButtonEnabled: isButtonEnable)
+        }
+    }
     
     // MARK: - Methods
     override func draw(_ rect: CGRect) {
@@ -19,8 +23,7 @@ final class RegistrationNextButton: UIButton {
         layer.cornerRadius = frame.height * 0.25
     }
     
-    public func setState(isButtonEnabled: Bool) {
-        isButtonEnable = isButtonEnabled
+    private func setState(isButtonEnabled: Bool) {
         let backgroundColor = isButtonEnabled ? R.color.tintOrange() : R.color.light_grey()
         let titleColor = isButtonEnabled ? UIColor.white : R.color.middle_grey()
         

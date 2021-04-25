@@ -8,16 +8,12 @@
 import UIKit
 
 protocol CheckKeyboardViewModelDelegate: class {
-    func keyboardAction(action: AuthorizationTextField.KeyboardAction)
+    func keyboardAction(action: KeyboardAction)
 }
 
 final class CheckKeyboardViewModel {
     
-    // MARK: - Properties
-    enum KeyboardAction {
-        case showKeyboard(keyboardHeight: CGFloat)
-        case hideKeyboard
-    }
+    // MARK: - Public Properties
     
     weak public var delegate: CheckKeyboardViewModelDelegate?
     
@@ -27,12 +23,22 @@ final class CheckKeyboardViewModel {
         registerForKeyboardNotification()
     }
     
-    // MARK: - Methods
+    // MARK: - Private Methods
     
-    // swiftlint:disable line_length
     private func registerForKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(kbWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(kbWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     @objc private func kbWillShow(_ notification: Notification) {

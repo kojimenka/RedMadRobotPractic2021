@@ -10,12 +10,14 @@ import UIKit
 @IBDesignable
 final class RegistrationLoaderView: UIView {
     
-    // MARK: - Properties
+    // MARK: - IBOutlet
+    
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var backGroundView: UIView!
     @IBOutlet private weak var activityLoader: UIActivityIndicatorView!
     
-    // MARK: - Init
+    // MARK: - Initializers
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupView()
@@ -26,14 +28,8 @@ final class RegistrationLoaderView: UIView {
         self.setupView()
     }
     
-    // MARK: - Methods
-    private func setupView() {
-        Bundle.main.loadNibNamed(R.nib.registrationLoaderView.name, owner: self)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .clear
-        contentView.setInView(self)
-    }
-    
+    // MARK: - Public methods
+
     public func startLoading(with view: UIView) {
         
         NSLayoutConstraint.activate([
@@ -56,6 +52,15 @@ final class RegistrationLoaderView: UIView {
             self.activityLoader.stopAnimating()
             self.removeFromSuperview()
         }
+    }
+    
+    // MARK: - Private Methods
+    
+    private func setupView() {
+        Bundle.main.loadNibNamed(R.nib.registrationLoaderView.name, owner: self)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .clear
+        contentView.setInView(self)
     }
     
 }
