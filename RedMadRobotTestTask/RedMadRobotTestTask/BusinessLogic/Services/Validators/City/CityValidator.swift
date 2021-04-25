@@ -11,13 +11,13 @@ final class RegistrationCityValidator: Validator {
     
     // MARK: - Public Properties
     
-    public var errorMessage: String = "Вы не ввели данные почты"
+    public var errorMessage: String = "Вы не ввели название города"
 
     // MARK: - Public Methods
     
     public func isValid(value: String?) -> Bool {
         guard let value = value else {
-            errorMessage = "Вы не ввели данные"
+            errorMessage = "Вы не ввели название города"
             return false
         }
         

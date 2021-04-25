@@ -13,13 +13,13 @@ final class RegistrationLoginValidator: Validator {
     
     // MARK: - Public Properties
     
-    var errorMessage: String = "Вы не ввели данные"
+    var errorMessage: String = "Вы не ввели логин"
     
     // MARK: - Public Methods
 
     func isValid(value: String?) -> Bool {
         guard let value = value else {
-            errorMessage = "Вы не ввели данные"
+            errorMessage = "Вы не ввели логин"
             return false
         }
         
