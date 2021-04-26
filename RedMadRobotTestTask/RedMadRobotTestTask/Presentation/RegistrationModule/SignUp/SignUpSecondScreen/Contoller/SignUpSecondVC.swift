@@ -9,12 +9,16 @@ import UIKit
 
 final class SignUpSecondVC: UIViewController {
 
-    // MARK: - Properties
+    // MARK: - IBOutlet
+    
     @IBOutlet private weak var registrationView: RegistrationView!
+    
+    // MARK: - Private Properties
     
     private var subscriber: RegistrationViewDelegate?
     
-    // MARK: - Init
+    // MARK: - Initializers
+    
     init(subscriber: RegistrationViewDelegate) {
         super.init(nibName: R.nib.signUpSecondVC.name, bundle: R.nib.signUpSecondVC.bundle)
         self.subscriber = subscriber
@@ -24,14 +28,17 @@ final class SignUpSecondVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life Cycle
+    // MARK: - UIViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registrationView.delegate = subscriber
     }
+    
+    // MARK: - Public Methods
 
     public func checkForWarnings() {
-        registrationView.checkForWarning()
+        registrationView.checkForWarning(controller: self)
     }
     
 }

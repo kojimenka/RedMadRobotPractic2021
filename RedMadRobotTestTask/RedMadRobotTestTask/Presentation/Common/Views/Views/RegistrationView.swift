@@ -13,11 +13,11 @@ protocol RegistrationViewDelegate: class {
 
 class RegistrationView: UIView {
     
-    // MARK: - Properties
+    // MARK: - Public Properties
     weak public var delegate: RegistrationViewDelegate?
     
-    private var currentSelectedTextView: AuthorizationTextField?
-    public var allValidators: [Validator] = []
+    public var stringValidators = Validated<String>([])
+    public var dateValidators = Validated<Date>([])
     
     public var isUserFillScreen: Bool = false {
         didSet {
@@ -25,13 +25,29 @@ class RegistrationView: UIView {
         }
     }
     
-    public func checkForWarning() {
-        for validator in allValidators {
-            if validator.searchForWarnings() {
-                return
-            }
-        }
+    // MARK: - Initializers
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupValidators()
     }
+    
+    // MARK: - Private Properties
+    
+    private var currentSelectedTextView: AuthorizationTextField?
+    
+    // MARK: - Public Methods
+    
+    public func setupValidators() {}
+    
+    public func checkForWarning(controller: UIViewController) {
+        let allErrors = stringValidators.errors + dateValidators.errors
+        
+        guard let error = allErrors.first else { return }
+        let alert = UIAlertController.createAlert(alertText: error.localizedDescription)
+        controller.present(alert, animated: true)
+    }
+        
 }
 
 // MARK: - TextField Delegate

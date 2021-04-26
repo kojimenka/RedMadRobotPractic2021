@@ -9,11 +9,13 @@ import UIKit
 
 final class LoginScreenVC: UIViewController {
     
-    // MARK: - Properties
-    private let authorizationViewModel: AuthorizationViewModelProtocol
+    // MARK: - Private Properties
     
-    // MARK: - Init
-    init(authorizationViewModel: AuthorizationViewModelProtocol) {
+    private let authorizationViewModel: AuthorizationServiceProtocol
+    
+    // MARK: - Initializers
+    
+    init(authorizationViewModel: AuthorizationServiceProtocol) {
         self.authorizationViewModel = authorizationViewModel
         super.init(nibName: R.nib.loginScreenVC.name, bundle: R.nib.loginScreenVC.bundle)
     }
@@ -22,13 +24,15 @@ final class LoginScreenVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life cycle
+    // MARK: - UIViewController
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = true
     }
     
-    // MARK: - Private Methods
+    // MARK: - IBAction
+    
     @IBAction private func enterWithMailOrPhoneButtonAction(_ sender: Any) {
         let signInVC = SignInVC(uiViewModel: SetupNavBarViewModel(),
                                 checkKeyboardViewModel: CheckKeyboardViewModel(subscriber: nil))
@@ -41,12 +45,11 @@ final class LoginScreenVC: UIViewController {
         navigationController?.pushViewController(signUpVC, animated: true)
     }
     
-    // MARK: - Auth buttons
     @IBAction private func loginWithGoogleAction(_ sender: Any) {
-        authorizationViewModel.authorizationWith(.google(presentationController: self))
+        authorizationViewModel.authorizationWith(.google(presentationController: self)) { _ in }
     }
     
     @IBAction private func loginWithFacebook(_ sender: Any) {
-        authorizationViewModel.authorizationWith(.facebook)
+        authorizationViewModel.authorizationWith(.facebook) { _ in }
     }
 }

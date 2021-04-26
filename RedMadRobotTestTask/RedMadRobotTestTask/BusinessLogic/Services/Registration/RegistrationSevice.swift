@@ -7,46 +7,27 @@
 
 import Foundation
 
-// swiftlint:disable line_length
-final class MockData {
+protocol RegistrationServiceProtocol {
     
-    // MARK: - Properties
-    public static var shared = MockData()
-    
-    public private (set) var testUser = UserInfo(name: "", login: "", email: "", password: "", city: "", birthday: Date())
-
-    // MARK: - Init
-    private init() {}
-}
-
-struct UserInfo {
-    let name: String
-    let login: String
-    let email: String
-    let password: String
-    let city: String
-    let birthday: Date
 }
 
 final class RegistrationService {
     
-    // MARK: - Properties
-    public static var shared = RegistrationService()
+    // MARK: - Private Properties
+
     private let errorManager = ErrorManager.shared
     
     private var dummyRes: Bool {
         return Int.random(in: 0...1) == 0 ? false : true // True - Success res, False - failure res
     }
     
-    enum CustomErrors: Error {
+    private enum CustomErrors: Error {
         case timeWaring
     }
     
-    // MARK: - Init
-    private init () {}
+    // MARK: - Public Methods
     
-    // MARK: - Methods
-    public func registrateUser(user: UserInfo, completion: @escaping (Result<String, Error>) -> Void ) {
+    public func signInUser(user: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {
         if dummyRes {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 completion(.success(""))

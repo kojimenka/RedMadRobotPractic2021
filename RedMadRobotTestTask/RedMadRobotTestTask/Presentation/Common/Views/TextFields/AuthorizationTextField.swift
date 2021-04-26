@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum KeyboardAction {
+    case showKeyboard(keyboardHeight: CGFloat)
+    case hideKeyboard
+}
+
 protocol AuthorizationTextFieldDelegate: class {
     func changeText(view: AuthorizationTextField, text: String)
     func selectedAuthorizationTextField(view: AuthorizationTextField)
@@ -16,17 +21,7 @@ protocol AuthorizationTextFieldDelegate: class {
 @IBDesignable
 final class AuthorizationTextField: UIView {
     
-    // MARK: - Properties
-    @IBOutlet private weak var contentView: UIView!
-    @IBOutlet private weak var textField: UITextField!
-    @IBOutlet private weak var indicatorView: UIView!
-    
-    weak private var delegate: AuthorizationTextFieldDelegate?
-    
-    enum KeyboardAction {
-        case showKeyboard(keyboardHeight: CGFloat)
-        case hideKeyboard
-    }
+    // MARK: - Public Properties
     
     public var isSecureText: Bool? {
         didSet {
@@ -39,7 +34,18 @@ final class AuthorizationTextField: UIView {
         return textField.text ?? ""
     }
     
+    // MARK: - IBOutlet
+    
+    @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var indicatorView: UIView!
+    
+    // MARK: - Private Properties
+    
+    weak private var delegate: AuthorizationTextFieldDelegate?
+    
     // MARK: - Init
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupView()
@@ -47,11 +53,28 @@ final class AuthorizationTextField: UIView {
         registerForKeyboardNotification()
     }
     
-    // MARK: - Methods
-    // MARK: - Private
-    // swiftlint:disable line_length
+    // MARK: - Public Methods
+    public func setupView(subscriber: AuthorizationTextFieldDelegate, placeholder: String) {
+        self.delegate = subscriber
+        textField.placeholder = placeholder
+    }
+    
+    public func setState(isSelected: Bool) {
+        let neededColor = isSelected ? UIColor.ColorPalette.tintOrangeColor : UIColor.ColorPalette.notActive
+        
+        UIView.AnimationTransition.transitionChangeBackgroundColor(view: indicatorView,
+                                                                   color: neededColor ?? UIColor.clear,
+                                                                   duration: 0.25)
+    }
+    
+    // MARK: - Private Methods
     private func registerForKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(kbWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     @objc private func kbWillHide() {
@@ -71,20 +94,6 @@ final class AuthorizationTextField: UIView {
     
     @objc private func changeText() {
         delegate?.changeText(view: self, text: textField.text ?? "")
-    }
-    
-    // MARK: - Public
-    public func setupView(subscriber: AuthorizationTextFieldDelegate, placeholder: String) {
-        self.delegate = subscriber
-        textField.placeholder = placeholder
-    }
-    
-    public func setState(isSelected: Bool) {
-        let neededColor = isSelected ? UIColor.ColorPalette.tintOrangeColor : UIColor.ColorPalette.notActive
-        
-        UIView.AnimationTransition.transitionChangeBackgroundColor(view: indicatorView,
-                                                                   color: neededColor ?? UIColor.clear,
-                                                                   duration: 0.25)
     }
 
 }

@@ -15,9 +15,9 @@ extension UIDevice {
 }
 
 extension UIDevice {
-    // swiftlint:disable discouraged_direct_init
+    
     var iPhone: Bool {
-        return UIDevice().userInterfaceIdiom == .phone
+        return UIDevice.current.userInterfaceIdiom == .phone
     }
 
     enum ScreenType: String {
@@ -63,7 +63,7 @@ extension UIDevice {
     }
     
     public var isSmallDevice: Bool {
-        switch UIDevice().screenType {
+        switch UIDevice.current.screenType {
         case .iPhone8, .iPhone8Plus, .iPhoneSE:
             return true
         default:

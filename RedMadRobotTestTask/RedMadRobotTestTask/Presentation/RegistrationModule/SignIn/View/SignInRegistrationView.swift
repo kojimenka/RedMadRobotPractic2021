@@ -10,14 +10,17 @@ import UIKit
 @IBDesignable
 final class SignInRegistrationView: RegistrationView {
     
-    // MARK: - Properties
+    // MARK: - IBOutlet
+    
     @IBOutlet private var contentView: UIView!
     
     @IBOutlet private weak var emailTextView: AuthorizationTextField!
     @IBOutlet private weak var passwordTextView: AuthorizationTextField!
     
-    private let passwordValidator: PasswordValidator = UserRegistrationPasswordValidator()
-    private let emailValidator: EmailValidator = UserRegistrationEmailValidator()
+    // MARK: - Private Properties
+    
+    private let emailValidator = RegistrationEmailValidator().validator
+    private let passwordValidator = RegistrationPasswordValidator().validator
     
     private var isScreenFilled: Bool = false {
         didSet {
@@ -27,26 +30,37 @@ final class SignInRegistrationView: RegistrationView {
         }
     }
     
-    private var isPasswordFilled: Bool = false {
-        didSet {
-            checkFullValidation()
-        }
-    }
+    private var isEmailValid = false
+    private var isPasswordValid = false
     
-    private var isEmailFilled: Bool = false {
-        didSet {
-            checkFullValidation()
-        }
-    }
+    // MARK: - Initializers
     
-    // MARK: - Init
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupView()
-        allValidators = [emailValidator, passwordValidator]
     }
     
-    // MARK: - Methods
+    // MARK: - UIView(RegistrationView)
+    
+    override func setupValidators() {
+        stringValidators = Validated([emailValidator, passwordValidator])
+    }
+    
+    override func changeText(view: AuthorizationTextField, text: String) {
+        switch view {
+        case emailTextView:
+            isEmailValid = emailValidator.isValid(value: text)
+        case passwordTextView:
+            isPasswordValid = passwordValidator.isValid(value: text)
+        default:
+            return
+        }
+        
+        isScreenFilled = isEmailValid && isPasswordValid
+    }
+    
+    // MARK: - Private Methods
+    
     private func setupView() {
         Bundle.main.loadNibNamed(R.nib.signInRegistrationView.name, owner: self)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -60,19 +74,4 @@ final class SignInRegistrationView: RegistrationView {
         passwordTextView.isSecureText = true
     }
     
-    // MARK: - Validation
-    override func changeText(view: AuthorizationTextField, text: String) {
-        switch view {
-        case emailTextView:
-            isEmailFilled = emailValidator.checkEmail(email: text)
-        case passwordTextView:
-            isPasswordFilled = passwordValidator.checkPassword(text: text)
-        default:
-            return
-        }
-    }
-    
-    private func checkFullValidation() {
-        isScreenFilled = isPasswordFilled && isEmailFilled
-    }
 }
