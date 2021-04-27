@@ -80,19 +80,19 @@ final class SignInVC: UIViewController {
         view.addSubview(loaderView)
         loaderView.startLoading(with: view)
         
-        registrationService.signIn(user: UserInfo.createMockUser()) { [weak self] res in
-            guard let self = self else { return }
-            loaderView.endLoading()
-            switch res {
-            case .success:
-                let successLogicVC = SuccessLoginScreenVC()
-                self.view.endEditing(true) // Dismiss keyboard
-                self.navigationController?.pushViewController(successLogicVC, animated: true)
-            case .failure(let err):
-                let alert = UIAlertController.createAlert(alertText: err.localizedDescription)
-                self.present(alert, animated: true)
-            }
-        }
+//        registrationService.signIn(user: UserInfo.createMockUser()) { [weak self] res in
+//            guard let self = self else { return }
+//            loaderView.endLoading()
+//            switch res {
+//            case .success:
+//                let successLogicVC = SuccessLoginScreenVC()
+//                self.view.endEditing(true) // Dismiss keyboard
+//                self.navigationController?.pushViewController(successLogicVC, animated: true)
+//            case .failure(let err):
+//                let alert = UIAlertController.createAlert(alertText: err.localizedDescription)
+//                self.present(alert, animated: true)
+//            }
+//        }
     }
 
 }

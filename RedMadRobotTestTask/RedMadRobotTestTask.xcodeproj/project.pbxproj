@@ -62,6 +62,27 @@
 		2C8A73BA262DD67700A68761 /* SignUpSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A73B8262DD67700A68761 /* SignUpSecondVC.swift */; };
 		2C8A73BB262DD67700A68761 /* SignUpSecondVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8A73B9262DD67700A68761 /* SignUpSecondVC.xib */; };
 		2C938F9C2635A7E5002DF5C8 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C938F9B2635A7E5002DF5C8 /* UIAlertController+Extension.swift */; };
+		2CAE1A4826372E53006A4417 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A4726372E53006A4417 /* UserStorage.swift */; };
+		2CAE1A5F2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; };
+		2CAE1A662637340B006A4417 /* RedMadRobotTestTaskAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A652637340B006A4417 /* RedMadRobotTestTaskAPITests.swift */; };
+		2CAE1A682637340B006A4417 /* RedMadRobotTestTaskAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CAE1A6B2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; };
+		2CAE1A6C2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2CAE1A7926373489006A4417 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A7826373489006A4417 /* APIError.swift */; };
+		2CAE1A80263734C8006A4417 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A7F263734C8006A4417 /* HTTPError.swift */; };
+		2CAE1A84263734ED006A4417 /* ResponseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A83263734ED006A4417 /* ResponseValidator.swift */; };
+		2CAE1A8826373511006A4417 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A8726373511006A4417 /* Codable.swift */; };
+		2CAE1A8F2637355A006A4417 /* JsonEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A8E2637355A006A4417 /* JsonEndpoint.swift */; };
+		2CAE1AAC263737B5006A4417 /* EmptyEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1AAB263737B5006A4417 /* EmptyEndPoint.swift */; };
+		2CAE1AB72637389B006A4417 /* LoginEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1AB62637389B006A4417 /* LoginEndPoint.swift */; };
+		2CAE1ABC263738CC006A4417 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF47D152635560E00F3C72B /* UserData.swift */; };
+		2CAE1AC0263738F8006A4417 /* RegistrationEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1ABF263738F8006A4417 /* RegistrationEndPoint.swift */; };
+		2CC884F92637521900375AF8 /* UserInfoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC884F82637521900375AF8 /* UserInfoEndPoint.swift */; };
+		2CC884FE263756A300375AF8 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC884FD263756A300375AF8 /* UserInfoService.swift */; };
+		2CC8850226375EEA00375AF8 /* GetUserPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8850126375EEA00375AF8 /* GetUserPosts.swift */; };
+		2CC885062637661800375AF8 /* AddFriendEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC885052637661800375AF8 /* AddFriendEndPoint.swift */; };
+		2CC8850A2637680600375AF8 /* AdNewPostEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC885092637680600375AF8 /* AdNewPostEndPoint.swift */; };
+		2CC8850E2637F0E100375AF8 /* RequestIntercaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8850D2637F0E100375AF8 /* RequestIntercaptor.swift */; };
 		2CCA9122262E1CEC00D6A635 /* ValidatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9121262E1CEC00D6A635 /* ValidatePassword.swift */; };
 		2CCA9127262E1FD000D6A635 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9126262E1FD000D6A635 /* EmailValidator.swift */; };
 		2CCA912B262E251300D6A635 /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA912A262E251300D6A635 /* LoginValidator.swift */; };
@@ -73,11 +94,52 @@
 		2CDD245D262B3E5600501E77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CDD245C262B3E5600501E77 /* Assets.xcassets */; };
 		2CDD2460262B3E5600501E77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CDD245E262B3E5600501E77 /* LaunchScreen.storyboard */; };
 		2CF47D0E2635529800F3C72B /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF47D0D2635529800F3C72B /* ServiceLayer.swift */; };
-		2CF47D162635560E00F3C72B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF47D152635560E00F3C72B /* UserData.swift */; };
+		70CD53DCDDD56387925AFDE3 /* Pods_RedMadRobotTestTaskAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */; };
+		7111BBDF0A689192F1CC5A57 /* Pods_RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */; };
 		D926035119ABF5AEBBECDCCB /* Pods_RedMadRobotTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2CAE1A602637340B006A4417 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CDD2448262B3E5400501E77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2CAE1A552637340A006A4417;
+			remoteInfo = RedMadRobotTestTaskAPI;
+		};
+		2CAE1A622637340B006A4417 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CDD2448262B3E5400501E77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2CDD244F262B3E5400501E77;
+			remoteInfo = RedMadRobotTestTask;
+		};
+		2CAE1A692637340B006A4417 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CDD2448262B3E5400501E77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2CAE1A552637340A006A4417;
+			remoteInfo = RedMadRobotTestTaskAPI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2CAE1A702637340B006A4417 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2CAE1A6C2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTaskAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24CF3FDB716A3C816F522AEB /* Pods-RedMadRobotTestTaskAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPI.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPI/Pods-RedMadRobotTestTaskAPI.release.xcconfig"; sourceTree = "<group>"; };
 		2C025EB8262E05860035B84E /* CheckKeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckKeyboardViewModel.swift; sourceTree = "<group>"; };
 		2C025EBD262E0CB90035B84E /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContainerViewModel.swift; sourceTree = "<group>"; };
@@ -135,6 +197,27 @@
 		2C8A73B8262DD67700A68761 /* SignUpSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSecondVC.swift; sourceTree = "<group>"; };
 		2C8A73B9262DD67700A68761 /* SignUpSecondVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpSecondVC.xib; sourceTree = "<group>"; };
 		2C938F9B2635A7E5002DF5C8 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		2CAE1A4726372E53006A4417 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedMadRobotTestTaskAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedMadRobotTestTaskAPI.h; sourceTree = "<group>"; };
+		2CAE1A592637340A006A4417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CAE1A5E2637340B006A4417 /* RedMadRobotTestTaskAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedMadRobotTestTaskAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CAE1A652637340B006A4417 /* RedMadRobotTestTaskAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedMadRobotTestTaskAPITests.swift; sourceTree = "<group>"; };
+		2CAE1A672637340B006A4417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CAE1A7826373489006A4417 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		2CAE1A7F263734C8006A4417 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
+		2CAE1A83263734ED006A4417 /* ResponseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseValidator.swift; sourceTree = "<group>"; };
+		2CAE1A8726373511006A4417 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
+		2CAE1A8E2637355A006A4417 /* JsonEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonEndpoint.swift; sourceTree = "<group>"; };
+		2CAE1AAB263737B5006A4417 /* EmptyEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEndPoint.swift; sourceTree = "<group>"; };
+		2CAE1AB62637389B006A4417 /* LoginEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndPoint.swift; sourceTree = "<group>"; };
+		2CAE1ABF263738F8006A4417 /* RegistrationEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEndPoint.swift; sourceTree = "<group>"; };
+		2CC884F82637521900375AF8 /* UserInfoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEndPoint.swift; sourceTree = "<group>"; };
+		2CC884FD263756A300375AF8 /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
+		2CC8850126375EEA00375AF8 /* GetUserPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPosts.swift; sourceTree = "<group>"; };
+		2CC885052637661800375AF8 /* AddFriendEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendEndPoint.swift; sourceTree = "<group>"; };
+		2CC885092637680600375AF8 /* AdNewPostEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdNewPostEndPoint.swift; sourceTree = "<group>"; };
+		2CC8850D2637F0E100375AF8 /* RequestIntercaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestIntercaptor.swift; sourceTree = "<group>"; };
 		2CCA9121262E1CEC00D6A635 /* ValidatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePassword.swift; sourceTree = "<group>"; };
 		2CCA9126262E1FD000D6A635 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		2CCA912A262E251300D6A635 /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
@@ -149,16 +232,38 @@
 		2CDD2461262B3E5600501E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CF47D0D2635529800F3C72B /* ServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
 		2CF47D152635560E00F3C72B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPITests/Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; sourceTree = "<group>"; };
+		45F1A9BBD0AF2E905F756A66 /* Pods-RedMadRobotTestTaskAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPI/Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF99F708E8D8C1F6AEEE220F /* Pods-RedMadRobotTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTask.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask.debug.xcconfig"; sourceTree = "<group>"; };
+		EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTaskAPITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB739DD1DED551A86E3864BB /* Pods-RedMadRobotTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTask.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask.release.xcconfig"; sourceTree = "<group>"; };
+		F82C932AA5C5EF2C1632C9CB /* Pods-RedMadRobotTestTaskAPITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPITests.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPITests/Pods-RedMadRobotTestTaskAPITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2CAE1A532637340A006A4417 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7111BBDF0A689192F1CC5A57 /* Pods_RedMadRobotTestTaskAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CAE1A5B2637340B006A4417 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CAE1A5F2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */,
+				70CD53DCDDD56387925AFDE3 /* Pods_RedMadRobotTestTaskAPITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CDD244D262B3E5400501E77 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CAE1A6B2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */,
 				D926035119ABF5AEBBECDCCB /* Pods_RedMadRobotTestTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,7 +290,6 @@
 		2C025EC0262E0F420035B84E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2CF47D14263555FB00F3C72B /* Helpers */,
 				2C025EC1262E0F4D0035B84E /* ViewModels */,
 			);
 			path = Models;
@@ -505,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				2C4808F4262CC5E70075C0B3 /* AuthorizationServices.swift */,
+				2CC8850D2637F0E100375AF8 /* RequestIntercaptor.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -645,6 +750,109 @@
 			path = Contoller;
 			sourceTree = "<group>";
 		};
+		2CAE1A4526372DF3006A4417 /* Persistancy */ = {
+			isa = PBXGroup;
+			children = (
+				2CAE1A4626372E32006A4417 /* DB Models */,
+			);
+			path = Persistancy;
+			sourceTree = "<group>";
+		};
+		2CAE1A4626372E32006A4417 /* DB Models */ = {
+			isa = PBXGroup;
+			children = (
+				2CAE1A4726372E53006A4417 /* UserStorage.swift */,
+			);
+			path = "DB Models";
+			sourceTree = "<group>";
+		};
+		2CAE1A572637340A006A4417 /* RedMadRobotTestTaskAPI */ = {
+			isa = PBXGroup;
+			children = (
+				2CAE1A7626373467006A4417 /* Common */,
+				2CAE1A8B26373531006A4417 /* EndPoint */,
+				2CAE1A8C26373537006A4417 /* Model */,
+				2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */,
+				2CAE1A592637340A006A4417 /* Info.plist */,
+			);
+			path = RedMadRobotTestTaskAPI;
+			sourceTree = "<group>";
+		};
+		2CAE1A642637340B006A4417 /* RedMadRobotTestTaskAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				2CAE1A652637340B006A4417 /* RedMadRobotTestTaskAPITests.swift */,
+				2CAE1A672637340B006A4417 /* Info.plist */,
+			);
+			path = RedMadRobotTestTaskAPITests;
+			sourceTree = "<group>";
+		};
+		2CAE1A7626373467006A4417 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2CAE1A7826373489006A4417 /* APIError.swift */,
+				2CAE1A7F263734C8006A4417 /* HTTPError.swift */,
+				2CAE1A83263734ED006A4417 /* ResponseValidator.swift */,
+				2CAE1A8726373511006A4417 /* Codable.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2CAE1A8B26373531006A4417 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				2CAE1A8D26373547006A4417 /* Base */,
+				2CAE1AB52637383A006A4417 /* Authentication */,
+				2CC884F72637520200375AF8 /* User */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		2CAE1A8C26373537006A4417 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2CF47D152635560E00F3C72B /* UserData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2CAE1A8D26373547006A4417 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2CAE1A8E2637355A006A4417 /* JsonEndpoint.swift */,
+				2CAE1AAB263737B5006A4417 /* EmptyEndPoint.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2CAE1AB52637383A006A4417 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				2CAE1AB62637389B006A4417 /* LoginEndPoint.swift */,
+				2CAE1ABF263738F8006A4417 /* RegistrationEndPoint.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		2CC884F72637520200375AF8 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2CC884F82637521900375AF8 /* UserInfoEndPoint.swift */,
+				2CC8850126375EEA00375AF8 /* GetUserPosts.swift */,
+				2CC885052637661800375AF8 /* AddFriendEndPoint.swift */,
+				2CC885092637680600375AF8 /* AdNewPostEndPoint.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		2CC884FC2637569200375AF8 /* UserInfoService */ = {
+			isa = PBXGroup;
+			children = (
+				2CC884FD263756A300375AF8 /* UserInfoService.swift */,
+			);
+			path = UserInfoService;
+			sourceTree = "<group>";
+		};
 		2CCA9120262E1CC800D6A635 /* Validators */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,6 +919,8 @@
 			isa = PBXGroup;
 			children = (
 				2CDD2452262B3E5400501E77 /* RedMadRobotTestTask */,
+				2CAE1A572637340A006A4417 /* RedMadRobotTestTaskAPI */,
+				2CAE1A642637340B006A4417 /* RedMadRobotTestTaskAPITests */,
 				2CDD2451262B3E5400501E77 /* Products */,
 				E57EC666734EA8797EA8A117 /* Pods */,
 				CD34F3DC44336B16C8062D34 /* Frameworks */,
@@ -721,6 +931,8 @@
 			isa = PBXGroup;
 			children = (
 				2CDD2450262B3E5400501E77 /* RedMadRobotTestTask.app */,
+				2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */,
+				2CAE1A5E2637340B006A4417 /* RedMadRobotTestTaskAPITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -730,6 +942,7 @@
 			children = (
 				2C7E12A1262B469600CA4073 /* Resources */,
 				2C4808F2262CC5AC0075C0B3 /* BusinessLogic */,
+				2CAE1A4526372DF3006A4417 /* Persistancy */,
 				2C025EC0262E0F420035B84E /* Models */,
 				2C7E12A2262B473800CA4073 /* Presentation */,
 				2CDD2461262B3E5600501E77 /* Info.plist */,
@@ -757,24 +970,19 @@
 		2CF47D12263552A200F3C72B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2CC884FC2637569200375AF8 /* UserInfoService */,
 				2C4808F3262CC5BA0075C0B3 /* Authorization */,
 				2CCA9120262E1CC800D6A635 /* Validators */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		2CF47D14263555FB00F3C72B /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				2CF47D152635560E00F3C72B /* UserData.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		CD34F3DC44336B16C8062D34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */,
+				0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */,
+				EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -784,13 +992,67 @@
 			children = (
 				BF99F708E8D8C1F6AEEE220F /* Pods-RedMadRobotTestTask.debug.xcconfig */,
 				EB739DD1DED551A86E3864BB /* Pods-RedMadRobotTestTask.release.xcconfig */,
+				45F1A9BBD0AF2E905F756A66 /* Pods-RedMadRobotTestTaskAPI.debug.xcconfig */,
+				24CF3FDB716A3C816F522AEB /* Pods-RedMadRobotTestTaskAPI.release.xcconfig */,
+				4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */,
+				F82C932AA5C5EF2C1632C9CB /* Pods-RedMadRobotTestTaskAPITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		2CAE1A512637340A006A4417 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CAE1A682637340B006A4417 /* RedMadRobotTestTaskAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		2CAE1A552637340A006A4417 /* RedMadRobotTestTaskAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CAE1A6D2637340B006A4417 /* Build configuration list for PBXNativeTarget "RedMadRobotTestTaskAPI" */;
+			buildPhases = (
+				A199C065104C29AE27603B70 /* [CP] Check Pods Manifest.lock */,
+				2CAE1A512637340A006A4417 /* Headers */,
+				2CAE1A522637340A006A4417 /* Sources */,
+				2CAE1A532637340A006A4417 /* Frameworks */,
+				2CAE1A542637340A006A4417 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RedMadRobotTestTaskAPI;
+			productName = RedMadRobotTestTaskAPI;
+			productReference = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2CAE1A5D2637340B006A4417 /* RedMadRobotTestTaskAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CAE1A712637340B006A4417 /* Build configuration list for PBXNativeTarget "RedMadRobotTestTaskAPITests" */;
+			buildPhases = (
+				49C7EAB6B79589BD2BD75B92 /* [CP] Check Pods Manifest.lock */,
+				2CAE1A5A2637340B006A4417 /* Sources */,
+				2CAE1A5B2637340B006A4417 /* Frameworks */,
+				2CAE1A5C2637340B006A4417 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2CAE1A612637340B006A4417 /* PBXTargetDependency */,
+				2CAE1A632637340B006A4417 /* PBXTargetDependency */,
+			);
+			name = RedMadRobotTestTaskAPITests;
+			productName = RedMadRobotTestTaskAPITests;
+			productReference = 2CAE1A5E2637340B006A4417 /* RedMadRobotTestTaskAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2CDD244F262B3E5400501E77 /* RedMadRobotTestTask */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CDD2464262B3E5600501E77 /* Build configuration list for PBXNativeTarget "RedMadRobotTestTask" */;
@@ -803,10 +1065,12 @@
 				2CDD244E262B3E5400501E77 /* Resources */,
 				0B8A5F917651128313D26321 /* [CP] Embed Pods Frameworks */,
 				763338057F3C3E5937A6C4E7 /* [CP] Copy Pods Resources */,
+				2CAE1A702637340B006A4417 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2CAE1A6A2637340B006A4417 /* PBXTargetDependency */,
 			);
 			name = RedMadRobotTestTask;
 			productName = RedMadRobotTestTask;
@@ -822,6 +1086,14 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					2CAE1A552637340A006A4417 = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+					};
+					2CAE1A5D2637340B006A4417 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 2CDD244F262B3E5400501E77;
+					};
 					2CDD244F262B3E5400501E77 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -842,11 +1114,27 @@
 			projectRoot = "";
 			targets = (
 				2CDD244F262B3E5400501E77 /* RedMadRobotTestTask */,
+				2CAE1A552637340A006A4417 /* RedMadRobotTestTaskAPI */,
+				2CAE1A5D2637340B006A4417 /* RedMadRobotTestTaskAPITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2CAE1A542637340A006A4417 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CAE1A5C2637340B006A4417 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CDD244E262B3E5400501E77 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -953,6 +1241,28 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
+		49C7EAB6B79589BD2BD75B92 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RedMadRobotTestTaskAPITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		763338057F3C3E5937A6C4E7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -970,18 +1280,71 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A199C065104C29AE27603B70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RedMadRobotTestTaskAPI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2CAE1A522637340A006A4417 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CAE1A84263734ED006A4417 /* ResponseValidator.swift in Sources */,
+				2CC8850226375EEA00375AF8 /* GetUserPosts.swift in Sources */,
+				2CAE1AB72637389B006A4417 /* LoginEndPoint.swift in Sources */,
+				2CC885062637661800375AF8 /* AddFriendEndPoint.swift in Sources */,
+				2CAE1ABC263738CC006A4417 /* UserData.swift in Sources */,
+				2CAE1A8F2637355A006A4417 /* JsonEndpoint.swift in Sources */,
+				2CAE1AAC263737B5006A4417 /* EmptyEndPoint.swift in Sources */,
+				2CAE1A80263734C8006A4417 /* HTTPError.swift in Sources */,
+				2CAE1AC0263738F8006A4417 /* RegistrationEndPoint.swift in Sources */,
+				2CAE1A8826373511006A4417 /* Codable.swift in Sources */,
+				2CC884F92637521900375AF8 /* UserInfoEndPoint.swift in Sources */,
+				2CC8850A2637680600375AF8 /* AdNewPostEndPoint.swift in Sources */,
+				2CAE1A7926373489006A4417 /* APIError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CAE1A5A2637340B006A4417 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CAE1A662637340B006A4417 /* RedMadRobotTestTaskAPITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CDD244C262B3E5400501E77 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC884FE263756A300375AF8 /* UserInfoService.swift in Sources */,
 				2C8A73B3262DD62A00A68761 /* SignUpFirstVC.swift in Sources */,
 				2C4808C7262CA7280075C0B3 /* ProfileScreenVC.swift in Sources */,
+				2CAE1A4826372E53006A4417 /* UserStorage.swift in Sources */,
 				2C8A73BA262DD67700A68761 /* SignUpSecondVC.swift in Sources */,
 				2C7E12B1262B47DA00CA4073 /* UIViewController+Extension.swift in Sources */,
 				2C1ACF4B262DF4EE00371065 /* SignUpSecondView.swift in Sources */,
+				2CC8850E2637F0E100375AF8 /* RequestIntercaptor.swift in Sources */,
 				2CCA9127262E1FD000D6A635 /* EmailValidator.swift in Sources */,
 				2C025EBE262E0CB90035B84E /* RegistrationView.swift in Sources */,
 				2C3B72AD262C38FA0076DF18 /* SuccessLoginScreenVC.swift in Sources */,
@@ -1009,7 +1372,6 @@
 				2C4808C2262CA4500075C0B3 /* ZeroViewForProfileScreen.swift in Sources */,
 				2C4808F5262CC5E70075C0B3 /* AuthorizationServices.swift in Sources */,
 				2C4808BA262C9AA10075C0B3 /* ZeroScreenView.swift in Sources */,
-				2CF47D162635560E00F3C72B /* UserData.swift in Sources */,
 				2C04C0DB262E3D7C005F493D /* Validator.swift in Sources */,
 				2C480902262DAAF20075C0B3 /* AuthorizationTextField.swift in Sources */,
 				2C1ACF46262DEFBC00371065 /* SignUpFirstView.swift in Sources */,
@@ -1027,6 +1389,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2CAE1A612637340B006A4417 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2CAE1A552637340A006A4417 /* RedMadRobotTestTaskAPI */;
+			targetProxy = 2CAE1A602637340B006A4417 /* PBXContainerItemProxy */;
+		};
+		2CAE1A632637340B006A4417 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2CDD244F262B3E5400501E77 /* RedMadRobotTestTask */;
+			targetProxy = 2CAE1A622637340B006A4417 /* PBXContainerItemProxy */;
+		};
+		2CAE1A6A2637340B006A4417 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2CAE1A552637340A006A4417 /* RedMadRobotTestTaskAPI */;
+			targetProxy = 2CAE1A692637340B006A4417 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2C7E12CE262B4E0600CA4073 /* Localizable.strings */ = {
@@ -1050,6 +1430,113 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2CAE1A6E2637340B006A4417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45F1A9BBD0AF2E905F756A66 /* Pods-RedMadRobotTestTaskAPI.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2WU2LYUXF9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RedMadRobotTestTaskAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kojimenka.Inc.RedMadRobotTestTaskAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2CAE1A6F2637340B006A4417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24CF3FDB716A3C816F522AEB /* Pods-RedMadRobotTestTaskAPI.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2WU2LYUXF9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RedMadRobotTestTaskAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kojimenka.Inc.RedMadRobotTestTaskAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2CAE1A722637340B006A4417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2WU2LYUXF9;
+				INFOPLIST_FILE = RedMadRobotTestTaskAPITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kojimenka.Inc.RedMadRobotTestTaskAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RedMadRobotTestTask.app/RedMadRobotTestTask";
+			};
+			name = Debug;
+		};
+		2CAE1A732637340B006A4417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F82C932AA5C5EF2C1632C9CB /* Pods-RedMadRobotTestTaskAPITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2WU2LYUXF9;
+				INFOPLIST_FILE = RedMadRobotTestTaskAPITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kojimenka.Inc.RedMadRobotTestTaskAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RedMadRobotTestTask.app/RedMadRobotTestTask";
+			};
+			name = Release;
+		};
 		2CDD2462262B3E5600501E77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1172,6 +1659,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BF99F708E8D8C1F6AEEE220F /* Pods-RedMadRobotTestTask.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1193,6 +1681,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EB739DD1DED551A86E3864BB /* Pods-RedMadRobotTestTask.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1213,6 +1702,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2CAE1A6D2637340B006A4417 /* Build configuration list for PBXNativeTarget "RedMadRobotTestTaskAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CAE1A6E2637340B006A4417 /* Debug */,
+				2CAE1A6F2637340B006A4417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CAE1A712637340B006A4417 /* Build configuration list for PBXNativeTarget "RedMadRobotTestTaskAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CAE1A722637340B006A4417 /* Debug */,
+				2CAE1A732637340B006A4417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2CDD244B262B3E5400501E77 /* Build configuration list for PBXProject "RedMadRobotTestTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

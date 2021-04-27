@@ -32,7 +32,7 @@ final class AppCoordinator {
         navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navController.navigationBar.shadowImage = UIImage()
         
-        let authorizationViewModel = AuthorizationServices()
+        let authorizationViewModel = ServiceLayer.shared.authorizationServices
         
         let loginVC = LoginScreenVC(authorizationViewModel: authorizationViewModel)
         navController.pushViewController(loginVC, animated: false)

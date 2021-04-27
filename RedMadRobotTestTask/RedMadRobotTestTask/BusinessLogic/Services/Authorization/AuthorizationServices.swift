@@ -9,22 +9,38 @@ import GoogleSignIn
 
 import FBSDKLoginKit
 
-enum AuthorizationMethods {
+import Apexy
+
+import RedMadRobotTestTaskAPI
+
+public enum AuthorizationMethods {
     case google(presentationController: UIViewController)
     case facebook
     case vk
 }
 
-protocol AuthorizationServiceProtocol {
+public protocol AuthorizationServiceProtocol {
     var isAuthorized: Bool { get }
     func authorizationWith(_ method: AuthorizationMethods, completion: @escaping ((Result<Void, Error>) -> Void))
-    func signIn(user: UserInfo, completion: @escaping ((Result<Void, Error>) -> Void))
-    func signUp(user: UserInfo)
+    
+    func signIn(
+        email: String,
+        password: String,
+        completion: @escaping (Result<AuthTokens?, Error>) -> Void)
+    -> Progress
+    
+    func signUp(
+        email: String,
+        password: String,
+        completion: @escaping (Result<AuthTokens?, Error>) -> Void)
+    -> Progress
 }
 
-final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
+public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
         
     // MARK: - Public Properties
+    
+    private let apiClient: Client
 
     public var isAuthorized: Bool {
         return true
@@ -32,20 +48,17 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
     
     // MARK: - Private Properties
     
-    private var authorizationCompletion: ((Result<Void, Error>) -> Void)?
+    public var authorizationCompletion: ((Result<Void, Error>) -> Void)?
     
-    private enum AuthorizationErrors: String {
+    public enum AuthorizationErrors: String {
         case facebookFailure = "Ошибка FaceBook"
         case timeWaring = "Превышен лимит ожидания"
     }
     
-    private var dummyRes: Bool {
-        return Int.random(in: 0...1) == 0 ? false : true // True - Success res, False - failure res
-    }
-    
     // MARK: - Init
     
-    override init() {
+    public init(apiClient: Client) {
+        self.apiClient = apiClient
         super.init()
         self.initialSetup()
     }
@@ -67,25 +80,26 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
         }
     }
     
-    func logout() {
+    public func logout() {
         
     }
     
-    func signIn(user: UserInfo, completion: @escaping ((Result<Void, Error>) -> Void)) {
-        if dummyRes {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                completion(.success(()))
-            }
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                let error = ValidationError(message: AuthorizationErrors.timeWaring.rawValue)
-                completion(.failure(error))
-            }
-        }
+    public func signIn(
+        email: String,
+        password: String,
+        completion: @escaping (Result<AuthTokens?, Error>) -> Void)
+    -> Progress {
+        let endpoint = UserLoginEndPoint(email: email, password: password)
+        return apiClient.upload(endpoint, completionHandler: completion)
     }
     
-    func signUp(user: UserInfo) {
-        
+    public func signUp(
+        email: String,
+        password: String,
+        completion: @escaping (Result<AuthTokens?, Error>) -> Void)
+    -> Progress {
+        let endpoint = UserRegistrationEndPoint(email: email, password: password)
+        return apiClient.upload(endpoint, completionHandler: completion)
     }
     
     // MARK: - Private Methods
@@ -126,7 +140,7 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
 // MARK: - Google Authorization Delegate
 
 extension AuthorizationServices: GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         guard error != nil else {
             authorizationCompletion?(.failure(error))
             return
