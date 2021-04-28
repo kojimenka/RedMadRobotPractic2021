@@ -18,7 +18,8 @@ class UserRequestInterceptor: RequestInterceptor {
     func adapt(
         _ urlRequest: URLRequest,
         for session: Session,
-        completion: @escaping (Result<URLRequest, Error>) -> Void
+        completion: @escaping (Result<URLRequest, Error>)
+            -> Void
     ) {
         
         guard let url = urlRequest.url else {
@@ -32,6 +33,8 @@ class UserRequestInterceptor: RequestInterceptor {
         if let token = UserDefaultsUserStorage().accessToken {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         completion(.success(request))
     }

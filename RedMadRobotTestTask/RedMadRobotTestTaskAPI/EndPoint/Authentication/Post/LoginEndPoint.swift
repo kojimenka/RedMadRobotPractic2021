@@ -1,5 +1,5 @@
 //
-//  RegistrationEndPoint.swift
+//  LoginEndPoint.swift
 //  RedMadRobotTestTaskAPI
 //
 //  Created by Дмитрий Марченков on 26.04.2021.
@@ -7,17 +7,25 @@
 
 import Apexy
 
-public struct UserRegistrationEndPoint: UploadEndpoint {
+public struct UserLoginEndPoint: UploadEndpoint {
+    
+    // MARK: - Public Properties
     
     public typealias Content = AuthTokens?
     
+    // MARK: - Private Properties
+    
     private let email: String
     private let password: String
+    
+    // MARK: - Init
     
     public init(email: String, password: String) {
         self.email = email
         self.password = password
     }
+    
+    // MARK: - Public Methods
     
     public func content(from response: URLResponse?, with body: Data) throws -> AuthTokens? {
         try ResponseValidator.validate(response, with: body)
@@ -32,16 +40,14 @@ public struct UserRegistrationEndPoint: UploadEndpoint {
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
 
         // create post request
-        let url = URL(string: "auth/registration")!
+        let url = URL(string: "auth/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
         // insert json data to the request
         request.httpBody = jsonData
         
         return (request, .data(jsonData ?? Data()))
     }
-    
+        
 }

@@ -7,15 +7,23 @@
 
 import Apexy
 
-public struct AdNewPostEndPoint: UploadEndpoint {
+public struct AddNewPostEndPoint: UploadEndpoint {
+    
+    // MARK: - Public Properties
     
     public typealias Content = Void
     
+    // MARK: - Private Properties
+    
     private let postInfo: UserPostInfo
+    
+    // MARK: - Init
     
     public init(postInfo: UserPostInfo) {
         self.postInfo = postInfo
     }
+    
+    // MARK: - Public Methods
     
     public func content(from response: URLResponse?, with body: Data) throws {
         try ResponseValidator.validate(response, with: body)
@@ -30,9 +38,7 @@ public struct AdNewPostEndPoint: UploadEndpoint {
         let url = URL(string: "me/posts")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
+    
         // insert json data to the request
         request.httpBody = jsonData
         

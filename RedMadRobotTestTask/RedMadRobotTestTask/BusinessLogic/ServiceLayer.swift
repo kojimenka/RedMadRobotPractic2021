@@ -17,29 +17,29 @@ final class ServiceLayer {
     
     public static var shared = ServiceLayer()
     
-    lazy public var authorizationServices: AuthorizationServiceProtocol = AuthorizationServices(apiClient: apiClient)
+    // Networks
     
-    lazy public var userInfoService = UserInfoService(apiClient: apiClient)
+    lazy public var authorizationServices: AuthorizationServiceProtocol = AuthorizationServices(
+        apiClient: apiClient,
+        storage: userStorage
+    )
+    
+    lazy public var userInfoService: UserInfoServiceProtocol = UserInfoService(apiClient: apiClient)
+    
+    lazy public var feedService: FeedServiceProtocol = FeedService(apiClient: apiClient)
+    
+    lazy public var searchService: SearchServiceProtocol = SearchService(apiClient: apiClient)
+    
+    // DataBase
+    
+    lazy public var userStorage: UserStorage = UserDefaultsUserStorage()
     
     // MARK: - Private Properties
     
     private(set) lazy var apiClient: Client = {
-        return AlamofireClient(
-            baseURL: URL(string: "https://interns2021.redmadrobot.com")!,
-            configuration: .ephemeral,
-            responseObserver: { [weak self] _, _, _, error in
-//
-//                let test = try? JSONDecoder().decode([UserPostInfo].self, from: data!)
-//
-//                print("Check", test?.first, request, response, data, error?.localizedDescription)
-                self?.validateSession(responseError: error)
-            })
+        return AlamofireClient(requestInterceptor: UserRequestInterceptor(baseURL: URL(string: "https://interns2021.redmadrobot.com")!),
+                               configuration: .ephemeral)
     }()
-    
-//    private(set) lazy var apiClien2: Client = {
-//        return AlamofireClient(requestInterceptor: UserRequestInterceptor(baseURL: URL(string: "https://interns2021.redmadrobot.com")!),
-//                               configuration: .ephemeral)
-//    }()
     
     // MARK: - Init
     

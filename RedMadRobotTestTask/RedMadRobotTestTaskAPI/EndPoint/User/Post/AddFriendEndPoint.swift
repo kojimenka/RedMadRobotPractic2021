@@ -9,13 +9,21 @@ import Apexy
 
 public struct AddFriendEndPoint: UploadEndpoint {
     
+    // MARK: - Public Properties
+    
     public typealias Content = Void
     
+    // MARK: - Private Properties
+    
     private let friendID: String
+    
+    // MARK: - Init
     
     public init(friendID: String) {
         self.friendID = friendID
     }
+    
+    // MARK: - Public Methods
     
     public func content(from response: URLResponse?, with body: Data) throws {
         try ResponseValidator.validate(response, with: body)
@@ -31,8 +39,6 @@ public struct AddFriendEndPoint: UploadEndpoint {
         let url = URL(string: "me/friends")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
         // insert json data to the request
         request.httpBody = jsonData

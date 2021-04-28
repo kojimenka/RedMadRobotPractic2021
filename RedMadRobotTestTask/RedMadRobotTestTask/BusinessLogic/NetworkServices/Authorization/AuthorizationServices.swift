@@ -26,14 +26,18 @@ public protocol AuthorizationServiceProtocol {
     func signIn(
         email: String,
         password: String,
-        completion: @escaping (Result<AuthTokens?, Error>) -> Void)
+        completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress
     
     func signUp(
         email: String,
         password: String,
-        completion: @escaping (Result<AuthTokens?, Error>) -> Void)
+        completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress
+    
+    func logout(
+       completion: @escaping (Result<Void, Error>) -> Void)
+   -> Progress
 }
 
 public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
@@ -41,9 +45,10 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
     // MARK: - Public Properties
     
     private let apiClient: Client
+    private var storage: UserStorage
 
     public var isAuthorized: Bool {
-        return true
+        return storage.accessToken != nil
     }
     
     // MARK: - Private Properties
@@ -57,8 +62,9 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
     
     // MARK: - Init
     
-    public init(apiClient: Client) {
+    public init(apiClient: Client, storage: UserStorage) {
         self.apiClient = apiClient
+        self.storage = storage
         super.init()
         self.initialSetup()
     }
@@ -80,26 +86,55 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
         }
     }
     
-    public func logout() {
-        
+    public func logout(
+        completion: @escaping (Result<Void, Error>) -> Void)
+    -> Progress {
+        let endPoint = LogoutEndPoint(refreshToken: storage.refreshToken ?? "")
+        return apiClient.upload(endPoint) { result in
+            switch result {
+            case .success:
+                self.storage.removeTokens()
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
     public func signIn(
         email: String,
         password: String,
-        completion: @escaping (Result<AuthTokens?, Error>) -> Void)
+        completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
         let endpoint = UserLoginEndPoint(email: email, password: password)
-        return apiClient.upload(endpoint, completionHandler: completion)
+        
+        return apiClient.upload(endpoint) { [weak self] result in
+            guard let self = self else { return }
+            self.storage.saveTokens(res: result)
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
     public func signUp(
         email: String,
         password: String,
-        completion: @escaping (Result<AuthTokens?, Error>) -> Void)
+        completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
         let endpoint = UserRegistrationEndPoint(email: email, password: password)
-        return apiClient.upload(endpoint, completionHandler: completion)
+        return apiClient.upload(endpoint) { result in
+            self.storage.saveTokens(res: result)
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
     // MARK: - Private Methods

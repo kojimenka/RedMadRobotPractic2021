@@ -7,8 +7,6 @@
 
 import UIKit
 
-import RedMadRobotTestTaskAPI
-
 final class LoginScreenVC: UIViewController {
     
     // MARK: - Private Properties
@@ -31,16 +29,6 @@ final class LoginScreenVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = true
-//        
-//        ServiceLayer.shared.userInfoService.getUserPosts(token: "Test") { result in
-//            switch result {
-//            case .success(let info):
-//                print("Check Success \(info)")
-//            case .failure(let err):
-//                print("Check Failure \(err.localizedDescription)")
-//            }
-//        }
-    
     }
     
     // MARK: - IBAction

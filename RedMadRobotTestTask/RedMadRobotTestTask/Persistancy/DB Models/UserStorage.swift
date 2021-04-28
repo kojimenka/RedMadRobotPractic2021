@@ -7,13 +7,17 @@
 
 import Foundation
 
-protocol UserStorage {
-    var refreshToken: String? { get }
-    var accessToken: String? { get }
+import RedMadRobotTestTaskAPI
+
+public protocol UserStorage {
+    var refreshToken: String? { get set }
+    var accessToken: String? { get set }
+    func saveTokens(res: Result<AuthTokens?, Error>)
+    func removeTokens()
 }
 
-final class UserDefaultsUserStorage: UserStorage {
-    
+public final class UserDefaultsUserStorage: UserStorage {
+            
     // MARK: - Public Properties
     
     public var refreshToken: String? {
@@ -40,5 +44,22 @@ final class UserDefaultsUserStorage: UserStorage {
         case refreshToken = "KEY_REFRESH_USER_TOKEN"
         case accessToken = "KEY_ACESS_USER_TOKEN"
     }
-
+    
+    // MARK: - Public Methods
+    
+    public func saveTokens(res: Result<AuthTokens?, Error>) {
+        switch res {
+        case .success(let token):
+            self.accessToken = token?.accessToken
+            self.refreshToken = token?.refreshToken
+        case .failure:
+            removeTokens()
+        }
+    }
+    
+    public func removeTokens() {
+        self.accessToken = nil
+        self.refreshToken = nil
+    }
+    
 }
