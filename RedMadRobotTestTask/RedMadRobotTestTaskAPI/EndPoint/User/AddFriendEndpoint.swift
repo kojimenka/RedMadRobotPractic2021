@@ -7,7 +7,7 @@
 
 import Apexy
 
-public struct AddFriendEndPoint: UploadEndpoint {
+public struct AddFriendEndpoint: EmptyEndpoint {
     
     // MARK: - Public Properties
     
@@ -24,16 +24,11 @@ public struct AddFriendEndPoint: UploadEndpoint {
     }
     
     // MARK: - Public Methods
-    
-    public func content(from response: URLResponse?, with body: Data) throws {
-        try ResponseValidator.validate(response, with: body)
-    }
-    
-    public func makeRequest() throws -> (URLRequest, UploadEndpointBody) {
         
+    public func makeRequest() throws -> URLRequest {
         // prepare json data
         let json: [String: Any] = ["user_id": friendID]
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        let jsonData = try JSONSerialization.data(withJSONObject: json)
 
         // create post request
         let url = URL(string: "me/friends")!
@@ -42,8 +37,9 @@ public struct AddFriendEndPoint: UploadEndpoint {
 
         // insert json data to the request
         request.httpBody = jsonData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        return (request, .data(jsonData ?? Data()))
+        return request
     }
         
 }

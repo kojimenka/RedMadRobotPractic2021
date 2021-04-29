@@ -7,7 +7,7 @@
 
 import Apexy
 
-public struct DeleteUserPostEndPoint: EmptyEndpoint, URLRequestBuildable {
+public struct DeleteUserPostEndpoint: EmptyEndpoint, URLRequestBuildable {
     
     // MARK: - Public Properties
     

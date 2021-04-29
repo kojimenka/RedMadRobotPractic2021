@@ -36,8 +36,12 @@ public protocol AuthorizationServiceProtocol {
     -> Progress
     
     func logout(
-       completion: @escaping (Result<Void, Error>) -> Void)
-   -> Progress
+        completion: @escaping (Result<Void, Error>) -> Void)
+    -> Progress
+    
+    func refreshToken(
+        completion: @escaping (Result<Void, Error>) -> Void)
+    -> Progress
 }
 
 public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
@@ -89,11 +93,15 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
     public func logout(
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
-        let endPoint = LogoutEndPoint(refreshToken: storage.refreshToken ?? "")
-        return apiClient.upload(endPoint) { result in
+        let endPoint = LogoutEndpoint()
+        return apiClient.request(endPoint) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.storage.accessToken = nil
+            self.storage.refreshToken = nil
+            
             switch result {
             case .success:
-                self.storage.removeTokens()
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error))
@@ -106,15 +114,18 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
         password: String,
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
-        let endpoint = UserLoginEndPoint(email: email, password: password)
+        let endpoint = UserLoginEndpoint(email: email, password: password)
         
         return apiClient.upload(endpoint) { [weak self] result in
             guard let self = self else { return }
-            self.storage.saveTokens(res: result)
             switch result {
-            case .success:
+            case .success(let token):
+                self.storage.accessToken = token?.accessToken
+                self.storage.refreshToken = token?.refreshToken
                 completion(.success(()))
             case .failure(let error):
+                self.storage.accessToken = nil
+                self.storage.refreshToken = nil
                 completion(.failure(error))
             }
         }
@@ -125,11 +136,34 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
         password: String,
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
-        let endpoint = UserRegistrationEndPoint(email: email, password: password)
-        return apiClient.upload(endpoint) { result in
-            self.storage.saveTokens(res: result)
+        let endpoint = UserRegistrationEndpoint(email: email, password: password)
+        
+        return apiClient.upload(endpoint) { [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success:
+            case .success(let token):
+                self.storage.accessToken = token?.accessToken
+                self.storage.refreshToken = token?.refreshToken
+                completion(.success(()))
+            case .failure(let error):
+                self.storage.accessToken = nil
+                self.storage.refreshToken = nil
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    public func refreshToken(
+        completion: @escaping (Result<Void, Error>) -> Void)
+     -> Progress {
+        let endPoint = RefreshUserTokenEndpoint(token: storage.refreshToken ?? "")
+        return apiClient.upload(endPoint) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let token):
+                print("Check \(token)")
+                self.storage.accessToken = token.accessToken
+                self.storage.refreshToken = token.refreshToken
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error))

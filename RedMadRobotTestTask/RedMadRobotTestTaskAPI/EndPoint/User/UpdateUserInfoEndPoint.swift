@@ -9,7 +9,7 @@ import Apexy
 
 import Alamofire
 
-public struct UpdateUserInfoEndPoint: Endpoint {
+public struct UpdateUserInfoEndpoint: Endpoint {
     
     // MARK: - Public Properties
     
@@ -41,8 +41,6 @@ public struct UpdateUserInfoEndPoint: Endpoint {
             "Authorization": "Bearer \(token)"
         ]
         
-        print(token)
-        
         let requst = AF.upload(
             multipartFormData: { multipartFormData in
                 for (key, value) in parameterS {
@@ -69,11 +67,11 @@ public struct UpdateUserInfoEndPoint: Endpoint {
     private func createParameterDictionary(user: UserInformation) -> [String: Data]? {
         var params: [String: Data] = [:]
         
-        params["first_name"] = user.firstName?.data(using: .utf8)
-        params["last_name"] = user.lastName?.data(using: .utf8)
+        params["first_name"] = user.firstName.data(using: .utf8)
+        params["last_name"] = user.lastName.data(using: .utf8)
         params["nickname"] = user.nickname?.data(using: .utf8)
-        params["avatar_url"] = user.avatarUrl?.data(using: .utf8)
-        params["birth_day"] = user.birthDay?.data(using: .utf8)
+        params["avatar_url"] = user.avatarUrl?.dataRepresentation
+        params["birth_day"] = user.birthDay.data(using: .utf8)
         
         return params
     }

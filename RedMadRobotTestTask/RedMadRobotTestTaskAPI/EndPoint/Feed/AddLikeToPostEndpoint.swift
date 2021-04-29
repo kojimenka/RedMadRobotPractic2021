@@ -7,7 +7,7 @@
 
 import Apexy
 
-public struct AddLikeToPostEndPoint: EmptyEndpoint, URLRequestBuildable {
+public struct AddLikeToPostEndpoint: EmptyEndpoint, URLRequestBuildable {
     
     // MARK: - Public Properties
     

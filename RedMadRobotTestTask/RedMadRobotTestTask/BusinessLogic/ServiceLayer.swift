@@ -37,20 +37,15 @@ final class ServiceLayer {
     // MARK: - Private Properties
     
     private(set) lazy var apiClient: Client = {
-        return AlamofireClient(requestInterceptor: UserRequestInterceptor(baseURL: URL(string: "https://interns2021.redmadrobot.com")!),
-                               configuration: .ephemeral)
+        return AlamofireClient(
+            requestInterceptor: UserRequestInterceptor(
+                baseURL: URL(string: "https://interns2021.redmadrobot.com")!,
+                storage: userStorage),
+            configuration: .ephemeral)
     }()
     
     // MARK: - Init
     
     private init() {}
-    
-    // MARK: - Private Methods
-    
-    private func validateSession(responseError: Error?) {
-        if let error = responseError as? APIError, error.code == .tokenInvalid {
-            print(error.localizedDescription)
-        }
-    }
     
 }

@@ -1,31 +1,27 @@
 //
-//  GetSearchedUserEndPoint.swift
+//  GetUserFriends.swift
 //  RedMadRobotTestTaskAPI
 //
-//  Created by Дмитрий Марченков on 28.04.2021.
+//  Created by Дмитрий Марченков on 27.04.2021.
 //
 
 import Apexy
 
-public struct GetSearchedUserEndPoint: Endpoint {
+public struct GetUserFriendsEndpoint: Endpoint {
     
     // MARK: - Public Properties
     
     public typealias Content = [UserInformation]
-    
-    public let predicate: String
-    
+
     // MARK: - Init
     
-    public init(predicate: String) {
-        self.predicate = predicate
-    }
+    public init() {}
     
     // MARK: - Public Methods
     
     public func makeRequest() throws -> URLRequest {
         
-        let url = URL(string: "search?user=\(predicate)")!
+        let url = URL(string: "me/friends")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
@@ -33,8 +29,8 @@ public struct GetSearchedUserEndPoint: Endpoint {
     }
     
     public func content(from response: URLResponse?, with body: Data) throws -> [UserInformation] {
-        let content = try? JSONDecoder().decode([UserInformation].self, from: body)
-        return content ?? []
+        let content = try JSONDecoder.default.decode([UserInformation].self, from: body)
+        return content
     }
 
 }

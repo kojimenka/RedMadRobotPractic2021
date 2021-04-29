@@ -1,5 +1,5 @@
 //
-//  RequestInterceptor.swift
+//  UserRequestInterceptor.swift
 //  RedMadRobotTestTask
 //
 //  Created by Дмитрий Марченков on 27.04.2021.
@@ -7,15 +7,30 @@
 
 import Alamofire
 
-class UserRequestInterceptor: RequestInterceptor {
+struct UserRequestInterceptor: RequestInterceptor {
     
-    open var baseURL: URL
+    // MARK: - Public Properties
     
-    public init(baseURL: URL) {
-        self.baseURL = baseURL
+    public var baseURL: URL
+    
+    // MARK: - Private Properties
+    
+    private let storage: UserStorage
+    
+    private var accessToken: String {
+        return storage.accessToken ?? ""
     }
     
-    func adapt(
+    // MARK: - Init
+    
+    public init(baseURL: URL, storage: UserStorage) {
+        self.baseURL = baseURL
+        self.storage = storage
+    }
+    
+    // MARK: - Public Methods
+    
+    public func adapt(
         _ urlRequest: URLRequest,
         for session: Session,
         completion: @escaping (Result<URLRequest, Error>)
@@ -30,14 +45,12 @@ class UserRequestInterceptor: RequestInterceptor {
         var request = urlRequest
         request.url = appendingBaseURL(to: url)
         
-        if let token = UserDefaultsUserStorage().accessToken {
-            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        }
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         completion(.success(request))
     }
+    
+    // MARK: - Private Methods
     
     private func appendingBaseURL(to url: URL) -> URL {
         URL(string: url.absoluteString, relativeTo: baseURL)!

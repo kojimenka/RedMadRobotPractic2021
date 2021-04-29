@@ -28,6 +28,60 @@ final class LoginScreenVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+//        ServiceLayer.shared.authorizationServices.signIn(email: "TestUser345@test.com",
+//                                                         password: "1234Testing") { result in
+//            switch result {
+//            case .success:
+//                print("Check Success")
+//            case .failure(let error):
+//                print("Check \(error.localizedDescription)")
+//            }
+//        }
+        
+//        MockChangeUserInfo().changeUserInfo()
+        
+//        MockPostData().addNewPost()
+        
+//        ServiceLayer.shared.userInfoService.getUserPosts { result in
+//            switch result {
+//            case .success(let info):
+//                print("Check Success \(info.map({$0.text}))")
+//            case .failure(let error):
+//                print("Check \(error.localizedDescription)")
+//            }
+//        }
+//        
+        
+//        ServiceLayer.shared.authorizationServices.refreshToken { result in
+//            switch result {
+//            case .success:
+//                print("Check Success")
+//            case .failure(let error):
+//                print("Check \(error.localizedDescription)")
+//            }
+//        }
+//
+//        let id = "c1f8515d-4b58-48ff-b22d-74d4f764b6e2"
+        
+//        ServiceLayer.shared.authorizationServices.logout { result in
+//            switch result {
+//            case .success(let info):
+//                print("Check Success \(info)")
+//            case .failure(let error):
+//                print("Check \(error.localizedDescription)")
+//            }
+//        }
+        
+//        ServiceLayer.shared.searchService.getSortedPosts(predicate: "") { result in
+//            switch result {
+//            case .success(let info):
+//                print("Check Success \(info)")
+//            case .failure(let error):
+//                print("Check \(error.localizedDescription)")
+//            }
+//        }
+        
         navigationController?.navigationBar.isHidden = true
     }
     

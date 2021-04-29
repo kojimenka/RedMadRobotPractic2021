@@ -13,17 +13,22 @@
 		2C04C0DB262E3D7C005F493D /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0DA262E3D7C005F493D /* Validator.swift */; };
 		2C04C0EB262EC50C005F493D /* RegistrationLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C04C0EA262EC50C005F493D /* RegistrationLoaderView.xib */; };
 		2C04C0EE262EC51E005F493D /* RegistrationLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0ED262EC51E005F493D /* RegistrationLoaderView.swift */; };
+		2C0A83E2263A026A00DB6841 /* RefreshUserTokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A83E1263A026A00DB6841 /* RefreshUserTokenEndpoint.swift */; };
 		2C1ACF42262DEFA800371065 /* SignUpFirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1ACF41262DEFA700371065 /* SignUpFirstView.xib */; };
 		2C1ACF46262DEFBC00371065 /* SignUpFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ACF45262DEFBC00371065 /* SignUpFirstView.swift */; };
 		2C1ACF4B262DF4EE00371065 /* SignUpSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ACF4A262DF4EE00371065 /* SignUpSecondView.swift */; };
 		2C1ACF50262DF51200371065 /* SignUpSecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1ACF4F262DF51200371065 /* SignUpSecondView.xib */; };
-		2C24D1A326389C7F000855B8 /* DeleteUserPostEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1A226389C7F000855B8 /* DeleteUserPostEndPoint.swift */; };
-		2C24D1AB26389D52000855B8 /* GetFeedEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1AA26389D52000855B8 /* GetFeedEndPoint.swift */; };
+		2C24D1A326389C7F000855B8 /* DeleteUserPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1A226389C7F000855B8 /* DeleteUserPostEndpoint.swift */; };
+		2C24D1AB26389D52000855B8 /* GetFeedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1AA26389D52000855B8 /* GetFeedEndpoint.swift */; };
 		2C24D1B72638A05E000855B8 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1B62638A05E000855B8 /* FeedService.swift */; };
-		2C24D1BB2638A1A5000855B8 /* AddLikeToPostEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1BA2638A1A5000855B8 /* AddLikeToPostEndPoint.swift */; };
-		2C24D1BF2638A431000855B8 /* RemoveLikeFromPostEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1BE2638A431000855B8 /* RemoveLikeFromPostEndPoint.swift */; };
-		2C24D1C32638A4B5000855B8 /* GetFavouritePostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1C22638A4B5000855B8 /* GetFavouritePostsEndPoint.swift */; };
+		2C24D1BB2638A1A5000855B8 /* AddLikeToPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1BA2638A1A5000855B8 /* AddLikeToPostEndpoint.swift */; };
+		2C24D1BF2638A431000855B8 /* RemoveLikeFromPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1BE2638A431000855B8 /* RemoveLikeFromPostEndpoint.swift */; };
+		2C24D1C32638A4B5000855B8 /* GetFavouritePostsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1C22638A4B5000855B8 /* GetFavouritePostsEndpoint.swift */; };
 		2C24D1C82638A6A7000855B8 /* UpdateUserInfoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1C72638A6A7000855B8 /* UpdateUserInfoEndPoint.swift */; };
+		2C3909C12639E44100A81C6E /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3909C02639E44100A81C6E /* ApiService.swift */; };
+		2C3909C52639F12100A81C6E /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3909C42639F12100A81C6E /* PostModel.swift */; };
+		2C3909C92639F14600A81C6E /* AuthTokensModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3909C82639F14600A81C6E /* AuthTokensModel.swift */; };
+		2C3A8B53263B48DE00D548C5 /* MockCreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A8B52263B48DE00D548C5 /* MockCreatePost.swift */; };
 		2C3B7299262C29C30076DF18 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B7298262C29C30076DF18 /* AppCoordinator.swift */; };
 		2C3B72A5262C2C1E0076DF18 /* LoginScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B72A3262C2C1E0076DF18 /* LoginScreenVC.swift */; };
 		2C3B72A6262C2C1E0076DF18 /* LoginScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3B72A4262C2C1E0076DF18 /* LoginScreenVC.xib */; };
@@ -79,26 +84,25 @@
 		2CAE1A80263734C8006A4417 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A7F263734C8006A4417 /* HTTPError.swift */; };
 		2CAE1A84263734ED006A4417 /* ResponseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A83263734ED006A4417 /* ResponseValidator.swift */; };
 		2CAE1A8826373511006A4417 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A8726373511006A4417 /* Codable.swift */; };
-		2CAE1A8F2637355A006A4417 /* JsonEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A8E2637355A006A4417 /* JsonEndpoint.swift */; };
 		2CAE1AAC263737B5006A4417 /* EmptyEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1AAB263737B5006A4417 /* EmptyEndPoint.swift */; };
-		2CAE1AB72637389B006A4417 /* LoginEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1AB62637389B006A4417 /* LoginEndPoint.swift */; };
-		2CAE1ABC263738CC006A4417 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF47D152635560E00F3C72B /* UserData.swift */; };
+		2CAE1AB72637389B006A4417 /* UserLoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1AB62637389B006A4417 /* UserLoginEndpoint.swift */; };
+		2CAE1ABC263738CC006A4417 /* UserInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF47D152635560E00F3C72B /* UserInformationModel.swift */; };
 		2CAE1AC0263738F8006A4417 /* RegistrationEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1ABF263738F8006A4417 /* RegistrationEndPoint.swift */; };
 		2CBF51A22638CCFC00B99042 /* MockChangeUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51A12638CCFC00B99042 /* MockChangeUserInfo.swift */; };
-		2CBF51AA2638CF9300B99042 /* GetSearchedUserEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51A92638CF9300B99042 /* GetSearchedUserEndPoint.swift */; };
-		2CBF51B02638D02A00B99042 /* GetSortedPostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51AF2638D02A00B99042 /* GetSortedPostsEndPoint.swift */; };
+		2CBF51AA2638CF9300B99042 /* GetSearchedUserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51A92638CF9300B99042 /* GetSearchedUserEndpoint.swift */; };
+		2CBF51B02638D02A00B99042 /* GetSortedPostsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51AF2638D02A00B99042 /* GetSortedPostsEndpoint.swift */; };
 		2CBF51B52638D09100B99042 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51B42638D09100B99042 /* SearchService.swift */; };
 		2CBF51B92638D9C100B99042 /* LogoutEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51B82638D9C100B99042 /* LogoutEndPoint.swift */; };
 		2CBF51BD2638DD9600B99042 /* UserInfoServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51BC2638DD9600B99042 /* UserInfoServiceProtocol.swift */; };
 		2CBF51C12638DDE800B99042 /* FeedServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51C02638DDE800B99042 /* FeedServiceProtocol.swift */; };
 		2CBF51C52638DE7200B99042 /* SearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF51C42638DE7200B99042 /* SearchServiceProtocol.swift */; };
-		2CC884F92637521900375AF8 /* GetUserInfoEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC884F82637521900375AF8 /* GetUserInfoEndPoint.swift */; };
+		2CC884F92637521900375AF8 /* GetUserInfoEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC884F82637521900375AF8 /* GetUserInfoEndpoint.swift */; };
 		2CC884FE263756A300375AF8 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC884FD263756A300375AF8 /* UserInfoService.swift */; };
-		2CC8850226375EEA00375AF8 /* GetUserPostsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8850126375EEA00375AF8 /* GetUserPostsEndPoint.swift */; };
-		2CC885062637661800375AF8 /* AddFriendEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC885052637661800375AF8 /* AddFriendEndPoint.swift */; };
-		2CC8850A2637680600375AF8 /* AddNewPostEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC885092637680600375AF8 /* AddNewPostEndPoint.swift */; };
-		2CC8850E2637F0E100375AF8 /* RequestIntercaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8850D2637F0E100375AF8 /* RequestIntercaptor.swift */; };
-		2CC885452638932900375AF8 /* GetUserFriendsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC885442638932900375AF8 /* GetUserFriendsEndPoint.swift */; };
+		2CC8850226375EEA00375AF8 /* GetUserPostsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8850126375EEA00375AF8 /* GetUserPostsEndpoint.swift */; };
+		2CC885062637661800375AF8 /* AddFriendEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC885052637661800375AF8 /* AddFriendEndpoint.swift */; };
+		2CC8850A2637680600375AF8 /* AddNewPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC885092637680600375AF8 /* AddNewPostEndpoint.swift */; };
+		2CC8850E2637F0E100375AF8 /* UserRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8850D2637F0E100375AF8 /* UserRequestInterceptor.swift */; };
+		2CC885452638932900375AF8 /* GetUserFriendsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC885442638932900375AF8 /* GetUserFriendsEndpoint.swift */; };
 		2CC8854D263898B600375AF8 /* DeleteUserFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8854C263898B600375AF8 /* DeleteUserFriend.swift */; };
 		2CCA9122262E1CEC00D6A635 /* ValidatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9121262E1CEC00D6A635 /* ValidatePassword.swift */; };
 		2CCA9127262E1FD000D6A635 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9126262E1FD000D6A635 /* EmailValidator.swift */; };
@@ -163,17 +167,22 @@
 		2C04C0DA262E3D7C005F493D /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		2C04C0EA262EC50C005F493D /* RegistrationLoaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationLoaderView.xib; sourceTree = "<group>"; };
 		2C04C0ED262EC51E005F493D /* RegistrationLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationLoaderView.swift; sourceTree = "<group>"; };
+		2C0A83E1263A026A00DB6841 /* RefreshUserTokenEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshUserTokenEndpoint.swift; sourceTree = "<group>"; };
 		2C1ACF41262DEFA700371065 /* SignUpFirstView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFirstView.xib; sourceTree = "<group>"; };
 		2C1ACF45262DEFBC00371065 /* SignUpFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFirstView.swift; sourceTree = "<group>"; };
 		2C1ACF4A262DF4EE00371065 /* SignUpSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSecondView.swift; sourceTree = "<group>"; };
 		2C1ACF4F262DF51200371065 /* SignUpSecondView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpSecondView.xib; sourceTree = "<group>"; };
-		2C24D1A226389C7F000855B8 /* DeleteUserPostEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserPostEndPoint.swift; sourceTree = "<group>"; };
-		2C24D1AA26389D52000855B8 /* GetFeedEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedEndPoint.swift; sourceTree = "<group>"; };
+		2C24D1A226389C7F000855B8 /* DeleteUserPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserPostEndpoint.swift; sourceTree = "<group>"; };
+		2C24D1AA26389D52000855B8 /* GetFeedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedEndpoint.swift; sourceTree = "<group>"; };
 		2C24D1B62638A05E000855B8 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
-		2C24D1BA2638A1A5000855B8 /* AddLikeToPostEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLikeToPostEndPoint.swift; sourceTree = "<group>"; };
-		2C24D1BE2638A431000855B8 /* RemoveLikeFromPostEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveLikeFromPostEndPoint.swift; sourceTree = "<group>"; };
-		2C24D1C22638A4B5000855B8 /* GetFavouritePostsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavouritePostsEndPoint.swift; sourceTree = "<group>"; };
+		2C24D1BA2638A1A5000855B8 /* AddLikeToPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLikeToPostEndpoint.swift; sourceTree = "<group>"; };
+		2C24D1BE2638A431000855B8 /* RemoveLikeFromPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveLikeFromPostEndpoint.swift; sourceTree = "<group>"; };
+		2C24D1C22638A4B5000855B8 /* GetFavouritePostsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavouritePostsEndpoint.swift; sourceTree = "<group>"; };
 		2C24D1C72638A6A7000855B8 /* UpdateUserInfoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoEndPoint.swift; sourceTree = "<group>"; };
+		2C3909C02639E44100A81C6E /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		2C3909C42639F12100A81C6E /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		2C3909C82639F14600A81C6E /* AuthTokensModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokensModel.swift; sourceTree = "<group>"; };
+		2C3A8B52263B48DE00D548C5 /* MockCreatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCreatePost.swift; sourceTree = "<group>"; };
 		2C3B7298262C29C30076DF18 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		2C3B72A3262C2C1E0076DF18 /* LoginScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenVC.swift; sourceTree = "<group>"; };
 		2C3B72A4262C2C1E0076DF18 /* LoginScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginScreenVC.xib; sourceTree = "<group>"; };
@@ -232,25 +241,24 @@
 		2CAE1A7F263734C8006A4417 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		2CAE1A83263734ED006A4417 /* ResponseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseValidator.swift; sourceTree = "<group>"; };
 		2CAE1A8726373511006A4417 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
-		2CAE1A8E2637355A006A4417 /* JsonEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonEndpoint.swift; sourceTree = "<group>"; };
 		2CAE1AAB263737B5006A4417 /* EmptyEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEndPoint.swift; sourceTree = "<group>"; };
-		2CAE1AB62637389B006A4417 /* LoginEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndPoint.swift; sourceTree = "<group>"; };
+		2CAE1AB62637389B006A4417 /* UserLoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginEndpoint.swift; sourceTree = "<group>"; };
 		2CAE1ABF263738F8006A4417 /* RegistrationEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEndPoint.swift; sourceTree = "<group>"; };
 		2CBF51A12638CCFC00B99042 /* MockChangeUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChangeUserInfo.swift; sourceTree = "<group>"; };
-		2CBF51A92638CF9300B99042 /* GetSearchedUserEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSearchedUserEndPoint.swift; sourceTree = "<group>"; };
-		2CBF51AF2638D02A00B99042 /* GetSortedPostsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSortedPostsEndPoint.swift; sourceTree = "<group>"; };
+		2CBF51A92638CF9300B99042 /* GetSearchedUserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSearchedUserEndpoint.swift; sourceTree = "<group>"; };
+		2CBF51AF2638D02A00B99042 /* GetSortedPostsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSortedPostsEndpoint.swift; sourceTree = "<group>"; };
 		2CBF51B42638D09100B99042 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		2CBF51B82638D9C100B99042 /* LogoutEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutEndPoint.swift; sourceTree = "<group>"; };
 		2CBF51BC2638DD9600B99042 /* UserInfoServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoServiceProtocol.swift; sourceTree = "<group>"; };
 		2CBF51C02638DDE800B99042 /* FeedServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedServiceProtocol.swift; sourceTree = "<group>"; };
 		2CBF51C42638DE7200B99042 /* SearchServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchServiceProtocol.swift; sourceTree = "<group>"; };
-		2CC884F82637521900375AF8 /* GetUserInfoEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoEndPoint.swift; sourceTree = "<group>"; };
+		2CC884F82637521900375AF8 /* GetUserInfoEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoEndpoint.swift; sourceTree = "<group>"; };
 		2CC884FD263756A300375AF8 /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
-		2CC8850126375EEA00375AF8 /* GetUserPostsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPostsEndPoint.swift; sourceTree = "<group>"; };
-		2CC885052637661800375AF8 /* AddFriendEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendEndPoint.swift; sourceTree = "<group>"; };
-		2CC885092637680600375AF8 /* AddNewPostEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPostEndPoint.swift; sourceTree = "<group>"; };
-		2CC8850D2637F0E100375AF8 /* RequestIntercaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestIntercaptor.swift; sourceTree = "<group>"; };
-		2CC885442638932900375AF8 /* GetUserFriendsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserFriendsEndPoint.swift; sourceTree = "<group>"; };
+		2CC8850126375EEA00375AF8 /* GetUserPostsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPostsEndpoint.swift; sourceTree = "<group>"; };
+		2CC885052637661800375AF8 /* AddFriendEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendEndpoint.swift; sourceTree = "<group>"; };
+		2CC885092637680600375AF8 /* AddNewPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPostEndpoint.swift; sourceTree = "<group>"; };
+		2CC8850D2637F0E100375AF8 /* UserRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestInterceptor.swift; sourceTree = "<group>"; };
+		2CC885442638932900375AF8 /* GetUserFriendsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserFriendsEndpoint.swift; sourceTree = "<group>"; };
 		2CC8854C263898B600375AF8 /* DeleteUserFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserFriend.swift; sourceTree = "<group>"; };
 		2CCA9121262E1CEC00D6A635 /* ValidatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePassword.swift; sourceTree = "<group>"; };
 		2CCA9126262E1FD000D6A635 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
@@ -265,7 +273,7 @@
 		2CDD245F262B3E5600501E77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CDD2461262B3E5600501E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CF47D0D2635529800F3C72B /* ServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
-		2CF47D152635560E00F3C72B /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		2CF47D152635560E00F3C72B /* UserInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationModel.swift; sourceTree = "<group>"; };
 		4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPITests/Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; sourceTree = "<group>"; };
 		45F1A9BBD0AF2E905F756A66 /* Pods-RedMadRobotTestTaskAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPI/Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -399,36 +407,12 @@
 		2C24D1A626389D14000855B8 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				2C24D1A726389D24000855B8 /* Get */,
-				2C24D1A826389D2E000855B8 /* Post */,
-				2C24D1A926389D31000855B8 /* Delete */,
+				2C24D1AA26389D52000855B8 /* GetFeedEndpoint.swift */,
+				2C24D1C22638A4B5000855B8 /* GetFavouritePostsEndpoint.swift */,
+				2C24D1BA2638A1A5000855B8 /* AddLikeToPostEndpoint.swift */,
+				2C24D1BE2638A431000855B8 /* RemoveLikeFromPostEndpoint.swift */,
 			);
 			path = Feed;
-			sourceTree = "<group>";
-		};
-		2C24D1A726389D24000855B8 /* Get */ = {
-			isa = PBXGroup;
-			children = (
-				2C24D1AA26389D52000855B8 /* GetFeedEndPoint.swift */,
-				2C24D1C22638A4B5000855B8 /* GetFavouritePostsEndPoint.swift */,
-			);
-			path = Get;
-			sourceTree = "<group>";
-		};
-		2C24D1A826389D2E000855B8 /* Post */ = {
-			isa = PBXGroup;
-			children = (
-				2C24D1BA2638A1A5000855B8 /* AddLikeToPostEndPoint.swift */,
-			);
-			path = Post;
-			sourceTree = "<group>";
-		};
-		2C24D1A926389D31000855B8 /* Delete */ = {
-			isa = PBXGroup;
-			children = (
-				2C24D1BE2638A431000855B8 /* RemoveLikeFromPostEndPoint.swift */,
-			);
-			path = Delete;
 			sourceTree = "<group>";
 		};
 		2C24D1B52638A04B000855B8 /* FeedService */ = {
@@ -440,12 +424,12 @@
 			path = FeedService;
 			sourceTree = "<group>";
 		};
-		2C24D1C62638A64D000855B8 /* Put */ = {
+		2C3909BF2639E3E200A81C6E /* DefaultService */ = {
 			isa = PBXGroup;
 			children = (
-				2C24D1C72638A6A7000855B8 /* UpdateUserInfoEndPoint.swift */,
+				2C3909C02639E44100A81C6E /* ApiService.swift */,
 			);
-			path = Put;
+			path = DefaultService;
 			sourceTree = "<group>";
 		};
 		2C3B7291262C29490076DF18 /* RegistrationModule */ = {
@@ -696,7 +680,7 @@
 			isa = PBXGroup;
 			children = (
 				2C4808F4262CC5E70075C0B3 /* AuthorizationServices.swift */,
-				2CC8850D2637F0E100375AF8 /* RequestIntercaptor.swift */,
+				2CC8850D2637F0E100375AF8 /* UserRequestInterceptor.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -901,7 +885,9 @@
 		2CAE1A8C26373537006A4417 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2CF47D152635560E00F3C72B /* UserData.swift */,
+				2CF47D152635560E00F3C72B /* UserInformationModel.swift */,
+				2C3909C42639F12100A81C6E /* PostModel.swift */,
+				2C3909C82639F14600A81C6E /* AuthTokensModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -909,7 +895,6 @@
 		2CAE1A8D26373547006A4417 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				2CAE1A8E2637355A006A4417 /* JsonEndpoint.swift */,
 				2CAE1AAB263737B5006A4417 /* EmptyEndPoint.swift */,
 			);
 			path = Base;
@@ -918,7 +903,10 @@
 		2CAE1AB52637383A006A4417 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				2CC88548263894B100375AF8 /* Post */,
+				2CAE1AB62637389B006A4417 /* UserLoginEndpoint.swift */,
+				2CAE1ABF263738F8006A4417 /* RegistrationEndPoint.swift */,
+				2CBF51B82638D9C100B99042 /* LogoutEndPoint.swift */,
+				2C0A83E1263A026A00DB6841 /* RefreshUserTokenEndpoint.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -927,6 +915,7 @@
 			isa = PBXGroup;
 			children = (
 				2CBF51A12638CCFC00B99042 /* MockChangeUserInfo.swift */,
+				2C3A8B52263B48DE00D548C5 /* MockCreatePost.swift */,
 			);
 			path = MockRequest;
 			sourceTree = "<group>";
@@ -934,18 +923,10 @@
 		2CBF51A72638CF5700B99042 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				2CBF51A82638CF7500B99042 /* Get */,
+				2CBF51A92638CF9300B99042 /* GetSearchedUserEndpoint.swift */,
+				2CBF51AF2638D02A00B99042 /* GetSortedPostsEndpoint.swift */,
 			);
 			path = Search;
-			sourceTree = "<group>";
-		};
-		2CBF51A82638CF7500B99042 /* Get */ = {
-			isa = PBXGroup;
-			children = (
-				2CBF51A92638CF9300B99042 /* GetSearchedUserEndPoint.swift */,
-				2CBF51AF2638D02A00B99042 /* GetSortedPostsEndPoint.swift */,
-			);
-			path = Get;
 			sourceTree = "<group>";
 		};
 		2CBF51B32638D07A00B99042 /* SearchService */ = {
@@ -960,10 +941,14 @@
 		2CC884F72637520200375AF8 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				2CC88542263892ED00375AF8 /* Get */,
-				2CC885432638930100375AF8 /* Post */,
-				2C24D1C62638A64D000855B8 /* Put */,
-				2CC8854B2638989D00375AF8 /* Delete */,
+				2CC884F82637521900375AF8 /* GetUserInfoEndpoint.swift */,
+				2CC8850126375EEA00375AF8 /* GetUserPostsEndpoint.swift */,
+				2CC885442638932900375AF8 /* GetUserFriendsEndpoint.swift */,
+				2CC885052637661800375AF8 /* AddFriendEndpoint.swift */,
+				2CC885092637680600375AF8 /* AddNewPostEndpoint.swift */,
+				2C24D1C72638A6A7000855B8 /* UpdateUserInfoEndPoint.swift */,
+				2CC8854C263898B600375AF8 /* DeleteUserFriend.swift */,
+				2C24D1A226389C7F000855B8 /* DeleteUserPostEndpoint.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -975,44 +960,6 @@
 				2CBF51BC2638DD9600B99042 /* UserInfoServiceProtocol.swift */,
 			);
 			path = UserInfoService;
-			sourceTree = "<group>";
-		};
-		2CC88542263892ED00375AF8 /* Get */ = {
-			isa = PBXGroup;
-			children = (
-				2CC884F82637521900375AF8 /* GetUserInfoEndPoint.swift */,
-				2CC8850126375EEA00375AF8 /* GetUserPostsEndPoint.swift */,
-				2CC885442638932900375AF8 /* GetUserFriendsEndPoint.swift */,
-			);
-			path = Get;
-			sourceTree = "<group>";
-		};
-		2CC885432638930100375AF8 /* Post */ = {
-			isa = PBXGroup;
-			children = (
-				2CC885052637661800375AF8 /* AddFriendEndPoint.swift */,
-				2CC885092637680600375AF8 /* AddNewPostEndPoint.swift */,
-			);
-			path = Post;
-			sourceTree = "<group>";
-		};
-		2CC88548263894B100375AF8 /* Post */ = {
-			isa = PBXGroup;
-			children = (
-				2CAE1AB62637389B006A4417 /* LoginEndPoint.swift */,
-				2CAE1ABF263738F8006A4417 /* RegistrationEndPoint.swift */,
-				2CBF51B82638D9C100B99042 /* LogoutEndPoint.swift */,
-			);
-			path = Post;
-			sourceTree = "<group>";
-		};
-		2CC8854B2638989D00375AF8 /* Delete */ = {
-			isa = PBXGroup;
-			children = (
-				2CC8854C263898B600375AF8 /* DeleteUserFriend.swift */,
-				2C24D1A226389C7F000855B8 /* DeleteUserPostEndPoint.swift */,
-			);
-			path = Delete;
 			sourceTree = "<group>";
 		};
 		2CCA9120262E1CC800D6A635 /* Validators */ = {
@@ -1132,6 +1079,7 @@
 		2CF47D12263552A200F3C72B /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
+				2C3909BF2639E3E200A81C6E /* DefaultService */,
 				2C4808F3262CC5BA0075C0B3 /* Authorization */,
 				2CC884FC2637569200375AF8 /* UserInfoService */,
 				2C24D1B52638A04B000855B8 /* FeedService */,
@@ -1472,30 +1420,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C24D1BB2638A1A5000855B8 /* AddLikeToPostEndPoint.swift in Sources */,
-				2C24D1C32638A4B5000855B8 /* GetFavouritePostsEndPoint.swift in Sources */,
+				2C24D1BB2638A1A5000855B8 /* AddLikeToPostEndpoint.swift in Sources */,
+				2C24D1C32638A4B5000855B8 /* GetFavouritePostsEndpoint.swift in Sources */,
 				2CBF51B92638D9C100B99042 /* LogoutEndPoint.swift in Sources */,
-				2C24D1A326389C7F000855B8 /* DeleteUserPostEndPoint.swift in Sources */,
+				2C24D1A326389C7F000855B8 /* DeleteUserPostEndpoint.swift in Sources */,
 				2C24D1C82638A6A7000855B8 /* UpdateUserInfoEndPoint.swift in Sources */,
 				2CAE1A84263734ED006A4417 /* ResponseValidator.swift in Sources */,
-				2CC8850226375EEA00375AF8 /* GetUserPostsEndPoint.swift in Sources */,
-				2CAE1AB72637389B006A4417 /* LoginEndPoint.swift in Sources */,
-				2CC885062637661800375AF8 /* AddFriendEndPoint.swift in Sources */,
-				2CAE1ABC263738CC006A4417 /* UserData.swift in Sources */,
-				2CAE1A8F2637355A006A4417 /* JsonEndpoint.swift in Sources */,
+				2CC8850226375EEA00375AF8 /* GetUserPostsEndpoint.swift in Sources */,
+				2C3909C92639F14600A81C6E /* AuthTokensModel.swift in Sources */,
+				2CAE1AB72637389B006A4417 /* UserLoginEndpoint.swift in Sources */,
+				2CC885062637661800375AF8 /* AddFriendEndpoint.swift in Sources */,
+				2C0A83E2263A026A00DB6841 /* RefreshUserTokenEndpoint.swift in Sources */,
+				2CAE1ABC263738CC006A4417 /* UserInformationModel.swift in Sources */,
 				2CAE1AAC263737B5006A4417 /* EmptyEndPoint.swift in Sources */,
 				2CAE1A80263734C8006A4417 /* HTTPError.swift in Sources */,
 				2CC8854D263898B600375AF8 /* DeleteUserFriend.swift in Sources */,
 				2CAE1AC0263738F8006A4417 /* RegistrationEndPoint.swift in Sources */,
 				2CAE1A8826373511006A4417 /* Codable.swift in Sources */,
-				2C24D1BF2638A431000855B8 /* RemoveLikeFromPostEndPoint.swift in Sources */,
-				2CC884F92637521900375AF8 /* GetUserInfoEndPoint.swift in Sources */,
-				2CC885452638932900375AF8 /* GetUserFriendsEndPoint.swift in Sources */,
-				2CC8850A2637680600375AF8 /* AddNewPostEndPoint.swift in Sources */,
-				2C24D1AB26389D52000855B8 /* GetFeedEndPoint.swift in Sources */,
+				2C24D1BF2638A431000855B8 /* RemoveLikeFromPostEndpoint.swift in Sources */,
+				2CC884F92637521900375AF8 /* GetUserInfoEndpoint.swift in Sources */,
+				2CC885452638932900375AF8 /* GetUserFriendsEndpoint.swift in Sources */,
+				2CC8850A2637680600375AF8 /* AddNewPostEndpoint.swift in Sources */,
+				2C24D1AB26389D52000855B8 /* GetFeedEndpoint.swift in Sources */,
+				2C3909C52639F12100A81C6E /* PostModel.swift in Sources */,
 				2CAE1A7926373489006A4417 /* APIError.swift in Sources */,
-				2CBF51B02638D02A00B99042 /* GetSortedPostsEndPoint.swift in Sources */,
-				2CBF51AA2638CF9300B99042 /* GetSearchedUserEndPoint.swift in Sources */,
+				2CBF51B02638D02A00B99042 /* GetSortedPostsEndpoint.swift in Sources */,
+				2CBF51AA2638CF9300B99042 /* GetSearchedUserEndpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1517,9 +1467,10 @@
 				2C4808C7262CA7280075C0B3 /* ProfileScreenVC.swift in Sources */,
 				2CAE1A4826372E53006A4417 /* UserStorage.swift in Sources */,
 				2C8A73BA262DD67700A68761 /* SignUpSecondVC.swift in Sources */,
+				2C3909C12639E44100A81C6E /* ApiService.swift in Sources */,
 				2C7E12B1262B47DA00CA4073 /* UIViewController+Extension.swift in Sources */,
 				2C1ACF4B262DF4EE00371065 /* SignUpSecondView.swift in Sources */,
-				2CC8850E2637F0E100375AF8 /* RequestIntercaptor.swift in Sources */,
+				2CC8850E2637F0E100375AF8 /* UserRequestInterceptor.swift in Sources */,
 				2CCA9127262E1FD000D6A635 /* EmailValidator.swift in Sources */,
 				2C025EBE262E0CB90035B84E /* RegistrationView.swift in Sources */,
 				2C3B72AD262C38FA0076DF18 /* SuccessLoginScreenVC.swift in Sources */,
@@ -1541,6 +1492,7 @@
 				2C7E12B3262B47DA00CA4073 /* UIDevice+Extensions.swift in Sources */,
 				2C4808E7262CBDD40075C0B3 /* AuthorizationWithButton.swift in Sources */,
 				2CCA912B262E251300D6A635 /* LoginValidator.swift in Sources */,
+				2C3A8B53263B48DE00D548C5 /* MockCreatePost.swift in Sources */,
 				2C4808E4262CBCFE0075C0B3 /* RegistrationNextButton.swift in Sources */,
 				2C3B72B5262C39F10076DF18 /* SignInVC.swift in Sources */,
 				2C7E12B6262B47DA00CA4073 /* UIView + Extensions.swift in Sources */,

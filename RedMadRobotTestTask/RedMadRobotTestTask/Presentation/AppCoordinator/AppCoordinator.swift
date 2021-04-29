@@ -12,6 +12,13 @@ final class AppCoordinator {
     // MARK: - Private Properties
     
     private let isLaunchedBefore = false
+    private let authorizationService: AuthorizationServiceProtocol
+        
+    // MARK: - Init
+    
+    init(authorizationService: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices) {
+        self.authorizationService = authorizationService
+    }
     
     // MARK: - Public Properties
     
@@ -32,9 +39,7 @@ final class AppCoordinator {
         navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navController.navigationBar.shadowImage = UIImage()
         
-        let authorizationViewModel = ServiceLayer.shared.authorizationServices
-        
-        let loginVC = LoginScreenVC(authorizationViewModel: authorizationViewModel)
+        let loginVC = LoginScreenVC(authorizationViewModel: authorizationService)
         navController.pushViewController(loginVC, animated: false)
         
         return navController

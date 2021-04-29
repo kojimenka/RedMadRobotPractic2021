@@ -10,17 +10,14 @@ import Apexy
 import RedMadRobotTestTaskAPI
 
 protocol FeedServiceProtocol {
-    
-    var apiClient: Client { get }
-    init(apiClient: Client)
-    
+
     // MARK: - Get request
     
     func getFeed(
-        completion: @escaping (Result<[UserPostInfo], Error>) -> Void)
+        completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress
     func getFavouritePosts(
-        completion: @escaping (Result<[UserPostInfo], Error>) -> Void)
+        completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress
     
     // MARK: - Post request

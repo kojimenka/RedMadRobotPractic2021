@@ -9,18 +9,8 @@ import Apexy
 
 import RedMadRobotTestTaskAPI
 
-public final class SearchService: SearchServiceProtocol {
-    
-    // MARK: - Public Properties
-    
-    public let apiClient: Client
-    
-    // MARK: - Init
-    
-    public init(apiClient: Client) {
-        self.apiClient = apiClient
-    }
-    
+public final class SearchService: ApiService, SearchServiceProtocol {
+        
     // MARK: - Public Methods
     
     // MARK: - Get request
@@ -29,15 +19,15 @@ public final class SearchService: SearchServiceProtocol {
         predicate: String,
         completion: @escaping (Result<[UserInformation], Error>) -> Void)
     -> Progress {
-        let endpoint = GetSearchedUserEndPoint(predicate: predicate)
+        let endpoint = GetSearchedUserEndpoint(predicate: predicate)
         return apiClient.request(endpoint, completionHandler: completion)
     }
     
     public func getSortedPosts(
         predicate: String,
-        completion: @escaping (Result<[UserPostInfo], Error>) -> Void)
+        completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress {
-        let endpoint = GetSortedPostsEndPoint(predicate: predicate)
+        let endpoint = GetSortedPostsEndpoint(predicate: predicate)
         return apiClient.request(endpoint, completionHandler: completion)
     }
 }

@@ -15,18 +15,30 @@ final class MockChangeUserInfo {
     
     public func changeUserInfo() {
         let jsonString = """
-                {
-                    "first_name": "Dima",
-                    "last_name":  "Marchenkov",
-                    "nickname":   "kojimenka",
-                    "birth_day":  "2001-05-26",
-                    "avatar_url": ""
-                }
+                    {
+                        "id": "",
+                        "first_name": "Dima",
+                        "last_name": "Marchenkov",
+                        "birth_day": "2001-05-26",
+                        "nickname": "kojimenka",
+                        "avatar_url": null
+                    }
                 """
         
         let jsonData = jsonString.data(using: .utf8)!
         let decoder = JSONDecoder()
-        guard let user = try? decoder.decode(UserInformation.self, from: jsonData) else { return }
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let user: UserInformation
+        
+        do {
+            user = try decoder.decode(UserInformation.self, from: jsonData)
+        } catch let error {
+            print("Check Failure \(error.localizedDescription)")
+            return
+        }
+        
+        print("Check", user)
         
         _ = userService.updateUserInfo(user: user) { result in
             switch result {

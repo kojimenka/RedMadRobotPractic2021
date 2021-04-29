@@ -1,5 +1,5 @@
 //
-//  GetFavouritePostsEndPoint.swift
+//  GetFeedEndPoint.swift
 //  RedMadRobotTestTaskAPI
 //
 //  Created by Дмитрий Марченков on 27.04.2021.
@@ -7,11 +7,11 @@
 
 import Apexy
 
-public struct GetFavouritePostsEndPoint: Endpoint {
+public struct GetFeedEndpoint: Endpoint {
     
     // MARK: - Public Properties
     
-    public typealias Content = [UserPostInfo]
+    public typealias Content = [PostInfo]
 
     // MARK: - Init
     
@@ -21,16 +21,16 @@ public struct GetFavouritePostsEndPoint: Endpoint {
     
     public func makeRequest() throws -> URLRequest {
         
-        let url = URL(string: "feed/favorite")!
+        let url = URL(string: "feed")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
         return request
     }
     
-    public func content(from response: URLResponse?, with body: Data) throws -> [UserPostInfo] {
-        let content = try? JSONDecoder().decode([UserPostInfo].self, from: body)
-        return content ?? []
+    public func content(from response: URLResponse?, with body: Data) throws -> [PostInfo] {
+        let content = try JSONDecoder.default.decode([PostInfo].self, from: body)
+        return content
     }
 
 }

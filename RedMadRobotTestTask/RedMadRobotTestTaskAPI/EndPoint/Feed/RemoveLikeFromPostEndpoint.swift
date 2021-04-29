@@ -7,7 +7,7 @@
 
 import Apexy
 
-public struct RemoveLikeFromPostEndPoint: EmptyEndpoint, URLRequestBuildable {
+public struct RemoveLikeFromPostEndpoint: EmptyEndpoint, URLRequestBuildable {
     
     // MARK: - Public Properties
     

@@ -7,23 +7,23 @@
 
 import Apexy
 
-public struct DeleteUserFriendEndPoint: EmptyEndpoint, URLRequestBuildable {
+public struct DeleteUserFriendEndpoint: EmptyEndpoint, URLRequestBuildable {
     
     // MARK: - Public Properties
     
-    public let idUserForDelete: String
+    public let userId: String
 
     // MARK: - Init
     
-    public init(idUserForDelete: String) {
-        self.idUserForDelete = idUserForDelete
+    public init(userId: String) {
+        self.userId = userId
     }
     
     // MARK: - Public Methods
     
     public func makeRequest() throws -> URLRequest {
         
-        let url = URL(string: "me/friends")!.appendingPathComponent(idUserForDelete)
+        let url = URL(string: "me/friends")!.appendingPathComponent(userId)
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         

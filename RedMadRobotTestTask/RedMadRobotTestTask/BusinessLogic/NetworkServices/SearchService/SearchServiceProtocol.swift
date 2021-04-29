@@ -11,9 +11,6 @@ import RedMadRobotTestTaskAPI
 
 protocol SearchServiceProtocol {
     
-    var apiClient: Client { get }
-    init(apiClient: Client)
-    
     // MARK: - Public Methods
     
     // MARK: - Get request
@@ -25,6 +22,6 @@ protocol SearchServiceProtocol {
     
     func getSortedPosts(
         predicate: String,
-        completion: @escaping (Result<[UserPostInfo], Error>) -> Void)
+        completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress
 }

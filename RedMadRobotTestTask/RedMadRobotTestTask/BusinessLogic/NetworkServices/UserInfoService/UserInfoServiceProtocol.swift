@@ -10,8 +10,6 @@ import Apexy
 import RedMadRobotTestTaskAPI
 
 protocol UserInfoServiceProtocol {
-    var apiClient: Client { get }
-    init(apiClient: Client)
     
     // MARK: - Get request
     
@@ -19,7 +17,7 @@ protocol UserInfoServiceProtocol {
        completion: @escaping (Result<UserInformation, Error>) -> Void)
    -> Progress
     func getUserPosts(
-        completion: @escaping (Result<[UserPostInfo], Error>) -> Void)
+        completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress
     func getUserFriends(
         completion: @escaping (Result<[UserInformation], Error>) -> Void)
@@ -32,8 +30,8 @@ protocol UserInfoServiceProtocol {
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress
     func addPost(
-        postInfo: UserPostInfo,
-        completion: @escaping (Result<Void, Error>) -> Void)
+        postInfo: PostInfo,
+        completion: @escaping (Result<PostInfo, Error>) -> Void)
     -> Progress
     
     // MARK: - Put request
