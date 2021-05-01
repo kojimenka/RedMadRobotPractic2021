@@ -117,24 +117,9 @@ final class SignUpContainerVC: UIViewController {
     }
     
     private func registrateUser() {
-        view.endEditing(true)
-        let loaderView = RegistrationLoaderView()
-        view.addSubview(loaderView)
-        loaderView.startLoading(with: view)
-        
-        registrationService.signIn(user: UserInfo.createMockUser()) { [weak self] res in
-            guard let self = self else { return }
-            loaderView.endLoading()
-            switch res {
-            case .success:
-                let successLogin = SuccessLoginScreenVC()
-                self.view.endEditing(true)
-                self.navigationController?.pushViewController(successLogin, animated: true)
-            case .failure(let err):
-                let alert = UIAlertController.createAlert(alertText: err.localizedDescription)
-                self.present(alert, animated: true)
-            }
-        }
+        let successLogin = SuccessLoginScreenVC()
+        self.view.endEditing(true)
+        self.navigationController?.pushViewController(successLogin, animated: true)
     }
 }
 
