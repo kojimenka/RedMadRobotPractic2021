@@ -9,25 +9,62 @@ import UIKit
 
 final class FeedScreenVC: UIViewController {
     
-    // MARK: - Properties
-    @IBOutlet private weak var zeroScreenView: ZeroScreenView!
+    // MARK: - IBOutlets
     
-    // MARK: - Life cycle
+    @IBOutlet private weak var collectionView: UICollectionView!
+    
+    // MARK: - UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
     
-    // MARK: - Methods
+    // MARK: - Private Methods
+    
     private func setupViews() {
-        zeroScreenView.delegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(FeedScreenCell.nib(), forCellWithReuseIdentifier: FeedScreenCell.identifier)
     }
 
 }
 
 // MARK: - Zero Screen Delegate
+
 extension FeedScreenVC: ZeroScreenViewDelegate {
     func updateButtonAction() {
         print("Update")
     }
+}
+
+// MARK: - UICollectionView DataSource
+
+extension FeedScreenVC: UICollectionViewDataSource {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int)
+    -> Int {
+        return 3
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+    -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: FeedScreenCell.identifier,
+            for: indexPath) as! FeedScreenCell
+        
+        cell.backgroundColor = .red
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        return cell
+    }
+}
+
+// MARK: - UICollectionView Delegate
+
+extension FeedScreenVC: UICollectionViewDelegateFlowLayout {
+    
 }

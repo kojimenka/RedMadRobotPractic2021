@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol RegistrationViewDelegate: class {
+protocol RegistrationViewDelegate: AnyObject {
     func userChangeFillState(isUserFillScreen: Bool)
 }
 

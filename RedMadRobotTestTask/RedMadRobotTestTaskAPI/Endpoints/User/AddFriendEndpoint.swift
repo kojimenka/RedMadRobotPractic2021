@@ -9,10 +9,6 @@ import Apexy
 
 public struct AddFriendEndpoint: EmptyEndpoint {
     
-    // MARK: - Public Properties
-    
-    public typealias Content = Void
-    
     // MARK: - Private Properties
     
     private let friendID: String

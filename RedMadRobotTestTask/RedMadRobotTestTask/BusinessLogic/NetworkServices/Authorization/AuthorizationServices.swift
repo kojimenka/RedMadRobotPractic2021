@@ -115,7 +115,6 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
         let endpoint = UserLoginEndpoint(email: email, password: password)
-        
         return apiClient.upload(endpoint) { [weak self] result in
             guard let self = self else { return }
             switch result {

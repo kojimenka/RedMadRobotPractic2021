@@ -49,3 +49,8 @@ final class ServiceLayer {
     private init() {}
     
 }
+
+final class MockStorage: UserStorage {
+    var refreshToken: String?
+    var accessToken: String?
+}

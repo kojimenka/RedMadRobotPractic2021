@@ -12,7 +12,7 @@ import Foundation
 protocol Validator {
     associatedtype ValueType
     var errorMessage: String { get }
-    func isValid(value: ValueType?) -> Bool
+    func isValid(value: ValueType) -> Bool
 }
 
 extension Validator {
@@ -22,7 +22,7 @@ extension Validator {
 }
 
 extension Validator {
-    func validate(value: ValueType?) throws {
+    func validate(value: ValueType) throws {
         if !isValid(value: value) {
             throw ValidationError(message: errorMessage)
         }

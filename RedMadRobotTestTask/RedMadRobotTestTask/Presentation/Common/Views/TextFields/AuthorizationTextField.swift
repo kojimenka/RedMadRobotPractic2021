@@ -12,7 +12,7 @@ enum KeyboardAction {
     case hideKeyboard
 }
 
-protocol AuthorizationTextFieldDelegate: class {
+protocol AuthorizationTextFieldDelegate: AnyObject {
     func changeText(view: AuthorizationTextField, text: String)
     func selectedAuthorizationTextField(view: AuthorizationTextField)
     func keyboardHide()

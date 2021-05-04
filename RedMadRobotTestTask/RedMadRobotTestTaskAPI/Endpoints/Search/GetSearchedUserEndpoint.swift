@@ -27,7 +27,10 @@ public struct GetSearchedUserEndpoint: Endpoint {
     
     public func makeRequest() throws -> URLRequest {
         
-        let url = URL(string: "search?user=")!.appendingPathExtension(predicate)
+        let escapedPredicate = predicate.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+
+        let url = URL(string: "search?user=\(escapedPredicate)")!
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         

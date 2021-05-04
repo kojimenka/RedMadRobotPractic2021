@@ -7,6 +7,8 @@
 
 import UIKit
 
+import RedMadRobotTestTaskAPI
+
 final class LoginScreenVC: UIViewController {
     
     // MARK: - Private Properties
@@ -29,6 +31,22 @@ final class LoginScreenVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        
+//        let mockClient = MockClient()
+//        let mockStorage = MockStorage()
+//        let authService = AuthorizationServices(apiClient: mockClient, storage: mockStorage)
+//
+//        authService.signIn(email: "Test", password: "Test") { (res) in
+//            switch res {
+//            case .success:
+//                print("Check success")
+//            case .failure:
+//                print("Check failure")
+//            }
+//        }
+//
+//        print("Check", mockStorage.accessToken, mockStorage.refreshToken)
+//
     }
     
     // MARK: - IBAction

@@ -17,7 +17,7 @@ class RegistrationBirthdayValidator: Validator {
     
     // MARK: - Public Methods
     
-    public func isValid(value: Date?) -> Bool {
+    public func isValid(value: Date) -> Bool {
         return true
     }
 

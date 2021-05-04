@@ -17,8 +17,9 @@ final class RegistrationLoginValidator: Validator {
     
     // MARK: - Public Methods
 
-    func isValid(value: String?) -> Bool {
-        guard let value = value else {
+    func isValid(value: String) -> Bool {
+        
+        if value.isEmpty {
             errorMessage = "Вы не ввели логин"
             return false
         }

@@ -27,7 +27,9 @@ public struct GetSortedPostsEndpoint: Endpoint {
     
     public func makeRequest() throws -> URLRequest {
         
-        let url = URL(string: "search?post=")!.appendingPathExtension(predicate)
+        let escapedPredicate = predicate.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        let url = URL(string: "search?post=\(escapedPredicate)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         

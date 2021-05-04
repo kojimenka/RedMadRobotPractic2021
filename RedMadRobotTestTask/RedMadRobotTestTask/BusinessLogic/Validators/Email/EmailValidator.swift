@@ -15,8 +15,8 @@ final class RegistrationEmailValidator: Validator {
 
     // MARK: - Public Methods
     
-    public func isValid(value: String?) -> Bool {
-        guard let value = value else {
+    public func isValid(value: String) -> Bool {
+        if value.isEmpty {
             errorMessage = "Вы не ввели email"
             return false
         }
