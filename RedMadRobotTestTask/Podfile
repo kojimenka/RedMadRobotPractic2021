@@ -16,7 +16,12 @@ target 'RedMadRobotTestTaskAPI' do
 
   pod 'Apexy'
 
+  target 'RedMadRobotTestTaskTests' do
+    inherit! :search_paths
+  end
+
   target 'RedMadRobotTestTaskAPITests' do
     inherit! :search_paths
   end
+
 end

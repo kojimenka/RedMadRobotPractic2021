@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FC0FCA1D2EF49294F218932 /* Pods_RedMadRobotTestTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */; };
 		2C025EB9262E05860035B84E /* CheckKeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C025EB8262E05860035B84E /* CheckKeyboardViewModel.swift */; };
 		2C025EBE262E0CB90035B84E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C025EBD262E0CB90035B84E /* RegistrationView.swift */; };
 		2C04C0D7262E2E14005F493D /* SignUpContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */; };
@@ -334,6 +335,9 @@
 		4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPITests/Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; sourceTree = "<group>"; };
 		45F1A9BBD0AF2E905F756A66 /* Pods-RedMadRobotTestTaskAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPI/Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E6BCB8E0327F84C7A3EF35E /* Pods-RedMadRobotTestTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskTests.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskTests/Pods-RedMadRobotTestTaskTests.release.xcconfig"; sourceTree = "<group>"; };
+		A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC62DFF9388310FEABBE8F23 /* Pods-RedMadRobotTestTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskTests/Pods-RedMadRobotTestTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF99F708E8D8C1F6AEEE220F /* Pods-RedMadRobotTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTask.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTaskAPITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB739DD1DED551A86E3864BB /* Pods-RedMadRobotTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTask.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask.release.xcconfig"; sourceTree = "<group>"; };
@@ -362,6 +366,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FC0FCA1D2EF49294F218932 /* Pods_RedMadRobotTestTaskTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1296,6 +1301,7 @@
 				7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */,
 				0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */,
 				EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */,
+				A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1309,6 +1315,8 @@
 				24CF3FDB716A3C816F522AEB /* Pods-RedMadRobotTestTaskAPI.release.xcconfig */,
 				4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */,
 				F82C932AA5C5EF2C1632C9CB /* Pods-RedMadRobotTestTaskAPITests.release.xcconfig */,
+				BC62DFF9388310FEABBE8F23 /* Pods-RedMadRobotTestTaskTests.debug.xcconfig */,
+				8E6BCB8E0327F84C7A3EF35E /* Pods-RedMadRobotTestTaskTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1370,6 +1378,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CCCF411263F1D5200D15877 /* Build configuration list for PBXNativeTarget "RedMadRobotTestTaskTests" */;
 			buildPhases = (
+				834EE1F6D9D575DAB0F0C2BF /* [CP] Check Pods Manifest.lock */,
 				2CCCF404263F1D5200D15877 /* Sources */,
 				2CCCF405263F1D5200D15877 /* Frameworks */,
 				2CCCF406263F1D5200D15877 /* Resources */,
@@ -1623,6 +1632,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		834EE1F6D9D575DAB0F0C2BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RedMadRobotTestTaskTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A199C065104C29AE27603B70 /* [CP] Check Pods Manifest.lock */ = {
@@ -1943,6 +1974,7 @@
 		};
 		2CCCF40F263F1D5200D15877 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC62DFF9388310FEABBE8F23 /* Pods-RedMadRobotTestTaskTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1964,6 +1996,7 @@
 		};
 		2CCCF410263F1D5200D15877 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E6BCB8E0327F84C7A3EF35E /* Pods-RedMadRobotTestTaskTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
