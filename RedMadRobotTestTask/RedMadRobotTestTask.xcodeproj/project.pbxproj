@@ -38,6 +38,28 @@
 		2C3B72B5262C39F10076DF18 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B72B3262C39F10076DF18 /* SignInVC.swift */; };
 		2C3B72B6262C39F10076DF18 /* SignInVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3B72B4262C39F10076DF18 /* SignInVC.xib */; };
 		2C3B72BF262C3FAF0076DF18 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B72BE262C3FAF0076DF18 /* AppTabBarController.swift */; };
+		2C46F9EB264478EF00298446 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46F9EA264478EF00298446 /* MockClient.swift */; };
+		2C46F9F326447C0B00298446 /* LoginAuthorizationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46F9F226447C0B00298446 /* LoginAuthorizationServiceTest.swift */; };
+		2C46F9F826447F4100298446 /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46F9F726447F4100298446 /* MockStorage.swift */; };
+		2C46FA0C2644859A00298446 /* AuthMockModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA0B2644859A00298446 /* AuthMockModels.swift */; };
+		2C46FA112644874600298446 /* MockWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA102644874600298446 /* MockWarnings.swift */; };
+		2C46FA1626448B0400298446 /* LogoutAuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA1526448B0400298446 /* LogoutAuthorizationTest.swift */; };
+		2C46FA1B26448C4C00298446 /* SignUpAuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA1A26448C4C00298446 /* SignUpAuthorizationTest.swift */; };
+		2C46FA2026448D1100298446 /* RefreshTokenAuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA1F26448D1100298446 /* RefreshTokenAuthorizationTest.swift */; };
+		2C46FA26264493E400298446 /* GetUserInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA25264493E400298446 /* GetUserInfoTest.swift */; };
+		2C46FA2E2644964C00298446 /* GetUserPostsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA2D2644964C00298446 /* GetUserPostsTest.swift */; };
+		2C46FA332644973900298446 /* GetUserFriendsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA322644973900298446 /* GetUserFriendsTest.swift */; };
+		2C46FA38264497EC00298446 /* AddFriendUserServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA37264497EC00298446 /* AddFriendUserServiceTest.swift */; };
+		2C46FA3D264498E600298446 /* AddPostUserServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA3C264498E600298446 /* AddPostUserServiceTest.swift */; };
+		2C46FA4226449C2500298446 /* UpdateUserInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA4126449C2500298446 /* UpdateUserInfoTest.swift */; };
+		2C46FA4726449CE000298446 /* DeleteFriendUserServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA4626449CE000298446 /* DeleteFriendUserServiceTest.swift */; };
+		2C46FA4C26449D6800298446 /* DeletePostUserServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA4B26449D6800298446 /* DeletePostUserServiceTest.swift */; };
+		2C46FA5526449EB400298446 /* GetFeedTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA5426449EB400298446 /* GetFeedTest.swift */; };
+		2C46FA5D26449FF900298446 /* GetFavouritePostsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA5C26449FF900298446 /* GetFavouritePostsTest.swift */; };
+		2C46FA622644A04D00298446 /* AddLikeToPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA612644A04D00298446 /* AddLikeToPostTest.swift */; };
+		2C46FA672644A1D000298446 /* RemoveLikeFromPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA662644A1D000298446 /* RemoveLikeFromPostTest.swift */; };
+		2C46FA6D2644A27D00298446 /* GetSortedUsersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA6C2644A27D00298446 /* GetSortedUsersTest.swift */; };
+		2C46FA752644A33E00298446 /* GetSortedPostsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA742644A33E00298446 /* GetSortedPostsTest.swift */; };
 		2C480894262C52210075C0B3 /* FeedScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C480892262C52210075C0B3 /* FeedScreenVC.swift */; };
 		2C480895262C52210075C0B3 /* FeedScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C480893262C52210075C0B3 /* FeedScreenVC.xib */; };
 		2C4808A1262C53F70075C0B3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808A0262C53F70075C0B3 /* SignInViewModel.swift */; };
@@ -127,7 +149,6 @@
 		2CCA912B262E251300D6A635 /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA912A262E251300D6A635 /* LoginValidator.swift */; };
 		2CCA9131262E28BC00D6A635 /* NameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9130262E28BC00D6A635 /* NameValidator.swift */; };
 		2CCA9135262E292C00D6A635 /* CityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9134262E292C00D6A635 /* CityValidator.swift */; };
-		2CCA9138262E298500D6A635 /* DayValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9137262E298500D6A635 /* DayValidator.swift */; };
 		2CCCF400263DD5DF00D15877 /* FeedScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCF3FE263DD5DE00D15877 /* FeedScreenCell.swift */; };
 		2CCCF401263DD5DF00D15877 /* FeedScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCCF3FF263DD5DE00D15877 /* FeedScreenCell.xib */; };
 		2CCCF418263F2C9D00D15877 /* TestLoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCF417263F2C9D00D15877 /* TestLoginValidator.swift */; };
@@ -139,6 +160,10 @@
 		2CDD2456262B3E5400501E77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD2455262B3E5400501E77 /* SceneDelegate.swift */; };
 		2CDD245D262B3E5600501E77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CDD245C262B3E5600501E77 /* Assets.xcassets */; };
 		2CDD2460262B3E5600501E77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CDD245E262B3E5600501E77 /* LaunchScreen.storyboard */; };
+		2CECFCAD264520EE00B3BD09 /* DefaultServiceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA7A26451FA100298446 /* DefaultServiceErrors.swift */; };
+		2CECFCB52645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECFCB42645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift */; };
+		2CECFCDF26452DB300B3BD09 /* IsUserAuthorizedTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECFCDE26452DB300B3BD09 /* IsUserAuthorizedTest.swift */; };
+		2CECFCE626452FC600B3BD09 /* UserDefaultsStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECFCE526452FC600B3BD09 /* UserDefaultsStorageTest.swift */; };
 		2CF47D0E2635529800F3C72B /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF47D0D2635529800F3C72B /* ServiceLayer.swift */; };
 		70CD53DCDDD56387925AFDE3 /* Pods_RedMadRobotTestTaskAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */; };
 		7111BBDF0A689192F1CC5A57 /* Pods_RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */; };
@@ -223,6 +248,29 @@
 		2C3B72B3262C39F10076DF18 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		2C3B72B4262C39F10076DF18 /* SignInVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInVC.xib; sourceTree = "<group>"; };
 		2C3B72BE262C3FAF0076DF18 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
+		2C46F9EA264478EF00298446 /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
+		2C46F9F226447C0B00298446 /* LoginAuthorizationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAuthorizationServiceTest.swift; sourceTree = "<group>"; };
+		2C46F9F726447F4100298446 /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
+		2C46FA0B2644859A00298446 /* AuthMockModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMockModels.swift; sourceTree = "<group>"; };
+		2C46FA102644874600298446 /* MockWarnings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWarnings.swift; sourceTree = "<group>"; };
+		2C46FA1526448B0400298446 /* LogoutAuthorizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAuthorizationTest.swift; sourceTree = "<group>"; };
+		2C46FA1A26448C4C00298446 /* SignUpAuthorizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAuthorizationTest.swift; sourceTree = "<group>"; };
+		2C46FA1F26448D1100298446 /* RefreshTokenAuthorizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenAuthorizationTest.swift; sourceTree = "<group>"; };
+		2C46FA25264493E400298446 /* GetUserInfoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoTest.swift; sourceTree = "<group>"; };
+		2C46FA2D2644964C00298446 /* GetUserPostsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPostsTest.swift; sourceTree = "<group>"; };
+		2C46FA322644973900298446 /* GetUserFriendsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserFriendsTest.swift; sourceTree = "<group>"; };
+		2C46FA37264497EC00298446 /* AddFriendUserServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendUserServiceTest.swift; sourceTree = "<group>"; };
+		2C46FA3C264498E600298446 /* AddPostUserServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostUserServiceTest.swift; sourceTree = "<group>"; };
+		2C46FA4126449C2500298446 /* UpdateUserInfoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoTest.swift; sourceTree = "<group>"; };
+		2C46FA4626449CE000298446 /* DeleteFriendUserServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFriendUserServiceTest.swift; sourceTree = "<group>"; };
+		2C46FA4B26449D6800298446 /* DeletePostUserServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostUserServiceTest.swift; sourceTree = "<group>"; };
+		2C46FA5426449EB400298446 /* GetFeedTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedTest.swift; sourceTree = "<group>"; };
+		2C46FA5C26449FF900298446 /* GetFavouritePostsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavouritePostsTest.swift; sourceTree = "<group>"; };
+		2C46FA612644A04D00298446 /* AddLikeToPostTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLikeToPostTest.swift; sourceTree = "<group>"; };
+		2C46FA662644A1D000298446 /* RemoveLikeFromPostTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveLikeFromPostTest.swift; sourceTree = "<group>"; };
+		2C46FA6C2644A27D00298446 /* GetSortedUsersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSortedUsersTest.swift; sourceTree = "<group>"; };
+		2C46FA742644A33E00298446 /* GetSortedPostsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSortedPostsTest.swift; sourceTree = "<group>"; };
+		2C46FA7A26451FA100298446 /* DefaultServiceErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultServiceErrors.swift; sourceTree = "<group>"; };
 		2C480892262C52210075C0B3 /* FeedScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreenVC.swift; sourceTree = "<group>"; };
 		2C480893262C52210075C0B3 /* FeedScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedScreenVC.xib; sourceTree = "<group>"; };
 		2C4808A0262C53F70075C0B3 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -314,7 +362,6 @@
 		2CCA912A262E251300D6A635 /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
 		2CCA9130262E28BC00D6A635 /* NameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameValidator.swift; sourceTree = "<group>"; };
 		2CCA9134262E292C00D6A635 /* CityValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityValidator.swift; sourceTree = "<group>"; };
-		2CCA9137262E298500D6A635 /* DayValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayValidator.swift; sourceTree = "<group>"; };
 		2CCCF3FE263DD5DE00D15877 /* FeedScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreenCell.swift; sourceTree = "<group>"; };
 		2CCCF3FF263DD5DE00D15877 /* FeedScreenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedScreenCell.xib; sourceTree = "<group>"; };
 		2CCCF408263F1D5200D15877 /* RedMadRobotTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedMadRobotTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,6 +377,9 @@
 		2CDD245C262B3E5600501E77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CDD245F262B3E5600501E77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CDD2461262B3E5600501E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CECFCB42645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUpdateUserInfoEndpoint.swift; sourceTree = "<group>"; };
+		2CECFCDE26452DB300B3BD09 /* IsUserAuthorizedTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsUserAuthorizedTest.swift; sourceTree = "<group>"; };
+		2CECFCE526452FC600B3BD09 /* UserDefaultsStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageTest.swift; sourceTree = "<group>"; };
 		2CF47D0D2635529800F3C72B /* ServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
 		2CF47D152635560E00F3C72B /* UserInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationModel.swift; sourceTree = "<group>"; };
 		4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPITests/Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -602,6 +652,64 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		2C46F9E8264478D300298446 /* AuthorizationTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C46F9F226447C0B00298446 /* LoginAuthorizationServiceTest.swift */,
+				2C46FA1526448B0400298446 /* LogoutAuthorizationTest.swift */,
+				2C46FA1A26448C4C00298446 /* SignUpAuthorizationTest.swift */,
+				2C46FA1F26448D1100298446 /* RefreshTokenAuthorizationTest.swift */,
+				2CECFCDE26452DB300B3BD09 /* IsUserAuthorizedTest.swift */,
+			);
+			path = AuthorizationTest;
+			sourceTree = "<group>";
+		};
+		2C46F9E9264478E000298446 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2C46F9EA264478EF00298446 /* MockClient.swift */,
+				2C46F9F726447F4100298446 /* MockStorage.swift */,
+				2C46FA0B2644859A00298446 /* AuthMockModels.swift */,
+				2C46FA102644874600298446 /* MockWarnings.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		2C46FA24264493B000298446 /* UserInfoTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C46FA25264493E400298446 /* GetUserInfoTest.swift */,
+				2C46FA2D2644964C00298446 /* GetUserPostsTest.swift */,
+				2C46FA322644973900298446 /* GetUserFriendsTest.swift */,
+				2C46FA37264497EC00298446 /* AddFriendUserServiceTest.swift */,
+				2C46FA3C264498E600298446 /* AddPostUserServiceTest.swift */,
+				2C46FA4126449C2500298446 /* UpdateUserInfoTest.swift */,
+				2C46FA4626449CE000298446 /* DeleteFriendUserServiceTest.swift */,
+				2C46FA4B26449D6800298446 /* DeletePostUserServiceTest.swift */,
+			);
+			path = UserInfoTest;
+			sourceTree = "<group>";
+		};
+		2C46FA5326449E5800298446 /* FeedServiceTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C46FA5426449EB400298446 /* GetFeedTest.swift */,
+				2C46FA5C26449FF900298446 /* GetFavouritePostsTest.swift */,
+				2C46FA612644A04D00298446 /* AddLikeToPostTest.swift */,
+				2C46FA662644A1D000298446 /* RemoveLikeFromPostTest.swift */,
+			);
+			path = FeedServiceTest;
+			sourceTree = "<group>";
+		};
+		2C46FA6B2644A24800298446 /* SearchServiceTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C46FA6C2644A27D00298446 /* GetSortedUsersTest.swift */,
+				2C46FA742644A33E00298446 /* GetSortedPostsTest.swift */,
+			);
+			path = SearchServiceTest;
+			sourceTree = "<group>";
+		};
 		2C480890262C51EC0075C0B3 /* FeedModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,6 +911,7 @@
 				2C68297A26407A9B00E76036 /* TestAddNewPostEndpoint.swift */,
 				2C68297F26407C7B00E76036 /* TestDeleteUserFriendEndpoint.swift */,
 				2C68298426407D0000E76036 /* TestDeleteUserPostEndpoint.swift */,
+				2CECFCB42645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -996,6 +1105,7 @@
 		2CAE1A7626373467006A4417 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2C46FA7A26451FA100298446 /* DefaultServiceErrors.swift */,
 				2CAE1A7826373489006A4417 /* APIError.swift */,
 				2CAE1A7F263734C8006A4417 /* HTTPError.swift */,
 				2CAE1A83263734ED006A4417 /* ResponseValidator.swift */,
@@ -1105,7 +1215,6 @@
 				2CCA9124262E1FB900D6A635 /* Password */,
 				2CCA912D262E288700D6A635 /* Name */,
 				2CCA912E262E288C00D6A635 /* City */,
-				2CCA912F262E289300D6A635 /* Day */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -1150,14 +1259,6 @@
 			path = City;
 			sourceTree = "<group>";
 		};
-		2CCA912F262E289300D6A635 /* Day */ = {
-			isa = PBXGroup;
-			children = (
-				2CCA9137262E298500D6A635 /* DayValidator.swift */,
-			);
-			path = Day;
-			sourceTree = "<group>";
-		};
 		2CCCF3FD263DD53C00D15877 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1170,7 +1271,10 @@
 		2CCCF409263F1D5200D15877 /* RedMadRobotTestTaskTests */ = {
 			isa = PBXGroup;
 			children = (
+				2C46F9E9264478E000298446 /* Mocks */,
+				2CECFCE326452F8300B3BD09 /* NetworkTests */,
 				2CCCF415263F2C0500D15877 /* ValidatorsTest */,
+				2CECFCE426452FA800B3BD09 /* StorageTest */,
 				2CCCF40C263F1D5200D15877 /* Info.plist */,
 			);
 			path = RedMadRobotTestTaskTests;
@@ -1283,14 +1387,33 @@
 			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
+		2CECFCE326452F8300B3BD09 /* NetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C46F9E8264478D300298446 /* AuthorizationTest */,
+				2C46FA24264493B000298446 /* UserInfoTest */,
+				2C46FA5326449E5800298446 /* FeedServiceTest */,
+				2C46FA6B2644A24800298446 /* SearchServiceTest */,
+			);
+			path = NetworkTests;
+			sourceTree = "<group>";
+		};
+		2CECFCE426452FA800B3BD09 /* StorageTest */ = {
+			isa = PBXGroup;
+			children = (
+				2CECFCE526452FC600B3BD09 /* UserDefaultsStorageTest.swift */,
+			);
+			path = StorageTest;
+			sourceTree = "<group>";
+		};
 		2CF47D12263552A200F3C72B /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
-				2C3909BF2639E3E200A81C6E /* DefaultService */,
 				2C4808F3262CC5BA0075C0B3 /* Authorization */,
 				2CC884FC2637569200375AF8 /* UserInfoService */,
 				2C24D1B52638A04B000855B8 /* FeedService */,
 				2CBF51B32638D07A00B99042 /* SearchService */,
+				2C3909BF2639E3E200A81C6E /* DefaultService */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -1704,6 +1827,7 @@
 				2CAE1A8826373511006A4417 /* Codable.swift in Sources */,
 				2C24D1BF2638A431000855B8 /* RemoveLikeFromPostEndpoint.swift in Sources */,
 				2CC884F92637521900375AF8 /* GetUserInfoEndpoint.swift in Sources */,
+				2CECFCAD264520EE00B3BD09 /* DefaultServiceErrors.swift in Sources */,
 				2CC885452638932900375AF8 /* GetUserFriendsEndpoint.swift in Sources */,
 				2CC8850A2637680600375AF8 /* AddNewPostEndpoint.swift in Sources */,
 				2C24D1AB26389D52000855B8 /* GetFeedEndpoint.swift in Sources */,
@@ -1725,6 +1849,7 @@
 				2C68298026407C7B00E76036 /* TestDeleteUserFriendEndpoint.swift in Sources */,
 				2C68298B26407E2400E76036 /* TestGetFeedEndpoint.swift in Sources */,
 				2C68297B26407A9B00E76036 /* TestAddNewPostEndpoint.swift in Sources */,
+				2CECFCB52645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift in Sources */,
 				2C68297626407A0300E76036 /* TestAddFriendEndpoint.swift in Sources */,
 				2C68295E264077EE00E76036 /* TestRefreshUserTokenEndpoint.swift in Sources */,
 				2C682971264079BB00E76036 /* TestGetUserFriendsEndpoint.swift in Sources */,
@@ -1743,10 +1868,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C46FA752644A33E00298446 /* GetSortedPostsTest.swift in Sources */,
+				2C46F9EB264478EF00298446 /* MockClient.swift in Sources */,
 				2CCCF418263F2C9D00D15877 /* TestLoginValidator.swift in Sources */,
+				2CECFCDF26452DB300B3BD09 /* IsUserAuthorizedTest.swift in Sources */,
+				2C46FA3D264498E600298446 /* AddPostUserServiceTest.swift in Sources */,
 				2CCCF41E263F349E00D15877 /* TestEmailValidator.swift in Sources */,
+				2C46FA26264493E400298446 /* GetUserInfoTest.swift in Sources */,
+				2C46FA38264497EC00298446 /* AddFriendUserServiceTest.swift in Sources */,
+				2C46FA672644A1D000298446 /* RemoveLikeFromPostTest.swift in Sources */,
+				2C46FA1B26448C4C00298446 /* SignUpAuthorizationTest.swift in Sources */,
+				2C46F9F826447F4100298446 /* MockStorage.swift in Sources */,
+				2C46F9F326447C0B00298446 /* LoginAuthorizationServiceTest.swift in Sources */,
+				2C46FA622644A04D00298446 /* AddLikeToPostTest.swift in Sources */,
+				2C46FA5D26449FF900298446 /* GetFavouritePostsTest.swift in Sources */,
 				2CCCF432263F39CD00D15877 /* TestNameValidator.swift in Sources */,
+				2C46FA4226449C2500298446 /* UpdateUserInfoTest.swift in Sources */,
+				2C46FA112644874600298446 /* MockWarnings.swift in Sources */,
+				2C46FA4C26449D6800298446 /* DeletePostUserServiceTest.swift in Sources */,
+				2C46FA2026448D1100298446 /* RefreshTokenAuthorizationTest.swift in Sources */,
+				2C46FA5526449EB400298446 /* GetFeedTest.swift in Sources */,
+				2C46FA6D2644A27D00298446 /* GetSortedUsersTest.swift in Sources */,
+				2C46FA4726449CE000298446 /* DeleteFriendUserServiceTest.swift in Sources */,
 				2CCCF42A263F377900D15877 /* TestPasswordValidator.swift in Sources */,
+				2CECFCE626452FC600B3BD09 /* UserDefaultsStorageTest.swift in Sources */,
+				2C46FA0C2644859A00298446 /* AuthMockModels.swift in Sources */,
+				2C46FA2E2644964C00298446 /* GetUserPostsTest.swift in Sources */,
+				2C46FA332644973900298446 /* GetUserFriendsTest.swift in Sources */,
+				2C46FA1626448B0400298446 /* LogoutAuthorizationTest.swift in Sources */,
 				2CCCF437263F3AA500D15877 /* TestCityValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1810,7 +1959,6 @@
 				2C3B72BF262C3FAF0076DF18 /* AppTabBarController.swift in Sources */,
 				2CDD2456262B3E5400501E77 /* SceneDelegate.swift in Sources */,
 				2C7E12B4262B47DA00CA4073 /* UIGradientLayer+Extension.swift in Sources */,
-				2CCA9138262E298500D6A635 /* DayValidator.swift in Sources */,
 				2CBF51C12638DDE800B99042 /* FeedServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

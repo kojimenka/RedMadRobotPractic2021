@@ -20,9 +20,9 @@ final class SignUpFirstView: RegistrationView {
     
     // MARK: - Private Properties
     
-    private let passwordValidator = RegistrationPasswordValidator().validator
-    private let emailValidator = RegistrationEmailValidator().validator
-    private let loginValidator = RegistrationLoginValidator().validator
+    private let passwordValidator: Validator = PasswordValidator()
+    private let emailValidator: Validator = EmailValidator()
+    private let loginValidator: Validator = LoginValidator()
     
     private var isScreenFilled: Bool = false {
         didSet {
@@ -41,27 +41,43 @@ final class SignUpFirstView: RegistrationView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupView()
+        allTextFields = [loginTextView, emailTextView, passwordTextView]
     }
     
     // MARK: - UIView(RegistrationView)
     
-    override func setupValidators() {
-        stringValidators = Validated([loginValidator, emailValidator, passwordValidator])
-    }
-    
-    override func changeText(view: AuthorizationTextField, text: String) {
+    override func changeText(view: AuthorizationTextField, text: String) throws {
+        var validError: Error?
         switch view {
         case emailTextView:
-            isEmailValid = emailValidator.isValid(value: text)
+            do {
+                isEmailValid = try emailValidator.isValid(value: text)
+            } catch let error {
+                isEmailValid = false
+                validError = error
+            }
         case passwordTextView:
-            isPasswordValid = passwordValidator.isValid(value: text)
+            do {
+                isPasswordValid = try passwordValidator.isValid(value: text)
+            } catch let error {
+                isPasswordValid = false
+                validError = error
+            }
         case loginTextView:
-            isLoginValid = loginValidator.isValid(value: text)
+            do {
+                isLoginValid = try loginValidator.isValid(value: text)
+            } catch let error {
+                isLoginValid = false
+                validError = error
+            }
         default:
-            return
+            break
         }
-        
+ 
         isScreenFilled = isEmailValid && isPasswordValid && isLoginValid
+        if let validError = validError {
+            throw validError
+        }
     }
     
     // MARK: - Private Methods

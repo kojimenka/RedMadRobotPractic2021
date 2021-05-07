@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool {
+        guard !GlobalFlags.isTesting else { return false }
         
         // Facebook
         ApplicationDelegate.shared.application(

@@ -18,11 +18,11 @@ public struct UpdateUserInfoEndpoint: Endpoint {
     // MARK: - Private Properties
 
     public let user: UserInformation
-    public let token: String
+    public let token: String?
     
     // MARK: - Init
     
-    public init(user: UserInformation, token: String) {
+    public init(user: UserInformation, token: String?) {
         self.user = user
         self.token = token
     }
@@ -35,6 +35,8 @@ public struct UpdateUserInfoEndpoint: Endpoint {
     
     public func makeRequest() throws -> URLRequest {
     
+        guard let token = token else { throw DefaultServiceErrors.nilToken }
+        
         let parameterS = createParameterDictionary(user: user)!
         
         let headerS: HTTPHeaders = [
@@ -50,14 +52,7 @@ public struct UpdateUserInfoEndpoint: Endpoint {
             },
             to: "https://interns2021.redmadrobot.com/me", method: .patch, headers: headerS)
             .validate(statusCode: 200...300)
-            .response { resp in
-                switch resp.result {
-                case .failure(let error):
-                    print("Check", error)
-                case.success:
-                    print("Check")
-                }
-            }
+            .response { _ in }
         
         return requst.convertible.urlRequest!
     }

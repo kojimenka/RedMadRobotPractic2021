@@ -7,8 +7,8 @@
 
 import Apexy
 
-public struct UserRegistrationEndpoint: UploadEndpoint {
-    
+public struct UserRegistrationEndpoint: Endpoint {
+        
     // MARK: - Public Properties
     
     public typealias Content = AuthTokens?
@@ -32,7 +32,7 @@ public struct UserRegistrationEndpoint: UploadEndpoint {
         return try JSONDecoder.default.decode(AuthTokens.self, from: body)
     }
     
-    public func makeRequest() throws -> (URLRequest, UploadEndpointBody) {
+    public func makeRequest() throws -> URLRequest {
         // prepare json data
         let json: [String: Any] = ["email": email,
                                    "password": password]
@@ -48,7 +48,7 @@ public struct UserRegistrationEndpoint: UploadEndpoint {
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        return (request, .data(jsonData))
+        return request
     }
     
 }

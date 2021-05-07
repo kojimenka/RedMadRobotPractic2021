@@ -29,6 +29,7 @@ public struct GetFavouritePostsEndpoint: Endpoint {
     }
     
     public func content(from response: URLResponse?, with body: Data) throws -> [PostInfo] {
+        try ResponseValidator.validate(response, with: body)
         let content = try JSONDecoder.default.decode([PostInfo].self, from: body)
         return content 
     }

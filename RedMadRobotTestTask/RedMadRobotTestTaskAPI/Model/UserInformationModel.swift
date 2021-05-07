@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserInformation: Codable {
+public struct UserInformation: Codable, Equatable {
     
     public var id: String
     public var firstName: String

@@ -5,32 +5,45 @@
 //  Created by Дмитрий Марченков on 19.04.2021.
 //
 
-final class RegistrationEmailValidator: Validator {
-    
-    typealias ValueType = String
-    
-    // MARK: - Public Properties
-    
-    public var errorMessage: String = "Вы не ввели email"
+import Foundation
 
+enum EmailValidatorError: Error {
+    case emptyEmail
+    case toShortEmail
+    case emailNotContainAT
+}
+
+extension EmailValidatorError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .emptyEmail:
+            return "Вы не ввели email"
+        case .emailNotContainAT:
+            return "Email Должен содержать @"
+        case .toShortEmail:
+            return "Email Должен содержать больше 7 символов"
+        }
+    }
+}
+
+final class EmailValidator: Validator {
+        
     // MARK: - Public Methods
     
-    public func isValid(value: String) -> Bool {
+    func isValid(value: String) throws -> Bool {
         if value.isEmpty {
-            errorMessage = "Вы не ввели email"
-            return false
+            throw EmailValidatorError.emptyEmail
         }
         
         if value.count < 7 {
-            errorMessage = "Email Должен содержать больше 7 символов"
-            return false
+            throw EmailValidatorError.toShortEmail
         }
         
         if !value.contains(where: { $0 == "@" }) {
-            errorMessage = "Email Должен содержать @"
-            return false
+            throw EmailValidatorError.emailNotContainAT
         }
         
         return true
     }
+    
 }

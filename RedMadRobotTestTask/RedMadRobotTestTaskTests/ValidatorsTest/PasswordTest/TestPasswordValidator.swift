@@ -13,65 +13,85 @@ final class TestPasswordValidator: XCTestCase {
     
     // MARK: - Properties
     
-    private var passwordValidator: RegistrationPasswordValidator!
+    private var passwordValidator: Validator!
     
     // MARK: - XCTest
-
-    override func setUpWithError() throws {
-        passwordValidator = RegistrationPasswordValidator()
+    
+    override func setUp() {
+        super.setUp()
+        passwordValidator = PasswordValidator()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
+        super.tearDown()
         passwordValidator = nil
     }
     
     // MARK: - Methods
     
     func testEmptyPassword() {
-        
         let validValue: String = ""
-        let expectationResult = false
-        let validateResult: Bool?
         
-        validateResult = passwordValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
+        do {
+            _ = try passwordValidator.isValid(value: validValue)
+            XCTFail("Password validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? PasswordValidatorError,
+                PasswordValidatorError.emptyPassword)
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                PasswordValidatorError.emptyPassword.localizedDescription
+            )
+        }
     }
     
     func testPasswordIsToShort() {
-        
         let validValue = "Foo"
-        let expectationResult = false
-        let validateResult: Bool?
         
-        validateResult = passwordValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
-        
+        do {
+            _ = try passwordValidator.isValid(value: validValue)
+            XCTFail("Password validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? PasswordValidatorError,
+                PasswordValidatorError.toShortPassword)
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                PasswordValidatorError.toShortPassword.localizedDescription
+            )
+        }
     }
     
     func testPasswordHasDigits() {
-        
         let validValue = "FooBar"
-        let expectationResult = false
-        let validateResult: Bool?
         
-        validateResult = passwordValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
-        
+        do {
+            _ = try passwordValidator.isValid(value: validValue)
+            XCTFail("Password validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? PasswordValidatorError,
+                PasswordValidatorError.notContainDigits)
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                PasswordValidatorError.notContainDigits.localizedDescription
+            )
+        }
     }
     
     func testSuccessPasswordFill() {
-        
         let validValue = "FooBar123"
-        let expectationResult = true
-        let validateResult: Bool?
         
-        validateResult = passwordValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
-        
+        do {
+            let validationResult = try passwordValidator.isValid(value: validValue)
+            XCTAssertEqual(validationResult, true)
+        } catch _ {
+            XCTFail("Password validator doesn't work")
+        }
     }
-
+    
 }

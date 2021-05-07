@@ -7,34 +7,44 @@
 
 import Foundation
 
-final class RegistrationPasswordValidator: Validator {
-    
-    typealias ValueType = String
-    
-    // MARK: - Public Properties
-    
-    public var errorMessage: String = "Вы не ввели пароль"
-    
+enum PasswordValidatorError: Error {
+    case emptyPassword
+    case toShortPassword
+    case notContainDigits
+}
+
+extension PasswordValidatorError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .emptyPassword:
+            return "Вы не ввели пароль"
+        case .toShortPassword:
+            return "Пароль должен содержать больше 4 символов"
+        case .notContainDigits:
+            return "Пароль должен содержать хотя бы одно число"
+        }
+    }
+}
+
+final class PasswordValidator: Validator {
+
     // MARK: - Public Methods
     
-    public func isValid(value: String) -> Bool {
+    public func isValid(value: String) throws -> Bool {
         
         if value.isEmpty {
-            errorMessage = "Вы не ввели пароль"
-            return false
+            throw PasswordValidatorError.emptyPassword
         }
         
         if value.count < 4 {
-            errorMessage = "Пароль должен содержать больше 4 символов"
-            return false
+            throw PasswordValidatorError.toShortPassword
         }
         
         let decimalCharacters = CharacterSet.decimalDigits
         let decimalRange = value.rangeOfCharacter(from: decimalCharacters)
         
         if decimalRange == nil {
-            errorMessage = "Пароль должен содержать хотя бы одно число"
-            return false
+            throw PasswordValidatorError.notContainDigits
         }
         
         return true

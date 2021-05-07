@@ -13,7 +13,7 @@ enum KeyboardAction {
 }
 
 protocol AuthorizationTextFieldDelegate: AnyObject {
-    func changeText(view: AuthorizationTextField, text: String)
+    func changeText(view: AuthorizationTextField, text: String) throws
     func selectedAuthorizationTextField(view: AuthorizationTextField)
     func keyboardHide()
 }
@@ -93,7 +93,7 @@ final class AuthorizationTextField: UIView {
     }
     
     @objc private func changeText() {
-        delegate?.changeText(view: self, text: textField.text ?? "")
+        try? delegate?.changeText(view: self, text: textField.text ?? "")
     }
 
 }

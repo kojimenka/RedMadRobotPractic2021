@@ -10,51 +10,71 @@ import XCTest
 @testable import RedMadRobotTestTask
 
 final class TestCityValidator: XCTestCase {
-    
+
     // MARK: - Properties
-    
-    private var cityValidator: RegistrationCityValidator!
+
+    private var cityValidator: Validator!
 
     // MARK: - XCTest
-    
-    override func setUpWithError() throws {
-        cityValidator = RegistrationCityValidator()
+
+    override func setUp() {
+        super.setUp()
+        cityValidator = CityValidator()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
+        super.tearDown()
         cityValidator = nil
     }
-    
-    // MARK: - Methods
 
+    // MARK: - Methods
+    
     func testIsCityEmpty() {
         let validValue: String = ""
-        let expectationResult = false
-        let validateResult: Bool?
-        
-        validateResult = cityValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
+
+        do {
+            _ = try cityValidator.isValid(value: validValue)
+            XCTFail("City validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? CityValidatorError,
+                CityValidatorError.emptyCity
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                CityValidatorError.emptyCity.localizedDescription
+            )
+        }
     }
-    
+
     func testIsCityToShort() {
         let validValue = "Foo"
-        let expectationResult = false
-        let validateResult: Bool?
-        
-        validateResult = cityValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
+        do {
+            _ = try cityValidator.isValid(value: validValue)
+            XCTFail("City validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? CityValidatorError,
+                CityValidatorError.toShortCityName
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                CityValidatorError.toShortCityName.localizedDescription
+            )
+        }
     }
-    
+
     func testSuccessFillCity() {
         let validValue = "Bryansk"
-        let expectationResult = true
-        let validateResult: Bool?
-        
-        validateResult = cityValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
+
+        do {
+            let validationResult = try cityValidator.isValid(value: validValue)
+            XCTAssertEqual(validationResult, true)
+        } catch _ {
+            XCTFail("City validator doesn't work")
+        }
     }
-    
+
 }

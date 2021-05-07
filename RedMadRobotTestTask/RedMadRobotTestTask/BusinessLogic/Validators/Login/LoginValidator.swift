@@ -7,33 +7,44 @@
 
 import Foundation
 
-final class RegistrationLoginValidator: Validator {
-    
-    typealias ValueType = String
-    
-    // MARK: - Public Properties
-    
-    var errorMessage: String = "Вы не ввели логин"
-    
+enum LoginValidatorError: Error {
+    case emptyLogin
+    case toShortLogin
+    case toLongLogin
+}
+
+extension LoginValidatorError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .emptyLogin:
+            return "Вы не ввели логин"
+        case .toShortLogin:
+            return "Логин должен содержать больше 7 символов"
+        case .toLongLogin:
+            return "Логин должен содержать меньше 14 символов"
+        }
+    }
+}
+
+final class LoginValidator: Validator {
+        
     // MARK: - Public Methods
 
-    func isValid(value: String) -> Bool {
+    func isValid(value: String) throws -> Bool {
         
         if value.isEmpty {
-            errorMessage = "Вы не ввели логин"
-            return false
+            throw LoginValidatorError.emptyLogin
         }
         
         if value.count < 7 {
-            errorMessage = "Логин Должен содержать больше 7 символов"
-            return false
+            throw LoginValidatorError.toShortLogin
         }
         
         if value.count > 14 {
-            errorMessage = "Логин Должен содержать меньше 14 символов"
-            return false
+            throw LoginValidatorError.toLongLogin
         }
         
         return true
     }
+    
 }

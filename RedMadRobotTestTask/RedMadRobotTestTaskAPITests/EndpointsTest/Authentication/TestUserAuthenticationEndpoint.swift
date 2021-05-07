@@ -22,7 +22,7 @@ final class TestUserAuthenticationEndpoint: XCTestCase {
             password: password
         )
 
-        let urlRequest = try endpoint.makeRequest().0
+        let urlRequest = try endpoint.makeRequest()
       
         assertPOST(urlRequest)
         assertURL(urlRequest, "auth/login")

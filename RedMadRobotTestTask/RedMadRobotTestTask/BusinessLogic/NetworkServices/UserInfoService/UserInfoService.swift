@@ -51,7 +51,7 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         completion: @escaping (Result<PostInfo, Error>) -> Void)
     -> Progress {
         let endPoint = AddNewPostEndpoint(postInfo: postInfo,
-                                          token: UserDefaultsUserStorage().accessToken!)
+                                          token: UserDefaultsUserStorage().accessToken)
         return apiClient.request(endPoint, completionHandler: completion)
     }
     
@@ -62,7 +62,7 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         completion: @escaping (Result<Void, Error>) -> Void)
      -> Progress {
         let endPoint = UpdateUserInfoEndpoint(user: user,
-                                              token: UserDefaultsUserStorage().accessToken!)
+                                              token: UserDefaultsUserStorage().accessToken)
         return apiClient.request(endPoint, completionHandler: completion)
     }
     

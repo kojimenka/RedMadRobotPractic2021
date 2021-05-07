@@ -13,65 +13,88 @@ final class TestLoginValidator: XCTestCase {
     
     // MARK: - Properties
 
-    private var loginValidator: RegistrationLoginValidator!
+    private var loginValidator: Validator!
     
     // MARK: - XCTest
     
-    override func setUpWithError() throws {
-        loginValidator = RegistrationLoginValidator()
+    override func setUp() {
+        super.setUp()
+        loginValidator = LoginValidator()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
+        super.tearDown()
         loginValidator = nil
     }
     
     // MARK: - Methods
     
     func testEmptyLogin() {
-        
         let validValue: String = ""
-        let expectationResult = false
-        let validateResult: Bool?
-        
-        validateResult = loginValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
+      
+        do {
+           _ = try loginValidator.isValid(value: validValue)
+            XCTFail("Login Validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? LoginValidatorError,
+                LoginValidatorError.emptyLogin
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                LoginValidatorError.emptyLogin.localizedDescription
+            )
+        }
     }
     
     func testLoginIsToShort() {
-        
         let validValue = "FooBar"
-        let expectationResult = false
-        let validateResult: Bool?
-        
-        validateResult = loginValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
-        
+
+        do {
+           _ = try loginValidator.isValid(value: validValue)
+            XCTFail("Login Validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? LoginValidatorError,
+                LoginValidatorError.toShortLogin
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                LoginValidatorError.toShortLogin.localizedDescription
+            )
+        }
     }
     
     func testLoginIsToLong() {
-        
         let validValue = "FooBar BarBuz FooBar BarBuz FooBar BarBuz"
-        let expectationResult = false
-        let validateResult: Bool?
         
-        validateResult = loginValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
-        
+        do {
+           _ = try loginValidator.isValid(value: validValue)
+            XCTFail("Login Validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? LoginValidatorError,
+                LoginValidatorError.toLongLogin
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                LoginValidatorError.toLongLogin.localizedDescription
+            )
+        }
     }
     
     func testSuccessLoginFill() {
-        
         let validValue = "FooBar12"
-        let expectationResult = true
-        let validateResult: Bool?
         
-        validateResult = loginValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
-        
+        do {
+            let validateResult = try loginValidator.isValid(value: validValue)
+            XCTAssertEqual(validateResult, true)
+        } catch _ {
+            XCTFail("Login Validation change logic")
+        }
     }
 
 }

@@ -53,12 +53,9 @@ extension FeedScreenVC: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath)
     -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: FeedScreenCell.identifier,
-            for: indexPath) as! FeedScreenCell
-        
+        let cell: FeedScreenCell = collectionView.dequeueCell(for: indexPath)
         cell.backgroundColor = .red
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        
         return cell
     }
 }

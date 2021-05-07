@@ -15,21 +15,12 @@ class RegistrationView: UIView {
     
     // MARK: - Public Properties
     weak public var delegate: RegistrationViewDelegate?
-    
-    public var stringValidators = Validated<String>([])
-    public var dateValidators = Validated<Date>([])
+    var allTextFields: [AuthorizationTextField] = []
     
     public var isUserFillScreen: Bool = false {
         didSet {
             delegate?.userChangeFillState(isUserFillScreen: isUserFillScreen)
         }
-    }
-    
-    // MARK: - Initializers
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupValidators()
     }
     
     // MARK: - Private Properties
@@ -38,23 +29,24 @@ class RegistrationView: UIView {
     
     // MARK: - Public Methods
     
-    public func setupValidators() {}
-    
     public func checkForWarning(controller: UIViewController) {
-        let allErrors = stringValidators.errors + dateValidators.errors
-        
-        guard let error = allErrors.first else { return }
-        let alert = UIAlertController.createAlert(alertText: error.localizedDescription)
-        controller.present(alert, animated: true)
+        for textField in allTextFields {
+            do {
+                _ = try changeText(view: textField, text: textField.currentText)
+            } catch let error {
+                let alert = UIAlertController.createAlert(alertText: error.localizedDescription)
+                controller.present(alert, animated: true)
+            }
+        }
     }
-        
+    
 }
 
 // MARK: - TextField Delegate
 extension RegistrationView: AuthorizationTextFieldDelegate {
     
     // This method override in inheritor class
-    @objc public func changeText(view: AuthorizationTextField, text: String) {}
+    @objc public func changeText(view: AuthorizationTextField, text: String) throws {}
     
     func selectedAuthorizationTextField(view: AuthorizationTextField) {
         guard currentSelectedTextView != view else { return }

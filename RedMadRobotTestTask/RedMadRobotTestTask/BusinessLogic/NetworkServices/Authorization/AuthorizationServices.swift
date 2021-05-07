@@ -21,7 +21,10 @@ public enum AuthorizationMethods {
 
 public protocol AuthorizationServiceProtocol {
     var isAuthorized: Bool { get }
-    func authorizationWith(_ method: AuthorizationMethods, completion: @escaping ((Result<Void, Error>) -> Void))
+    
+    func authorizationWith(
+        _ method: AuthorizationMethods,
+        completion: @escaping ((Result<Void, Error>) -> Void))
     
     func signIn(
         email: String,
@@ -36,7 +39,7 @@ public protocol AuthorizationServiceProtocol {
     -> Progress
     
     func logout(
-        completion: @escaping (Result<Void, Error>) -> Void)
+        completion: @escaping (() -> Void))
     -> Progress
     
     func refreshToken(
@@ -91,21 +94,16 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
     }
     
     public func logout(
-        completion: @escaping (Result<Void, Error>) -> Void)
+        completion: @escaping (() -> Void))
     -> Progress {
         let endPoint = LogoutEndpoint()
-        return apiClient.request(endPoint) { [weak self] result in
+        return apiClient.request(endPoint) { [weak self] _ in
             guard let self = self else { return }
             
             self.storage.accessToken = nil
             self.storage.refreshToken = nil
             
-            switch result {
-            case .success:
-                completion(.success(()))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion()
         }
     }
     
@@ -115,7 +113,7 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
         let endpoint = UserLoginEndpoint(email: email, password: password)
-        return apiClient.upload(endpoint) { [weak self] result in
+        return apiClient.request(endpoint) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
@@ -137,7 +135,7 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
     -> Progress {
         let endpoint = UserRegistrationEndpoint(email: email, password: password)
         
-        return apiClient.upload(endpoint) { [weak self] result in
+        return apiClient.request(endpoint) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
@@ -156,11 +154,10 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
         completion: @escaping (Result<Void, Error>) -> Void)
      -> Progress {
         let endPoint = RefreshUserTokenEndpoint(token: storage.refreshToken ?? "")
-        return apiClient.upload(endPoint) { [weak self] result in
+        return apiClient.request(endPoint) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
-                print("Check \(token)")
                 self.storage.accessToken = token.accessToken
                 self.storage.refreshToken = token.refreshToken
                 completion(.success(()))
@@ -197,8 +194,8 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
                 print("Token: \(result.token?.tokenString ?? "")")
                 self.authorizationCompletion?(.success(()))
             } else {
-                let error = ValidationError(message: AuthorizationErrors.facebookFailure.rawValue)
-                self.authorizationCompletion?(.failure(error))
+//                let error = ValidationError(message: AuthorizationErrors.facebookFailure.rawValue)
+//                self.authorizationCompletion?(.failure(error))
             }
         }
     }

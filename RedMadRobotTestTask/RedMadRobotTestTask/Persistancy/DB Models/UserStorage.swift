@@ -15,32 +15,40 @@ public protocol UserStorage {
 }
 
 public final class UserDefaultsUserStorage: UserStorage {
-            
+                
     // MARK: - Public Properties
     
     public var refreshToken: String? {
         get {
-            return UserDefaults.standard.string(forKey: UserDefaultsCase.refreshToken)
+            return userDefaults.string(forKey: UserDefaultsCase.refreshToken)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: UserDefaultsCase.refreshToken)
+            userDefaults.set(newValue, forKey: UserDefaultsCase.refreshToken)
         }
     }
     
     public var accessToken: String? {
         get {
-            return UserDefaults.standard.string(forKey: UserDefaultsCase.accessToken)
+            return userDefaults.string(forKey: UserDefaultsCase.accessToken)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: UserDefaultsCase.accessToken)
+            userDefaults.set(newValue, forKey: UserDefaultsCase.accessToken)
         }
     }
         
     // MARK: - Private Properties
     
-    struct UserDefaultsCase {
+    private let userDefaults: UserDefaults
+    
+    private struct UserDefaultsCase {
         static let refreshToken = "KEY_REFRESH_USER_TOKEN"
         static let accessToken = "KEY_ACCESS_USER_TOKEN"
     }
     
+    // MARK: - Init
+    
+    init(userDefaults: UserDefaults = UserDefaults.standard) {
+        self.userDefaults = userDefaults
+    }
+
 }

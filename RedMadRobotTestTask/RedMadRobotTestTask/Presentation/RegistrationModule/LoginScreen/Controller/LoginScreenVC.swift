@@ -13,12 +13,12 @@ final class LoginScreenVC: UIViewController {
     
     // MARK: - Private Properties
     
-    private let authorizationViewModel: AuthorizationServiceProtocol
+    private let authorizationService: AuthorizationServiceProtocol
     
     // MARK: - Initializers
     
     init(authorizationViewModel: AuthorizationServiceProtocol) {
-        self.authorizationViewModel = authorizationViewModel
+        self.authorizationService = authorizationViewModel
         super.init(nibName: R.nib.loginScreenVC.name, bundle: R.nib.loginScreenVC.bundle)
     }
     
@@ -31,22 +31,6 @@ final class LoginScreenVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        
-//        let mockClient = MockClient()
-//        let mockStorage = MockStorage()
-//        let authService = AuthorizationServices(apiClient: mockClient, storage: mockStorage)
-//
-//        authService.signIn(email: "Test", password: "Test") { (res) in
-//            switch res {
-//            case .success:
-//                print("Check success")
-//            case .failure:
-//                print("Check failure")
-//            }
-//        }
-//
-//        print("Check", mockStorage.accessToken, mockStorage.refreshToken)
-//
     }
     
     // MARK: - IBAction
@@ -64,10 +48,10 @@ final class LoginScreenVC: UIViewController {
     }
     
     @IBAction private func loginWithGoogleAction(_ sender: Any) {
-        authorizationViewModel.authorizationWith(.google(presentationController: self)) { _ in }
+        authorizationService.authorizationWith(.google(presentationController: self)) { _ in }
     }
     
     @IBAction private func loginWithFacebook(_ sender: Any) {
-        authorizationViewModel.authorizationWith(.facebook) { _ in }
+        authorizationService.authorizationWith(.facebook) { _ in }
     }
 }

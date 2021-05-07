@@ -13,65 +13,88 @@ final class TestEmailValidator: XCTestCase {
     
     // MARK: - Properties
 
-    private var emailValidator: RegistrationEmailValidator!
+    private var emailValidator: Validator!
     
     // MARK: - XCTest
-
-    override func setUpWithError() throws {
-        emailValidator = RegistrationEmailValidator()
-    }
     
-    override func tearDownWithError() throws {
+    override func setUp() {
+        super.setUp()
+        emailValidator = EmailValidator()
+    }
+
+    override func tearDown() {
+        super.tearDown()
         emailValidator = nil
     }
     
     // MARK: - Methods
     
-    func testEmptyEmail() {
-        
+    func testEmptyEmail() throws {
         let validValue: String = ""
-        let expectationResult = false
-        let validateResult: Bool?
         
-        validateResult = emailValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
+        do {
+           _ = try emailValidator.isValid(value: validValue)
+            XCTFail("Email Validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? EmailValidatorError,
+                EmailValidatorError.emptyEmail
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                EmailValidatorError.emptyEmail.localizedDescription
+            )
+        }
     }
     
     func testEmailIsToShort() {
-        
         let validValue = "FooBar"
-        let expectationResult = false
-        let validateResult: Bool?
-        
-        validateResult = emailValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
-        
-    }
     
+        do {
+           _ = try emailValidator.isValid(value: validValue)
+            XCTFail("Email Validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? EmailValidatorError,
+                EmailValidatorError.toShortEmail
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                EmailValidatorError.toShortEmail.localizedDescription
+            )
+        }
+    }
+
     func testEmailContainAT() {
-        
         let validValue = "FooBar124"
-        let expectationResult = false
-        let validateResult: Bool?
         
-        validateResult = emailValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
-        
+        do {
+           _ = try emailValidator.isValid(value: validValue)
+            XCTFail("Email Validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? EmailValidatorError,
+                EmailValidatorError.emailNotContainAT
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                EmailValidatorError.emailNotContainAT.localizedDescription
+            )
+        }
     }
-    
+
     func testSuccessEmailFill() {
-        
         let validValue = "FooBar@gmail.com"
-        let expectationResult = true
-        let validateResult: Bool?
         
-        validateResult = emailValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
-        
+        do {
+            let validateResult = try emailValidator.isValid(value: validValue)
+            XCTAssertEqual(validateResult, true)
+        } catch _ {
+            XCTFail("Email Validation change logic")
+        }
     }
     
 }

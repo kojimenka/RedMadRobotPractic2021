@@ -13,49 +13,69 @@ final class TestNameValidator: XCTestCase {
     
     // MARK: - Properties
     
-    private var nameValidator: RegistrationNameValidator!
+    private var nameValidator: Validator!
     
     // MARK: - XCTest
-
-    override func setUpWithError() throws {
-        nameValidator = RegistrationNameValidator()
+    
+    override func setUp() {
+        super.setUp()
+        nameValidator = NameValidator()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
+        super.tearDown()
         nameValidator = nil
     }
-
+    
     // MARK: - Methods
     
     func testIsNameEmpty() {
-        
         let validValue: String = ""
-        let expectationResult = false
-        let validateResult: Bool?
         
-        validateResult = nameValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
+        do {
+            _ = try nameValidator.isValid(value: validValue)
+            XCTFail("Name validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? NameValidatorError,
+                NameValidatorError.emptyName
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                NameValidatorError.emptyName.localizedDescription
+            )
+        }
     }
-
+    
     func testIsNameToShort() {
         let validValue = "F"
-        let expectationResult = false
-        let validateResult: Bool?
         
-        validateResult = nameValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
+        do {
+            _ = try nameValidator.isValid(value: validValue)
+            XCTFail("Name validator doesn't work")
+        } catch let error {
+            XCTAssertEqual(
+                error as? NameValidatorError,
+                NameValidatorError.toShortName
+            )
+            
+            XCTAssertEqual(
+                error.localizedDescription,
+                NameValidatorError.toShortName.localizedDescription
+            )
+        }
     }
     
     func testSuccessFillName() {
         let validValue = "Dima"
-        let expectationResult = true
-        let validateResult: Bool?
         
-        validateResult = nameValidator.isValid(value: validValue)
-        
-        XCTAssertEqual(expectationResult, validateResult)
+        do {
+            let validationResult = try nameValidator.isValid(value: validValue)
+            XCTAssertEqual(validationResult, true)
+        } catch _ {
+            XCTFail("Name validator doesn't work")
+        }
     }
     
 }

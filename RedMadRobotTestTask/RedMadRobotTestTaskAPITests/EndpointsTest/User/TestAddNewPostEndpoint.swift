@@ -13,37 +13,24 @@ final class TestAddNewPostEndpoint: XCTestCase {
 
     func testMakeRequest() throws {
         
-        let jsonString = """
-                    {
-                        "id": "c73ad791-ffdf-4a81-903b-cef52b25f0f9",
-                        "text": "Hello, World",
-                        "image_url": null,
-                        "lon": null,
-                        "lat": null,
-                        "likes": 6,
-                        "author": {
-                            "id": "",
-                            "first_name": "",
-                            "last_name": "",
-                            "birth_day": "",
-                            "nickname": "",
-                            "avatar_url": null
-                        }
-                    }
-                """
+        let userInfo = UserInformation(
+            id: "1234",
+            firstName: "Foo",
+            lastName: "Bar",
+            nickname: "kojimenka",
+            avatarUrl: nil,
+            birthDay: "123"
+        )
         
-        let jsonData = jsonString.data(using: .utf8)!
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
-        let post: PostInfo
-        
-        do {
-            post = try decoder.decode(PostInfo.self, from: jsonData)
-        } catch let error {
-            print("Check Failure \(error.localizedDescription)")
-            return
-        }
+        let post = PostInfo(
+            id: "1234",
+            text: nil,
+            avatarUrl: nil,
+            lon: nil,
+            lat: nil,
+            likes: 0,
+            author: userInfo
+        )
         
         let token = "FooBar123"
         
@@ -56,6 +43,42 @@ final class TestAddNewPostEndpoint: XCTestCase {
       
         assertPOST(urlRequest)
         assertURL(urlRequest, "https://interns2021.redmadrobot.com/me/posts")
+    }
+    
+    func testMakeFailureRequest() throws {
+        
+        let userInfo = UserInformation(
+            id: "1234",
+            firstName: "Foo",
+            lastName: "Bar",
+            nickname: "kojimenka",
+            avatarUrl: nil,
+            birthDay: "123"
+        )
+        
+        let post = PostInfo(
+            id: "1234",
+            text: nil,
+            avatarUrl: nil,
+            lon: nil,
+            lat: nil,
+            likes: 0,
+            author: userInfo
+        )
+        
+        let token: String? = nil
+        
+        let endpoint = AddNewPostEndpoint(
+            postInfo: post,
+            token: token
+        )
+
+        do {
+            _ = try endpoint.makeRequest()
+            XCTFail("Failure work wrong")
+        } catch let error {
+            XCTAssertEqual(error.localizedDescription, DefaultServiceErrors.nilToken.localizedDescription)
+        }
     }
 
 }

@@ -5,26 +5,36 @@
 //  Created by Дмитрий Марченков on 20.04.2021.
 //
 
-final class RegistrationNameValidator: Validator {
-    
-    typealias ValueType = String
-    
-    // MARK: - Public Properties
-    
-    public var errorMessage: String = "Вы не ввели имя"
+import Foundation
 
+enum NameValidatorError: Error {
+    case emptyName
+    case toShortName
+}
+
+extension NameValidatorError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .emptyName:
+            return "Вы не ввели имя"
+        case .toShortName:
+            return "Имя должно содержать больше 2 символов"
+        }
+    }
+}
+
+final class NameValidator: Validator {
+    
     // MARK: - Public Methods
     
-    public func isValid(value: String) -> Bool {
+    public func isValid(value: String) throws -> Bool {
         
         if value.isEmpty {
-            errorMessage = "Вы не ввели имя"
-            return false
+            throw NameValidatorError.emptyName
         }
         
         if value.count < 2 {
-            errorMessage = "Имя должно содержать больше 2 символов"
-            return false
+            throw NameValidatorError.toShortName
         }
         
         return true
