@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CheckKeyboardViewModelDelegate: class {
+protocol CheckKeyboardViewModelDelegate: AnyObject {
     func keyboardAction(action: KeyboardAction)
 }
 

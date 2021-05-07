@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FC0FCA1D2EF49294F218932 /* Pods_RedMadRobotTestTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */; };
 		2C025EB9262E05860035B84E /* CheckKeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C025EB8262E05860035B84E /* CheckKeyboardViewModel.swift */; };
 		2C025EBE262E0CB90035B84E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C025EBD262E0CB90035B84E /* RegistrationView.swift */; };
 		2C04C0D7262E2E14005F493D /* SignUpContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */; };
@@ -37,6 +38,28 @@
 		2C3B72B5262C39F10076DF18 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B72B3262C39F10076DF18 /* SignInVC.swift */; };
 		2C3B72B6262C39F10076DF18 /* SignInVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3B72B4262C39F10076DF18 /* SignInVC.xib */; };
 		2C3B72BF262C3FAF0076DF18 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B72BE262C3FAF0076DF18 /* AppTabBarController.swift */; };
+		2C46F9EB264478EF00298446 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46F9EA264478EF00298446 /* MockClient.swift */; };
+		2C46F9F326447C0B00298446 /* LoginAuthorizationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46F9F226447C0B00298446 /* LoginAuthorizationServiceTest.swift */; };
+		2C46F9F826447F4100298446 /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46F9F726447F4100298446 /* MockStorage.swift */; };
+		2C46FA0C2644859A00298446 /* AuthMockModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA0B2644859A00298446 /* AuthMockModels.swift */; };
+		2C46FA112644874600298446 /* MockWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA102644874600298446 /* MockWarnings.swift */; };
+		2C46FA1626448B0400298446 /* LogoutAuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA1526448B0400298446 /* LogoutAuthorizationTest.swift */; };
+		2C46FA1B26448C4C00298446 /* SignUpAuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA1A26448C4C00298446 /* SignUpAuthorizationTest.swift */; };
+		2C46FA2026448D1100298446 /* RefreshTokenAuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA1F26448D1100298446 /* RefreshTokenAuthorizationTest.swift */; };
+		2C46FA26264493E400298446 /* GetUserInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA25264493E400298446 /* GetUserInfoTest.swift */; };
+		2C46FA2E2644964C00298446 /* GetUserPostsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA2D2644964C00298446 /* GetUserPostsTest.swift */; };
+		2C46FA332644973900298446 /* GetUserFriendsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA322644973900298446 /* GetUserFriendsTest.swift */; };
+		2C46FA38264497EC00298446 /* AddFriendUserServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA37264497EC00298446 /* AddFriendUserServiceTest.swift */; };
+		2C46FA3D264498E600298446 /* AddPostUserServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA3C264498E600298446 /* AddPostUserServiceTest.swift */; };
+		2C46FA4226449C2500298446 /* UpdateUserInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA4126449C2500298446 /* UpdateUserInfoTest.swift */; };
+		2C46FA4726449CE000298446 /* DeleteFriendUserServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA4626449CE000298446 /* DeleteFriendUserServiceTest.swift */; };
+		2C46FA4C26449D6800298446 /* DeletePostUserServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA4B26449D6800298446 /* DeletePostUserServiceTest.swift */; };
+		2C46FA5526449EB400298446 /* GetFeedTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA5426449EB400298446 /* GetFeedTest.swift */; };
+		2C46FA5D26449FF900298446 /* GetFavouritePostsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA5C26449FF900298446 /* GetFavouritePostsTest.swift */; };
+		2C46FA622644A04D00298446 /* AddLikeToPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA612644A04D00298446 /* AddLikeToPostTest.swift */; };
+		2C46FA672644A1D000298446 /* RemoveLikeFromPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA662644A1D000298446 /* RemoveLikeFromPostTest.swift */; };
+		2C46FA6D2644A27D00298446 /* GetSortedUsersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA6C2644A27D00298446 /* GetSortedUsersTest.swift */; };
+		2C46FA752644A33E00298446 /* GetSortedPostsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA742644A33E00298446 /* GetSortedPostsTest.swift */; };
 		2C480894262C52210075C0B3 /* FeedScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C480892262C52210075C0B3 /* FeedScreenVC.swift */; };
 		2C480895262C52210075C0B3 /* FeedScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C480893262C52210075C0B3 /* FeedScreenVC.xib */; };
 		2C4808A1262C53F70075C0B3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808A0262C53F70075C0B3 /* SignInViewModel.swift */; };
@@ -54,6 +77,24 @@
 		2C4808F5262CC5E70075C0B3 /* AuthorizationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808F4262CC5E70075C0B3 /* AuthorizationServices.swift */; };
 		2C4808FF262DA91E0075C0B3 /* AuthorizationTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4808FE262DA91E0075C0B3 /* AuthorizationTextField.xib */; };
 		2C480902262DAAF20075C0B3 /* AuthorizationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C480901262DAAF20075C0B3 /* AuthorizationTextField.swift */; };
+		2C68294826406CB400E76036 /* TestUserAuthenticationEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68294726406CB400E76036 /* TestUserAuthenticationEndpoint.swift */; };
+		2C68294E26406E8700E76036 /* Asserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68294D26406E8700E76036 /* Asserts.swift */; };
+		2C682954264076FC00E76036 /* TestUserRegistrationEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C682953264076FC00E76036 /* TestUserRegistrationEndpoint.swift */; };
+		2C6829592640778F00E76036 /* TestLogoutEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6829582640778F00E76036 /* TestLogoutEndpoint.swift */; };
+		2C68295E264077EE00E76036 /* TestRefreshUserTokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68295D264077ED00E76036 /* TestRefreshUserTokenEndpoint.swift */; };
+		2C6829642640787900E76036 /* TestGetUserInfoEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6829632640787900E76036 /* TestGetUserInfoEndpoint.swift */; };
+		2C68296C2640797F00E76036 /* TestGetUserPostsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68296B2640797F00E76036 /* TestGetUserPostsEndpoint.swift */; };
+		2C682971264079BB00E76036 /* TestGetUserFriendsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C682970264079BB00E76036 /* TestGetUserFriendsEndpoint.swift */; };
+		2C68297626407A0300E76036 /* TestAddFriendEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68297526407A0300E76036 /* TestAddFriendEndpoint.swift */; };
+		2C68297B26407A9B00E76036 /* TestAddNewPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68297A26407A9B00E76036 /* TestAddNewPostEndpoint.swift */; };
+		2C68298026407C7B00E76036 /* TestDeleteUserFriendEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68297F26407C7B00E76036 /* TestDeleteUserFriendEndpoint.swift */; };
+		2C68298526407D0000E76036 /* TestDeleteUserPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68298426407D0000E76036 /* TestDeleteUserPostEndpoint.swift */; };
+		2C68298B26407E2400E76036 /* TestGetFeedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68298A26407E2400E76036 /* TestGetFeedEndpoint.swift */; };
+		2C68299326407E9100E76036 /* TestGetFavouritePostsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68299226407E9100E76036 /* TestGetFavouritePostsEndpoint.swift */; };
+		2C68299826407F3600E76036 /* TestAddLikeToPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68299726407F3600E76036 /* TestAddLikeToPostEndpoint.swift */; };
+		2C68299D26407F9600E76036 /* TestRemoveLikeFromPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68299C26407F9600E76036 /* TestRemoveLikeFromPostEndpoint.swift */; };
+		2C6829A326407FF100E76036 /* TestGetSearchedUserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6829A226407FF100E76036 /* TestGetSearchedUserEndpoint.swift */; };
+		2C6829AB26408B4200E76036 /* TestGetSortedPostsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6829AA26408B4200E76036 /* TestGetSortedPostsEndpoint.swift */; };
 		2C7E12AF262B47DA00CA4073 /* UICollectionView_UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E12A7262B47D900CA4073 /* UICollectionView_UITableView+Extension.swift */; };
 		2C7E12B0262B47DA00CA4073 /* UIView.AnimationTransition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E12A8262B47DA00CA4073 /* UIView.AnimationTransition+Extension.swift */; };
 		2C7E12B1262B47DA00CA4073 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E12A9262B47DA00CA4073 /* UIViewController+Extension.swift */; };
@@ -76,7 +117,6 @@
 		2C938F9C2635A7E5002DF5C8 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C938F9B2635A7E5002DF5C8 /* UIAlertController+Extension.swift */; };
 		2CAE1A4826372E53006A4417 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A4726372E53006A4417 /* UserStorage.swift */; };
 		2CAE1A5F2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; };
-		2CAE1A662637340B006A4417 /* RedMadRobotTestTaskAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A652637340B006A4417 /* RedMadRobotTestTaskAPITests.swift */; };
 		2CAE1A682637340B006A4417 /* RedMadRobotTestTaskAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CAE1A6B2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; };
 		2CAE1A6C2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -109,11 +149,21 @@
 		2CCA912B262E251300D6A635 /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA912A262E251300D6A635 /* LoginValidator.swift */; };
 		2CCA9131262E28BC00D6A635 /* NameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9130262E28BC00D6A635 /* NameValidator.swift */; };
 		2CCA9135262E292C00D6A635 /* CityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9134262E292C00D6A635 /* CityValidator.swift */; };
-		2CCA9138262E298500D6A635 /* DayValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA9137262E298500D6A635 /* DayValidator.swift */; };
+		2CCCF400263DD5DF00D15877 /* FeedScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCF3FE263DD5DE00D15877 /* FeedScreenCell.swift */; };
+		2CCCF401263DD5DF00D15877 /* FeedScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCCF3FF263DD5DE00D15877 /* FeedScreenCell.xib */; };
+		2CCCF418263F2C9D00D15877 /* TestLoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCF417263F2C9D00D15877 /* TestLoginValidator.swift */; };
+		2CCCF41E263F349E00D15877 /* TestEmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCF41D263F349E00D15877 /* TestEmailValidator.swift */; };
+		2CCCF42A263F377900D15877 /* TestPasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCF429263F377900D15877 /* TestPasswordValidator.swift */; };
+		2CCCF432263F39CD00D15877 /* TestNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCF431263F39CD00D15877 /* TestNameValidator.swift */; };
+		2CCCF437263F3AA500D15877 /* TestCityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCF436263F3AA500D15877 /* TestCityValidator.swift */; };
 		2CDD2454262B3E5400501E77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD2453262B3E5400501E77 /* AppDelegate.swift */; };
 		2CDD2456262B3E5400501E77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD2455262B3E5400501E77 /* SceneDelegate.swift */; };
 		2CDD245D262B3E5600501E77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CDD245C262B3E5600501E77 /* Assets.xcassets */; };
 		2CDD2460262B3E5600501E77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CDD245E262B3E5600501E77 /* LaunchScreen.storyboard */; };
+		2CECFCAD264520EE00B3BD09 /* DefaultServiceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA7A26451FA100298446 /* DefaultServiceErrors.swift */; };
+		2CECFCB52645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECFCB42645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift */; };
+		2CECFCDF26452DB300B3BD09 /* IsUserAuthorizedTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECFCDE26452DB300B3BD09 /* IsUserAuthorizedTest.swift */; };
+		2CECFCE626452FC600B3BD09 /* UserDefaultsStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECFCE526452FC600B3BD09 /* UserDefaultsStorageTest.swift */; };
 		2CF47D0E2635529800F3C72B /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF47D0D2635529800F3C72B /* ServiceLayer.swift */; };
 		70CD53DCDDD56387925AFDE3 /* Pods_RedMadRobotTestTaskAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */; };
 		7111BBDF0A689192F1CC5A57 /* Pods_RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */; };
@@ -141,6 +191,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2CAE1A552637340A006A4417;
 			remoteInfo = RedMadRobotTestTaskAPI;
+		};
+		2CCCF40D263F1D5200D15877 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CDD2448262B3E5400501E77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2CDD244F262B3E5400501E77;
+			remoteInfo = RedMadRobotTestTask;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -191,6 +248,29 @@
 		2C3B72B3262C39F10076DF18 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		2C3B72B4262C39F10076DF18 /* SignInVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInVC.xib; sourceTree = "<group>"; };
 		2C3B72BE262C3FAF0076DF18 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
+		2C46F9EA264478EF00298446 /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
+		2C46F9F226447C0B00298446 /* LoginAuthorizationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAuthorizationServiceTest.swift; sourceTree = "<group>"; };
+		2C46F9F726447F4100298446 /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
+		2C46FA0B2644859A00298446 /* AuthMockModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMockModels.swift; sourceTree = "<group>"; };
+		2C46FA102644874600298446 /* MockWarnings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWarnings.swift; sourceTree = "<group>"; };
+		2C46FA1526448B0400298446 /* LogoutAuthorizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAuthorizationTest.swift; sourceTree = "<group>"; };
+		2C46FA1A26448C4C00298446 /* SignUpAuthorizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAuthorizationTest.swift; sourceTree = "<group>"; };
+		2C46FA1F26448D1100298446 /* RefreshTokenAuthorizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenAuthorizationTest.swift; sourceTree = "<group>"; };
+		2C46FA25264493E400298446 /* GetUserInfoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoTest.swift; sourceTree = "<group>"; };
+		2C46FA2D2644964C00298446 /* GetUserPostsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPostsTest.swift; sourceTree = "<group>"; };
+		2C46FA322644973900298446 /* GetUserFriendsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserFriendsTest.swift; sourceTree = "<group>"; };
+		2C46FA37264497EC00298446 /* AddFriendUserServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendUserServiceTest.swift; sourceTree = "<group>"; };
+		2C46FA3C264498E600298446 /* AddPostUserServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostUserServiceTest.swift; sourceTree = "<group>"; };
+		2C46FA4126449C2500298446 /* UpdateUserInfoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoTest.swift; sourceTree = "<group>"; };
+		2C46FA4626449CE000298446 /* DeleteFriendUserServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFriendUserServiceTest.swift; sourceTree = "<group>"; };
+		2C46FA4B26449D6800298446 /* DeletePostUserServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostUserServiceTest.swift; sourceTree = "<group>"; };
+		2C46FA5426449EB400298446 /* GetFeedTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedTest.swift; sourceTree = "<group>"; };
+		2C46FA5C26449FF900298446 /* GetFavouritePostsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavouritePostsTest.swift; sourceTree = "<group>"; };
+		2C46FA612644A04D00298446 /* AddLikeToPostTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLikeToPostTest.swift; sourceTree = "<group>"; };
+		2C46FA662644A1D000298446 /* RemoveLikeFromPostTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveLikeFromPostTest.swift; sourceTree = "<group>"; };
+		2C46FA6C2644A27D00298446 /* GetSortedUsersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSortedUsersTest.swift; sourceTree = "<group>"; };
+		2C46FA742644A33E00298446 /* GetSortedPostsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSortedPostsTest.swift; sourceTree = "<group>"; };
+		2C46FA7A26451FA100298446 /* DefaultServiceErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultServiceErrors.swift; sourceTree = "<group>"; };
 		2C480892262C52210075C0B3 /* FeedScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreenVC.swift; sourceTree = "<group>"; };
 		2C480893262C52210075C0B3 /* FeedScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedScreenVC.xib; sourceTree = "<group>"; };
 		2C4808A0262C53F70075C0B3 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -208,6 +288,24 @@
 		2C4808F4262CC5E70075C0B3 /* AuthorizationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationServices.swift; sourceTree = "<group>"; };
 		2C4808FE262DA91E0075C0B3 /* AuthorizationTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationTextField.xib; sourceTree = "<group>"; };
 		2C480901262DAAF20075C0B3 /* AuthorizationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationTextField.swift; sourceTree = "<group>"; };
+		2C68294726406CB400E76036 /* TestUserAuthenticationEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserAuthenticationEndpoint.swift; sourceTree = "<group>"; };
+		2C68294D26406E8700E76036 /* Asserts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asserts.swift; sourceTree = "<group>"; };
+		2C682953264076FC00E76036 /* TestUserRegistrationEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserRegistrationEndpoint.swift; sourceTree = "<group>"; };
+		2C6829582640778F00E76036 /* TestLogoutEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogoutEndpoint.swift; sourceTree = "<group>"; };
+		2C68295D264077ED00E76036 /* TestRefreshUserTokenEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRefreshUserTokenEndpoint.swift; sourceTree = "<group>"; };
+		2C6829632640787900E76036 /* TestGetUserInfoEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGetUserInfoEndpoint.swift; sourceTree = "<group>"; };
+		2C68296B2640797F00E76036 /* TestGetUserPostsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGetUserPostsEndpoint.swift; sourceTree = "<group>"; };
+		2C682970264079BB00E76036 /* TestGetUserFriendsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGetUserFriendsEndpoint.swift; sourceTree = "<group>"; };
+		2C68297526407A0300E76036 /* TestAddFriendEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddFriendEndpoint.swift; sourceTree = "<group>"; };
+		2C68297A26407A9B00E76036 /* TestAddNewPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddNewPostEndpoint.swift; sourceTree = "<group>"; };
+		2C68297F26407C7B00E76036 /* TestDeleteUserFriendEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDeleteUserFriendEndpoint.swift; sourceTree = "<group>"; };
+		2C68298426407D0000E76036 /* TestDeleteUserPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDeleteUserPostEndpoint.swift; sourceTree = "<group>"; };
+		2C68298A26407E2400E76036 /* TestGetFeedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGetFeedEndpoint.swift; sourceTree = "<group>"; };
+		2C68299226407E9100E76036 /* TestGetFavouritePostsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGetFavouritePostsEndpoint.swift; sourceTree = "<group>"; };
+		2C68299726407F3600E76036 /* TestAddLikeToPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddLikeToPostEndpoint.swift; sourceTree = "<group>"; };
+		2C68299C26407F9600E76036 /* TestRemoveLikeFromPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRemoveLikeFromPostEndpoint.swift; sourceTree = "<group>"; };
+		2C6829A226407FF100E76036 /* TestGetSearchedUserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGetSearchedUserEndpoint.swift; sourceTree = "<group>"; };
+		2C6829AA26408B4200E76036 /* TestGetSortedPostsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGetSortedPostsEndpoint.swift; sourceTree = "<group>"; };
 		2C7E12A7262B47D900CA4073 /* UICollectionView_UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView_UITableView+Extension.swift"; sourceTree = "<group>"; };
 		2C7E12A8262B47DA00CA4073 /* UIView.AnimationTransition+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView.AnimationTransition+Extension.swift"; sourceTree = "<group>"; };
 		2C7E12A9262B47DA00CA4073 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -235,7 +333,6 @@
 		2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedMadRobotTestTaskAPI.h; sourceTree = "<group>"; };
 		2CAE1A592637340A006A4417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CAE1A5E2637340B006A4417 /* RedMadRobotTestTaskAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedMadRobotTestTaskAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CAE1A652637340B006A4417 /* RedMadRobotTestTaskAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedMadRobotTestTaskAPITests.swift; sourceTree = "<group>"; };
 		2CAE1A672637340B006A4417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CAE1A7826373489006A4417 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		2CAE1A7F263734C8006A4417 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
@@ -265,18 +362,32 @@
 		2CCA912A262E251300D6A635 /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
 		2CCA9130262E28BC00D6A635 /* NameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameValidator.swift; sourceTree = "<group>"; };
 		2CCA9134262E292C00D6A635 /* CityValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityValidator.swift; sourceTree = "<group>"; };
-		2CCA9137262E298500D6A635 /* DayValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayValidator.swift; sourceTree = "<group>"; };
+		2CCCF3FE263DD5DE00D15877 /* FeedScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreenCell.swift; sourceTree = "<group>"; };
+		2CCCF3FF263DD5DE00D15877 /* FeedScreenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedScreenCell.xib; sourceTree = "<group>"; };
+		2CCCF408263F1D5200D15877 /* RedMadRobotTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedMadRobotTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CCCF40C263F1D5200D15877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CCCF417263F2C9D00D15877 /* TestLoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoginValidator.swift; sourceTree = "<group>"; };
+		2CCCF41D263F349E00D15877 /* TestEmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEmailValidator.swift; sourceTree = "<group>"; };
+		2CCCF429263F377900D15877 /* TestPasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPasswordValidator.swift; sourceTree = "<group>"; };
+		2CCCF431263F39CD00D15877 /* TestNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNameValidator.swift; sourceTree = "<group>"; };
+		2CCCF436263F3AA500D15877 /* TestCityValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCityValidator.swift; sourceTree = "<group>"; };
 		2CDD2450262B3E5400501E77 /* RedMadRobotTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedMadRobotTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDD2453262B3E5400501E77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CDD2455262B3E5400501E77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CDD245C262B3E5600501E77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CDD245F262B3E5600501E77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CDD2461262B3E5600501E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CECFCB42645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUpdateUserInfoEndpoint.swift; sourceTree = "<group>"; };
+		2CECFCDE26452DB300B3BD09 /* IsUserAuthorizedTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsUserAuthorizedTest.swift; sourceTree = "<group>"; };
+		2CECFCE526452FC600B3BD09 /* UserDefaultsStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageTest.swift; sourceTree = "<group>"; };
 		2CF47D0D2635529800F3C72B /* ServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
 		2CF47D152635560E00F3C72B /* UserInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationModel.swift; sourceTree = "<group>"; };
 		4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPITests/Pods-RedMadRobotTestTaskAPITests.debug.xcconfig"; sourceTree = "<group>"; };
 		45F1A9BBD0AF2E905F756A66 /* Pods-RedMadRobotTestTaskAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPI/Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E6BCB8E0327F84C7A3EF35E /* Pods-RedMadRobotTestTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskTests.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskTests/Pods-RedMadRobotTestTaskTests.release.xcconfig"; sourceTree = "<group>"; };
+		A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC62DFF9388310FEABBE8F23 /* Pods-RedMadRobotTestTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskTests/Pods-RedMadRobotTestTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF99F708E8D8C1F6AEEE220F /* Pods-RedMadRobotTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTask.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTaskAPITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB739DD1DED551A86E3864BB /* Pods-RedMadRobotTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTask.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask.release.xcconfig"; sourceTree = "<group>"; };
@@ -298,6 +409,14 @@
 			files = (
 				2CAE1A5F2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */,
 				70CD53DCDDD56387925AFDE3 /* Pods_RedMadRobotTestTaskAPITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CCCF405263F1D5200D15877 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC0FCA1D2EF49294F218932 /* Pods_RedMadRobotTestTaskTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +652,64 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		2C46F9E8264478D300298446 /* AuthorizationTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C46F9F226447C0B00298446 /* LoginAuthorizationServiceTest.swift */,
+				2C46FA1526448B0400298446 /* LogoutAuthorizationTest.swift */,
+				2C46FA1A26448C4C00298446 /* SignUpAuthorizationTest.swift */,
+				2C46FA1F26448D1100298446 /* RefreshTokenAuthorizationTest.swift */,
+				2CECFCDE26452DB300B3BD09 /* IsUserAuthorizedTest.swift */,
+			);
+			path = AuthorizationTest;
+			sourceTree = "<group>";
+		};
+		2C46F9E9264478E000298446 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2C46F9EA264478EF00298446 /* MockClient.swift */,
+				2C46F9F726447F4100298446 /* MockStorage.swift */,
+				2C46FA0B2644859A00298446 /* AuthMockModels.swift */,
+				2C46FA102644874600298446 /* MockWarnings.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		2C46FA24264493B000298446 /* UserInfoTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C46FA25264493E400298446 /* GetUserInfoTest.swift */,
+				2C46FA2D2644964C00298446 /* GetUserPostsTest.swift */,
+				2C46FA322644973900298446 /* GetUserFriendsTest.swift */,
+				2C46FA37264497EC00298446 /* AddFriendUserServiceTest.swift */,
+				2C46FA3C264498E600298446 /* AddPostUserServiceTest.swift */,
+				2C46FA4126449C2500298446 /* UpdateUserInfoTest.swift */,
+				2C46FA4626449CE000298446 /* DeleteFriendUserServiceTest.swift */,
+				2C46FA4B26449D6800298446 /* DeletePostUserServiceTest.swift */,
+			);
+			path = UserInfoTest;
+			sourceTree = "<group>";
+		};
+		2C46FA5326449E5800298446 /* FeedServiceTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C46FA5426449EB400298446 /* GetFeedTest.swift */,
+				2C46FA5C26449FF900298446 /* GetFavouritePostsTest.swift */,
+				2C46FA612644A04D00298446 /* AddLikeToPostTest.swift */,
+				2C46FA662644A1D000298446 /* RemoveLikeFromPostTest.swift */,
+			);
+			path = FeedServiceTest;
+			sourceTree = "<group>";
+		};
+		2C46FA6B2644A24800298446 /* SearchServiceTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C46FA6C2644A27D00298446 /* GetSortedUsersTest.swift */,
+				2C46FA742644A33E00298446 /* GetSortedPostsTest.swift */,
+			);
+			path = SearchServiceTest;
+			sourceTree = "<group>";
+		};
 		2C480890262C51EC0075C0B3 /* FeedModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,6 +871,71 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
+		2C68293C26406C3900E76036 /* EndpointsTest */ = {
+			isa = PBXGroup;
+			children = (
+				2C68294626406C7F00E76036 /* Authentication */,
+				2C6829622640786200E76036 /* User */,
+				2C68298926407D5600E76036 /* Feed */,
+				2C6829A126407FD500E76036 /* Search */,
+			);
+			path = EndpointsTest;
+			sourceTree = "<group>";
+		};
+		2C68294626406C7F00E76036 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				2C68294726406CB400E76036 /* TestUserAuthenticationEndpoint.swift */,
+				2C682953264076FC00E76036 /* TestUserRegistrationEndpoint.swift */,
+				2C6829582640778F00E76036 /* TestLogoutEndpoint.swift */,
+				2C68295D264077ED00E76036 /* TestRefreshUserTokenEndpoint.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		2C68294C26406E8700E76036 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2C68294D26406E8700E76036 /* Asserts.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2C6829622640786200E76036 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2C6829632640787900E76036 /* TestGetUserInfoEndpoint.swift */,
+				2C68296B2640797F00E76036 /* TestGetUserPostsEndpoint.swift */,
+				2C682970264079BB00E76036 /* TestGetUserFriendsEndpoint.swift */,
+				2C68297526407A0300E76036 /* TestAddFriendEndpoint.swift */,
+				2C68297A26407A9B00E76036 /* TestAddNewPostEndpoint.swift */,
+				2C68297F26407C7B00E76036 /* TestDeleteUserFriendEndpoint.swift */,
+				2C68298426407D0000E76036 /* TestDeleteUserPostEndpoint.swift */,
+				2CECFCB42645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		2C68298926407D5600E76036 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				2C68298A26407E2400E76036 /* TestGetFeedEndpoint.swift */,
+				2C68299226407E9100E76036 /* TestGetFavouritePostsEndpoint.swift */,
+				2C68299726407F3600E76036 /* TestAddLikeToPostEndpoint.swift */,
+				2C68299C26407F9600E76036 /* TestRemoveLikeFromPostEndpoint.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		2C6829A126407FD500E76036 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				2C6829A226407FF100E76036 /* TestGetSearchedUserEndpoint.swift */,
+				2C6829AA26408B4200E76036 /* TestGetSortedPostsEndpoint.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		2C7E12A1262B469600CA4073 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,7 +1084,7 @@
 			isa = PBXGroup;
 			children = (
 				2CAE1A7626373467006A4417 /* Common */,
-				2CAE1A8B26373531006A4417 /* EndPoint */,
+				2CAE1A8B26373531006A4417 /* Endpoints */,
 				2CAE1A8C26373537006A4417 /* Model */,
 				2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */,
 				2CAE1A592637340A006A4417 /* Info.plist */,
@@ -853,7 +1095,8 @@
 		2CAE1A642637340B006A4417 /* RedMadRobotTestTaskAPITests */ = {
 			isa = PBXGroup;
 			children = (
-				2CAE1A652637340B006A4417 /* RedMadRobotTestTaskAPITests.swift */,
+				2C68294C26406E8700E76036 /* Common */,
+				2C68293C26406C3900E76036 /* EndpointsTest */,
 				2CAE1A672637340B006A4417 /* Info.plist */,
 			);
 			path = RedMadRobotTestTaskAPITests;
@@ -862,6 +1105,7 @@
 		2CAE1A7626373467006A4417 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2C46FA7A26451FA100298446 /* DefaultServiceErrors.swift */,
 				2CAE1A7826373489006A4417 /* APIError.swift */,
 				2CAE1A7F263734C8006A4417 /* HTTPError.swift */,
 				2CAE1A83263734ED006A4417 /* ResponseValidator.swift */,
@@ -870,7 +1114,7 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		2CAE1A8B26373531006A4417 /* EndPoint */ = {
+		2CAE1A8B26373531006A4417 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
 				2CAE1A8D26373547006A4417 /* Base */,
@@ -879,7 +1123,7 @@
 				2C24D1A626389D14000855B8 /* Feed */,
 				2CBF51A72638CF5700B99042 /* Search */,
 			);
-			path = EndPoint;
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 		2CAE1A8C26373537006A4417 /* Model */ = {
@@ -971,7 +1215,6 @@
 				2CCA9124262E1FB900D6A635 /* Password */,
 				2CCA912D262E288700D6A635 /* Name */,
 				2CCA912E262E288C00D6A635 /* City */,
-				2CCA912F262E289300D6A635 /* Day */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -1016,18 +1259,84 @@
 			path = City;
 			sourceTree = "<group>";
 		};
-		2CCA912F262E289300D6A635 /* Day */ = {
+		2CCCF3FD263DD53C00D15877 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2CCA9137262E298500D6A635 /* DayValidator.swift */,
+				2CCCF3FE263DD5DE00D15877 /* FeedScreenCell.swift */,
+				2CCCF3FF263DD5DE00D15877 /* FeedScreenCell.xib */,
 			);
-			path = Day;
+			path = View;
+			sourceTree = "<group>";
+		};
+		2CCCF409263F1D5200D15877 /* RedMadRobotTestTaskTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C46F9E9264478E000298446 /* Mocks */,
+				2CECFCE326452F8300B3BD09 /* NetworkTests */,
+				2CCCF415263F2C0500D15877 /* ValidatorsTest */,
+				2CECFCE426452FA800B3BD09 /* StorageTest */,
+				2CCCF40C263F1D5200D15877 /* Info.plist */,
+			);
+			path = RedMadRobotTestTaskTests;
+			sourceTree = "<group>";
+		};
+		2CCCF415263F2C0500D15877 /* ValidatorsTest */ = {
+			isa = PBXGroup;
+			children = (
+				2CCCF416263F2C5600D15877 /* LoginTest */,
+				2CCCF41C263F347800D15877 /* EmailTest */,
+				2CCCF425263F372D00D15877 /* PasswordTest */,
+				2CCCF426263F373600D15877 /* NameTest */,
+				2CCCF427263F373D00D15877 /* CityTest */,
+			);
+			path = ValidatorsTest;
+			sourceTree = "<group>";
+		};
+		2CCCF416263F2C5600D15877 /* LoginTest */ = {
+			isa = PBXGroup;
+			children = (
+				2CCCF417263F2C9D00D15877 /* TestLoginValidator.swift */,
+			);
+			path = LoginTest;
+			sourceTree = "<group>";
+		};
+		2CCCF41C263F347800D15877 /* EmailTest */ = {
+			isa = PBXGroup;
+			children = (
+				2CCCF41D263F349E00D15877 /* TestEmailValidator.swift */,
+			);
+			path = EmailTest;
+			sourceTree = "<group>";
+		};
+		2CCCF425263F372D00D15877 /* PasswordTest */ = {
+			isa = PBXGroup;
+			children = (
+				2CCCF429263F377900D15877 /* TestPasswordValidator.swift */,
+			);
+			path = PasswordTest;
+			sourceTree = "<group>";
+		};
+		2CCCF426263F373600D15877 /* NameTest */ = {
+			isa = PBXGroup;
+			children = (
+				2CCCF431263F39CD00D15877 /* TestNameValidator.swift */,
+			);
+			path = NameTest;
+			sourceTree = "<group>";
+		};
+		2CCCF427263F373D00D15877 /* CityTest */ = {
+			isa = PBXGroup;
+			children = (
+				2CCCF436263F3AA500D15877 /* TestCityValidator.swift */,
+			);
+			path = CityTest;
 			sourceTree = "<group>";
 		};
 		2CDD2447262B3E5400501E77 = {
 			isa = PBXGroup;
 			children = (
 				2CDD2452262B3E5400501E77 /* RedMadRobotTestTask */,
+				2CCCF409263F1D5200D15877 /* RedMadRobotTestTaskTests */,
 				2CAE1A572637340A006A4417 /* RedMadRobotTestTaskAPI */,
 				2CAE1A642637340B006A4417 /* RedMadRobotTestTaskAPITests */,
 				2CDD2451262B3E5400501E77 /* Products */,
@@ -1042,6 +1351,7 @@
 				2CDD2450262B3E5400501E77 /* RedMadRobotTestTask.app */,
 				2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */,
 				2CAE1A5E2637340B006A4417 /* RedMadRobotTestTaskAPITests.xctest */,
+				2CCCF408263F1D5200D15877 /* RedMadRobotTestTaskTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1063,6 +1373,7 @@
 		2CE793A0262E038D0070F638 /* FeedScreen */ = {
 			isa = PBXGroup;
 			children = (
+				2CCCF3FD263DD53C00D15877 /* View */,
 				2C480891262C520B0075C0B3 /* Controller */,
 			);
 			path = FeedScreen;
@@ -1076,14 +1387,33 @@
 			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
+		2CECFCE326452F8300B3BD09 /* NetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C46F9E8264478D300298446 /* AuthorizationTest */,
+				2C46FA24264493B000298446 /* UserInfoTest */,
+				2C46FA5326449E5800298446 /* FeedServiceTest */,
+				2C46FA6B2644A24800298446 /* SearchServiceTest */,
+			);
+			path = NetworkTests;
+			sourceTree = "<group>";
+		};
+		2CECFCE426452FA800B3BD09 /* StorageTest */ = {
+			isa = PBXGroup;
+			children = (
+				2CECFCE526452FC600B3BD09 /* UserDefaultsStorageTest.swift */,
+			);
+			path = StorageTest;
+			sourceTree = "<group>";
+		};
 		2CF47D12263552A200F3C72B /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
-				2C3909BF2639E3E200A81C6E /* DefaultService */,
 				2C4808F3262CC5BA0075C0B3 /* Authorization */,
 				2CC884FC2637569200375AF8 /* UserInfoService */,
 				2C24D1B52638A04B000855B8 /* FeedService */,
 				2CBF51B32638D07A00B99042 /* SearchService */,
+				2C3909BF2639E3E200A81C6E /* DefaultService */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -1094,6 +1424,7 @@
 				7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */,
 				0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */,
 				EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */,
+				A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1107,6 +1438,8 @@
 				24CF3FDB716A3C816F522AEB /* Pods-RedMadRobotTestTaskAPI.release.xcconfig */,
 				4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */,
 				F82C932AA5C5EF2C1632C9CB /* Pods-RedMadRobotTestTaskAPITests.release.xcconfig */,
+				BC62DFF9388310FEABBE8F23 /* Pods-RedMadRobotTestTaskTests.debug.xcconfig */,
+				8E6BCB8E0327F84C7A3EF35E /* Pods-RedMadRobotTestTaskTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1164,6 +1497,25 @@
 			productReference = 2CAE1A5E2637340B006A4417 /* RedMadRobotTestTaskAPITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		2CCCF407263F1D5200D15877 /* RedMadRobotTestTaskTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CCCF411263F1D5200D15877 /* Build configuration list for PBXNativeTarget "RedMadRobotTestTaskTests" */;
+			buildPhases = (
+				834EE1F6D9D575DAB0F0C2BF /* [CP] Check Pods Manifest.lock */,
+				2CCCF404263F1D5200D15877 /* Sources */,
+				2CCCF405263F1D5200D15877 /* Frameworks */,
+				2CCCF406263F1D5200D15877 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2CCCF40E263F1D5200D15877 /* PBXTargetDependency */,
+			);
+			name = RedMadRobotTestTaskTests;
+			productName = RedMadRobotTestTaskTests;
+			productReference = 2CCCF408263F1D5200D15877 /* RedMadRobotTestTaskTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2CDD244F262B3E5400501E77 /* RedMadRobotTestTask */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CDD2464262B3E5600501E77 /* Build configuration list for PBXNativeTarget "RedMadRobotTestTask" */;
@@ -1203,6 +1555,11 @@
 					};
 					2CAE1A5D2637340B006A4417 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+						TestTargetID = 2CDD244F262B3E5400501E77;
+					};
+					2CCCF407263F1D5200D15877 = {
+						CreatedOnToolsVersion = 12.4;
 						TestTargetID = 2CDD244F262B3E5400501E77;
 					};
 					2CDD244F262B3E5400501E77 = {
@@ -1227,6 +1584,7 @@
 				2CDD244F262B3E5400501E77 /* RedMadRobotTestTask */,
 				2CAE1A552637340A006A4417 /* RedMadRobotTestTaskAPI */,
 				2CAE1A5D2637340B006A4417 /* RedMadRobotTestTaskAPITests */,
+				2CCCF407263F1D5200D15877 /* RedMadRobotTestTaskTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1246,6 +1604,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2CCCF406263F1D5200D15877 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CDD244E262B3E5400501E77 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1259,6 +1624,7 @@
 				2C8A73BB262DD67700A68761 /* SignUpSecondVC.xib in Resources */,
 				2C8A73B4262DD62A00A68761 /* SignUpFirstVC.xib in Resources */,
 				2C4808D4262CB2600075C0B3 /* credentials.plist in Resources */,
+				2CCCF401263DD5DF00D15877 /* FeedScreenCell.xib in Resources */,
 				2C3B72A6262C2C1E0076DF18 /* LoginScreenVC.xib in Resources */,
 				2C1ACF50262DF51200371065 /* SignUpSecondView.xib in Resources */,
 				2C04C0EB262EC50C005F493D /* RegistrationLoaderView.xib in Resources */,
@@ -1391,6 +1757,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		834EE1F6D9D575DAB0F0C2BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RedMadRobotTestTaskTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A199C065104C29AE27603B70 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1439,6 +1827,7 @@
 				2CAE1A8826373511006A4417 /* Codable.swift in Sources */,
 				2C24D1BF2638A431000855B8 /* RemoveLikeFromPostEndpoint.swift in Sources */,
 				2CC884F92637521900375AF8 /* GetUserInfoEndpoint.swift in Sources */,
+				2CECFCAD264520EE00B3BD09 /* DefaultServiceErrors.swift in Sources */,
 				2CC885452638932900375AF8 /* GetUserFriendsEndpoint.swift in Sources */,
 				2CC8850A2637680600375AF8 /* AddNewPostEndpoint.swift in Sources */,
 				2C24D1AB26389D52000855B8 /* GetFeedEndpoint.swift in Sources */,
@@ -1453,7 +1842,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CAE1A662637340B006A4417 /* RedMadRobotTestTaskAPITests.swift in Sources */,
+				2C6829642640787900E76036 /* TestGetUserInfoEndpoint.swift in Sources */,
+				2C68299826407F3600E76036 /* TestAddLikeToPostEndpoint.swift in Sources */,
+				2C68296C2640797F00E76036 /* TestGetUserPostsEndpoint.swift in Sources */,
+				2C68294826406CB400E76036 /* TestUserAuthenticationEndpoint.swift in Sources */,
+				2C68298026407C7B00E76036 /* TestDeleteUserFriendEndpoint.swift in Sources */,
+				2C68298B26407E2400E76036 /* TestGetFeedEndpoint.swift in Sources */,
+				2C68297B26407A9B00E76036 /* TestAddNewPostEndpoint.swift in Sources */,
+				2CECFCB52645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift in Sources */,
+				2C68297626407A0300E76036 /* TestAddFriendEndpoint.swift in Sources */,
+				2C68295E264077EE00E76036 /* TestRefreshUserTokenEndpoint.swift in Sources */,
+				2C682971264079BB00E76036 /* TestGetUserFriendsEndpoint.swift in Sources */,
+				2C68298526407D0000E76036 /* TestDeleteUserPostEndpoint.swift in Sources */,
+				2C682954264076FC00E76036 /* TestUserRegistrationEndpoint.swift in Sources */,
+				2C6829592640778F00E76036 /* TestLogoutEndpoint.swift in Sources */,
+				2C68299D26407F9600E76036 /* TestRemoveLikeFromPostEndpoint.swift in Sources */,
+				2C68294E26406E8700E76036 /* Asserts.swift in Sources */,
+				2C68299326407E9100E76036 /* TestGetFavouritePostsEndpoint.swift in Sources */,
+				2C6829AB26408B4200E76036 /* TestGetSortedPostsEndpoint.swift in Sources */,
+				2C6829A326407FF100E76036 /* TestGetSearchedUserEndpoint.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CCCF404263F1D5200D15877 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C46FA752644A33E00298446 /* GetSortedPostsTest.swift in Sources */,
+				2C46F9EB264478EF00298446 /* MockClient.swift in Sources */,
+				2CCCF418263F2C9D00D15877 /* TestLoginValidator.swift in Sources */,
+				2CECFCDF26452DB300B3BD09 /* IsUserAuthorizedTest.swift in Sources */,
+				2C46FA3D264498E600298446 /* AddPostUserServiceTest.swift in Sources */,
+				2CCCF41E263F349E00D15877 /* TestEmailValidator.swift in Sources */,
+				2C46FA26264493E400298446 /* GetUserInfoTest.swift in Sources */,
+				2C46FA38264497EC00298446 /* AddFriendUserServiceTest.swift in Sources */,
+				2C46FA672644A1D000298446 /* RemoveLikeFromPostTest.swift in Sources */,
+				2C46FA1B26448C4C00298446 /* SignUpAuthorizationTest.swift in Sources */,
+				2C46F9F826447F4100298446 /* MockStorage.swift in Sources */,
+				2C46F9F326447C0B00298446 /* LoginAuthorizationServiceTest.swift in Sources */,
+				2C46FA622644A04D00298446 /* AddLikeToPostTest.swift in Sources */,
+				2C46FA5D26449FF900298446 /* GetFavouritePostsTest.swift in Sources */,
+				2CCCF432263F39CD00D15877 /* TestNameValidator.swift in Sources */,
+				2C46FA4226449C2500298446 /* UpdateUserInfoTest.swift in Sources */,
+				2C46FA112644874600298446 /* MockWarnings.swift in Sources */,
+				2C46FA4C26449D6800298446 /* DeletePostUserServiceTest.swift in Sources */,
+				2C46FA2026448D1100298446 /* RefreshTokenAuthorizationTest.swift in Sources */,
+				2C46FA5526449EB400298446 /* GetFeedTest.swift in Sources */,
+				2C46FA6D2644A27D00298446 /* GetSortedUsersTest.swift in Sources */,
+				2C46FA4726449CE000298446 /* DeleteFriendUserServiceTest.swift in Sources */,
+				2CCCF42A263F377900D15877 /* TestPasswordValidator.swift in Sources */,
+				2CECFCE626452FC600B3BD09 /* UserDefaultsStorageTest.swift in Sources */,
+				2C46FA0C2644859A00298446 /* AuthMockModels.swift in Sources */,
+				2C46FA2E2644964C00298446 /* GetUserPostsTest.swift in Sources */,
+				2C46FA332644973900298446 /* GetUserFriendsTest.swift in Sources */,
+				2C46FA1626448B0400298446 /* LogoutAuthorizationTest.swift in Sources */,
+				2CCCF437263F3AA500D15877 /* TestCityValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1503,6 +1946,7 @@
 				2CBF51C52638DE7200B99042 /* SearchServiceProtocol.swift in Sources */,
 				2C04C0DB262E3D7C005F493D /* Validator.swift in Sources */,
 				2C480902262DAAF20075C0B3 /* AuthorizationTextField.swift in Sources */,
+				2CCCF400263DD5DF00D15877 /* FeedScreenCell.swift in Sources */,
 				2C24D1B72638A05E000855B8 /* FeedService.swift in Sources */,
 				2CBF51B52638D09100B99042 /* SearchService.swift in Sources */,
 				2C1ACF46262DEFBC00371065 /* SignUpFirstView.swift in Sources */,
@@ -1515,7 +1959,6 @@
 				2C3B72BF262C3FAF0076DF18 /* AppTabBarController.swift in Sources */,
 				2CDD2456262B3E5400501E77 /* SceneDelegate.swift in Sources */,
 				2C7E12B4262B47DA00CA4073 /* UIGradientLayer+Extension.swift in Sources */,
-				2CCA9138262E298500D6A635 /* DayValidator.swift in Sources */,
 				2CBF51C12638DDE800B99042 /* FeedServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1537,6 +1980,11 @@
 			isa = PBXTargetDependency;
 			target = 2CAE1A552637340A006A4417 /* RedMadRobotTestTaskAPI */;
 			targetProxy = 2CAE1A692637340B006A4417 /* PBXContainerItemProxy */;
+		};
+		2CCCF40E263F1D5200D15877 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2CDD244F262B3E5400501E77 /* RedMadRobotTestTask */;
+			targetProxy = 2CCCF40D263F1D5200D15877 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1630,6 +2078,31 @@
 			baseConfigurationReference = 4347E3C23776D15F7108FCF6 /* Pods-RedMadRobotTestTaskAPITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2WU2LYUXF9;
+				INFOPLIST_FILE = RedMadRobotTestTaskAPITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kojimenka.Inc.RedMadRobotTestTaskAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RedMadRobotTestTask.app/RedMadRobotTestTask";
+			};
+			name = Debug;
+		};
+		2CAE1A732637340B006A4417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F82C932AA5C5EF2C1632C9CB /* Pods-RedMadRobotTestTaskAPITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WU2LYUXF9;
 				INFOPLIST_FILE = RedMadRobotTestTaskAPITests/Info.plist;
@@ -1645,23 +2118,45 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RedMadRobotTestTask.app/RedMadRobotTestTask";
 			};
-			name = Debug;
+			name = Release;
 		};
-		2CAE1A732637340B006A4417 /* Release */ = {
+		2CCCF40F263F1D5200D15877 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F82C932AA5C5EF2C1632C9CB /* Pods-RedMadRobotTestTaskAPITests.release.xcconfig */;
+			baseConfigurationReference = BC62DFF9388310FEABBE8F23 /* Pods-RedMadRobotTestTaskTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WU2LYUXF9;
-				INFOPLIST_FILE = RedMadRobotTestTaskAPITests/Info.plist;
+				INFOPLIST_FILE = RedMadRobotTestTaskTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kojimenka.Inc.RedMadRobotTestTaskAPITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kojimenka.Inc.RedMadRobotTestTaskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RedMadRobotTestTask.app/RedMadRobotTestTask";
+			};
+			name = Debug;
+		};
+		2CCCF410263F1D5200D15877 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E6BCB8E0327F84C7A3EF35E /* Pods-RedMadRobotTestTaskTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2WU2LYUXF9;
+				INFOPLIST_FILE = RedMadRobotTestTaskTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kojimenka.Inc.RedMadRobotTestTaskTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1848,6 +2343,15 @@
 			buildConfigurations = (
 				2CAE1A722637340B006A4417 /* Debug */,
 				2CAE1A732637340B006A4417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CCCF411263F1D5200D15877 /* Build configuration list for PBXNativeTarget "RedMadRobotTestTaskTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CCCF40F263F1D5200D15877 /* Debug */,
+				2CCCF410263F1D5200D15877 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

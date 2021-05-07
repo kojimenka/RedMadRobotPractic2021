@@ -1,8 +1,6 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '11.0'
+# platform :ios, '13.0'
 
 target 'RedMadRobotTestTask' do
-
   use_frameworks!
 
   pod 'SwiftLint'
@@ -18,7 +16,12 @@ target 'RedMadRobotTestTaskAPI' do
 
   pod 'Apexy'
 
+  target 'RedMadRobotTestTaskTests' do
+    inherit! :search_paths
+  end
+
   target 'RedMadRobotTestTaskAPITests' do
     inherit! :search_paths
   end
+
 end

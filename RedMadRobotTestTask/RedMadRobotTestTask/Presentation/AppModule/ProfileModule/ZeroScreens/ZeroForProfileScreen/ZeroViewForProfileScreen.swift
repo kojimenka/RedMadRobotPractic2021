@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ZeroViewForProfileScreenDelegate: class {
+protocol ZeroViewForProfileScreenDelegate: AnyObject {
     func updateButtonAction()
 }
 

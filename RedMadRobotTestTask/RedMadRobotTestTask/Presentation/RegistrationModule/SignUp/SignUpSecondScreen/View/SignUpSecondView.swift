@@ -17,10 +17,9 @@ final class SignUpSecondView: RegistrationView {
     @IBOutlet private weak var cityTextField: AuthorizationTextField!
 
     // MARK: - Private Properties
-    
-    private let nameValidator = RegistrationNameValidator().validator
-    private let dateValidator = RegistrationBirthdayValidator().validator
-    private let cityValidator = RegistrationCityValidator().validator
+
+    private let nameValidator: Validator = NameValidator()
+    private let cityValidator: Validator = CityValidator()
     
     private var isScreenFilled: Bool = false {
         didSet {
@@ -31,7 +30,6 @@ final class SignUpSecondView: RegistrationView {
     }
     
     private var isNameValid = false
-    private var isBirthDayValid = false
     private var isCityValid = false
     
     // MARK: - Initializers
@@ -39,28 +37,36 @@ final class SignUpSecondView: RegistrationView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupView()
+        allTextFields = [nameTextField, cityTextField]
     }
     
     // MARK: - UIView(RegistrationView)
     
-    override func setupValidators() {
-        stringValidators = Validated([nameValidator, cityValidator])
-        dateValidators = Validated([dateValidator])
-    }
-    
-    override func changeText(view: AuthorizationTextField, text: String) {
+    override func changeText(view: AuthorizationTextField, text: String) throws {
+        var validError: Error?
         switch view {
         case nameTextField:
-            isNameValid = nameValidator.isValid(value: text)
-        case birthDayTextField:
-            isBirthDayValid = dateValidator.isValid(value: Date())
+            do {
+                isNameValid = try nameValidator.isValid(value: text)
+            } catch let error {
+                isNameValid = false
+                validError = error
+            }
         case cityTextField:
-            isCityValid = cityValidator.isValid(value: text)
+            do {
+                isCityValid = try cityValidator.isValid(value: text)
+            } catch let error {
+                isCityValid = false
+                validError = error
+            }
         default:
             return
         }
-        
-        isScreenFilled = isNameValid && isBirthDayValid && isCityValid
+
+        isScreenFilled = isNameValid && isCityValid
+        if let validError = validError {
+            throw validError
+        }
     }
     
     // MARK: - Private Methods

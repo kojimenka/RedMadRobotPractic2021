@@ -19,8 +19,8 @@ final class SignInRegistrationView: RegistrationView {
     
     // MARK: - Private Properties
     
-    private let emailValidator = RegistrationEmailValidator().validator
-    private let passwordValidator = RegistrationPasswordValidator().validator
+    private let emailValidator: Validator = EmailValidator()
+    private let passwordValidator: Validator = PasswordValidator()
     
     private var isScreenFilled: Bool = false {
         didSet {
@@ -38,25 +38,37 @@ final class SignInRegistrationView: RegistrationView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupView()
+        allTextFields = [emailTextView, passwordTextView]
     }
     
     // MARK: - UIView(RegistrationView)
     
-    override func setupValidators() {
-        stringValidators = Validated([emailValidator, passwordValidator])
-    }
-    
-    override func changeText(view: AuthorizationTextField, text: String) {
+    override func changeText(view: AuthorizationTextField, text: String) throws {
+        var validError: Error?
+        
         switch view {
         case emailTextView:
-            isEmailValid = emailValidator.isValid(value: text)
+            do {
+                isEmailValid = try emailValidator.isValid(value: text)
+            } catch let error {
+                isEmailValid = false
+                validError = error
+            }
         case passwordTextView:
-            isPasswordValid = passwordValidator.isValid(value: text)
+            do {
+                isPasswordValid = try passwordValidator.isValid(value: text)
+            } catch let error {
+                isPasswordValid = false
+                validError = error
+            }
         default:
-            return
+            break
         }
-        
+
         isScreenFilled = isEmailValid && isPasswordValid
+        if let validError = validError {
+            throw validError
+        }
     }
     
     // MARK: - Private Methods

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ZeroScreenViewDelegate: class {
+protocol ZeroScreenViewDelegate: AnyObject {
     func updateButtonAction()
 }
 
