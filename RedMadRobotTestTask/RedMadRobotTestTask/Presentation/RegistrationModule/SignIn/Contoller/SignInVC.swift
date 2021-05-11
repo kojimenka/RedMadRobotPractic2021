@@ -7,23 +7,34 @@
 
 import UIKit
 
-final class SignInVC: UIViewController {
+public protocol SignInOutput: AnyObject {
+    func pushSignUpFromSignIn()
+    func pushSuccessScreenFromSignIn()
+}
 
+final class SignInVC: UIViewController {
+    
     // MARK: - IBOutlet
     
     @IBOutlet private weak var enterButton: RegistrationNextButton!
     @IBOutlet private weak var signInView: RegistrationView!
     @IBOutlet private weak var registrationButtonBottomConstraint: NSLayoutConstraint!
-
+    
     // MARK: - Private Properties
     
-    private let uiViewModel: SignInViewModelProtocol?
+    weak private var outputDelegate: SignInOutput?
+    private let uiViewModel: SetupNavBarViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
     private let registrationService = ServiceLayer.shared.authorizationServices
     
     // MARK: - Initializers
     
-    init(uiViewModel: SignInViewModelProtocol, checkKeyboardViewModel: CheckKeyboardViewModel) {
+    init(
+        outputSubscriber: SignInOutput?,
+        uiViewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
+        checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
+    ) {
+        self.outputDelegate = outputSubscriber
         self.uiViewModel = uiViewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
         super.init(nibName: R.nib.signInVC.name, bundle: R.nib.signInVC.bundle)
@@ -48,9 +59,7 @@ final class SignInVC: UIViewController {
     // MARK: - IBAction
     
     @IBAction private func signUpButtonAction(_ sender: Any) {
-        let signUpVC = SignUpContainerVC(viewModel: SetupNavBarViewModel(),
-                                         checkKeyboardViewModel: CheckKeyboardViewModel(subscriber: nil))
-        navigationController?.pushViewController(signUpVC, animated: true)
+        outputDelegate?.pushSignUpFromSignIn()
     }
     
     @IBAction private func enterButtonAction(_ sender: Any) {
@@ -62,9 +71,11 @@ final class SignInVC: UIViewController {
     
     private func navBarSetup() {
         navigationController?.navigationBar.isHidden = false
-        uiViewModel?.customizeNavBar(navigationBar: navigationController?.navigationBar,
-                                     navigationItem: navigationItem,
-                                     title: R.string.localizable.signInNavBarTitle())
+        uiViewModel?.customizeNavBar(
+            navigationBar: navigationController?.navigationBar,
+            navigationItem: navigationItem,
+            title: R.string.localizable.signInNavBarTitle()
+        )
     }
     
     private func setupViews() {
@@ -75,11 +86,10 @@ final class SignInVC: UIViewController {
     }
     
     private func registrateUser() {
-        let successLogin = SuccessLoginScreenVC()
         self.view.endEditing(true)
-        self.navigationController?.pushViewController(successLogin, animated: true)
+        outputDelegate?.pushSuccessScreenFromSignIn()
     }
-
+    
 }
 
 // MARK: - Check filling state

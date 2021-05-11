@@ -7,41 +7,33 @@
 
 import UIKit
 
-final class AppCoordinator {
+final class AppCoordinator: Coordinator {
     
+    var navigationController: UINavigationController
+    var childCoordinators: [Coordinator] = []
+        
     // MARK: - Private Properties
     
-    private let isLaunchedBefore = false
-    private let authorizationService: AuthorizationServiceProtocol
+    private let isLaunchedBefore = true
         
     // MARK: - Init
     
-    init(authorizationService: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices) {
-        self.authorizationService = authorizationService
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        navigationController.navigationBar.isHidden = true
     }
     
     // MARK: - Public Properties
     
-    public func startFlow() -> UIViewController {
+    func start() {
         if !isLaunchedBefore {
-            return createLoginScreenWithNavController()
+            let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+            childCoordinators.append(loginCoordinator)
+            loginCoordinator.start()
         } else {
-            return AppTabBarController()
+            let tabBarController = AppTabBarController()
+            navigationController.pushViewController(tabBarController, animated: false)
         }
     }
-    
-    // MARK: - Private Properties
-    
-    private func createLoginScreenWithNavController() -> UINavigationController {
-        
-        let navController = UINavigationController()
-        navController.navigationBar.isHidden = true
-        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navController.navigationBar.shadowImage = UIImage()
-        
-        let loginVC = LoginScreenVC(authorizationViewModel: authorizationService)
-        navController.pushViewController(loginVC, animated: false)
-        
-        return navController
-    }
+
 }

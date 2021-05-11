@@ -15,7 +15,7 @@ final class AuthorizationWithButton: UIButton {
         layer.cornerRadius = frame.height * 0.25
         
         layer.borderWidth = 1.0
-        layer.borderColor = UIColor.ColorPalette.templatesTintColor?.cgColor
+        layer.borderColor = ColorPalette.templatesTintColor?.cgColor
         backgroundColor = .white
     }
     

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangeProfileCategoryVC" customModule="RedMadRobotTestTask" customModuleProvider="target">
+            <connections>
+                <outlet property="favoritePostsButton" destination="fGb-jm-l5o" id="Zbe-Gu-cZD"/>
+                <outlet property="friendsButton" destination="Glv-rG-Oc4" id="cxZ-Qt-ejh"/>
+                <outlet property="postButton" destination="PDP-sr-dDT" id="fsR-fJ-w7X"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ffe-3I-OBT">
+                    <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDP-sr-dDT">
+                            <rect key="frame" x="0.0" y="0.0" width="114.33333333333333" height="56"/>
+                            <state key="normal" title="Посты">
+                                <color key="titleColor" name="middle_grey"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="neb-bL-R9O"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGb-jm-l5o">
+                            <rect key="frame" x="114.33333333333334" y="0.0" width="114.33333333333334" height="56"/>
+                            <state key="normal" title="Лайки">
+                                <color key="titleColor" name="middle_grey"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="RQF-bJ-Hzj"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glv-rG-Oc4">
+                            <rect key="frame" x="228.66666666666666" y="0.0" width="114.33333333333334" height="56"/>
+                            <state key="normal" title="Друзья">
+                                <color key="titleColor" name="middle_grey"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="eVt-P2-Iwg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Ffe-3I-OBT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8Wk-WL-ebc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ffe-3I-OBT" secondAttribute="trailing" id="Aeo-lk-x8D"/>
+                <constraint firstAttribute="bottom" secondItem="Ffe-3I-OBT" secondAttribute="bottom" id="BX9-kf-eZn"/>
+                <constraint firstItem="Ffe-3I-OBT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ycq-OY-xJf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="60.869565217391312" y="215.625"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="middle_grey">
+            <color red="0.63529411764705879" green="0.67450980392156867" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

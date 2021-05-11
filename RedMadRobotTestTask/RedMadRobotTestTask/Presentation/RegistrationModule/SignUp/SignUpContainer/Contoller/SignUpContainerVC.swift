@@ -7,6 +7,11 @@
 
 import UIKit
 
+public protocol SignUpContainerOutput: AnyObject {
+    func pushSignInFromSignUp()
+    func pushSuccessScreenFromSignUp()
+}
+
 final class SignUpContainerVC: UIViewController {
     
     // MARK: - IBOutlet
@@ -20,10 +25,12 @@ final class SignUpContainerVC: UIViewController {
     
     // MARK: - Private Properties
     
-    private let navBarViewModel: SignInViewModelProtocol?
+    private let navBarViewModel: SetupNavBarViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
     private let viewViewModel = SignUpContainerViewModel()
-    private let registrationService = ServiceLayer.shared.authorizationServices
+    
+    weak private var outputDelegate: SignUpContainerOutput?
+    private let registrationService: AuthorizationServiceProtocol
     
     lazy private var signUpFirstScreen = SignUpFirstVC(subscriber: self)
     lazy private var signUpSecondScreen = SignUpSecondVC(subscriber: self)
@@ -32,7 +39,14 @@ final class SignUpContainerVC: UIViewController {
     
     // MARK: - Initializers
     
-    init(viewModel: SignInViewModelProtocol, checkKeyboardViewModel: CheckKeyboardViewModel) {
+    init(
+        outputSubscriber: SignUpContainerOutput?,
+        authorizationServices: AuthorizationServiceProtocol,
+        viewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
+        checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
+    ) {
+        self.outputDelegate = outputSubscriber
+        self.registrationService = authorizationServices
         self.navBarViewModel = viewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
         super.init(nibName: R.nib.signUpContainerVC.name, bundle: R.nib.signInVC.bundle)
@@ -65,9 +79,7 @@ final class SignUpContainerVC: UIViewController {
     // MARK: - IBOutlet
     
     @IBAction private func isAlreadyRegisteredAction(_ sender: Any) {
-        let signInVC = SignInVC(uiViewModel: SetupNavBarViewModel(),
-                                checkKeyboardViewModel: CheckKeyboardViewModel(subscriber: nil))
-        navigationController?.pushViewController(signInVC, animated: true)
+        outputDelegate?.pushSignInFromSignUp()
     }
     
     @IBAction private func nextButtonAction(_ sender: Any) {
@@ -96,9 +108,11 @@ final class SignUpContainerVC: UIViewController {
     
     private func navBarSetup() {
         navigationController?.navigationBar.isHidden = false
-        navBarViewModel?.customizeNavBar(navigationBar: navigationController?.navigationBar,
-                                         navigationItem: navigationItem,
-                                         title: R.string.localizable.signUpNavBarTitle())
+        navBarViewModel?.customizeNavBar(
+            navigationBar: navigationController?.navigationBar,
+            navigationItem: navigationItem,
+            title: R.string.localizable.signUpNavBarTitle()
+        )
     }
     
     private func initialSetup() {
@@ -117,9 +131,7 @@ final class SignUpContainerVC: UIViewController {
     }
     
     private func registrateUser() {
-        let successLogin = SuccessLoginScreenVC()
-        self.view.endEditing(true)
-        self.navigationController?.pushViewController(successLogin, animated: true)
+        outputDelegate?.pushSuccessScreenFromSignUp()
     }
 }
 
