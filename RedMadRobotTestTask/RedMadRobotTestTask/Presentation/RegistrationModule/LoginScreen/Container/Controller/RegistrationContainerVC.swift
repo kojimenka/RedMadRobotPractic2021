@@ -13,9 +13,15 @@ final class RegistrationContainerVC: UIViewController {
     
     weak private var coordinator: LoginCoordinator?
     
+    private var requestViewModel: RegistrationContainerRequestViewModelProtocol
+    
     // MARK: - Init
     
-    init(coordinator: LoginCoordinator) {
+    init(
+        requestViewModel: RegistrationContainerRequestViewModelProtocol = RegistrationContainerRequestViewModel(),
+        coordinator: LoginCoordinator
+    ) {
+        self.requestViewModel = requestViewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
@@ -57,12 +63,23 @@ extension RegistrationContainerVC: LoginScreenDelegate {
 
 extension RegistrationContainerVC: SignInDelegate {
     
-    func successSignIn() {
-        coordinator?.pushSuccessRegistration(subscriber: self)
-    }
-    
     func signUpButtonActionFromSignIn() {
         coordinator?.pushSignUpFromSignIn(subscriber: self)
+    }
+    
+    func loginUser(email: String, password: String) {
+        requestViewModel.loginUser(
+            email: email,
+            password: password
+        ) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.coordinator?.pushSuccessRegistration(subscriber: self)
+            case .failure:
+                print("Fail")
+            }
+        }
     }
     
 }
@@ -71,12 +88,23 @@ extension RegistrationContainerVC: SignInDelegate {
 
 extension RegistrationContainerVC: SignUpContainerDelegate {
     
-    func signInButtonActionFromSignUp() {
-        coordinator?.pushSignInFromSignUp(subscriber: self)
+    func registrateUser(email: String, password: String) {
+        requestViewModel.registrateUser(
+            email: email,
+            password: password
+        ) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.coordinator?.pushSuccessRegistration(subscriber: self)
+            case .failure:
+                print("Fail")
+            }
+        }
     }
     
-    func successRegistration() {
-        coordinator?.pushSuccessRegistration(subscriber: self)
+    func signInButtonActionFromSignUp() {
+        coordinator?.pushSignInFromSignUp(subscriber: self)
     }
     
 }

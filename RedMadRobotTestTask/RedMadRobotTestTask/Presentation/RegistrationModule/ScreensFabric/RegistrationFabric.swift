@@ -42,9 +42,7 @@ struct RegistrationFabric: RegistrationFabricProtocol {
     public func createSignUpScreen(
         subscriber: SignUpContainerDelegate?
     ) -> UIViewController {
-        let authorizationServices: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices
-        return SignUpContainerVC(subscriber: subscriber,
-                                 authorizationServices: authorizationServices)
+        return SignUpContainerVC(subscriber: subscriber)
     }
     
     public func createSuccessLoginScreen(

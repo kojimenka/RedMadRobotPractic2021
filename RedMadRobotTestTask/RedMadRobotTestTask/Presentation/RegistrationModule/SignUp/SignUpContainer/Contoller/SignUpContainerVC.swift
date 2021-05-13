@@ -9,7 +9,7 @@ import UIKit
 
 public protocol SignUpContainerDelegate: AnyObject {
     func signInButtonActionFromSignUp()
-    func successRegistration()
+    func registrateUser(email: String, password: String)
 }
 
 final class SignUpContainerVC: UIViewController {
@@ -30,7 +30,6 @@ final class SignUpContainerVC: UIViewController {
     private let viewViewModel = SignUpContainerViewModel()
     
     weak private var delegate: SignUpContainerDelegate?
-    private let registrationService: AuthorizationServiceProtocol
     
     lazy private var signUpFirstScreen = SignUpFirstVC(subscriber: self)
     lazy private var signUpSecondScreen = SignUpSecondVC(subscriber: self)
@@ -41,12 +40,10 @@ final class SignUpContainerVC: UIViewController {
     
     init(
         subscriber: SignUpContainerDelegate?,
-        authorizationServices: AuthorizationServiceProtocol,
         viewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
         checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
     ) {
         self.delegate = subscriber
-        self.registrationService = authorizationServices
         self.navBarViewModel = viewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
         super.init(nibName: R.nib.signUpContainerVC.name, bundle: R.nib.signInVC.bundle)
@@ -131,7 +128,7 @@ final class SignUpContainerVC: UIViewController {
     }
     
     private func registrateUser() {
-        delegate?.successRegistration()
+        delegate?.registrateUser(email: "Test", password: "Test")
     }
 }
 

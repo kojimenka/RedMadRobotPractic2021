@@ -1,5 +1,5 @@
 //
-//  SignInRequestViewModel.swift
+//  RegistrationContainerRequestViewModel.swift
 //  RedMadRobotTestTask
 //
 //  Created by Дмитрий Марченков on 14.05.2021.
@@ -7,7 +7,13 @@
 
 import Foundation
 
-protocol SignInRequestViewModelProtocol {
+protocol RegistrationContainerRequestViewModelProtocol {
+    func loginUser(
+        email: String,
+        password: String,
+        completion: @escaping (Result<Void, Error>) -> Void
+    )
+    
     func registrateUser(
         email: String,
         password: String,
@@ -15,7 +21,7 @@ protocol SignInRequestViewModelProtocol {
     )
 }
 
-final class SignInRequestViewModel: SignInRequestViewModelProtocol {
+final class RegistrationContainerRequestViewModel: RegistrationContainerRequestViewModelProtocol {
     
     // MARK: - Properties
     
@@ -28,6 +34,14 @@ final class SignInRequestViewModel: SignInRequestViewModelProtocol {
     }
     
     // MARK: - Methods
+    
+    func loginUser(
+        email: String,
+        password: String,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) {
+        completion(.success(()))
+    }
     
     func registrateUser(
         email: String,

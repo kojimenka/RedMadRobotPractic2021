@@ -9,7 +9,7 @@ import UIKit
 
 public protocol SignInDelegate: AnyObject {
     func signUpButtonActionFromSignIn()
-    func successSignIn()
+    func loginUser(email: String, password: String)
 }
 
 final class SignInVC: UIViewController {
@@ -23,19 +23,16 @@ final class SignInVC: UIViewController {
     // MARK: - Private Properties
     
     weak private var delegate: SignInDelegate?
-    private let requestViewModel: SignInRequestViewModelProtocol
     private let uiViewModel: SetupNavBarViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
     
     // MARK: - Initializers
     
     init(
-        requestViewModel: SignInRequestViewModelProtocol = SignInRequestViewModel(),
         subscriber: SignInDelegate?,
         uiViewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
         checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
     ) {
-        self.requestViewModel = requestViewModel
         self.delegate = subscriber
         self.uiViewModel = uiViewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
@@ -66,7 +63,7 @@ final class SignInVC: UIViewController {
     
     @IBAction private func enterButtonAction(_ sender: Any) {
         guard enterButton.isButtonEnable == true else { signInView.checkForWarning(controller: self); return }
-        registrateUser()
+        loginUser()
     }
     
     // MARK: - Private Methods
@@ -87,20 +84,9 @@ final class SignInVC: UIViewController {
         self.hideKeyboardWhenTappedAround()
     }
     
-    private func registrateUser() {
+    private func loginUser() {
         self.view.endEditing(true)
-        requestViewModel.registrateUser(
-            email: "test",
-            password: "test"
-        ) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success:
-                self.delegate?.successSignIn()
-            case .failure:
-                break
-            }
-        }
+        delegate?.loginUser(email: "Test", password: "Test")
     }
     
 }
