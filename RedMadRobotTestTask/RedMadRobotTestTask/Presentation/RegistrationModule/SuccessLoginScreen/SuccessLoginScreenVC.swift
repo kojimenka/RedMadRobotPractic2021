@@ -7,24 +7,21 @@
 
 import UIKit
 
-public protocol SuccessLoginScreenOutputDelegate: AnyObject {
-    func presentAppModule()
+public protocol SuccessLoginScreenDelegate: AnyObject {
+    func presentFeedAction()
 }
 
 final class SuccessLoginScreenVC: UIViewController {
     
     // MARK: - Private Properties
     
-    weak private var outputDelegate: SuccessLoginScreenOutputDelegate?
+    weak private var delegate: SuccessLoginScreenDelegate?
     
     // MARK: - Init
     
-    init(outputSubscriber: SuccessLoginScreenOutputDelegate?) {
-        self.outputDelegate = outputSubscriber
-        super.init(
-            nibName: R.nib.successLoginScreenVC.name,
-            bundle: R.nib.successLoginScreenVC.bundle
-        )
+    init(subscriber: SuccessLoginScreenDelegate?) {
+        self.delegate = subscriber
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +38,7 @@ final class SuccessLoginScreenVC: UIViewController {
     // MARK: - IBAction
     
     @IBAction private func presentFeedAction(_ sender: Any) {
-        outputDelegate?.presentAppModule()
+        delegate?.presentFeedAction()
     }
     
     // MARK: - Private Methods

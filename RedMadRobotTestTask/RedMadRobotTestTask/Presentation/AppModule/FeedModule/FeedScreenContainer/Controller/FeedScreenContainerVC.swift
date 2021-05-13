@@ -1,5 +1,5 @@
 //
-//  ProfileScreenVC.swift
+//  FeedScreenContainerVC.swift
 //  RedMadRobotTestTask
 //
 //  Created by Дмитрий Марченков on 18.04.2021.
@@ -11,7 +11,7 @@ protocol FeedScreenOutPutDelegate: class {
     func showSearchFriendScreen()
 }
 
-final class NewFeedScreenVC: UIViewController {
+final class FeedScreenContainerVC: UIViewController {
     
     // MARK: - IBOutlets
 
@@ -20,13 +20,17 @@ final class NewFeedScreenVC: UIViewController {
     // MARK: - Private Properties
 
     weak private var outputDelegate: FeedScreenOutPutDelegate?
-    private let allPostsVC = PostsFeedVC(state: .feedScreen)
+    
+    lazy private var allPostsVC = PostsFeedVC(
+        subscriber: self,
+        requestViewModel: AllPostsRequestViewModel(feedService: ServiceLayer.shared.feedService)
+    )
     
     // MARK: - Initializers
     
     init(outputSubscriber: FeedScreenOutPutDelegate?) {
         self.outputDelegate = outputSubscriber
-        super.init(nibName: R.nib.newFeedScreenVC.name, bundle: R.nib.newFeedScreenVC.bundle)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -60,10 +64,15 @@ final class NewFeedScreenVC: UIViewController {
     }
     
     private func zeroScreenAction() {
-        allPostsVC.showFindFriendsScreen = { [weak self] in
-            guard let self = self else { return }
-            self.outputDelegate?.showSearchFriendScreen()
-        }
+        
     }
 
+}
+
+// MARK: - All Posts Delegate
+
+extension FeedScreenContainerVC: PostsFeedDelegate {
+    func failureRequest() {
+        
+    }
 }

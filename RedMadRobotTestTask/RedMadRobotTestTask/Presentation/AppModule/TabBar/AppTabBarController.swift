@@ -10,16 +10,24 @@ import UIKit
 final class AppTabBarController: UITabBarController {
     
     // MARK: - Properties
+    
     private let feedCoordinator = FeedModuleCoordinator(navigationController: UINavigationController())
     private let profileScreenVC = ProfileModuleCoordinator(navigationController: UINavigationController())
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        customizeTabBar()
         setController()
     }
     
-    // MARK: - Methods
+    // MARK: - Private Methods
+    
+    private func customizeTabBar() {
+        tabBar.tintColor = ColorPalette.tintOrangeColor
+    }
+    
     private func setController() {
         feedCoordinator.start()
         profileScreenVC.start()

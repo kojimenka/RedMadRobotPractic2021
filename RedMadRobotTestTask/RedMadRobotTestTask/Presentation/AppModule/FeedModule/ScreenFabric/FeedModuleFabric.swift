@@ -22,7 +22,7 @@ struct FeedModuleFabric: FeedModuleFabricProtocol {
     public func createFeedScreen(
         outputDelegate: FeedScreenOutPutDelegate?
     ) -> UIViewController {
-        return NewFeedScreenVC(outputSubscriber: outputDelegate)
+        return FeedScreenContainerVC(outputSubscriber: outputDelegate)
     }
     
     public func createSearchFriendsScreen(

@@ -51,7 +51,7 @@ extension FeedModuleCoordinator: FeedScreenOutPutDelegate {
 extension FeedModuleCoordinator: SearchFriendsOutputDelegate {
     func backToFeedScreen() {
         for viewController in navigationController.viewControllers {
-            guard let feedController = viewController as? NewFeedScreenVC else { continue }
+            guard let feedController = viewController as? FeedScreenContainerVC else { continue }
             feedController.updatePosts()
         }
     }

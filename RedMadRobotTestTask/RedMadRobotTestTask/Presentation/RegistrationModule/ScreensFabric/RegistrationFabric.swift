@@ -9,49 +9,48 @@ import UIKit
 
 protocol RegistrationFabricProtocol {
     func createLoginScreen(
-        outputDelegate: LoginOutput?
+        subscriber: LoginScreenDelegate?
     ) -> UIViewController
     
     func createSignInScreen(
-        outputDelegate: SignInOutput?
+        subscriber: SignInDelegate?
     ) -> UIViewController
     
     func createSignUpScreen(
-        outputDelegate: SignUpContainerOutput
+        subscriber: SignUpContainerDelegate?
     ) -> UIViewController
     
     func createSuccessLoginScreen(
-        outputDelegate: SuccessLoginScreenOutputDelegate?
+        subscriber: SuccessLoginScreenDelegate?
     ) -> UIViewController
 }
 
 struct RegistrationFabric: RegistrationFabricProtocol {
     
     public func createLoginScreen(
-        outputDelegate: LoginOutput?
+        subscriber: LoginScreenDelegate?
     ) -> UIViewController {
-        return LoginScreenVC(
-            outputSubscriber: outputDelegate)
+        return LoginScreenVC(subscriber: subscriber)
     }
     
     public func createSignInScreen(
-        outputDelegate: SignInOutput?
+        subscriber: SignInDelegate?
     ) -> UIViewController {
-        return SignInVC(outputSubscriber: outputDelegate)
+        return SignInVC(subscriber: subscriber)
     }
 
     public func createSignUpScreen(
-        outputDelegate: SignUpContainerOutput
+        subscriber: SignUpContainerDelegate?
     ) -> UIViewController {
         let authorizationServices: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices
-        return SignUpContainerVC(outputSubscriber: outputDelegate,
+        return SignUpContainerVC(subscriber: subscriber,
                                  authorizationServices: authorizationServices)
     }
     
     public func createSuccessLoginScreen(
-        outputDelegate: SuccessLoginScreenOutputDelegate?
+        subscriber: SuccessLoginScreenDelegate?
     ) -> UIViewController {
-        return SuccessLoginScreenVC(outputSubscriber: outputDelegate)
+        return SuccessLoginScreenVC(subscriber: subscriber)
     }
     
 }

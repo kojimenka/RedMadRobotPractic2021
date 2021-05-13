@@ -7,9 +7,9 @@
 
 import UIKit
 
-public protocol SignInOutput: AnyObject {
-    func pushSignUpFromSignIn()
-    func pushSuccessScreenFromSignIn()
+public protocol SignInDelegate: AnyObject {
+    func signUpButtonActionFromSignIn()
+    func successSignIn()
 }
 
 final class SignInVC: UIViewController {
@@ -22,22 +22,24 @@ final class SignInVC: UIViewController {
     
     // MARK: - Private Properties
     
-    weak private var outputDelegate: SignInOutput?
+    weak private var delegate: SignInDelegate?
+    private let requestViewModel: SignInRequestViewModelProtocol
     private let uiViewModel: SetupNavBarViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
-    private let registrationService = ServiceLayer.shared.authorizationServices
     
     // MARK: - Initializers
     
     init(
-        outputSubscriber: SignInOutput?,
+        requestViewModel: SignInRequestViewModelProtocol = SignInRequestViewModel(),
+        subscriber: SignInDelegate?,
         uiViewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
         checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
     ) {
-        self.outputDelegate = outputSubscriber
+        self.requestViewModel = requestViewModel
+        self.delegate = subscriber
         self.uiViewModel = uiViewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
-        super.init(nibName: R.nib.signInVC.name, bundle: R.nib.signInVC.bundle)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -59,7 +61,7 @@ final class SignInVC: UIViewController {
     // MARK: - IBAction
     
     @IBAction private func signUpButtonAction(_ sender: Any) {
-        outputDelegate?.pushSignUpFromSignIn()
+        delegate?.signUpButtonActionFromSignIn()
     }
     
     @IBAction private func enterButtonAction(_ sender: Any) {
@@ -87,7 +89,18 @@ final class SignInVC: UIViewController {
     
     private func registrateUser() {
         self.view.endEditing(true)
-        outputDelegate?.pushSuccessScreenFromSignIn()
+        requestViewModel.registrateUser(
+            email: "test",
+            password: "test"
+        ) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.delegate?.successSignIn()
+            case .failure:
+                break
+            }
+        }
     }
     
 }

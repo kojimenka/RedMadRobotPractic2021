@@ -7,27 +7,27 @@
 
 import UIKit
 
+protocol PostsFeedDelegate: AnyObject {
+    func failureRequest()
+}
+
+
+protocol PostsFeedInProfileDelegate: AnyObject {
+    // Эта переменная необходима для отслеживания текущего оффсета коллекции. Мы его отслеживаем что бы менять констрейнт верхнего чайлда с информацией о пользователе
+    func scrollViewOffSetChanged(inset: CGFloat)
+}
+
 final class PostsFeedVC: UIViewController {
 
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var zeroScreenContainer: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var zeroScreenTopConstraint: NSLayoutConstraint!
-    
-    // MARK: - Public Properties
-    
-    // Эта переменная необходима для отслеживания текущего оффсета коллекции. Мы его отслеживаем что бы менять констрейнт верхнего чайлда с информацией о пользователе
-    
-    public var scrollViewOffSetChanged: ((CGFloat) -> Void)?
-    
-    public var showFindFriendsScreen: (() -> Void)?
     
     // MARK: - Private Properties
     
-    lazy private var zeroScreen = PostFeedZeroScreenFabric.createZeroScreen(state: screenState)
+    weak private var delegate: PostsFeedDelegate?
+    weak private var delegateForProfileScreen: PostsFeedInProfileDelegate?
     
-    private let screenState: PostsScreenState
     private var topInset: CGFloat = 0.0
     
     private var requestViewModel: PostsFeedRequestViewModelProtocol
@@ -36,17 +36,16 @@ final class PostsFeedVC: UIViewController {
     // MARK: - Init
     
     init(
-        state: PostsScreenState,
-        requestViewModel: PostsFeedRequestViewModelProtocol = PostsFeedRequestViewModel(),
+        profileSubscriber: PostsFeedInProfileDelegate? = nil,
+        subscriber: PostsFeedDelegate?,
+        requestViewModel: PostsFeedRequestViewModelProtocol,
         dataSourceViewModel: PostFeedDataSourceViewModelProtocol = PostFeedDataViewModel()
     ) {
-        self.screenState = state
+        delegateForProfileScreen = profileSubscriber
+        self.delegate = subscriber
         self.requestViewModel = requestViewModel
         self.dataSourceViewModel = dataSourceViewModel
-        super.init(
-            nibName: R.nib.postsFeedVC.name,
-            bundle: R.nib.postsFeedVC.bundle
-        )
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -58,7 +57,6 @@ final class PostsFeedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        setupZeroScreen()
     }
     
     // MARK: - Public Methods
@@ -70,7 +68,7 @@ final class PostsFeedVC: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
     }
     
-    // Метод вызывается после того как пользователь вышел с экрана поиска друзей, если пользователь добавил новых друзей мы обновляем данные для отображения
+    // Метод нужен для обновления данных 
     
     public func updateData() {
         requestData()
@@ -79,17 +77,14 @@ final class PostsFeedVC: UIViewController {
     // MARK: - Private Methods
     
     private func requestData() {
-        requestViewModel.getPosts(screenState: screenState) { [weak self] result in
+        requestViewModel.getPosts { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success:
-                self.collectionView.isHidden = false
-                self.zeroScreenContainer.isHidden = true
                 print("DEBUG: post request success")
             case .failure:
-                self.collectionView.isHidden = true
-                self.zeroScreenContainer.isHidden = false
+                self.delegate?.failureRequest()
                 print("DEBUG: post request failure")
             }
         }
@@ -105,41 +100,37 @@ final class PostsFeedVC: UIViewController {
         )
     }
     
-    private func setupZeroScreen() {
-        zeroScreenLayout()
-        zeroScreenAction()
-        
-        if screenState == .feedScreen {
-            requestData()
-        }
-    }
-    
-    private func zeroScreenLayout() {
-        zeroScreenContainer.addFillView(view: zeroScreen)
-        
-        // Для разных zero экранов нужен разный отступ по высоте
-        switch screenState {
-        case .feedScreen:
-            zeroScreenTopConstraint.constant = view.frame.height * 0.18
-        case .userPosts, .userFavoritePosts:
-            zeroScreenTopConstraint.constant = view.frame.height * 0.25 + topInset
-        }
-    }
-    
-    private func zeroScreenAction() {
-        switch screenState {
-        case .feedScreen:
-            zeroScreen.buttonAction = { [weak self] in
-                guard let self = self else { return }
-                self.showFindFriendsScreen?()
-            }
-        case .userPosts, .userFavoritePosts:
-            zeroScreen.buttonAction = { [weak self] in
-                guard let self = self else { return }
-                self.requestData()
-            }
-        }
-    }
+//    private func setupZeroScreen() {
+//        zeroScreenLayout()
+//        zeroScreenAction()
+//    }
+//
+//    private func zeroScreenLayout() {
+//        zeroScreenContainer.addFillView(view: zeroScreen)
+//
+//        // Для разных zero экранов нужен разный отступ по высоте
+//        switch screenState {
+//        case .feedScreen:
+//            zeroScreenTopConstraint.constant = view.frame.height * 0.18
+//        case .userPosts, .userFavoritePosts:
+//            zeroScreenTopConstraint.constant = view.frame.height * 0.25 + topInset
+//        }
+//    }
+//
+//    private func zeroScreenAction() {
+//        switch screenState {
+//        case .feedScreen:
+//            zeroScreen.buttonAction = { [weak self] in
+//                guard let self = self else { return }
+//                self.showFindFriendsScreen?()
+//            }
+//        case .userPosts, .userFavoritePosts:
+//            zeroScreen.buttonAction = { [weak self] in
+//                guard let self = self else { return }
+//                self.requestData()
+//            }
+//        }
+//    }
     
 }
 
@@ -159,6 +150,6 @@ extension PostsFeedVC: UICollectionViewDelegateFlowLayout {
 
 extension PostsFeedVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollViewOffSetChanged?(scrollView.contentOffset.y + topInset)
+        delegateForProfileScreen?.scrollViewOffSetChanged(inset: scrollView.contentOffset.y + topInset)
     }
 }

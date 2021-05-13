@@ -18,7 +18,7 @@ struct ProfileModuleScreenFabric: ProfileModuleScreenFabricProtocol {
     public func createProfileScreen(
         outputDelegate: ProfileScreenOutputDelegate?
     ) -> UIViewController {
-        return ProfileScreenVC(outputSubscriber: outputDelegate)
+        return ProfileScreenContainerVC(outputSubscriber: outputDelegate)
     }
     
 }

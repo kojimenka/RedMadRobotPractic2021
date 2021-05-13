@@ -31,9 +31,57 @@ final class LoginCoordinator: Coordinator {
     // MARK: - Coordinator
     
     func start() {
-        let controller = screenFabric.createLoginScreen(outputDelegate: self)
+        let controller = RegistrationContainerVC(coordinator: self)
         pushController(controller: controller, animated: false)
         setupNavBar()
+    }
+    
+    // MARK: - Public Methods
+    
+    public func pushLoginScreen(subscriber: LoginScreenDelegate?) {
+        let controller = screenFabric.createLoginScreen(subscriber: subscriber)
+        pushController(controller: controller, animated: false)
+    }
+    
+    func pushSignIn(subscriber: SignInDelegate?) {
+        let controller = screenFabric.createSignInScreen(subscriber: subscriber)
+        pushController(controller: controller, animated: true)
+    }
+    
+    func pushSignUp(subscriber: SignUpContainerDelegate?) {
+        let controller = screenFabric.createSignUpScreen(subscriber: subscriber)
+        pushController(controller: controller, animated: true)
+    }
+    
+    func pushSuccessRegistration(subscriber: SuccessLoginScreenDelegate?) {
+        let controller = screenFabric.createSuccessLoginScreen(subscriber: subscriber)
+        pushController(controller: controller, animated: true)
+    }
+    
+    func pushSignInFromSignUp(subscriber: SignInDelegate?) {
+        for controller in navigationController.viewControllers where controller is SignInVC {
+            navigationController.popToViewController(controller, animated: true)
+            return
+        }
+        
+        let controller = screenFabric.createSignInScreen(subscriber: subscriber)
+        pushController(controller: controller, animated: true)
+    }
+    
+    func pushSignUpFromSignIn(subscriber: SignUpContainerDelegate?) {
+        for controller in navigationController.viewControllers where controller is SignUpContainerVC {
+            navigationController.popToViewController(controller, animated: true)
+            return
+        }
+        
+        let controller = screenFabric.createSignUpScreen(subscriber: subscriber)
+        pushController(controller: controller, animated: true)
+    }
+    
+    func presentAppModule() {
+        let tabBarController = AppTabBarController()
+        tabBarController.modalPresentationStyle = .fullScreen
+        presentController(controller: tabBarController, animated: true)
     }
     
     // MARK: - Private Methods
@@ -46,69 +94,9 @@ final class LoginCoordinator: Coordinator {
     
 }
 
-// MARK: - Login Screen Actions
-
-extension LoginCoordinator: LoginOutput {
-    
-    func pushSignInFromLogin() {
-        let controller = screenFabric.createSignInScreen(outputDelegate: self)
-        pushController(controller: controller, animated: true)
-    }
-    
-    func pushSignUpFromLogin() {
-        let controller = screenFabric.createSignUpScreen(outputDelegate: self)
-        pushController(controller: controller, animated: true)
-    }
-    
-}
-
-// MARK: - SignIn Screen Actions
-
-extension LoginCoordinator: SignInOutput {
-    
-    func pushSignUpFromSignIn() {
-        let controller = screenFabric.createSignUpScreen(outputDelegate: self)
-        pushController(controller: controller, animated: true)
-    }
-    
-    func pushSuccessScreenFromSignIn() {
-        let screen = screenFabric.createSuccessLoginScreen(outputDelegate: self)
-        pushController(controller: screen, animated: true)
-    }
-    
-}
-
 // MARK: - SignUp Screen Actions
 
-extension LoginCoordinator: SignUpContainerOutput {
-    
-    func pushSignInFromSignUp() {
-        for controller in navigationController.viewControllers {
-            if controller is SignInVC {
-                navigationController.popToViewController(controller, animated: true)
-                return
-            }
-        }
-        
-        let controller = screenFabric.createSignInScreen(outputDelegate: self)
-        pushController(controller: controller, animated: true)
-    }
-    
-    func pushSuccessScreenFromSignUp() {
-        let screen = screenFabric.createSuccessLoginScreen(outputDelegate: self)
-        pushController(controller: screen, animated: true)
-    }
-    
-}
-
-// MARK: - Success Login Screen Actions
-
-extension LoginCoordinator: SuccessLoginScreenOutputDelegate {
-    
-    func presentAppModule() {
-        let tabBarController = AppTabBarController()
-        tabBarController.modalPresentationStyle = .fullScreen
-        presentController(controller: tabBarController, animated: true)
-    }
-    
-}
+//extension LoginCoordinator {
+//
+//
+//}

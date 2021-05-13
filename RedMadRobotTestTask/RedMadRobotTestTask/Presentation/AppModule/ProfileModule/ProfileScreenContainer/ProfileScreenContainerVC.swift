@@ -11,7 +11,7 @@ protocol ProfileScreenOutputDelegate: AnyObject {
     
 }
 
-final class ProfileScreenVC: UIViewController {
+final class ProfileScreenContainerVC: UIViewController {
     
     // MARK: - IBOutlets
     
@@ -33,14 +33,14 @@ final class ProfileScreenVC: UIViewController {
     lazy private var profileInfoVC = ProfileInfoVC(subscriber: self)
     lazy private var changeProfileCategoryVC = ChangeProfileCategoryVC(subscriber: self)
     
-    private let allPostsVC = PostsFeedVC(state: .userPosts)
-    private let favoritePostsVC = PostsFeedVC(state: .userFavoritePosts)
+    lazy private var userPostsVC = UserPostsVC(subscriber: self)
+    lazy private var favoritePostsVC = FavoritePostsVC(subscriber: self)
     
     // MARK: - Initializers
     
     init(outputSubscriber: ProfileScreenOutputDelegate?) {
         self.outputDelegate = outputSubscriber
-        super.init(nibName: R.nib.profileScreenVC.name, bundle: R.nib.profileScreenVC.bundle)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -66,18 +66,6 @@ final class ProfileScreenVC: UIViewController {
     
     private func setupViews() {
         navigationController?.navigationBar.isHidden = true
-    
-        // Отслеживаем изменения оффсета в коллекциях для изменений констрейнта в чайлде с информацией о пользователе
-        
-        allPostsVC.scrollViewOffSetChanged = { [weak self] offSet in
-            guard let self = self else { return }
-            self.userInfoContainerTopConstraint.constant = -offSet
-        }
-        
-        favoritePostsVC.scrollViewOffSetChanged = { [weak self] offSet in
-            guard let self = self else { return }
-            self.userInfoContainerTopConstraint.constant = -offSet
-        }
     }
     
     private func setupScrollView() {
@@ -97,13 +85,13 @@ final class ProfileScreenVC: UIViewController {
         
         // Чайлды с постами добавлены на scrollView, благодаря этому получилось сделать красивую анимацию переходов
         
-        allPostsVC.view.frame = contentScrollView.frame
-        allPostsVC.view.frame.origin = CGPoint.zero
+        userPostsVC.view.frame = contentScrollView.frame
+        userPostsVC.view.frame.origin = CGPoint.zero
         
         favoritePostsVC.view.frame = contentScrollView.frame
         favoritePostsVC.view.frame.origin = CGPoint(x: view.frame.width, y: 0)
-        
-        addChildControllerToScrollView(child: allPostsVC, scrollView: contentScrollView)
+
+        addChildControllerToScrollView(child: userPostsVC, scrollView: contentScrollView)
         addChildControllerToScrollView(child: favoritePostsVC, scrollView: contentScrollView)
         
         setupInsetsInChilds()
@@ -113,8 +101,8 @@ final class ProfileScreenVC: UIViewController {
         let topSafeAreaInset = UIApplication.shared.windows.first { $0.isKeyWindow }?.safeAreaInsets.top ?? 0.0
         let fullInset = topSafeAreaInset + userInfoContainerView.frame.height + 2
         
-        allPostsVC.setTopInset(fullInset)
-        favoritePostsVC.setTopInset(fullInset)
+        userPostsVC.setTopInsetInPostCollection(fullInset)
+        favoritePostsVC.setTopInsetInPostCollection(fullInset)
         
         view.bringSubviewToFront(userInfoContainerView)
     }
@@ -123,7 +111,7 @@ final class ProfileScreenVC: UIViewController {
 
 // MARK: - ChangeCategory Delegate
 
-extension ProfileScreenVC: ChangeProfileCategoryDelegate {
+extension ProfileScreenContainerVC: ChangeProfileCategoryDelegate {
     func changeCategory(_ category: ProfileCategories) {
         let xOffSet: CGFloat
         let width = view.frame.width
@@ -151,8 +139,29 @@ extension ProfileScreenVC: ChangeProfileCategoryDelegate {
 
 // MARK: - Profile screen delegate
 
-extension ProfileScreenVC: ProfileInfoDelegate {
+extension ProfileScreenContainerVC: ProfileInfoDelegate {
     func editProfileAction() {
         print("edit button action")
+    }
+}
+
+// MARK: - User Posts Delegate
+
+extension ProfileScreenContainerVC: UserPostsDelegate {
+
+}
+
+// MARK: - User Favorite Posts Delegate
+
+extension ProfileScreenContainerVC: FavoritePostsDelegate {
+    
+}
+
+// MARK: - User Posts Delegate
+
+// Отслеживаем изменения оффсета в коллекциях для изменений констрейнта в чайлде с информацией о пользователе
+extension ProfileScreenContainerVC: PostsFeedInProfileDelegate {
+    func scrollViewOffSetChanged(inset: CGFloat) {
+        self.userInfoContainerTopConstraint.constant = -inset
     }
 }

@@ -7,9 +7,9 @@
 
 import UIKit
 
-public protocol SignUpContainerOutput: AnyObject {
-    func pushSignInFromSignUp()
-    func pushSuccessScreenFromSignUp()
+public protocol SignUpContainerDelegate: AnyObject {
+    func signInButtonActionFromSignUp()
+    func successRegistration()
 }
 
 final class SignUpContainerVC: UIViewController {
@@ -29,7 +29,7 @@ final class SignUpContainerVC: UIViewController {
     private let checkKeyboardViewModel: CheckKeyboardViewModel
     private let viewViewModel = SignUpContainerViewModel()
     
-    weak private var outputDelegate: SignUpContainerOutput?
+    weak private var delegate: SignUpContainerDelegate?
     private let registrationService: AuthorizationServiceProtocol
     
     lazy private var signUpFirstScreen = SignUpFirstVC(subscriber: self)
@@ -40,12 +40,12 @@ final class SignUpContainerVC: UIViewController {
     // MARK: - Initializers
     
     init(
-        outputSubscriber: SignUpContainerOutput?,
+        subscriber: SignUpContainerDelegate?,
         authorizationServices: AuthorizationServiceProtocol,
         viewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
         checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
     ) {
-        self.outputDelegate = outputSubscriber
+        self.delegate = subscriber
         self.registrationService = authorizationServices
         self.navBarViewModel = viewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
@@ -79,7 +79,7 @@ final class SignUpContainerVC: UIViewController {
     // MARK: - IBOutlet
     
     @IBAction private func isAlreadyRegisteredAction(_ sender: Any) {
-        outputDelegate?.pushSignInFromSignUp()
+        delegate?.signInButtonActionFromSignUp()
     }
     
     @IBAction private func nextButtonAction(_ sender: Any) {
@@ -131,7 +131,7 @@ final class SignUpContainerVC: UIViewController {
     }
     
     private func registrateUser() {
-        outputDelegate?.pushSuccessScreenFromSignUp()
+        delegate?.successRegistration()
     }
 }
 

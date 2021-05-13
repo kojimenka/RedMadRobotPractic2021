@@ -34,16 +34,32 @@ final class TestLoginCoordinator: XCTestCase {
         
         let initialScreen = loginCoordinator.navigationController.topViewController
         
-        XCTAssertEqual(initialScreen is LoginScreenVC, true)
+        XCTAssertEqual(initialScreen is RegistrationContainerVC, true)
     }
     
     // MARK: - Sign In Flow
+    
+    func testPushLoginScreen() {
+        let testExpectation = expectation(description: #function)
+        
+        loginCoordinator.start()
+        loginCoordinator.pushLoginScreen(subscriber: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            testExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0) { _ in
+            let searchScreen = self.loginCoordinator.navigationController.topViewController
+            XCTAssertEqual(searchScreen is LoginScreenVC, true)
+        }
+    }
     
     func testPushSignInCoordinator() {
         let testExpectation = expectation(description: #function)
         
         loginCoordinator.start()
-        loginCoordinator.pushSignInFromLogin()
+        loginCoordinator.pushSignIn(subscriber: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             testExpectation.fulfill()
@@ -52,24 +68,6 @@ final class TestLoginCoordinator: XCTestCase {
         waitForExpectations(timeout: 1.0) { _ in
             let searchScreen = self.loginCoordinator.navigationController.topViewController
             XCTAssertEqual(searchScreen is SignInVC, true)
-        }
-        
-    }
-
-    func testFullSignInFlow() {
-        let testExpectation = expectation(description: #function)
-
-        loginCoordinator.start()
-        loginCoordinator.pushSignInFromLogin()
-        loginCoordinator.pushSuccessScreenFromSignIn()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            testExpectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 1.0) { _ in
-            let searchScreen = self.loginCoordinator.navigationController.topViewController
-            XCTAssertEqual(searchScreen is SuccessLoginScreenVC, true)
         }
         
     }
@@ -78,8 +76,9 @@ final class TestLoginCoordinator: XCTestCase {
         let testExpectation = expectation(description: #function)
         
         loginCoordinator.start()
-        loginCoordinator.pushSignInFromLogin()
-        loginCoordinator.pushSignUpFromSignIn()
+        loginCoordinator.pushLoginScreen(subscriber: nil)
+        loginCoordinator.pushSignIn(subscriber: nil)
+        loginCoordinator.pushSignUpFromSignIn(subscriber: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             testExpectation.fulfill()
@@ -91,13 +90,14 @@ final class TestLoginCoordinator: XCTestCase {
         }
     }
     
-    // MARK: - Sign Up Flow
-    
-    func testPushSignUpCoordinator() {
+    func testInfiniteFlow() {
         let testExpectation = expectation(description: #function)
         
         loginCoordinator.start()
-        loginCoordinator.pushSignUpFromLogin()
+        loginCoordinator.pushLoginScreen(subscriber: nil)
+        loginCoordinator.pushSignIn(subscriber: nil)
+        loginCoordinator.pushSignUpFromSignIn(subscriber: nil)
+        loginCoordinator.pushSignInFromSignUp(subscriber: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             testExpectation.fulfill()
@@ -105,17 +105,17 @@ final class TestLoginCoordinator: XCTestCase {
         
         waitForExpectations(timeout: 1.0) { _ in
             let searchScreen = self.loginCoordinator.navigationController.topViewController
-            XCTAssertEqual(searchScreen is SignUpContainerVC, true)
+            XCTAssertEqual(searchScreen is SignInVC, true)
         }
-        
     }
 
-    func testFullSignUpFlow() {
+    func testFullSignInFlow() {
         let testExpectation = expectation(description: #function)
 
         loginCoordinator.start()
-        loginCoordinator.pushSignUpFromLogin()
-        loginCoordinator.pushSuccessScreenFromSignUp()
+        loginCoordinator.pushLoginScreen(subscriber: nil)
+        loginCoordinator.pushSignIn(subscriber: nil)
+        loginCoordinator.pushSuccessRegistration(subscriber: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             testExpectation.fulfill()
@@ -128,21 +128,24 @@ final class TestLoginCoordinator: XCTestCase {
         
     }
     
-    func testPushSignInFromSignUp() {
+    // MARK: - Sign Up Flow
+    
+    func testPushSignUpCoordinator() {
         let testExpectation = expectation(description: #function)
-        
+
         loginCoordinator.start()
-        loginCoordinator.pushSignUpFromLogin()
-        loginCoordinator.pushSignInFromSignUp()
-        
+        loginCoordinator.pushLoginScreen(subscriber: nil)
+        loginCoordinator.pushSignUp(subscriber: nil)
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             testExpectation.fulfill()
         }
-        
+
         waitForExpectations(timeout: 1.0) { _ in
             let searchScreen = self.loginCoordinator.navigationController.topViewController
-            XCTAssertEqual(searchScreen is SignInVC, true)
+            XCTAssertEqual(searchScreen is SignUpContainerVC, true)
         }
+        
     }
     
 }
