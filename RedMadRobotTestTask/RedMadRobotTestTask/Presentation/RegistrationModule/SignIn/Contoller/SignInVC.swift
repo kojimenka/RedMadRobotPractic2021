@@ -7,26 +7,36 @@
 
 import UIKit
 
-final class SignInVC: UIViewController {
+public protocol SignInDelegate: AnyObject {
+    func signUpButtonActionFromSignIn()
+    func loginUser(email: String, password: String)
+}
 
+final class SignInVC: UIViewController {
+    
     // MARK: - IBOutlet
     
     @IBOutlet private weak var enterButton: RegistrationNextButton!
     @IBOutlet private weak var signInView: RegistrationView!
     @IBOutlet private weak var registrationButtonBottomConstraint: NSLayoutConstraint!
-
+    
     // MARK: - Private Properties
     
-    private let uiViewModel: SignInViewModelProtocol?
+    weak private var delegate: SignInDelegate?
+    private let uiViewModel: SetupNavBarViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
-    private let registrationService = ServiceLayer.shared.authorizationServices
     
     // MARK: - Initializers
     
-    init(uiViewModel: SignInViewModelProtocol, checkKeyboardViewModel: CheckKeyboardViewModel) {
+    init(
+        subscriber: SignInDelegate?,
+        uiViewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
+        checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
+    ) {
+        self.delegate = subscriber
         self.uiViewModel = uiViewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
-        super.init(nibName: R.nib.signInVC.name, bundle: R.nib.signInVC.bundle)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -48,23 +58,23 @@ final class SignInVC: UIViewController {
     // MARK: - IBAction
     
     @IBAction private func signUpButtonAction(_ sender: Any) {
-        let signUpVC = SignUpContainerVC(viewModel: SetupNavBarViewModel(),
-                                         checkKeyboardViewModel: CheckKeyboardViewModel(subscriber: nil))
-        navigationController?.pushViewController(signUpVC, animated: true)
+        delegate?.signUpButtonActionFromSignIn()
     }
     
     @IBAction private func enterButtonAction(_ sender: Any) {
         guard enterButton.isButtonEnable == true else { signInView.checkForWarning(controller: self); return }
-        registrateUser()
+        loginUser()
     }
     
     // MARK: - Private Methods
     
     private func navBarSetup() {
         navigationController?.navigationBar.isHidden = false
-        uiViewModel?.customizeNavBar(navigationBar: navigationController?.navigationBar,
-                                     navigationItem: navigationItem,
-                                     title: R.string.localizable.signInNavBarTitle())
+        uiViewModel?.customizeNavBar(
+            navigationBar: navigationController?.navigationBar,
+            navigationItem: navigationItem,
+            title: R.string.localizable.signInNavBarTitle()
+        )
     }
     
     private func setupViews() {
@@ -74,12 +84,11 @@ final class SignInVC: UIViewController {
         self.hideKeyboardWhenTappedAround()
     }
     
-    private func registrateUser() {
-        let successLogin = SuccessLoginScreenVC()
+    private func loginUser() {
         self.view.endEditing(true)
-        self.navigationController?.pushViewController(successLogin, animated: true)
+        delegate?.loginUser(email: "Test", password: "Test")
     }
-
+    
 }
 
 // MARK: - Check filling state

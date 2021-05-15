@@ -60,7 +60,7 @@ final class AuthorizationTextField: UIView {
     }
     
     public func setState(isSelected: Bool) {
-        let neededColor = isSelected ? UIColor.ColorPalette.tintOrangeColor : UIColor.ColorPalette.notActive
+        let neededColor = isSelected ? ColorPalette.tintOrangeColor : ColorPalette.notActive
         
         UIView.AnimationTransition.transitionChangeBackgroundColor(view: indicatorView,
                                                                    color: neededColor ?? UIColor.clear,

@@ -10,29 +10,43 @@ import UIKit
 final class AppTabBarController: UITabBarController {
     
     // MARK: - Properties
-    private let feedScreenVC = FeedScreenVC()
-    private let profileScreenVC = ProfileScreenVC()
+    
+    private let feedCoordinator = FeedModuleCoordinator(navigationController: UINavigationController())
+    private let profileScreenVC = ProfileModuleCoordinator(navigationController: UINavigationController())
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        customizeTabBar()
         setController()
     }
     
-    // MARK: - Methods
+    // MARK: - Private Methods
+    
+    private func customizeTabBar() {
+        tabBar.tintColor = ColorPalette.tintOrangeColor
+    }
+    
     private func setController() {
-        let feedNavController = UINavigationController()
-        feedNavController.pushViewController(feedScreenVC, animated: false)
+        feedCoordinator.start()
+        profileScreenVC.start()
+        
         let feedTabBarTitle = R.string.localizable.feedTabBarTitle()
-        feedNavController.tabBarItem = UITabBarItem(title: feedTabBarTitle, image: .init(), tag: 0)
+        feedCoordinator.navigationController.tabBarItem = UITabBarItem(
+            title: feedTabBarTitle,
+            image: .init(),
+            tag: 0
+        )
         
-        let profileNavController = UINavigationController()
-        profileNavController.pushViewController(profileScreenVC, animated: false)
         let profileTabBarTitle = R.string.localizable.profileTabBarTitle()
-        let profileTabBarItem = UITabBarItem(title: profileTabBarTitle, image: .init(), tag: 1)
-        profileNavController.tabBarItem = profileTabBarItem
+        profileScreenVC.navigationController.tabBarItem = UITabBarItem(
+            title: profileTabBarTitle,
+            image: .init(),
+            tag: 1
+        )
         
-        viewControllers = [feedNavController, profileNavController]
+        viewControllers = [feedCoordinator.navigationController, profileScreenVC.navigationController]
     }
     
 }

@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol SignInViewModelProtocol {
+protocol SetupNavBarViewModelProtocol {
     func customizeNavBar(navigationBar: UINavigationBar?, navigationItem: UINavigationItem, title: String)
 }
 
-final class SetupNavBarViewModel: SignInViewModelProtocol {
+final class SetupNavBarViewModel: SetupNavBarViewModelProtocol {
     
     // MARK: - Methods
     public func customizeNavBar(navigationBar: UINavigationBar?, navigationItem: UINavigationItem, title: String) {
