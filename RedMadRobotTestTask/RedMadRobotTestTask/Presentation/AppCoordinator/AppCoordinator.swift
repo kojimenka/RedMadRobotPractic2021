@@ -14,7 +14,7 @@ final class AppCoordinator: Coordinator {
         
     // MARK: - Private Properties
     
-    private let isLaunchedBefore = false
+    private let isLaunchedBefore = true
         
     // MARK: - Init
     

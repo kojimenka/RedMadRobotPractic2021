@@ -83,3 +83,10 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+extension UIViewController {
+    func showErrorAlert(with error: Error) {
+        let alert = UIAlertController.createAlert(alertText: error.localizedDescription)
+        self.present(alert, animated: true)
+    }
+}

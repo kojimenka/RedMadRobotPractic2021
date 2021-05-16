@@ -30,6 +30,15 @@ struct UserRequestInterceptor: RequestInterceptor {
     
     // MARK: - Public Methods
     
+    func retry(
+        _ request: Request,
+        for session: Session,
+        dueTo error: Error,
+        completion: @escaping (RetryResult) -> Void
+    ) {
+        completion(.doNotRetry)
+    }
+    
     public func adapt(
         _ urlRequest: URLRequest,
         for session: Session,

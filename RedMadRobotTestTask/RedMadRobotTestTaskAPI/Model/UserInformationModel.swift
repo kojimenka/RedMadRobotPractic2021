@@ -9,6 +9,24 @@ import Foundation
 
 public struct UserInformation: Codable, Equatable {
     
+    public init(
+        id: String,
+        firstName: String,
+        lastName: String,
+        nickname: String?,
+        avatarUrl: URL?,
+        birthDay: String
+    ) {
+        
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.nickname = nickname
+        self.avatarUrl = avatarUrl
+        self.birthDay = birthDay
+        
+    }
+    
     public var id: String
     public var firstName: String
     public var lastName: String

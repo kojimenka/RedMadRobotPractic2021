@@ -93,10 +93,3 @@ final class LoginCoordinator: Coordinator {
     }
     
 }
-
-// MARK: - SignUp Screen Actions
-
-//extension LoginCoordinator {
-//
-//
-//}

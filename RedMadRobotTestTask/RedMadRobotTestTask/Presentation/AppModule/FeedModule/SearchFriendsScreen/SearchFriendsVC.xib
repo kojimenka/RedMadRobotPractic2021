@@ -12,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchFriendsVC" customModule="RedMadRobotTestTask" customModuleProvider="target">
             <connections>
-                <outlet property="findenFriendsContainerView" destination="FIz-na-mkM" id="Cy2-Mi-zKT"/>
-                <outlet property="searchTextField" destination="79S-0Y-9w1" id="6pe-B8-3zK"/>
+                <outlet property="contentView" destination="j1p-xI-SgW" id="s2v-RV-EkQ"/>
+                <outlet property="searchBar" destination="8AC-nK-UAP" id="btz-4V-F1r"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,29 +29,29 @@
                         <constraint firstAttribute="height" constant="0.5" id="LIy-BQ-dZt"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="79S-0Y-9w1">
-                    <rect key="frame" x="16" y="68" width="382" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Имя или никнейм" translatesAutoresizingMaskIntoConstraints="NO" id="8AC-nK-UAP">
+                    <rect key="frame" x="20" y="46" width="374" height="56"/>
+                    <color key="tintColor" name="tintOrange"/>
                     <textInputTraits key="textInputTraits"/>
-                </textField>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIz-na-mkM">
-                    <rect key="frame" x="0.0" y="126" width="414" height="770"/>
+                </searchBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1p-xI-SgW">
+                    <rect key="frame" x="20" y="126" width="374" height="736"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstAttribute="trailingMargin" secondItem="j1p-xI-SgW" secondAttribute="trailing" id="5G3-ZZ-WOz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Yqr-Tg-EJP" secondAttribute="trailing" id="6OF-bL-DwL"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="79S-0Y-9w1" secondAttribute="trailing" constant="16" id="8Yn-C7-Nm2"/>
-                <constraint firstItem="FIz-na-mkM" firstAttribute="top" secondItem="79S-0Y-9w1" secondAttribute="bottom" constant="24" id="Dpb-OU-y1Z"/>
-                <constraint firstAttribute="bottom" secondItem="FIz-na-mkM" secondAttribute="bottom" id="SJ0-b1-OST"/>
-                <constraint firstItem="FIz-na-mkM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wgv-M2-9Ug"/>
+                <constraint firstItem="8AC-nK-UAP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="2" id="CQE-Do-mdm"/>
+                <constraint firstItem="8AC-nK-UAP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="PXB-gH-bvn"/>
+                <constraint firstItem="j1p-xI-SgW" firstAttribute="top" secondItem="8AC-nK-UAP" secondAttribute="bottom" constant="24" id="S5D-TJ-7bW"/>
+                <constraint firstAttribute="trailingMargin" secondItem="8AC-nK-UAP" secondAttribute="trailing" id="T5v-tg-7Gk"/>
                 <constraint firstItem="Yqr-Tg-EJP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bUI-pb-6L6"/>
-                <constraint firstItem="79S-0Y-9w1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="dZ1-87-Oam"/>
                 <constraint firstItem="Yqr-Tg-EJP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dee-iz-rpP"/>
-                <constraint firstItem="79S-0Y-9w1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="i5m-VS-Zz0"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FIz-na-mkM" secondAttribute="trailing" id="wco-LU-Qb7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="j1p-xI-SgW" secondAttribute="bottom" id="vg5-RX-uyj"/>
+                <constraint firstItem="j1p-xI-SgW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="xNC-Oe-zdK"/>
             </constraints>
             <point key="canvasLocation" x="61" y="153"/>
         </view>
@@ -59,6 +59,9 @@
     <resources>
         <namedColor name="light_grey_blue">
             <color red="0.96862745098039216" green="0.97254901960784312" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tintOrange">
+            <color red="0.99599999189376831" green="0.2669999897480011" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

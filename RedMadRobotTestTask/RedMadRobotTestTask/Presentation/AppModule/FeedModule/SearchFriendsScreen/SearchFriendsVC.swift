@@ -15,8 +15,8 @@ final class SearchFriendsVC: UIViewController {
 
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var searchTextField: UITextField!
-    @IBOutlet private weak var findenFriendsContainerView: UIView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var contentView: UIView!
     
     // MARK: - Private Properties
     
@@ -26,7 +26,7 @@ final class SearchFriendsVC: UIViewController {
     
     init(outputSubscriber: SearchFriendsOutputDelegate?) {
         self.outputDelegate = outputSubscriber
-        super.init(nibName: R.nib.searchFriendsVC.name, bundle: R.nib.searchFriendsVC.bundle)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {

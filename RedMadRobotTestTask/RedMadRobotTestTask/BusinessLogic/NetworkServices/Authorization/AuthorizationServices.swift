@@ -11,6 +11,8 @@ import FBSDKLoginKit
 
 import Apexy
 
+import Alamofire
+
 import RedMadRobotTestTaskAPI
 
 public enum AuthorizationMethods {
@@ -27,14 +29,12 @@ public protocol AuthorizationServiceProtocol {
         completion: @escaping ((Result<Void, Error>) -> Void))
     
     func signIn(
-        email: String,
-        password: String,
+        credentials: Credentials,
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress
     
     func signUp(
-        email: String,
-        password: String,
+        credentials: Credentials,
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress
     
@@ -108,11 +108,10 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
     }
     
     public func signIn(
-        email: String,
-        password: String,
+        credentials: Credentials,
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
-        let endpoint = UserLoginEndpoint(email: email, password: password)
+        let endpoint = UserLoginEndpoint(email: credentials.email, password: credentials.password)
         return apiClient.request(endpoint) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -123,17 +122,16 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
             case .failure(let error):
                 self.storage.accessToken = nil
                 self.storage.refreshToken = nil
-                completion(.failure(error))
+                completion(.failure(error.unwrapAFError()))
             }
         }
     }
     
     public func signUp(
-        email: String,
-        password: String,
+        credentials: Credentials,
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
-        let endpoint = UserRegistrationEndpoint(email: email, password: password)
+        let endpoint = UserRegistrationEndpoint(email: credentials.email, password: credentials.password)
         
         return apiClient.request(endpoint) { [weak self] result in
             guard let self = self else { return }
@@ -145,7 +143,7 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
             case .failure(let error):
                 self.storage.accessToken = nil
                 self.storage.refreshToken = nil
-                completion(.failure(error))
+                completion(.failure(error.unwrapAFError()))
             }
         }
     }
@@ -162,7 +160,7 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
                 self.storage.refreshToken = token.refreshToken
                 completion(.success(()))
             case .failure(let error):
-                completion(.failure(error))
+                completion(.failure(error.unwrapAFError()))
             }
         }
     }
@@ -213,4 +211,19 @@ extension AuthorizationServices: GIDSignInDelegate {
         
         authorizationCompletion?(.success(()))
     }
+}
+
+public extension Error {
+    
+    func unwrapAFError() -> Error {
+        guard let afError = asAFError else { return self }
+        
+        if case .responseValidationFailed(let reason) = afError,
+           case .customValidationFailed(let underLayingError) = reason {
+            return underLayingError
+        }
+
+        return self
+    }
+    
 }

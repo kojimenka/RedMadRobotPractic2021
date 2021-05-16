@@ -55,12 +55,9 @@
                         <constraint firstAttribute="height" constant="1" id="scn-bR-Nd2"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHQ-uX-CMQ" customClass="SignInRegistrationView" customModule="RedMadRobotTestTask" customModuleProvider="target">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GHQ-uX-CMQ" customClass="NewRegistrationView" customModule="RedMadRobotTestTask" customModuleProvider="target">
                     <rect key="frame" x="16" y="64" width="382" height="129"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="GHQ-uX-CMQ" secondAttribute="height" multiplier="343:116" id="i9X-iC-wdY"/>
-                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

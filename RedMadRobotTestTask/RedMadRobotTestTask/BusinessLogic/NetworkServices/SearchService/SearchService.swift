@@ -17,7 +17,7 @@ public final class SearchService: ApiService, SearchServiceProtocol {
     
     public func getSortedUsers(
         predicate: String,
-        completion: @escaping (Result<[UserInformation], Error>) -> Void)
+        completion: @escaping (Result<[RedMadRobotTestTaskAPI.UserInformation], Error>) -> Void)
     -> Progress {
         let endpoint = GetSearchedUserEndpoint(predicate: predicate)
         return apiClient.request(endpoint, completionHandler: completion)

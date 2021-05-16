@@ -65,10 +65,9 @@ final class ChangeProfileCategoryVC: UIViewController {
     
     // MARK: - IBActions
     
-    @IBAction private func buttonAction(_ sender: Any) {
+    @IBAction private func buttonAction(_ sender: UIButton?) {
         for buttonInfo in allButtonsInfo {
-            guard let senderButton = sender as? UIButton else { continue }
-            let isChosenButton = buttonInfo.button == senderButton
+            let isChosenButton = buttonInfo.button == sender
             let titleColor = isChosenButton ? UIColor.black : R.color.middle_grey()
             
             if isChosenButton {

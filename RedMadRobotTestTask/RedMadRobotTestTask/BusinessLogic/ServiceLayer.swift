@@ -43,7 +43,7 @@ final class ServiceLayer {
                 storage: userStorage),
             configuration: .ephemeral)
     }()
-    
+
     // MARK: - Init
     
     private init() {}

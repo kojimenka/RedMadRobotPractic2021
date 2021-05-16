@@ -14,8 +14,8 @@ protocol UserInfoServiceProtocol {
     // MARK: - Get request
     
     func getUserInfo(
-       completion: @escaping (Result<UserInformation, Error>) -> Void)
-   -> Progress
+        completion: @escaping (Result<UserInformation, Error>) -> Void)
+    -> Progress
     func getUserPosts(
         completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress
@@ -39,7 +39,7 @@ protocol UserInfoServiceProtocol {
     func updateUserInfo(
         user: UserInformation,
         completion: @escaping (Result<Void, Error>) -> Void)
-     -> Progress
+    -> Progress
     
     // MARK: - Delete request
     
@@ -48,7 +48,7 @@ protocol UserInfoServiceProtocol {
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress
     func deletePost(
-       postID: String,
-       completion: @escaping (Result<Void, Error>) -> Void)
-   -> Progress
+        postID: String,
+        completion: @escaping (Result<Void, Error>) -> Void)
+    -> Progress
 }

@@ -39,6 +39,11 @@ final class FeedScreenContainerVC: UIViewController {
     
     // MARK: - UIViewController
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.outputDelegate?.showSearchFriendScreen()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -55,7 +60,6 @@ final class FeedScreenContainerVC: UIViewController {
     // MARK: - Private Methods
     
     private func setupView() {
-        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = ColorPalette.mainBackgroundColor
     }
     

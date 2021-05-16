@@ -7,21 +7,31 @@
 
 import UIKit
 
+protocol SignUpFirstScreenDelegate: AnyObject {
+    func currentStatus(isUserFillScreen: Bool)
+    func successFill(userCredentials: Credentials, loginText: String)
+}
+
 final class SignUpFirstVC: UIViewController {
 
     // MARK: - IBOutlet
     
-    @IBOutlet weak private var signUpView: RegistrationView!
+    @IBOutlet weak private var signUpView: NewRegistrationView!
     
     // MARK: - Private Properties
     
-    private var subscriber: RegistrationViewDelegate?
+    weak private var delegate: SignUpFirstScreenDelegate?
+    private let registrationDataViewModel: FirstSignUpRegistrationViewModelProtocol
 
     // MARK: - Initializers
     
-    init(subscriber: RegistrationViewDelegate) {
-        super.init(nibName: R.nib.signUpFirstVC.name, bundle: R.nib.signUpFirstVC.bundle)
-        self.subscriber = subscriber
+    init(
+        subscriber: SignUpFirstScreenDelegate,
+        registrationDataViewModel: FirstSignUpRegistrationViewModelProtocol = FirstSignUpRegistrationViewModel()
+    ) {
+        self.registrationDataViewModel = registrationDataViewModel
+        super.init(nibName: nil, bundle: nil)
+        self.delegate = subscriber
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +42,7 @@ final class SignUpFirstVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUpView.delegate = subscriber
+        setupViews()
     }
     
     // MARK: - Public Methods
@@ -41,4 +51,28 @@ final class SignUpFirstVC: UIViewController {
         signUpView.checkForWarning(controller: self)
     }
     
+    // MARK: - Private Methods
+    
+    private func setupViews() {
+        signUpView.delegate = self
+        signUpView.addRegistrationFields(registrationDataViewModel.allRegistrationFieldData)
+    }
+    
+}
+
+// MARK: - RegistrationView Delegate
+
+extension SignUpFirstVC: NewRegistrationViewDelegate {
+    func currentStatus(isUserFillScreen: Bool) {
+        delegate?.currentStatus(isUserFillScreen: isUserFillScreen)
+    }
+    
+    func successFillData(with allRegistrationFieldData: [RegistrationFieldData]) {
+        registrationDataViewModel.fillNewValues(with: allRegistrationFieldData)
+        
+        delegate?.successFill(
+            userCredentials: registrationDataViewModel.userCredentials,
+            loginText: registrationDataViewModel.loginText
+        )
+    }
 }

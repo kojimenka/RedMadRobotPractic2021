@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0FC0FCA1D2EF49294F218932 /* Pods_RedMadRobotTestTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */; };
 		2C025EB9262E05860035B84E /* CheckKeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C025EB8262E05860035B84E /* CheckKeyboardViewModel.swift */; };
-		2C025EBE262E0CB90035B84E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C025EBD262E0CB90035B84E /* RegistrationView.swift */; };
 		2C0343D526472B2600CF9F87 /* RegistrationFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0343D426472B2600CF9F87 /* RegistrationFabric.swift */; };
 		2C0343DB26472C2500CF9F87 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0343DA26472C2500CF9F87 /* LoginCoordinator.swift */; };
 		2C034411264859CC00CF9F87 /* CoordinatorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034410264859CC00CF9F87 /* CoordinatorNavigationController.swift */; };
@@ -18,15 +17,13 @@
 		2C04C0EB262EC50C005F493D /* RegistrationLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C04C0EA262EC50C005F493D /* RegistrationLoaderView.xib */; };
 		2C04C0EE262EC51E005F493D /* RegistrationLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0ED262EC51E005F493D /* RegistrationLoaderView.swift */; };
 		2C0A83E2263A026A00DB6841 /* RefreshUserTokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A83E1263A026A00DB6841 /* RefreshUserTokenEndpoint.swift */; };
+		2C127530264FD70800AACE6A /* NewRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12752F264FD70800AACE6A /* NewRegistrationView.swift */; };
+		2C127539264FF34400AACE6A /* SignInRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C127538264FF34400AACE6A /* SignInRegistrationViewModel.swift */; };
 		2C15DD1D2649AF2700D50900 /* ProfileModuleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD1C2649AF2700D50900 /* ProfileModuleCoordinator.swift */; };
 		2C15DD292649B01100D50900 /* ProfileModuleScreenFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD282649B01100D50900 /* ProfileModuleScreenFabric.swift */; };
 		2C15DD332649C15500D50900 /* TestFeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD322649C15500D50900 /* TestFeedCoordinator.swift */; };
 		2C15DD402649C57800D50900 /* TestLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD3F2649C57800D50900 /* TestLoginCoordinator.swift */; };
 		2C15DD54264A7D3F00D50900 /* PostFeedDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD53264A7D3F00D50900 /* PostFeedDataViewModel.swift */; };
-		2C1ACF42262DEFA800371065 /* SignUpFirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1ACF41262DEFA700371065 /* SignUpFirstView.xib */; };
-		2C1ACF46262DEFBC00371065 /* SignUpFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ACF45262DEFBC00371065 /* SignUpFirstView.swift */; };
-		2C1ACF4B262DF4EE00371065 /* SignUpSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1ACF4A262DF4EE00371065 /* SignUpSecondView.swift */; };
-		2C1ACF50262DF51200371065 /* SignUpSecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1ACF4F262DF51200371065 /* SignUpSecondView.xib */; };
 		2C1B88F62647125100B33E49 /* ProfileInfoRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B88F52647125100B33E49 /* ProfileInfoRequestViewModel.swift */; };
 		2C24D1A326389C7F000855B8 /* DeleteUserPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1A226389C7F000855B8 /* DeleteUserPostEndpoint.swift */; };
 		2C24D1AB26389D52000855B8 /* GetFeedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1AA26389D52000855B8 /* GetFeedEndpoint.swift */; };
@@ -83,7 +80,6 @@
 		2C4808E4262CBCFE0075C0B3 /* RegistrationNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808E3262CBCFE0075C0B3 /* RegistrationNextButton.swift */; };
 		2C4808E7262CBDD40075C0B3 /* AuthorizationWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808E6262CBDD40075C0B3 /* AuthorizationWithButton.swift */; };
 		2C4808F5262CC5E70075C0B3 /* AuthorizationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808F4262CC5E70075C0B3 /* AuthorizationServices.swift */; };
-		2C4808FF262DA91E0075C0B3 /* AuthorizationTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4808FE262DA91E0075C0B3 /* AuthorizationTextField.xib */; };
 		2C480902262DAAF20075C0B3 /* AuthorizationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C480901262DAAF20075C0B3 /* AuthorizationTextField.swift */; };
 		2C5530CA264C5D5B002578A1 /* UserPostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5530C8264C5D5B002578A1 /* UserPostsVC.swift */; };
 		2C5530CB264C5D5B002578A1 /* UserPostsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5530C9264C5D5B002578A1 /* UserPostsVC.xib */; };
@@ -122,13 +118,18 @@
 		2C7E130F262B5D8E00CA4073 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E130E262B5D8E00CA4073 /* R.generated.swift */; };
 		2C7E1324262B6C8A00CA4073 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E1322262B6C8A00CA4073 /* IBMPlexSans-Regular.ttf */; };
 		2C7E1325262B6C8A00CA4073 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E1323262B6C8A00CA4073 /* IBMPlexSans-Medium.ttf */; };
+		2C813C50264FFD3600E7E49F /* FirstSignUpRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C4F264FFD3600E7E49F /* FirstSignUpRegistrationViewModel.swift */; };
+		2C813C5C265002A900E7E49F /* SecondSignUpRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C5B265002A900E7E49F /* SecondSignUpRegistrationViewModel.swift */; };
+		2C813C672650051B00E7E49F /* RegistrationViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C662650051B00E7E49F /* RegistrationViewHelper.swift */; };
+		2C813C6C2650237100E7E49F /* AuthorizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C6B2650237100E7E49F /* AuthorizationHelper.swift */; };
+		2C813C782650685B00E7E49F /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C772650685B00E7E49F /* UserInformation.swift */; };
 		2C87F6C0264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87F6BF264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift */; };
-		2C8A73AB262DB33600A68761 /* SignInRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A73AA262DB33600A68761 /* SignInRegistrationView.swift */; };
-		2C8A73AE262DB34000A68761 /* SignInRegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8A73AD262DB34000A68761 /* SignInRegistrationView.xib */; };
 		2C8A73B3262DD62A00A68761 /* SignUpFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A73B1262DD62A00A68761 /* SignUpFirstVC.swift */; };
 		2C8A73B4262DD62A00A68761 /* SignUpFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8A73B2262DD62A00A68761 /* SignUpFirstVC.xib */; };
 		2C8A73BA262DD67700A68761 /* SignUpSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A73B8262DD67700A68761 /* SignUpSecondVC.swift */; };
 		2C8A73BB262DD67700A68761 /* SignUpSecondVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8A73B9262DD67700A68761 /* SignUpSecondVC.xib */; };
+		2C92EDD3265118D60012C359 /* FoundedFriendsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C92EDD1265118D60012C359 /* FoundedFriendsListVC.swift */; };
+		2C92EDD4265118D60012C359 /* FoundedFriendsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C92EDD2265118D60012C359 /* FoundedFriendsListVC.xib */; };
 		2C938F9C2635A7E5002DF5C8 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C938F9B2635A7E5002DF5C8 /* UIAlertController+Extension.swift */; };
 		2CA6AB4E264DB4ED00B52693 /* RegistrationContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA6AB4C264DB4ED00B52693 /* RegistrationContainerVC.swift */; };
 		2CA6AB4F264DB4ED00B52693 /* RegistrationContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA6AB4D264DB4ED00B52693 /* RegistrationContainerVC.xib */; };
@@ -249,7 +250,6 @@
 		0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTaskAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24CF3FDB716A3C816F522AEB /* Pods-RedMadRobotTestTaskAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPI.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPI/Pods-RedMadRobotTestTaskAPI.release.xcconfig"; sourceTree = "<group>"; };
 		2C025EB8262E05860035B84E /* CheckKeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckKeyboardViewModel.swift; sourceTree = "<group>"; };
-		2C025EBD262E0CB90035B84E /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		2C0343D426472B2600CF9F87 /* RegistrationFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFabric.swift; sourceTree = "<group>"; };
 		2C0343DA26472C2500CF9F87 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		2C034410264859CC00CF9F87 /* CoordinatorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorNavigationController.swift; sourceTree = "<group>"; };
@@ -258,15 +258,13 @@
 		2C04C0EA262EC50C005F493D /* RegistrationLoaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationLoaderView.xib; sourceTree = "<group>"; };
 		2C04C0ED262EC51E005F493D /* RegistrationLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationLoaderView.swift; sourceTree = "<group>"; };
 		2C0A83E1263A026A00DB6841 /* RefreshUserTokenEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshUserTokenEndpoint.swift; sourceTree = "<group>"; };
+		2C12752F264FD70800AACE6A /* NewRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRegistrationView.swift; sourceTree = "<group>"; };
+		2C127538264FF34400AACE6A /* SignInRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRegistrationViewModel.swift; sourceTree = "<group>"; };
 		2C15DD1C2649AF2700D50900 /* ProfileModuleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModuleCoordinator.swift; sourceTree = "<group>"; };
 		2C15DD282649B01100D50900 /* ProfileModuleScreenFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModuleScreenFabric.swift; sourceTree = "<group>"; };
 		2C15DD322649C15500D50900 /* TestFeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFeedCoordinator.swift; sourceTree = "<group>"; };
 		2C15DD3F2649C57800D50900 /* TestLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoginCoordinator.swift; sourceTree = "<group>"; };
 		2C15DD53264A7D3F00D50900 /* PostFeedDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedDataViewModel.swift; sourceTree = "<group>"; };
-		2C1ACF41262DEFA700371065 /* SignUpFirstView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFirstView.xib; sourceTree = "<group>"; };
-		2C1ACF45262DEFBC00371065 /* SignUpFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFirstView.swift; sourceTree = "<group>"; };
-		2C1ACF4A262DF4EE00371065 /* SignUpSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSecondView.swift; sourceTree = "<group>"; };
-		2C1ACF4F262DF51200371065 /* SignUpSecondView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpSecondView.xib; sourceTree = "<group>"; };
 		2C1B88F52647125100B33E49 /* ProfileInfoRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoRequestViewModel.swift; sourceTree = "<group>"; };
 		2C24D1A226389C7F000855B8 /* DeleteUserPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserPostEndpoint.swift; sourceTree = "<group>"; };
 		2C24D1AA26389D52000855B8 /* GetFeedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedEndpoint.swift; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 		2C4808E3262CBCFE0075C0B3 /* RegistrationNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationNextButton.swift; sourceTree = "<group>"; };
 		2C4808E6262CBDD40075C0B3 /* AuthorizationWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationWithButton.swift; sourceTree = "<group>"; };
 		2C4808F4262CC5E70075C0B3 /* AuthorizationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationServices.swift; sourceTree = "<group>"; };
-		2C4808FE262DA91E0075C0B3 /* AuthorizationTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizationTextField.xib; sourceTree = "<group>"; };
 		2C480901262DAAF20075C0B3 /* AuthorizationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationTextField.swift; sourceTree = "<group>"; };
 		2C5530C8264C5D5B002578A1 /* UserPostsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsVC.swift; sourceTree = "<group>"; };
 		2C5530C9264C5D5B002578A1 /* UserPostsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPostsVC.xib; sourceTree = "<group>"; };
@@ -365,13 +362,18 @@
 		2C7E130E262B5D8E00CA4073 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		2C7E1322262B6C8A00CA4073 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
 		2C7E1323262B6C8A00CA4073 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		2C813C4F264FFD3600E7E49F /* FirstSignUpRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSignUpRegistrationViewModel.swift; sourceTree = "<group>"; };
+		2C813C5B265002A900E7E49F /* SecondSignUpRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpRegistrationViewModel.swift; sourceTree = "<group>"; };
+		2C813C662650051B00E7E49F /* RegistrationViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewHelper.swift; sourceTree = "<group>"; };
+		2C813C6B2650237100E7E49F /* AuthorizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationHelper.swift; sourceTree = "<group>"; };
+		2C813C772650685B00E7E49F /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		2C87F6BF264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContainerRequestViewModel.swift; sourceTree = "<group>"; };
-		2C8A73AA262DB33600A68761 /* SignInRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRegistrationView.swift; sourceTree = "<group>"; };
-		2C8A73AD262DB34000A68761 /* SignInRegistrationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInRegistrationView.xib; sourceTree = "<group>"; };
 		2C8A73B1262DD62A00A68761 /* SignUpFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFirstVC.swift; sourceTree = "<group>"; };
 		2C8A73B2262DD62A00A68761 /* SignUpFirstVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFirstVC.xib; sourceTree = "<group>"; };
 		2C8A73B8262DD67700A68761 /* SignUpSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSecondVC.swift; sourceTree = "<group>"; };
 		2C8A73B9262DD67700A68761 /* SignUpSecondVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpSecondVC.xib; sourceTree = "<group>"; };
+		2C92EDD1265118D60012C359 /* FoundedFriendsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundedFriendsListVC.swift; sourceTree = "<group>"; };
+		2C92EDD2265118D60012C359 /* FoundedFriendsListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoundedFriendsListVC.xib; sourceTree = "<group>"; };
 		2C938F9B2635A7E5002DF5C8 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		2CA6AB4C264DB4ED00B52693 /* RegistrationContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContainerVC.swift; sourceTree = "<group>"; };
 		2CA6AB4D264DB4ED00B52693 /* RegistrationContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationContainerVC.xib; sourceTree = "<group>"; };
@@ -503,7 +505,7 @@
 		2C025EBC262E0C9E0035B84E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2C025EBD262E0CB90035B84E /* RegistrationView.swift */,
+				2C813C63265004F800E7E49F /* RegistrationView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -573,6 +575,22 @@
 			path = RegistrationLoader;
 			sourceTree = "<group>";
 		};
+		2C127537264FF32C00AACE6A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C127538264FF34400AACE6A /* SignInRegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C12753D264FFBFD00AACE6A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C813C4F264FFD3600E7E49F /* FirstSignUpRegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2C15DD272649AFFA00D50900 /* ScreenFabric */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,24 +622,6 @@
 				2C15DD3F2649C57800D50900 /* TestLoginCoordinator.swift */,
 			);
 			path = LoginCoordinatorTest;
-			sourceTree = "<group>";
-		};
-		2C1ACF40262DEF9000371065 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2C1ACF45262DEFBC00371065 /* SignUpFirstView.swift */,
-				2C1ACF41262DEFA700371065 /* SignUpFirstView.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		2C1ACF49262DF46D00371065 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2C1ACF4A262DF4EE00371065 /* SignUpSecondView.swift */,
-				2C1ACF4F262DF51200371065 /* SignUpSecondView.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		2C1ACF52262DFBED00371065 /* Common */ = {
@@ -722,7 +722,7 @@
 		2C3B7295262C29670076DF18 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				2C8A73A9262DB30300A68761 /* View */,
+				2C127537264FF32C00AACE6A /* ViewModel */,
 				2C3B72B2262C39D60076DF18 /* Contoller */,
 			);
 			path = SignIn;
@@ -856,6 +856,7 @@
 		2C480897262C522E0075C0B3 /* FeedModule */ = {
 			isa = PBXGroup;
 			children = (
+				2C92EDCD265118700012C359 /* FoundedFriends */,
 				2CFE53882648892C00D75EF7 /* Coordinator */,
 				2CFE539226488A2B00D75EF7 /* ScreenFabric */,
 				2CE793A4262E03A90070F638 /* FeedScreenContainer */,
@@ -902,7 +903,7 @@
 		2C4808AC262C5B8F0075C0B3 /* SignUpSecondScreen */ = {
 			isa = PBXGroup;
 			children = (
-				2C1ACF49262DF46D00371065 /* View */,
+				2C813C5A2650029200E7E49F /* ViewModel */,
 				2C8A73B6262DD64C00A68761 /* Contoller */,
 			);
 			path = SignUpSecondScreen;
@@ -911,7 +912,7 @@
 		2C4808AD262C5B910075C0B3 /* SignUpFirstScreen */ = {
 			isa = PBXGroup;
 			children = (
-				2C1ACF40262DEF9000371065 /* View */,
+				2C12753D264FFBFD00AACE6A /* ViewModel */,
 				2C8A73B0262DD60B00A68761 /* Controller */,
 			);
 			path = SignUpFirstScreen;
@@ -947,6 +948,7 @@
 		2C4808F2262CC5AC0075C0B3 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				2C813C76265067BC00E7E49F /* Models */,
 				2CF47D0D2635529800F3C72B /* ServiceLayer.swift */,
 				2CF47D12263552A200F3C72B /* NetworkServices */,
 				2CCA9120262E1CC800D6A635 /* Validators */,
@@ -959,6 +961,7 @@
 			children = (
 				2C4808F4262CC5E70075C0B3 /* AuthorizationServices.swift */,
 				2CC8850D2637F0E100375AF8 /* UserRequestInterceptor.swift */,
+				2C813C6B2650237100E7E49F /* AuthorizationHelper.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -966,7 +969,6 @@
 		2C4808FD262DA8E40075C0B3 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
-				2C4808FE262DA91E0075C0B3 /* AuthorizationTextField.xib */,
 				2C480901262DAAF20075C0B3 /* AuthorizationTextField.swift */,
 			);
 			path = TextFields;
@@ -1192,6 +1194,47 @@
 			path = IBM_Plex_Sans;
 			sourceTree = "<group>";
 		};
+		2C813C5A2650029200E7E49F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C813C5B265002A900E7E49F /* SecondSignUpRegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C813C63265004F800E7E49F /* RegistrationView */ = {
+			isa = PBXGroup;
+			children = (
+				2C813C652650050500E7E49F /* Helper */,
+				2C813C642650050100E7E49F /* View */,
+			);
+			path = RegistrationView;
+			sourceTree = "<group>";
+		};
+		2C813C642650050100E7E49F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C12752F264FD70800AACE6A /* NewRegistrationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C813C652650050500E7E49F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2C813C662650051B00E7E49F /* RegistrationViewHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		2C813C76265067BC00E7E49F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2C813C772650685B00E7E49F /* UserInformation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2C87F6BD264DD1C5000ED2A8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1207,15 +1250,6 @@
 				2C87F6BF264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		2C8A73A9262DB30300A68761 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2C8A73AA262DB33600A68761 /* SignInRegistrationView.swift */,
-				2C8A73AD262DB34000A68761 /* SignInRegistrationView.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		2C8A73B0262DD60B00A68761 /* Controller */ = {
@@ -1234,6 +1268,15 @@
 				2C8A73B9262DD67700A68761 /* SignUpSecondVC.xib */,
 			);
 			path = Contoller;
+			sourceTree = "<group>";
+		};
+		2C92EDCD265118700012C359 /* FoundedFriends */ = {
+			isa = PBXGroup;
+			children = (
+				2C92EDD1265118D60012C359 /* FoundedFriendsListVC.swift */,
+				2C92EDD2265118D60012C359 /* FoundedFriendsListVC.xib */,
+			);
+			path = FoundedFriends;
 			sourceTree = "<group>";
 		};
 		2CAE1A4526372DF3006A4417 /* Persistancy */ = {
@@ -1938,7 +1981,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C4808FF262DA91E0075C0B3 /* AuthorizationTextField.xib in Resources */,
 				2C7E1324262B6C8A00CA4073 /* IBMPlexSans-Regular.ttf in Resources */,
 				2C3B72AE262C38FA0076DF18 /* SuccessLoginScreenVC.xib in Resources */,
 				2C4808B2262C5BC10075C0B3 /* SignUpContainerVC.xib in Resources */,
@@ -1949,16 +1991,14 @@
 				2C4808D4262CB2600075C0B3 /* credentials.plist in Resources */,
 				2C3B72A6262C2C1E0076DF18 /* LoginScreenVC.xib in Resources */,
 				2C5530E2264C60B5002578A1 /* FavoritePostsVC.xib in Resources */,
-				2C1ACF50262DF51200371065 /* SignUpSecondView.xib in Resources */,
 				2C04C0EB262EC50C005F493D /* RegistrationLoaderView.xib in Resources */,
 				2C7E12CC262B4E0600CA4073 /* Localizable.strings in Resources */,
-				2C8A73AE262DB34000A68761 /* SignInRegistrationView.xib in Resources */,
 				2CF935212645BC0100F51243 /* PostsFeedVC.xib in Resources */,
-				2C1ACF42262DEFA800371065 /* SignUpFirstView.xib in Resources */,
 				2CDD245D262B3E5600501E77 /* Assets.xcassets in Resources */,
 				2C4808B7262C95F30075C0B3 /* ZeroScreenView.xib in Resources */,
 				2CF935432645CCA500F51243 /* ProfileInfoVC.xib in Resources */,
 				2CF935382645C63B00F51243 /* ChangeProfileCategoryVC.xib in Resources */,
+				2C92EDD4265118D60012C359 /* FoundedFriendsListVC.xib in Resources */,
 				2C480895262C52210075C0B3 /* ProfileScreenContainerVC.xib in Resources */,
 				2C3B72B6262C39F10076DF18 /* SignInVC.xib in Resources */,
 				2CD9DD132646BE7E003A9319 /* SearchFriendsVC.xib in Resources */,
@@ -2235,6 +2275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C127539264FF34400AACE6A /* SignInRegistrationViewModel.swift in Sources */,
 				2C3837B8264C5A1800A1CCF1 /* AllPostsRequestViewModel.swift in Sources */,
 				2CF935372645C63B00F51243 /* ChangeProfileCategoryVC.swift in Sources */,
 				2CA6AB4E264DB4ED00B52693 /* RegistrationContainerVC.swift in Sources */,
@@ -2250,11 +2291,9 @@
 				2C3909C12639E44100A81C6E /* ApiService.swift in Sources */,
 				2C7E12B1262B47DA00CA4073 /* UIViewController+Extension.swift in Sources */,
 				2C15DD1D2649AF2700D50900 /* ProfileModuleCoordinator.swift in Sources */,
-				2C1ACF4B262DF4EE00371065 /* SignUpSecondView.swift in Sources */,
 				2CC8850E2637F0E100375AF8 /* UserRequestInterceptor.swift in Sources */,
 				2C5530E7264C6141002578A1 /* FavoritePostsRequestViewModel.swift in Sources */,
 				2CCA9127262E1FD000D6A635 /* EmailValidator.swift in Sources */,
-				2C025EBE262E0CB90035B84E /* RegistrationView.swift in Sources */,
 				2C3B72AD262C38FA0076DF18 /* SuccessLoginScreenVC.swift in Sources */,
 				2CF9352E2645BE3700F51243 /* PostCollectionViewCell.swift in Sources */,
 				2C7E12B5262B47DA00CA4073 /* UIColor+Extensions.swift in Sources */,
@@ -2270,8 +2309,10 @@
 				2C15DD292649B01100D50900 /* ProfileModuleScreenFabric.swift in Sources */,
 				2CCA9122262E1CEC00D6A635 /* ValidatePassword.swift in Sources */,
 				2C3B7299262C29C30076DF18 /* AppCoordinator.swift in Sources */,
-				2C8A73AB262DB33600A68761 /* SignInRegistrationView.swift in Sources */,
 				2C5530D8264C604E002578A1 /* UserPostsRequestViewModel.swift in Sources */,
+				2C127530264FD70800AACE6A /* NewRegistrationView.swift in Sources */,
+				2C813C50264FFD3600E7E49F /* FirstSignUpRegistrationViewModel.swift in Sources */,
+				2C813C6C2650237100E7E49F /* AuthorizationHelper.swift in Sources */,
 				2C3B72A5262C2C1E0076DF18 /* LoginScreenVC.swift in Sources */,
 				2C5530CA264C5D5B002578A1 /* UserPostsVC.swift in Sources */,
 				2C7E130F262B5D8E00CA4073 /* R.generated.swift in Sources */,
@@ -2290,6 +2331,7 @@
 				2CF935422645CCA500F51243 /* ProfileInfoVC.swift in Sources */,
 				2CD9DD122646BE7E003A9319 /* SearchFriendsVC.swift in Sources */,
 				2C4808BA262C9AA10075C0B3 /* ZeroScreenView.swift in Sources */,
+				2C92EDD3265118D60012C359 /* FoundedFriendsListVC.swift in Sources */,
 				2C1B88F62647125100B33E49 /* ProfileInfoRequestViewModel.swift in Sources */,
 				2CBF51C52638DE7200B99042 /* SearchServiceProtocol.swift in Sources */,
 				2C0343DB26472C2500CF9F87 /* LoginCoordinator.swift in Sources */,
@@ -2300,10 +2342,11 @@
 				2C24D1B72638A05E000855B8 /* FeedService.swift in Sources */,
 				2CFE539426488A5700D75EF7 /* FeedModuleFabric.swift in Sources */,
 				2CBF51B52638D09100B99042 /* SearchService.swift in Sources */,
-				2C1ACF46262DEFBC00371065 /* SignUpFirstView.swift in Sources */,
 				2C4808B1262C5BC10075C0B3 /* SignUpContainerVC.swift in Sources */,
+				2C813C782650685B00E7E49F /* UserInformation.swift in Sources */,
 				2C034411264859CC00CF9F87 /* CoordinatorNavigationController.swift in Sources */,
 				2CDD2454262B3E5400501E77 /* AppDelegate.swift in Sources */,
+				2C813C5C265002A900E7E49F /* SecondSignUpRegistrationViewModel.swift in Sources */,
 				2C7E12DC262B4F8300CA4073 /* ColorPalette.swift in Sources */,
 				2C04C0D7262E2E14005F493D /* SignUpContainerViewModel.swift in Sources */,
 				2C480894262C52210075C0B3 /* ProfileScreenContainerVC.swift in Sources */,
@@ -2313,6 +2356,7 @@
 				2C7E12B4262B47DA00CA4073 /* UIGradientLayer+Extension.swift in Sources */,
 				2C15DD54264A7D3F00D50900 /* PostFeedDataViewModel.swift in Sources */,
 				2CBF51C12638DDE800B99042 /* FeedServiceProtocol.swift in Sources */,
+				2C813C672650051B00E7E49F /* RegistrationViewHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

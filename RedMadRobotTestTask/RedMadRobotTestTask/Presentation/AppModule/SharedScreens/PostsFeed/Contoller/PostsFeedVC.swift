@@ -11,7 +11,6 @@ protocol PostsFeedDelegate: AnyObject {
     func failureRequest()
 }
 
-
 protocol PostsFeedInProfileDelegate: AnyObject {
     // Эта переменная необходима для отслеживания текущего оффсета коллекции. Мы его отслеживаем что бы менять констрейнт верхнего чайлда с информацией о пользователе
     func scrollViewOffSetChanged(inset: CGFloat)

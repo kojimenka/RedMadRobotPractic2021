@@ -12,101 +12,100 @@ enum KeyboardAction {
     case hideKeyboard
 }
 
-protocol AuthorizationTextFieldDelegate: AnyObject {
-    func changeText(view: AuthorizationTextField, text: String) throws
-    func selectedAuthorizationTextField(view: AuthorizationTextField)
-    func keyboardHide()
-}
-
-@IBDesignable
-final class AuthorizationTextField: UIView {
-    
-    // MARK: - Public Properties
-    
-    public var isSecureText: Bool? {
-        didSet {
-            guard let isSecureText = isSecureText else { return }
-            textField.isSecureTextEntry = isSecureText
-        }
-    }
-    
-    public var currentText: String {
-        return textField.text ?? ""
-    }
-    
-    // MARK: - IBOutlet
-    
-    @IBOutlet private weak var contentView: UIView!
-    @IBOutlet private weak var textField: UITextField!
-    @IBOutlet private weak var indicatorView: UIView!
+final class NewAuthorizationTextField: UITextFieldWithInset {
     
     // MARK: - Private Properties
     
-    weak private var delegate: AuthorizationTextFieldDelegate?
+    private var isFirstDraw = true
     
-    // MARK: - Init
+    private let bottomLine: CALayer = {
+        let layer = CALayer()
+        layer.cornerRadius = 1.0
+        layer.masksToBounds = true
+        layer.backgroundColor = ColorPalette.notActive?.cgColor
+        return layer
+    }()
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: 48)
+    }
+    
+    // MARK: - UIView
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialSetup()
+    }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.setupView()
-        setupTextField()
-        registerForKeyboardNotification()
+        fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public Methods
-    public func setupView(subscriber: AuthorizationTextFieldDelegate, placeholder: String) {
-        self.delegate = subscriber
-        textField.placeholder = placeholder
-    }
-    
-    public func setState(isSelected: Bool) {
-        let neededColor = isSelected ? ColorPalette.tintOrangeColor : ColorPalette.notActive
-        
-        UIView.AnimationTransition.transitionChangeBackgroundColor(view: indicatorView,
-                                                                   color: neededColor ?? UIColor.clear,
-                                                                   duration: 0.25)
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard isFirstDraw == true else { return }
+        setupBottomLine()
+        isFirstDraw = false
     }
     
     // MARK: - Private Methods
-    private func registerForKeyboardNotification() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(kbWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+    
+    private func initialSetup() {
+        setupTargets()
+        setupTextField()
     }
     
-    @objc private func kbWillHide() {
-        delegate?.keyboardHide()
+    private func setupTargets() {
+        addTarget(self, action: #selector(editingStatusChanged), for: .editingDidBegin)
+        addTarget(self, action: #selector(editingStatusChanged), for: .editingDidEnd)
     }
     
-    private func setupView() {
-        Bundle.main.loadNibNamed(R.nib.authorizationTextField.name, owner: self)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        contentView.setInView(self)
+    @objc private func editingStatusChanged() {
+        let neededColor = isFirstResponder ? ColorPalette.tintOrangeColor : ColorPalette.notActive
+        bottomLine.backgroundColor = neededColor!.cgColor
     }
     
     private func setupTextField() {
-        textField.delegate = self
-        textField.addTarget(self, action: #selector(changeText), for: .editingChanged)
+        super.textInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        borderStyle = .none
+        font = R.font.ibmPlexSans(size: 14)
+        tintColor = .black
+        autocorrectionType = .no
     }
     
-    @objc private func changeText() {
-        try? delegate?.changeText(view: self, text: textField.text ?? "")
+    private func setupBottomLine() {
+        bottomLine.frame = CGRect(
+            x: 0,
+            y: self.frame.size.height - 2,
+            width: self.frame.size.width,
+            height: 2
+        )
+        layer.addSublayer(bottomLine)
     }
-
+    
 }
 
-// MARK: - UITextField Delegate
-extension AuthorizationTextField: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return false
+class UITextFieldWithInset: UITextField {
+    
+    public var textInsets = UIEdgeInsets.zero {
+        didSet {
+            setNeedsDisplay()
+        }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        delegate?.selectedAuthorizationTextField(view: self)
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: textInsets)
     }
     
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: textInsets)
+    }
+    
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: textInsets)
+    }
+    
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: textInsets))
+    }
 }
