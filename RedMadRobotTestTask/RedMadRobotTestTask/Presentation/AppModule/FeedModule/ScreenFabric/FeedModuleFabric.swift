@@ -9,26 +9,26 @@ import UIKit
 
 protocol FeedModuleFabricProtocol {
     func createFeedScreen(
-        outputDelegate: FeedScreenOutPutDelegate?
+        coordinator: FeedModuleCoordinator?
     ) -> UIViewController
     
     func createSearchFriendsScreen(
-        outputDelegate: SearchFriendsOutputDelegate?
+        coordinator: FeedModuleCoordinator?
     ) -> UIViewController
 }
 
 struct FeedModuleFabric: FeedModuleFabricProtocol {
     
     public func createFeedScreen(
-        outputDelegate: FeedScreenOutPutDelegate?
+        coordinator: FeedModuleCoordinator?
     ) -> UIViewController {
-        return FeedScreenContainerVC(outputSubscriber: outputDelegate)
+        return FeedScreenContainerVC(coordinator: coordinator)
     }
     
     public func createSearchFriendsScreen(
-        outputDelegate: SearchFriendsOutputDelegate?
+        coordinator: FeedModuleCoordinator?
     ) -> UIViewController {
-        return SearchFriendsVC(outputSubscriber: outputDelegate)
+        return SearchFriendsContainerVC(coordinator: coordinator)
     }
     
 }

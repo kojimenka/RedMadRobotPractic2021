@@ -21,7 +21,7 @@ final class FavoritePostsRequestViewModel: PostsFeedRequestViewModelProtocol {
     
     // MARK: - Public methods
     
-    func getPosts(completion: @escaping (Result<Void, Error>) -> Void) {
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
         completion(.failure(LoginValidatorError.emptyLogin))
         
 //        feedService.getFavouritePosts(completion: { result in

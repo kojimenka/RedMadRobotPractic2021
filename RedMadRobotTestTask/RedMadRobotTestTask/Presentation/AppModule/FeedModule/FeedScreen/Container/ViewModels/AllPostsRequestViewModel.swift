@@ -21,11 +21,15 @@ final class AllPostsRequestViewModel: PostsFeedRequestViewModelProtocol {
     
     // MARK: - Public methods
     
-    func getPosts(completion: @escaping (Result<Void, Error>) -> Void) {
-        completion(.failure(LoginValidatorError.emptyLogin))
-        
-//        feedService.getFeed { result in
-//
-//        }
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
+        _ = feedService.getFeed { result in
+            switch result {
+            case .success(let content):
+                print(content)
+                completion(.success(content))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

@@ -68,10 +68,15 @@ extension RegistrationContainerVC: SignInDelegate {
     }
     
     func loginUser(credentials: Credentials) {
+        self.coordinator?.presentLoader { [weak self] in
+            guard let self = self else { return }
+            self.coordinator?.dismissController(animated: true)
+        }
         requestViewModel.loginUser(
             credentials: credentials
         ) { [weak self] result in
             guard let self = self else { return }
+            self.coordinator?.dismissController(animated: true) // Dismiss loader
             switch result {
             case .success:
                 self.coordinator?.pushSuccessRegistration(subscriber: self)
@@ -87,11 +92,16 @@ extension RegistrationContainerVC: SignInDelegate {
 
 extension RegistrationContainerVC: SignUpContainerDelegate {
     func registrateUser(credentials: Credentials, userInfo: UserInformation) {
+        self.coordinator?.presentLoader { [weak self] in
+            guard let self = self else { return }
+            self.coordinator?.dismissController(animated: true)
+        }
         requestViewModel.registrateUser(
             credentials: credentials,
             userInfo: userInfo
         ) { [weak self] result in
             guard let self = self else { return }
+            self.coordinator?.dismissController(animated: true) // Dismiss loader
             switch result {
             case .success:
                 self.coordinator?.pushSuccessRegistration(subscriber: self)

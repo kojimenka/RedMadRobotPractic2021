@@ -106,3 +106,19 @@ extension UIView {
         self.layer.add(shakeAnimation, forKey: "shakeIt")
     }
 }
+
+extension UIView {
+    
+    func animateHide() {
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 0.0
+        }
+    }
+    
+    func animateShow() {
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 1.0
+        }
+    }
+    
+}

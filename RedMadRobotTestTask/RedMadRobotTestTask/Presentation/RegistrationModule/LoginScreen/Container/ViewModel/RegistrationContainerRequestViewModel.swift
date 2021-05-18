@@ -45,14 +45,14 @@ final class RegistrationContainerRequestViewModel: RegistrationContainerRequestV
         credentials: Credentials,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
-         _ = registrationService.signIn(credentials: credentials) { result in
+        _ = registrationService.signIn(credentials: credentials) { result in
             switch result {
             case .success:
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error))
             }
-         }
+        }
     }
     
     func registrateUser(

@@ -66,12 +66,16 @@ final class NewRegistrationView: UIView {
     }
     
     public func checkForWarning(controller: UIViewController) {
+        var isAlertShow = false
         for data in allRegistrationFieldData {
             do {
                 _ = try data.validator.isValid(value: data.textField?.text ?? "")
+                data.textField?.isValidFill(true)
             } catch let error {
+                data.textField?.isValidFill(false)
+                guard isAlertShow == false else { continue }
+                isAlertShow = true
                 controller.showErrorAlert(with: error)
-                return
             }
         }
     }

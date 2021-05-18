@@ -154,7 +154,9 @@ extension ProfileScreenContainerVC: UserPostsDelegate {
 // MARK: - User Favorite Posts Delegate
 
 extension ProfileScreenContainerVC: FavoritePostsDelegate {
-    
+    func addLikeToPost(id: String) {
+        
+    }
 }
 
 // MARK: - User Posts Delegate

@@ -19,14 +19,28 @@ public final class FeedService: ApiService, FeedServiceProtocol {
         completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress {
         let endpoint = GetFeedEndpoint()
-        return apiClient.request(endpoint, completionHandler: completion)
+        return apiClient.request(endpoint) { result in
+            switch result {
+            case .success(let content):
+                completion(.success(content.map { PostInfo($0) }))
+            case .failure(let error):
+                completion(.failure(error.unwrapAFError()))
+            }
+        }
     }
     
     public func getFavouritePosts(
         completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress {
         let endpoint = GetFavouritePostsEndpoint()
-        return apiClient.request(endpoint, completionHandler: completion)
+        return apiClient.request(endpoint) { result in
+            switch result {
+            case .success(let content):
+                completion(.success(content.map { PostInfo($0) }))
+            case .failure(let error):
+                completion(.failure(error.unwrapAFError()))
+            }
+        }
     }
     
     // MARK: - Post request

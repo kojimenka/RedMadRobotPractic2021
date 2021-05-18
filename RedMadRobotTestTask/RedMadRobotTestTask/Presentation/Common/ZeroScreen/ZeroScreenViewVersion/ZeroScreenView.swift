@@ -18,13 +18,15 @@ final class ZeroScreenView: UIView {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var updateButton: UIButton!
     
-    // MARK: - Properties
+    // MARK: - Public Properties
     
     public var buttonAction: (() -> Void)? {
         didSet {
             updateButton.isHidden = buttonAction == nil
         }
     }
+    
+    // MARK: - Private Properties
     
     private var zeroScreenFabric = ZeroScreenFabric()
     

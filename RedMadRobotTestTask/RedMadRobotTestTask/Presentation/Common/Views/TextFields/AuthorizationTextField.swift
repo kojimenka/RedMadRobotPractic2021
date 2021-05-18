@@ -56,12 +56,16 @@ final class NewAuthorizationTextField: UITextFieldWithInset {
     }
     
     private func setupTargets() {
-        addTarget(self, action: #selector(editingStatusChanged), for: .editingDidBegin)
-        addTarget(self, action: #selector(editingStatusChanged), for: .editingDidEnd)
+        addTarget(self, action: #selector(setEditColor), for: .editingDidBegin)
     }
     
-    @objc private func editingStatusChanged() {
-        let neededColor = isFirstResponder ? ColorPalette.tintOrangeColor : ColorPalette.notActive
+    public func isValidFill(_ isValid: Bool) {
+        let neededColor = !isValid ? ColorPalette.tintOrangeColor : ColorPalette.notActive
+        bottomLine.backgroundColor = neededColor!.cgColor
+    }
+    
+    @objc private func setEditColor() {
+        let neededColor = ColorPalette.notActive
         bottomLine.backgroundColor = neededColor!.cgColor
     }
     

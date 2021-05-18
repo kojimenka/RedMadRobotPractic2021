@@ -61,10 +61,10 @@ final class UserPostsVC: UIViewController {
     }
 
     private func setupZeroScreen() {
-        zeroScreen.buttonAction = { [weak self] in
-            guard let self = self else { return }
-            self.allPostsVC.updateData()
-        }
+//        zeroScreen.buttonAction = { [weak self] in
+//            guard let self = self else { return }
+//            self.allPostsVC.updateData()
+//        }
     }
     
 }
@@ -72,6 +72,14 @@ final class UserPostsVC: UIViewController {
 // MARK: - User Posts Delegate
 
 extension UserPostsVC: PostsFeedDelegate {
+    func emptyPosts() {
+    
+    }
+    
+    func likePost(id: String) {
+        
+    }
+    
     func failureRequest() {
         
     }

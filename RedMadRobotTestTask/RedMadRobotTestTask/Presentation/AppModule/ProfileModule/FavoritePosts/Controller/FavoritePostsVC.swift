@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FavoritePostsDelegate: PostsFeedInProfileDelegate {
-
+    func addLikeToPost(id: String)
 }
 
 final class FavoritePostsVC: UIViewController {
@@ -61,10 +61,10 @@ final class FavoritePostsVC: UIViewController {
     }
     
     private func setupZeroScreen() {
-        zeroScreen.buttonAction = { [weak self] in
-            guard let self = self else { return }
-            self.allPostsVC.updateData()
-        }
+//        zeroScreen.buttonAction = { [weak self] in
+//            guard let self = self else { return }
+//            self.allPostsVC.updateData()
+//        }
     }
     
 }
@@ -72,6 +72,14 @@ final class FavoritePostsVC: UIViewController {
 // MARK: - Favorite Posts Delegate
 
 extension FavoritePostsVC: PostsFeedDelegate {
+    func emptyPosts() {
+        
+    }
+    
+    func likePost(id: String) {
+        delegate?.addLikeToPost(id: id)
+    }
+    
     func failureRequest() {
         
     }

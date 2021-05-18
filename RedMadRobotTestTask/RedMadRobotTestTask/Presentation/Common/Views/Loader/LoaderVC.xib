@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoaderVC" customModule="RedMadRobotTestTask" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="9bb-fY-QUB" id="bYy-Wp-TkQ"/>
+                <outlet property="loaderIndicator" destination="gdO-Da-lDe" id="HR3-qU-JwS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bb-fY-QUB">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="uTm-xo-EDv" appends="YES" id="Fg1-j8-kjR"/>
+                    </connections>
+                </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gdO-Da-lDe">
+                    <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
+                    <color key="color" name="tintOrange"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="9bb-fY-QUB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9vy-7a-MEj"/>
+                <constraint firstItem="gdO-Da-lDe" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="GLD-TC-WgU"/>
+                <constraint firstItem="gdO-Da-lDe" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Hub-gn-aUF"/>
+                <constraint firstItem="9bb-fY-QUB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IYs-b9-aiV"/>
+                <constraint firstAttribute="trailing" secondItem="9bb-fY-QUB" secondAttribute="trailing" id="Xo2-pO-kwJ"/>
+                <constraint firstAttribute="bottom" secondItem="9bb-fY-QUB" secondAttribute="bottom" id="q8Q-pv-0dr"/>
+            </constraints>
+            <point key="canvasLocation" x="-71" y="129"/>
+        </view>
+        <tapGestureRecognizer id="uTm-xo-EDv">
+            <connections>
+                <action selector="tapGesture:" destination="-1" id="t53-hK-9py"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <namedColor name="tintOrange">
+            <color red="0.99599999189376831" green="0.2669999897480011" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

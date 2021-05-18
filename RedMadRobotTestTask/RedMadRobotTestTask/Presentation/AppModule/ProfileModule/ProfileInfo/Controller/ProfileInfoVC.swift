@@ -34,10 +34,7 @@ final class ProfileInfoVC: UIViewController {
     ) {
         self.delegate = subscriber
         self.requestViewModel = requestViewModel
-        super.init(
-            nibName: R.nib.profileInfoVC.name,
-            bundle: R.nib.profileInfoVC.bundle
-        )
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {

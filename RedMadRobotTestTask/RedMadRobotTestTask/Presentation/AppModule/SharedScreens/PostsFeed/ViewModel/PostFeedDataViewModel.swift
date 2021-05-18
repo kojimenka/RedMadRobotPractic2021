@@ -8,12 +8,20 @@
 import UIKit
 
 protocol PostFeedDataSourceViewModelProtocol: AnyObject, UICollectionViewDataSource {
-    // В будущем здесь будет массив с данным для коллекции
-    // var allData: [?] { get }
+    var allPosts: [PostInfo] { get set }
+    var delegate: PostFeedDataViewModelDelegate? { get set }
+}
+
+protocol PostFeedDataViewModelDelegate: AnyObject {
+    func likePost(id: String)
 }
 
 final class PostFeedDataViewModel: NSObject, PostFeedDataSourceViewModelProtocol {
     
+    // MARK: - Public Properties
+    
+    public var allPosts = [PostInfo]()
+    public weak var delegate: PostFeedDataViewModelDelegate?
 }
 
 // MARK: - UICollectionView DataSource
@@ -21,7 +29,7 @@ final class PostFeedDataViewModel: NSObject, PostFeedDataSourceViewModelProtocol
 extension PostFeedDataViewModel: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return allPosts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
@@ -32,9 +40,14 @@ extension PostFeedDataViewModel: UICollectionViewDataSource {
             for: indexPath
         ) as! PostCollectionViewCell
         
-        cell.backgroundColor = .white
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 24
+        let currentPost = allPosts[indexPath.row]
+        
+        cell.currentPostInfo = currentPost
+        
+        cell.likeButtonAction = { [weak self] _ in
+            guard let self = self else { return }
+            self.delegate?.likePost(id: currentPost.id)
+        }
         
         return cell
     }

@@ -9,5 +9,5 @@ import UIKit
 
 protocol PostsFeedRequestViewModelProtocol: AnyObject {
     init(feedService: FeedServiceProtocol)
-    func getPosts(completion: @escaping (Result<Void, Error>) -> Void)
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void)
 }

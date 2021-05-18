@@ -29,13 +29,17 @@
                         <constraint firstAttribute="height" constant="0.5" id="LIy-BQ-dZt"/>
                     </constraints>
                 </view>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Имя или никнейм" translatesAutoresizingMaskIntoConstraints="NO" id="8AC-nK-UAP">
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Имя или никнейм" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8AC-nK-UAP">
                     <rect key="frame" x="20" y="46" width="374" height="56"/>
                     <color key="tintColor" name="tintOrange"/>
                     <textInputTraits key="textInputTraits"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
                 </searchBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1p-xI-SgW">
-                    <rect key="frame" x="20" y="126" width="374" height="736"/>
+                    <rect key="frame" x="20" y="102" width="374" height="760"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
@@ -46,7 +50,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Yqr-Tg-EJP" secondAttribute="trailing" id="6OF-bL-DwL"/>
                 <constraint firstItem="8AC-nK-UAP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="2" id="CQE-Do-mdm"/>
                 <constraint firstItem="8AC-nK-UAP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="PXB-gH-bvn"/>
-                <constraint firstItem="j1p-xI-SgW" firstAttribute="top" secondItem="8AC-nK-UAP" secondAttribute="bottom" constant="24" id="S5D-TJ-7bW"/>
+                <constraint firstItem="j1p-xI-SgW" firstAttribute="top" secondItem="8AC-nK-UAP" secondAttribute="bottom" id="S5D-TJ-7bW"/>
                 <constraint firstAttribute="trailingMargin" secondItem="8AC-nK-UAP" secondAttribute="trailing" id="T5v-tg-7Gk"/>
                 <constraint firstItem="Yqr-Tg-EJP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bUI-pb-6L6"/>
                 <constraint firstItem="Yqr-Tg-EJP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dee-iz-rpP"/>

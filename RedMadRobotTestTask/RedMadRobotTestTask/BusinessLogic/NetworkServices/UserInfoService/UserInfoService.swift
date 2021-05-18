@@ -33,7 +33,14 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress {
         let endpoint = GetUserPostsEndpoint()
-        return apiClient.request(endpoint, completionHandler: completion)
+        return apiClient.request(endpoint) { result in
+            switch result {
+            case .success(let content):
+                completion(.success(content.map { PostInfo($0) }))
+            case .failure(let error):
+                completion(.failure(error.unwrapAFError()))
+            }
+        }
     }
     
     public func getUserFriends(
@@ -43,9 +50,9 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         return apiClient.request(endpoint) { result in
             switch result {
             case .success(let content):
-                completion(.success(content.map{UserInformation($0)}))
+                completion(.success(content.map { UserInformation($0) }))
             case .failure(let error):
-                completion(.failure(error))
+                completion(.failure(error.unwrapAFError()))
             }
         }
     }
@@ -64,9 +71,16 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         postInfo: PostInfo,
         completion: @escaping (Result<PostInfo, Error>) -> Void)
     -> Progress {
-        let endPoint = AddNewPostEndpoint(postInfo: postInfo,
+        let endPoint = AddNewPostEndpoint(postInfo: RedMadRobotTestTaskAPI.PostInfo(postInfo),
                                           token: UserDefaultsUserStorage().accessToken)
-        return apiClient.request(endPoint, completionHandler: completion)
+        return apiClient.request(endPoint) { result in
+            switch result {
+            case .success(let content):
+                completion(.success(PostInfo(content)))
+            case .failure(let error):
+                completion(.failure(error.unwrapAFError()))
+            }
+        }
     }
     
     // MARK: - Put request

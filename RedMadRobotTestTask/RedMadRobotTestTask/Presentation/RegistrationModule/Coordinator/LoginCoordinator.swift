@@ -84,6 +84,18 @@ final class LoginCoordinator: Coordinator {
         presentController(controller: tabBarController, animated: true)
     }
     
+    func presentLoader(stopLoading: @escaping (() -> Void)) {
+        let loader = LoaderVC()
+        loader.modalPresentationStyle = .overCurrentContext
+        loader.modalTransitionStyle = .crossDissolve
+        
+        loader.stopLoad = {
+            stopLoading()
+        }
+        
+        presentController(controller: loader, animated: false)
+    }
+    
     // MARK: - Private Methods
     
     private func setupNavBar() {

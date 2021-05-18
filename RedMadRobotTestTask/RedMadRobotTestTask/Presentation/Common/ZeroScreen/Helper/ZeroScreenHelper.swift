@@ -8,6 +8,7 @@
 import UIKit
 
 enum ZeroScreenVariations {
+    case genericError
     case feedScreen
     case userPosts
     case userFavoritePosts
@@ -24,6 +25,13 @@ struct ZeroScreenModel {
 struct ZeroScreenFabric {
     public func createZeroModel(state: ZeroScreenVariations) -> ZeroScreenModel {
         switch state {
+        case .genericError:
+            return ZeroScreenModel(
+                image: R.image.profileZeroScreenImage(),
+                titleText: "Ошибка",
+                descriptionText: "Упс, у нас проблемы",
+                buttonTitle: "Обновить"
+            )
         case .feedScreen:
             return ZeroScreenModel(
                 image: R.image.profileZeroScreenImage(),

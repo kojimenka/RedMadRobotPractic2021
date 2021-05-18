@@ -17,7 +17,7 @@ protocol SearchServiceProtocol {
     
     func getSortedUsers(
         predicate: String,
-        completion: @escaping (Result<[RedMadRobotTestTaskAPI.UserInformation], Error>) -> Void)
+        completion: @escaping (Result<[UserInformation], Error>) -> Void)
     -> Progress
     
     func getSortedPosts(

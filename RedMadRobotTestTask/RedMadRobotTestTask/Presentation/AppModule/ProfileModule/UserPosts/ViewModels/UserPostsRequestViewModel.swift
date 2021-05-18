@@ -21,7 +21,7 @@ final class UserPostsRequestViewModel: PostsFeedRequestViewModelProtocol {
     
     // MARK: - Public methods
     
-    func getPosts(completion: @escaping (Result<Void, Error>) -> Void) {
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
         completion(.failure(LoginValidatorError.emptyLogin))
         
 //        feedService.getFeed { result in
