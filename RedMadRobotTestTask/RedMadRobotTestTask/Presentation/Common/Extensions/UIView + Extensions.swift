@@ -122,3 +122,20 @@ extension UIView {
     }
     
 }
+
+extension UIView {
+    func getConstraintsOf(_ view: UIView) -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+        for constraint in self.constraints {
+            if constraint.firstItem as? UIView == view {
+                constraints.append(constraint)
+                continue
+            }
+            
+            if constraint.secondItem as? UIView == view {
+                constraints.append(constraint)
+            }
+        }
+        return constraints
+    }
+}

@@ -25,7 +25,6 @@ final class AllPostsRequestViewModel: PostsFeedRequestViewModelProtocol {
         _ = feedService.getFeed { result in
             switch result {
             case .success(let content):
-                print(content)
                 completion(.success(content))
             case .failure(let error):
                 completion(.failure(error))

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="IBMPlexSans-Regular.ttf">
+            <string>IBMPlexSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" rowHeight="301" id="KGk-i7-Jjw" customClass="PostTableViewCell" customModule="RedMadRobotTestTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="305"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="359" height="305"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" text="Soprano, we like to keep it on a high note. It's levels to it, you and I know" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ov3-Bf-CQt" userLabel="titleLabel">
+                        <rect key="frame" x="20" y="11" width="319" height="101.5"/>
+                        <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="26"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="HAS-cf-I9a">
+                        <rect key="frame" x="12" y="128.5" width="327" height="16"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="postGeoPosition" translatesAutoresizingMaskIntoConstraints="NO" id="mT6-Y8-RjT" userLabel="postGeolocation">
+                                <rect key="frame" x="0.0" y="0.0" width="33.5" height="16"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Россия, Москва" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxd-DD-qhp">
+                                <rect key="frame" x="39.5" y="0.0" width="287.5" height="16"/>
+                                <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="13"/>
+                                <color key="textColor" name="middle_grey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZoK-2G-SeV" userLabel="postImageView">
+                        <rect key="frame" x="20" y="161.5" width="143.5" height="97"/>
+                        <color key="backgroundColor" name="tintOrange"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ZoK-2G-SeV" secondAttribute="height" multiplier="148:100" id="lNN-dI-X2M"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="@kojimenka" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kj3-Gs-Qq6" userLabel="nickNameLabel">
+                        <rect key="frame" x="20" y="274.5" width="59" height="14.5"/>
+                        <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="11"/>
+                        <color key="textColor" name="middle_grey"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFY-u7-rMV" userLabel="addLikeButton">
+                        <rect key="frame" x="299" y="249" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="2XB-ip-2WY"/>
+                            <constraint firstAttribute="width" constant="40" id="J8R-4v-JNj"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="likeButton"/>
+                        <connections>
+                            <action selector="addLike:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1Y3-yc-QWx"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gFY-u7-rMV" firstAttribute="bottom" secondItem="Kj3-Gs-Qq6" secondAttribute="bottom" id="0ER-Lp-VLA"/>
+                    <constraint firstItem="Kj3-Gs-Qq6" firstAttribute="top" secondItem="Ov3-Bf-CQt" secondAttribute="bottom" priority="747" constant="16" id="1cI-hH-3Nf"/>
+                    <constraint firstItem="HAS-cf-I9a" firstAttribute="top" secondItem="Ov3-Bf-CQt" secondAttribute="bottom" constant="16" id="1eU-S7-bFg"/>
+                    <constraint firstItem="ZoK-2G-SeV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ABJ-xE-cMu"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HAS-cf-I9a" secondAttribute="trailing" id="AJe-Kf-Vyp"/>
+                    <constraint firstItem="Kj3-Gs-Qq6" firstAttribute="top" secondItem="ZoK-2G-SeV" secondAttribute="bottom" priority="749" constant="16" id="G3Z-cC-Ggo"/>
+                    <constraint firstItem="Kj3-Gs-Qq6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="HmP-LW-ueU"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ov3-Bf-CQt" secondAttribute="trailing" id="IMV-WZ-hzA"/>
+                    <constraint firstItem="Ov3-Bf-CQt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Jh8-cC-X1w"/>
+                    <constraint firstItem="ZoK-2G-SeV" firstAttribute="top" secondItem="Ov3-Bf-CQt" secondAttribute="bottom" priority="749" constant="16" id="Ovp-L1-HDl"/>
+                    <constraint firstItem="gFY-u7-rMV" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="WDG-pb-6nV"/>
+                    <constraint firstItem="ZoK-2G-SeV" firstAttribute="top" secondItem="HAS-cf-I9a" secondAttribute="bottom" constant="16" id="Wug-QE-5pU"/>
+                    <constraint firstItem="Ov3-Bf-CQt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bvC-b5-pia"/>
+                    <constraint firstItem="HAS-cf-I9a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="c61-eN-8lc"/>
+                    <constraint firstAttribute="bottom" secondItem="Kj3-Gs-Qq6" secondAttribute="bottom" constant="16" id="oqZ-Ea-SP1"/>
+                    <constraint firstItem="ZoK-2G-SeV" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.4" id="ul2-nr-0kA"/>
+                    <constraint firstItem="Kj3-Gs-Qq6" firstAttribute="top" secondItem="HAS-cf-I9a" secondAttribute="bottom" priority="748" constant="16" id="xoh-0x-aUj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <edgeInsets key="layoutMargins" top="1" left="8" bottom="8" right="8"/>
+            <connections>
+                <outlet property="cityLabel" destination="Rxd-DD-qhp" id="gU3-Ed-Ldw"/>
+                <outlet property="geolocationStackView" destination="HAS-cf-I9a" id="ziS-j4-PCu"/>
+                <outlet property="nickNameLabel" destination="Kj3-Gs-Qq6" id="e3S-hZ-CpV"/>
+                <outlet property="postImageView" destination="ZoK-2G-SeV" id="Tdl-WT-9wJ"/>
+                <outlet property="titleLabel" destination="Ov3-Bf-CQt" id="52y-w9-LB4"/>
+            </connections>
+            <point key="canvasLocation" x="-28.260869565217394" y="186.49553571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="likeButton" width="40" height="40"/>
+        <image name="postGeoPosition" width="12" height="16"/>
+        <namedColor name="middle_grey">
+            <color red="0.63529411764705879" green="0.67450980392156867" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tintOrange">
+            <color red="0.99599999189376831" green="0.2669999897480011" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

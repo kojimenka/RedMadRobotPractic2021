@@ -22,7 +22,7 @@ final class PostsFeedVC: UIViewController {
 
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var tableView: UITableView!
     
     // MARK: - Private Properties
     
@@ -66,7 +66,7 @@ final class PostsFeedVC: UIViewController {
     
     public func setTopInset(_ inset: CGFloat) {
         topInset = inset
-        collectionView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
     }
     
     // MARK: - Public Methods
@@ -83,7 +83,7 @@ final class PostsFeedVC: UIViewController {
                 }
                 completion?(true)
                 self.dataSourceViewModel.allPosts = content
-                self.collectionView.reloadSections(IndexSet(integer: 0))
+                self.tableView.reloadData()
             case .failure:
                 completion?(false)
                 self.delegate?.failureRequest()
@@ -94,59 +94,26 @@ final class PostsFeedVC: UIViewController {
     
     private func setupCollectionView() {
         dataSourceViewModel.delegate = self
-        collectionView.dataSource = dataSourceViewModel
-        collectionView.contentInsetAdjustmentBehavior = .never
+        tableView.dataSource = dataSourceViewModel
+        tableView.estimatedRowHeight = 305
+        tableView.rowHeight = UITableView.automaticDimension
 
-        collectionView.register(
-            PostCollectionViewCell.nib(),
-            forCellWithReuseIdentifier: PostCollectionViewCell.identifier
+        tableView.register(
+            PostTableViewCell.nib(),
+            forCellReuseIdentifier: PostTableViewCell.identifier
         )
-    }
+    }    
     
 }
 
-// MARK: - UICollectionView Delegate
+// MARK: - UITableView Delegate
 
-extension PostsFeedVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath)
-    -> CGSize {
-        let width = collectionView.frame.width - 32
-        let currentPost = dataSourceViewModel.allPosts[indexPath.row]
-        let inset: CGFloat = 16.0
-        
-        let titleText = currentPost.text ?? ""
-        guard let titleFont = R.font.ibmPlexSans(size: 28) else { return CGSize(width: 0, height: 0) }
-        
-        let textSize = CGSize(width: width - 32, height: 1000)
-        let textAttributes = [NSAttributedString.Key.font: titleFont]
-        
-        let titleTextHeight = NSString(string: titleText).boundingRect(
-            with: textSize,
-            options: .usesLineFragmentOrigin,
-            attributes: textAttributes,
-            context: nil
-        ).height
-        
-        var geopositionHeight: CGFloat = 0.0
-        var imageHeight: CGFloat = 0.0
-        let authorHeight: CGFloat = 35.5
-        
-        if currentPost.lon != nil && currentPost.lat != nil {
-            geopositionHeight = inset + 17
-        }
-        
-        if currentPost.imageUrl != nil {
-            let imageWidth = width * 0.4
-            imageHeight = inset + imageWidth * 0.67
-        }
-        
-        let height: CGFloat = inset + titleTextHeight + geopositionHeight + imageHeight + authorHeight + inset
-        
-        return CGSize(width: width, height: height)
+extension PostsFeedVC: UITableViewDelegate {
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
 }
 
 // MARK: - UIScrollView Delegate

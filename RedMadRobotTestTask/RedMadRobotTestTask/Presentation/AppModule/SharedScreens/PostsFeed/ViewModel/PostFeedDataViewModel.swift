@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PostFeedDataSourceViewModelProtocol: AnyObject, UICollectionViewDataSource {
+protocol PostFeedDataSourceViewModelProtocol: AnyObject, UITableViewDataSource {
     var allPosts: [PostInfo] { get set }
     var delegate: PostFeedDataViewModelDelegate? { get set }
 }
@@ -26,24 +26,24 @@ final class PostFeedDataViewModel: NSObject, PostFeedDataSourceViewModelProtocol
 
 // MARK: - UICollectionView DataSource
 
-extension PostFeedDataViewModel: UICollectionViewDataSource {
+extension PostFeedDataViewModel: UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return allPosts.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
-    -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: PostCollectionViewCell.identifier,
-            for: indexPath
-        ) as! PostCollectionViewCell
-        
-        let currentPost = allPosts[indexPath.row]
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
+    -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+    -> UITableViewCell {
+        let cell: PostTableViewCell = tableView.dequeueCell(for: indexPath)
+        let currentPost = allPosts[indexPath.section]
         
         cell.currentPostInfo = currentPost
-        
+
         cell.likeButtonAction = { [weak self] _ in
             guard let self = self else { return }
             self.delegate?.likePost(id: currentPost.id)
@@ -51,5 +51,4 @@ extension PostFeedDataViewModel: UICollectionViewDataSource {
         
         return cell
     }
-
 }

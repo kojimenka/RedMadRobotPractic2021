@@ -47,6 +47,12 @@ extension UICollectionViewCell {
         return UINib(nibName: self.identifier, bundle: nil)
     }
 }
+
+extension UITableViewCell {
+    static func nib() -> UINib {
+        return UINib(nibName: self.identifier, bundle: nil)
+    }
+}
  
 // TableView Extensions
 extension UITableView {

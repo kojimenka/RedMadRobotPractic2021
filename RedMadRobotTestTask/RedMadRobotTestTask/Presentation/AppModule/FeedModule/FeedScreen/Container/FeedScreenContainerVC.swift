@@ -16,8 +16,8 @@ final class FeedScreenContainerVC: UIViewController {
     // MARK: - Private Properties
     
     weak private var coordinator: FeedModuleCoordinator?
-    private var requestViewModel: FeedScreenRequestViewModel
     private let navBarViewModel: SetupNavBarViewModelProtocol
+    private let feedService: FeedServiceProtocol
 
     // Childs
     
@@ -31,12 +31,12 @@ final class FeedScreenContainerVC: UIViewController {
     
     init(
         coordinator: FeedModuleCoordinator?,
-        requestViewModel: FeedScreenRequestViewModel = FeedScreenRequestViewModelImpl(),
+        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService,
         navBarViewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel()
     ) {
-        self.requestViewModel = requestViewModel
         self.navBarViewModel = navBarViewModel
         self.coordinator = coordinator
+        self.feedService = feedService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -106,7 +106,14 @@ extension FeedScreenContainerVC: PostsFeedDelegate {
     }
     
     func likePost(id: String) {
-        requestViewModel.addLike(postID: id)
+        _ = feedService.addLikeToPost(postID: id) { result in
+            switch result {
+            case .success:
+                print("DEBUG: Success add like")
+            case .failure(let error):
+                print("DEBUG: Failure add like with error  \(error.localizedDescription)")
+            }
+        }
     }
     
     func failureRequest() {

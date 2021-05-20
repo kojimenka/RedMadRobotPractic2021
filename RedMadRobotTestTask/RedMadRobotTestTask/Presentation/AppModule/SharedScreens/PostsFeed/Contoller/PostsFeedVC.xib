@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostsFeedVC" customModule="RedMadRobotTestTask" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="Yoi-Do-uO2" id="UVE-hG-ePY"/>
+                <outlet property="tableView" destination="9gJ-zq-PYC" id="Ohg-4d-t0X"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,26 +19,22 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Yoi-Do-uO2">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9gJ-zq-PYC">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qtl-gh-oiB">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="x3y-jd-XLM"/>
+                        <outlet property="delegate" destination="-1" id="sQa-HL-uB5"/>
                     </connections>
-                </collectionView>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Yoi-Do-uO2" secondAttribute="bottom" id="DM2-81-iKz"/>
-                <constraint firstItem="Yoi-Do-uO2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="K6L-Ng-QjE"/>
-                <constraint firstAttribute="trailing" secondItem="Yoi-Do-uO2" secondAttribute="trailing" id="Xv1-fT-fTT"/>
-                <constraint firstItem="Yoi-Do-uO2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gFs-tx-uLH"/>
+                <constraint firstAttribute="bottom" secondItem="9gJ-zq-PYC" secondAttribute="bottom" id="Gqs-IM-k9s"/>
+                <constraint firstItem="9gJ-zq-PYC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IKW-Vl-gft"/>
+                <constraint firstItem="9gJ-zq-PYC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZE3-cH-Wqp"/>
+                <constraint firstAttribute="trailing" secondItem="9gJ-zq-PYC" secondAttribute="trailing" id="dnK-Me-Htv"/>
             </constraints>
             <point key="canvasLocation" x="61" y="153"/>
         </view>
