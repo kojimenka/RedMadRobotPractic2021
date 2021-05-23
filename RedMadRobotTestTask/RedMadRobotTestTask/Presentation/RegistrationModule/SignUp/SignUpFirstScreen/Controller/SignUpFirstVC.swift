@@ -9,7 +9,7 @@ import UIKit
 
 protocol SignUpFirstScreenDelegate: AnyObject {
     func currentStatus(isUserFillScreen: Bool)
-    func successFill(userCredentials: Credentials, loginText: String)
+    func successFill(userCredentials: Credentials)
 }
 
 final class SignUpFirstVC: UIViewController {
@@ -71,8 +71,7 @@ extension SignUpFirstVC: NewRegistrationViewDelegate {
         registrationDataViewModel.fillNewValues(with: allRegistrationFieldData)
         
         delegate?.successFill(
-            userCredentials: registrationDataViewModel.userCredentials,
-            loginText: registrationDataViewModel.loginText
+            userCredentials: registrationDataViewModel.userCredentials
         )
     }
 }

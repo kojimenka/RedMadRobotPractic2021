@@ -22,7 +22,7 @@ final class NewAuthorizationTextField: UITextFieldWithInset {
         let layer = CALayer()
         layer.cornerRadius = 1.0
         layer.masksToBounds = true
-        layer.backgroundColor = ColorPalette.notActive?.cgColor
+        layer.backgroundColor = ColorPalette.notActive.cgColor
         return layer
     }()
     
@@ -61,12 +61,15 @@ final class NewAuthorizationTextField: UITextFieldWithInset {
     
     public func isValidFill(_ isValid: Bool) {
         let neededColor = !isValid ? ColorPalette.tintOrangeColor : ColorPalette.notActive
-        bottomLine.backgroundColor = neededColor!.cgColor
+        bottomLine.backgroundColor = neededColor.cgColor
+        if !isValid {
+            self.shakeView()
+        }
     }
     
     @objc private func setEditColor() {
         let neededColor = ColorPalette.notActive
-        bottomLine.backgroundColor = neededColor!.cgColor
+        bottomLine.backgroundColor = neededColor.cgColor
     }
     
     private func setupTextField() {

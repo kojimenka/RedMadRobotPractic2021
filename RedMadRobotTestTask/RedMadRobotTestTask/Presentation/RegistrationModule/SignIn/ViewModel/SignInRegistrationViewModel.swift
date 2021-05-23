@@ -12,9 +12,11 @@ protocol RegistrationFillViewModel {
     func fillNewValues(with allRegistrationFieldData: [RegistrationFieldData])
 }
 
-protocol SignInRegistrationViewModelProtocol: RegistrationFillViewModel {
+protocol SignInRegistrationViewModelProtocol {
     var emailText: String { get }
     var passwordText: String { get }
+    var allRegistrationsFields: [UITextField] { get }
+    func fillNewValues(with textField: UITextField)
 }
 
 final class SignInRegistrationViewModel: SignInRegistrationViewModelProtocol {
@@ -24,33 +26,36 @@ final class SignInRegistrationViewModel: SignInRegistrationViewModelProtocol {
     public var emailText = String()
     public var passwordText = String()
     
-    public var allRegistrationFieldData = [
-        RegistrationFieldData(
-            fieldData: RegistrationTextFieldData(placeHolder: "Email"),
-            validator: EmailValidator(),
-            textField: nil),
-        
-        RegistrationFieldData(
-            fieldData: RegistrationTextFieldData(
-                placeHolder: "Password",
-                isSecure: true
-            ),
-            validator: PasswordValidator(),
-            textField: nil)
+    public let emailTextField: NewAuthorizationTextField = {
+        let textField = NewAuthorizationTextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Email"
+        textField.autocapitalizationType = .none
+        return textField
+    }()
+    
+    public let passwordTextField: NewAuthorizationTextField = {
+        let textField = NewAuthorizationTextField()
+        textField.placeholder = "Password"
+        textField.isSecureTextEntry = true
+        return textField
+    }()
+    
+    lazy public var allRegistrationsFields: [UITextField] = [
+        emailTextField,
+        passwordTextField
     ]
     
     // MARK: - Pubic Methods
     
-    public func fillNewValues(with allRegistrationFieldData: [RegistrationFieldData]) {
-        for data in allRegistrationFieldData {
-            switch data.validator {
-            case is EmailValidator:
-                emailText = data.textField?.text ?? ""
-            case is PasswordValidator:
-                passwordText = data.textField?.text ?? ""
-            default:
-                break
-            }
+    public func fillNewValues(with textField: UITextField) {
+        switch textField {
+        case emailTextField:
+            emailText = emailTextField.text ?? ""
+        case passwordTextField:
+            passwordText = passwordTextField.text ?? ""
+        default:
+            break
         }
     }
     

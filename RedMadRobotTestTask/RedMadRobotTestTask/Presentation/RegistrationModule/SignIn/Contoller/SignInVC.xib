@@ -24,10 +24,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guH-4X-7gX" customClass="RegistrationNextButton" customModule="RedMadRobotTestTask" customModuleProvider="target">
-                    <rect key="frame" x="16" y="752" width="382" height="66"/>
+                    <rect key="frame" x="20" y="762" width="374" height="56"/>
                     <color key="backgroundColor" name="tintOrange"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="guH-4X-7gX" secondAttribute="height" multiplier="324:56" id="Kdg-jL-eQz"/>
+                        <constraint firstAttribute="height" constant="56" id="Qqt-n0-sMB"/>
                     </constraints>
                     <state key="normal" title="Войти">
                         <color key="titleColor" red="0.98823529409999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -37,9 +37,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dC8-Wc-Pgd">
-                    <rect key="frame" x="16" y="691.5" width="382" height="55.5"/>
+                    <rect key="frame" x="20" y="701" width="374" height="56"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="dC8-Wc-Pgd" secondAttribute="height" multiplier="343:50" id="yFs-3s-wdy"/>
+                        <constraint firstAttribute="height" constant="56" id="K6J-Bl-kM3"/>
                     </constraints>
                     <state key="normal" title="Регистрация ">
                         <color key="titleColor" name="tintOrange"/>
@@ -55,7 +55,7 @@
                         <constraint firstAttribute="height" constant="1" id="scn-bR-Nd2"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GHQ-uX-CMQ" customClass="NewRegistrationView" customModule="RedMadRobotTestTask" customModuleProvider="target">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GHQ-uX-CMQ" customClass="TextStackView" customModule="RedMadRobotTestTask" customModuleProvider="target">
                     <rect key="frame" x="16" y="64" width="382" height="129"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
@@ -64,16 +64,16 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="kNE-87-GDp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="19r-VA-6ll"/>
-                <constraint firstItem="dC8-Wc-Pgd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="3WR-Ff-32i"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dC8-Wc-Pgd" secondAttribute="trailing" constant="16" id="6od-2l-clb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kNE-87-GDp" secondAttribute="trailing" id="Obd-NQ-5pV"/>
                 <constraint firstItem="kNE-87-GDp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Qai-uu-CxN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="guH-4X-7gX" secondAttribute="trailing" constant="16" id="efi-Q3-Get"/>
+                <constraint firstAttribute="trailingMargin" secondItem="guH-4X-7gX" secondAttribute="trailing" id="arU-Ge-iYq"/>
+                <constraint firstAttribute="trailingMargin" secondItem="dC8-Wc-Pgd" secondAttribute="trailing" id="dlu-DC-f0h"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GHQ-uX-CMQ" secondAttribute="trailing" constant="16" id="gLU-9e-hiP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="guH-4X-7gX" secondAttribute="bottom" constant="44" id="kTy-Ox-sqq"/>
                 <constraint firstItem="GHQ-uX-CMQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="lwQ-zw-Nxe"/>
-                <constraint firstItem="guH-4X-7gX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="nGr-p0-tcK"/>
+                <constraint firstItem="dC8-Wc-Pgd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="m7B-g1-SBB"/>
                 <constraint firstItem="guH-4X-7gX" firstAttribute="top" secondItem="dC8-Wc-Pgd" secondAttribute="bottom" constant="5" id="pgA-A0-rBc"/>
+                <constraint firstItem="guH-4X-7gX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="q1V-7q-xco"/>
                 <constraint firstItem="GHQ-uX-CMQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="qjK-u8-QMJ"/>
             </constraints>
             <point key="canvasLocation" x="139" y="153"/>

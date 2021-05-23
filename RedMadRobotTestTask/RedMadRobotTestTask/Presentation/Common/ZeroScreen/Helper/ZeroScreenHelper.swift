@@ -22,44 +22,54 @@ struct ZeroScreenModel {
     let buttonTitle: String?
 }
 
-struct ZeroScreenFabric {
-    public func createZeroModel(state: ZeroScreenVariations) -> ZeroScreenModel {
+final class ZeroScreenFabric {
+    
+    public func createZeroModel(
+        state: ZeroScreenVariations,
+        buttonAction: (() -> Void)? = nil
+    ) -> ZeroScreenVC {
+        
+        let model: ZeroScreenModel
+        
         switch state {
         case .genericError:
-            return ZeroScreenModel(
+            model = ZeroScreenModel(
                 image: R.image.profileZeroScreenImage(),
                 titleText: "Ошибка",
                 descriptionText: "Упс, у нас проблемы",
                 buttonTitle: "Обновить"
             )
         case .feedScreen:
-            return ZeroScreenModel(
+            model = ZeroScreenModel(
                 image: R.image.profileZeroScreenImage(),
                 titleText: "Пустота",
                 descriptionText: "Вам нужны друзья, чтобы\nлента стала живой",
                 buttonTitle: "Найти друзей"
             )
         case .userPosts:
-            return ZeroScreenModel(
+            model = ZeroScreenModel(
                 image: R.image.profileZeroScreenImage(),
                 titleText: "Пустота",
                 descriptionText: "Если молчать, люди никогда\nне узнают о вас",
                 buttonTitle: "Создать пост"
             )
         case .userFavoritePosts:
-            return ZeroScreenModel(
+            model = ZeroScreenModel(
                 image: R.image.profileZeroScreenImage(),
                 titleText: "Пустота",
                 descriptionText: "Вы ещё не поставили ни одного лайка\n, но можете из ленты",
                 buttonTitle: "Создать пост"
             )
         case .friends:
-            return ZeroScreenModel(
+            model = ZeroScreenModel(
                 image: nil,
                 titleText: "Пустота",
                 descriptionText: "Вы пока одиноки в сервисе, но это можно исправить",
                 buttonTitle: "Найти друзей"
             )
         }
+        
+        return ZeroScreenVC(zeroScreenModel: model, buttonAction: buttonAction)
     }
+    
 }

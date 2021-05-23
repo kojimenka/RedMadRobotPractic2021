@@ -19,14 +19,13 @@ final class UserPostsVC: UIViewController {
     
     // MARK: - Private Properties
     
-    private let zeroScreen = ZeroScreenView(screenState: .userPosts)
+//    private let zeroScreen = ZeroScreenView(screenState: .userPosts)
     
     weak private var delegate: UserPostsDelegate?
     
     lazy private var allPostsVC = PostsFeedVC(
         profileSubscriber: delegate,
-        subscriber: self,
-        requestViewModel: UserPostsRequestViewModel(feedService: ServiceLayer.shared.feedService)
+        subscriber: self
     )
     
     // MARK: - Init
@@ -72,6 +71,10 @@ final class UserPostsVC: UIViewController {
 // MARK: - User Posts Delegate
 
 extension UserPostsVC: PostsFeedDelegate {
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
+        
+    }
+    
     func emptyPosts() {
     
     }

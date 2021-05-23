@@ -80,4 +80,15 @@ extension UIView.AnimationTransition {
                           completion: nil)
     }
     
+    static func removeAllSubviews(
+        rootView: UIView,
+        duration: Double = 0.3
+    ) {
+        UIView.transition(with: rootView,
+                          duration: duration,
+                          options: .transitionCrossDissolve,
+                          animations: { rootView.subviews.forEach { $0.removeFromSuperview() } },
+                          completion: nil)
+    }
+    
 }

@@ -83,7 +83,6 @@ final class SignUpContainerVC: UIViewController {
     
     @IBAction private func nextButtonAction(_ sender: Any) {
         guard nextButton.isButtonEnable == true else {
-            nextButton.shakeView()
             switch viewViewModel.currentScreen {
             case .firstScreen:
                 signUpFirstScreen.checkForWarnings()
@@ -158,9 +157,8 @@ extension SignUpContainerVC: CheckKeyboardViewModelDelegate {
 // MARK: - Sign in first screen delegate
 
 extension SignUpContainerVC: SignUpFirstScreenDelegate {
-    func successFill(userCredentials: Credentials, loginText: String) {
+    func successFill(userCredentials: Credentials) {
         self.userCredentials = userCredentials
-        self.userInfo.nickname = loginText
     }
     
     func currentStatus(isUserFillScreen: Bool) {

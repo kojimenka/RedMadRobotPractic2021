@@ -39,7 +39,7 @@ final class LoaderVC: UIViewController {
     // MARK: - Private Methods
     
     private func showDownload() {
-        self.loaderIndicator.startAnimating()
+        loaderIndicator.startAnimating()
         
         UIView.animate(withDuration: 0.3) {
             self.backgroundView.alpha = 0.3

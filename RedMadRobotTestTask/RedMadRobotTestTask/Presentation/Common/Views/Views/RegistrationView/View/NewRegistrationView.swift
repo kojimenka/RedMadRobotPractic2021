@@ -12,7 +12,7 @@ protocol NewRegistrationViewDelegate: AnyObject {
     func successFillData(with allRegistrationFieldData: [RegistrationFieldData])
 }
 
-final class NewRegistrationView: UIView {
+final class NewRegistrationView: UIStackView {
     
     // MARK: - Public properties
     
@@ -34,21 +34,9 @@ final class NewRegistrationView: UIView {
     
     private var allRegistrationFieldData = [RegistrationFieldData]()
     
-    // MARK: - Views
-    
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 20
-        return stackView
-    }()
-    
     // MARK: - Init
-    
-    required init?(coder: NSCoder) {
+
+    required init(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
     }
@@ -61,7 +49,7 @@ final class NewRegistrationView: UIView {
         for (index, data) in self.allRegistrationFieldData.enumerated() {
             let textField = createAuthorizationTextField(data: data.fieldData)
             self.allRegistrationFieldData[index].textField = textField
-            stackView.addArrangedSubview(textField)
+            addArrangedSubview(textField)
         }
     }
     
@@ -83,7 +71,10 @@ final class NewRegistrationView: UIView {
     // MARK: - Private Methods
     
     private func setupView() {
-        setConstraints()
+        axis = .vertical
+        alignment = .fill
+        distribution = .equalSpacing
+        spacing = 20
     }
     
     private func createAuthorizationTextField(data: RegistrationTextFieldData) -> NewAuthorizationTextField {
@@ -106,10 +97,6 @@ final class NewRegistrationView: UIView {
         }
         
         isUserFillScreen = true
-    }
-    
-    private func setConstraints() {
-        addFillView(view: stackView)
     }
     
 }

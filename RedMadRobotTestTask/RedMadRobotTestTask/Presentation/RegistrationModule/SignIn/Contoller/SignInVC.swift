@@ -17,7 +17,7 @@ final class SignInVC: UIViewController {
     // MARK: - IBOutlet
     
     @IBOutlet private weak var enterButton: RegistrationNextButton!
-    @IBOutlet private weak var signInView: NewRegistrationView!
+    @IBOutlet private weak var signInView: TextStackView!
     @IBOutlet private weak var registrationButtonBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Private Properties
@@ -65,11 +65,6 @@ final class SignInVC: UIViewController {
     }
     
     @IBAction private func enterButtonAction(_ sender: Any) {
-        guard enterButton.isButtonEnable == true else {
-            signInView.checkForWarning(controller: self)
-            enterButton.shakeView()
-            return
-        }
         loginUser()
     }
     
@@ -88,15 +83,13 @@ final class SignInVC: UIViewController {
         checkKeyboardViewModel.delegate = self
         signInView.delegate = self
         
-        signInView.addRegistrationFields(registrationDataViewModel.allRegistrationFieldData)
+        signInView.addRegistrationFields(registrationDataViewModel.allRegistrationsFields)
         
-        enterButton.isButtonEnable = false
         self.hideKeyboardWhenTappedAround()
     }
     
     private func loginUser() {
         self.view.endEditing(true)
-        
         delegate?.loginUser(
             credentials: Credentials(
                 email: registrationDataViewModel.emailText,
@@ -109,13 +102,9 @@ final class SignInVC: UIViewController {
 
 // MARK: - Check filling state
 
-extension SignInVC: NewRegistrationViewDelegate {
-    func currentStatus(isUserFillScreen: Bool) {
-        enterButton.isButtonEnable = isUserFillScreen
-    }
-    
-    func successFillData(with allRegistrationFieldData: [RegistrationFieldData]) {
-        registrationDataViewModel.fillNewValues(with: allRegistrationFieldData)
+extension SignInVC: TextStackViewDelegate {
+    func userChangeValue(in textFiels: UITextField) {
+        registrationDataViewModel.fillNewValues(with: textFiels)
     }
 }
 

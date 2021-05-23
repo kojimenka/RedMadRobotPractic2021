@@ -8,9 +8,8 @@
 import UIKit
 
 protocol PostsFeedDelegate: AnyObject {
-    func failureRequest()
     func likePost(id: String)
-    func emptyPosts()
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void )
 }
 
 protocol PostsFeedInProfileDelegate: AnyObject {
@@ -31,7 +30,6 @@ final class PostsFeedVC: UIViewController {
     
     private var topInset: CGFloat = 0.0
     
-    private var requestViewModel: PostsFeedRequestViewModelProtocol
     private var dataSourceViewModel: PostFeedDataSourceViewModelProtocol
     
     // MARK: - Init
@@ -39,12 +37,10 @@ final class PostsFeedVC: UIViewController {
     init(
         profileSubscriber: PostsFeedInProfileDelegate? = nil,
         subscriber: PostsFeedDelegate?,
-        requestViewModel: PostsFeedRequestViewModelProtocol,
         dataSourceViewModel: PostFeedDataSourceViewModelProtocol = PostFeedDataViewModel()
     ) {
         delegateForProfileScreen = profileSubscriber
         self.delegate = subscriber
-        self.requestViewModel = requestViewModel
         self.dataSourceViewModel = dataSourceViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -71,22 +67,16 @@ final class PostsFeedVC: UIViewController {
     
     // MARK: - Public Methods
     
-    public func requestData(completion: ((Bool) -> Void)? = nil) {
-        requestViewModel.getPosts { [weak self] result in
+    public func requestData() {
+        delegate?.getPosts { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let content):
-                print("DEBUG: post request success")
-                if content.isEmpty {
-                    self.delegate?.emptyPosts()
-                    completion?(false)
-                }
-                completion?(true)
                 self.dataSourceViewModel.allPosts = content
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             case .failure:
-                completion?(false)
-                self.delegate?.failureRequest()
                 print("DEBUG: post request failure")
             }
         }
@@ -119,15 +109,19 @@ extension PostsFeedVC: UITableViewDelegate {
 // MARK: - UIScrollView Delegate
 
 extension PostsFeedVC: UIScrollViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegateForProfileScreen?.scrollViewOffSetChanged(inset: scrollView.contentOffset.y + topInset)
     }
+    
 }
 
 // MARK: - DataSource Delegate
 
 extension PostsFeedVC: PostFeedDataViewModelDelegate {
+    
     func likePost(id: String) {
         delegate?.likePost(id: id)
     }
+    
 }

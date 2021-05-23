@@ -32,17 +32,15 @@ final class AppTabBarController: UITabBarController {
         feedCoordinator.start()
         profileScreenVC.start()
         
-        let feedTabBarTitle = R.string.localizable.feedTabBarTitle()
         feedCoordinator.navigationController.tabBarItem = UITabBarItem(
-            title: feedTabBarTitle,
-            image: .init(),
+            title: "",
+            image: R.image.feedTabBarIcon(),
             tag: 0
         )
         
-        let profileTabBarTitle = R.string.localizable.profileTabBarTitle()
         profileScreenVC.navigationController.tabBarItem = UITabBarItem(
-            title: profileTabBarTitle,
-            image: .init(),
+            title: "",
+            image: R.image.accountTabBarIcon(),
             tag: 1
         )
         

@@ -45,10 +45,10 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpl-ga-d4K" customClass="RegistrationNextButton" customModule="RedMadRobotTestTask" customModuleProvider="target">
-                    <rect key="frame" x="16" y="755.5" width="382" height="62.5"/>
+                    <rect key="frame" x="20" y="762" width="374" height="56"/>
                     <color key="backgroundColor" name="tintOrange"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="jpl-ga-d4K" secondAttribute="height" multiplier="343:56" id="4yG-uz-r0y"/>
+                        <constraint firstAttribute="height" constant="56" id="ZwM-M4-ftq"/>
                     </constraints>
                     <state key="normal" title="Далее">
                         <color key="titleColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,9 +58,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gg-Xw-WEX">
-                    <rect key="frame" x="0.0" y="688" width="414" height="59.5"/>
+                    <rect key="frame" x="20" y="698" width="374" height="56"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="9gg-Xw-WEX" secondAttribute="height" multiplier="346:50" id="YJ5-56-A44"/>
+                        <constraint firstAttribute="height" constant="56" id="Cxc-rb-0U4"/>
                     </constraints>
                     <state key="normal" title="Уже зарегестрирован">
                         <color key="titleColor" name="tintOrange"/>
@@ -77,16 +77,16 @@
                 <constraint firstItem="JDl-9g-hsl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4at-RW-Pap"/>
                 <constraint firstItem="jpl-ga-d4K" firstAttribute="top" secondItem="9gg-Xw-WEX" secondAttribute="bottom" constant="8" id="58a-cp-Hu8"/>
                 <constraint firstItem="ZzQ-PK-qoK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8F8-Qw-ajH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9gg-Xw-WEX" secondAttribute="trailing" id="Hf0-cQ-kqg"/>
                 <constraint firstItem="gyE-gn-mtO" firstAttribute="top" secondItem="JDl-9g-hsl" secondAttribute="bottom" id="K3Q-ZL-oOh"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jpl-ga-d4K" secondAttribute="trailing" constant="16" id="OkM-RD-DFL"/>
                 <constraint firstAttribute="bottom" secondItem="gyE-gn-mtO" secondAttribute="bottom" id="VtH-nA-BrP"/>
+                <constraint firstAttribute="trailingMargin" secondItem="jpl-ga-d4K" secondAttribute="trailing" id="YbF-0x-UM0"/>
                 <constraint firstItem="ZzQ-PK-qoK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cL5-Om-b6G"/>
-                <constraint firstItem="jpl-ga-d4K" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="hQD-Ka-vl9"/>
+                <constraint firstAttribute="trailingMargin" secondItem="9gg-Xw-WEX" secondAttribute="trailing" id="hgx-c6-HRE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZzQ-PK-qoK" secondAttribute="trailing" multiplier="2" id="jSV-Kr-FuW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gyE-gn-mtO" secondAttribute="trailing" id="lrK-kz-cZH"/>
-                <constraint firstItem="9gg-Xw-WEX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rVI-P2-gvH"/>
                 <constraint firstItem="JDl-9g-hsl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tOv-ge-2Ml"/>
+                <constraint firstItem="jpl-ga-d4K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="uad-L5-ZJY"/>
+                <constraint firstItem="9gg-Xw-WEX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="utk-5z-ZA7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JDl-9g-hsl" secondAttribute="trailing" id="xo0-hI-vPX"/>
                 <constraint firstItem="gyE-gn-mtO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zLr-40-Ws8"/>
             </constraints>

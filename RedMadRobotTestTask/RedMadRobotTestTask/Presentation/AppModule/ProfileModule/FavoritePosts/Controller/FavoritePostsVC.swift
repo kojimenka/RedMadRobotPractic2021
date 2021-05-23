@@ -21,12 +21,11 @@ final class FavoritePostsVC: UIViewController {
     
     weak private var delegate: FavoritePostsDelegate?
     
-    private let zeroScreen = ZeroScreenView(screenState: .userFavoritePosts)
+//    private let zeroScreen = ZeroScreenView(screenState: .userFavoritePosts)
     
     lazy private var allPostsVC = PostsFeedVC(
         profileSubscriber: delegate,
-        subscriber: self,
-        requestViewModel: UserPostsRequestViewModel(feedService: ServiceLayer.shared.feedService)
+        subscriber: self
     )
     
     // MARK: - Init
@@ -72,15 +71,11 @@ final class FavoritePostsVC: UIViewController {
 // MARK: - Favorite Posts Delegate
 
 extension FavoritePostsVC: PostsFeedDelegate {
-    func emptyPosts() {
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
         
     }
-    
+
     func likePost(id: String) {
         delegate?.addLikeToPost(id: id)
-    }
-    
-    func failureRequest() {
-        
     }
 }

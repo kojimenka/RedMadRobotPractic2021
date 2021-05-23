@@ -17,6 +17,7 @@ final class FeedModuleCoordinator: Coordinator {
     // MARK: - Private properties
     
     private let screenFabric: FeedModuleFabricProtocol
+    private let navBarViewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel()
     
     // MARK: - Init
     
@@ -33,6 +34,12 @@ final class FeedModuleCoordinator: Coordinator {
     func start() {
         let screen = screenFabric.createFeedScreen(coordinator: self)
         pushController(controller: screen, animated: false)
+        
+        navBarViewModel.customizeNavBar(
+            navigationBar: navigationController.navigationBar,
+            navigationItem: navigationController.navigationItem,
+            title: ""
+        )
     }
     
     func showSearchFriendScreen() {

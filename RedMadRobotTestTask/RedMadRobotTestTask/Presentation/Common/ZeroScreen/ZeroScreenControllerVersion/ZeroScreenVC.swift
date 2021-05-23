@@ -11,6 +11,7 @@ final class ZeroScreenVC: UIViewController {
     
     // MARK: - IBOutlets
 
+    @IBOutlet private weak var contentStackView: UIStackView!
     @IBOutlet private weak var zeroImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
@@ -27,12 +28,15 @@ final class ZeroScreenVC: UIViewController {
     // MARK: - Private Properties
     
     private var zeroScreenFabric = ZeroScreenFabric()
-    private var screenState: ZeroScreenVariations
+    private var model: ZeroScreenModel
     
     // MARK: - Init
     
-    init(screenState: ZeroScreenVariations, buttonAction: (() -> Void)? = nil) {
-        self.screenState = screenState
+    init(
+        zeroScreenModel: ZeroScreenModel,
+        buttonAction: (() -> Void)? = nil
+    ) {
+        self.model = zeroScreenModel
         super.init(nibName: nil, bundle: nil)
         self.buttonAction = buttonAction
     }
@@ -41,9 +45,12 @@ final class ZeroScreenVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupScreen(state: screenState)
+        setupView()
+        setupScreen()
     }
     
     // MARK: - IBActions
@@ -52,13 +59,17 @@ final class ZeroScreenVC: UIViewController {
         buttonAction?()
     }
     
-    private func setupScreen(state: ZeroScreenVariations) {
-        let model = zeroScreenFabric.createZeroModel(state: state)
-
+    private func setupScreen() {
         zeroImageView.image = model.image
         titleLabel.text = model.titleText
         descriptionLabel.text = model.descriptionText
         updateButton.setTitle(model.buttonTitle, for: .normal)        
     }
     
+    // MARK: - Private Methods
+    
+    private func setupView() {
+        contentStackView.setCustomSpacing(0, after: zeroImageView)
+        contentStackView.setCustomSpacing(8, after: titleLabel)
+    }
 }

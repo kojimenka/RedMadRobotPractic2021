@@ -21,10 +21,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ed8-US-v1L" customClass="RegistrationNextButton" customModule="RedMadRobotTestTask" customModuleProvider="target">
-                    <rect key="frame" x="16" y="720.5" width="382" height="62.5"/>
+                    <rect key="frame" x="20" y="727" width="374" height="56"/>
                     <color key="backgroundColor" name="tintOrange"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="Ed8-US-v1L" secondAttribute="height" multiplier="343:56" id="F2c-ed-XE2"/>
+                        <constraint firstAttribute="height" constant="56" id="5G0-VL-XVZ"/>
                     </constraints>
                     <state key="normal" title="Перейти к ленте">
                         <color key="titleColor" red="0.98823529409999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -34,19 +34,20 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="successAuthorizationImage" translatesAutoresizingMaskIntoConstraints="NO" id="Qcq-0n-AdI">
-                    <rect key="frame" x="97.5" y="184.5" width="219" height="219.5"/>
+                    <rect key="frame" x="107" y="194.5" width="200" height="200"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="Qcq-0n-AdI" secondAttribute="height" multiplier="1:1" id="McQ-I9-32R"/>
+                        <constraint firstAttribute="width" constant="200" id="U8P-wZ-dhN"/>
+                        <constraint firstAttribute="height" constant="200" id="t6u-ZC-65A"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice to meet you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcY-Vx-00b">
-                    <rect key="frame" x="16" y="404" width="382" height="43"/>
+                    <rect key="frame" x="16" y="394.5" width="382" height="43"/>
                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Теперь ты можешь смотреть и делать публикации  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBl-hY-usP">
-                    <rect key="frame" x="16" y="455" width="382" height="38.5"/>
+                    <rect key="frame" x="16" y="445.5" width="382" height="38.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" name="middle_grey"/>
                     <nil key="highlightedColor"/>
@@ -58,13 +59,12 @@
                 <constraint firstItem="wcY-Vx-00b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="2QF-8L-TMT"/>
                 <constraint firstItem="VBl-hY-usP" firstAttribute="top" secondItem="wcY-Vx-00b" secondAttribute="bottom" constant="8" id="2VR-6n-McF"/>
                 <constraint firstItem="Qcq-0n-AdI" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="0.65" id="6SP-aC-pYr"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ed8-US-v1L" secondAttribute="trailing" constant="16" id="DdP-X7-wnu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ed8-US-v1L" secondAttribute="bottom" constant="79" id="HME-gi-48G"/>
                 <constraint firstItem="wcY-Vx-00b" firstAttribute="top" secondItem="Qcq-0n-AdI" secondAttribute="bottom" id="HOo-Yx-87D"/>
+                <constraint firstItem="Ed8-US-v1L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="SNI-XJ-TyU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VBl-hY-usP" secondAttribute="trailing" constant="16" id="TE7-UB-get"/>
-                <constraint firstItem="Ed8-US-v1L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="WcX-sa-nbd"/>
-                <constraint firstItem="Qcq-0n-AdI" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="akM-tR-Xzs"/>
-                <constraint firstItem="Qcq-0n-AdI" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.53" id="ids-HR-Qsv"/>
+                <constraint firstAttribute="trailingMargin" secondItem="Ed8-US-v1L" secondAttribute="trailing" id="d1U-RO-6Mx"/>
+                <constraint firstItem="Qcq-0n-AdI" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="hnO-mq-m8I"/>
                 <constraint firstItem="VBl-hY-usP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="lXY-vs-Ft7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wcY-Vx-00b" secondAttribute="trailing" constant="16" id="vv1-bb-tSh"/>
             </constraints>

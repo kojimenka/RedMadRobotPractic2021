@@ -21,27 +21,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGO-ra-olU" customClass="RegistrationNextButton" customModule="RedMadRobotTestTask" customModuleProvider="target">
-                    <rect key="frame" x="20" y="603.66666666666663" width="374" height="61"/>
+                    <rect key="frame" x="20" y="606.33333333333337" width="374" height="56"/>
                     <color key="backgroundColor" name="tintOrange"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="JGO-ra-olU" secondAttribute="height" multiplier="343:56" id="eGu-ty-FtS"/>
+                        <constraint firstAttribute="height" constant="56" id="Ufa-J9-HLd"/>
                     </constraints>
-                    <state key="normal" title="Войти по почте или телефону">
+                    <state key="normal" title="Войти">
                         <color key="titleColor" red="0.98823529409999999" green="0.95294117649999999" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </state>
                     <connections>
                         <action selector="enterWithMailOrPhoneButtonAction:" destination="-1" eventType="touchUpInside" id="SoD-2c-bYf"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BG2-U1-2Gg">
-                    <rect key="frame" x="20" y="700.66666666666663" width="374" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="rR4-FR-NEH"/>
-                    </constraints>
-                    <color key="tintColor" name="tintOrange"/>
-                    <state key="normal" title="Регистрация"/>
-                    <connections>
-                        <action selector="registrationButtonAction:" destination="-1" eventType="touchUpInside" id="jcr-z4-k30"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Найди свое место" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrR-iY-T0U">
@@ -57,11 +46,23 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="jeP-hN-bfZ">
-                    <rect key="frame" x="75" y="202" width="264" height="198.66666666666663"/>
+                    <rect key="frame" x="107" y="200.66666666666663" width="200" height="200"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="jeP-hN-bfZ" secondAttribute="height" multiplier="226:170" id="fn3-LW-PXg"/>
+                        <constraint firstAttribute="height" constant="200" id="GNh-2l-fgG"/>
+                        <constraint firstAttribute="width" constant="200" id="MwR-6z-Itr"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BG2-U1-2Gg">
+                    <rect key="frame" x="20" y="682.33333333333337" width="374" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="rR4-FR-NEH"/>
+                    </constraints>
+                    <color key="tintColor" name="tintOrange"/>
+                    <state key="normal" title="Регистрация"/>
+                    <connections>
+                        <action selector="registrationButtonAction:" destination="-1" eventType="touchUpInside" id="jcr-z4-k30"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -72,14 +73,13 @@
                 <constraint firstItem="JGO-ra-olU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="Aft-21-FM8"/>
                 <constraint firstItem="WrR-iY-T0U" firstAttribute="top" secondItem="6yf-ht-6rP" secondAttribute="bottom" constant="2" id="CB0-hs-WDd"/>
                 <constraint firstItem="BG2-U1-2Gg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="WZT-qA-YBM"/>
-                <constraint firstItem="jeP-hN-bfZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="75" id="Yib-Vm-B6B"/>
+                <constraint firstItem="jeP-hN-bfZ" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="YNK-Yh-ycr"/>
                 <constraint firstItem="WrR-iY-T0U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="crr-AL-mTE"/>
-                <constraint firstItem="BG2-U1-2Gg" firstAttribute="top" secondItem="JGO-ra-olU" secondAttribute="bottom" constant="36" id="dLf-Ye-cI7"/>
                 <constraint firstAttribute="trailingMargin" secondItem="JGO-ra-olU" secondAttribute="trailing" id="dWu-t5-RD1"/>
                 <constraint firstItem="6yf-ht-6rP" firstAttribute="top" secondItem="jeP-hN-bfZ" secondAttribute="bottom" constant="2" id="fG7-oz-vJZ"/>
                 <constraint firstItem="6yf-ht-6rP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="iTC-S2-ZFc"/>
+                <constraint firstItem="BG2-U1-2Gg" firstAttribute="top" secondItem="JGO-ra-olU" secondAttribute="bottom" constant="20" id="jJH-ir-Mdc"/>
                 <constraint firstItem="WrR-iY-T0U" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="jQZ-uU-R2g"/>
-                <constraint firstAttribute="trailing" secondItem="jeP-hN-bfZ" secondAttribute="trailing" constant="75" id="jqU-y1-Jyt"/>
                 <constraint firstItem="JGO-ra-olU" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" multiplier="1.4" id="wZU-Ou-FJN"/>
             </constraints>
             <point key="canvasLocation" x="-122" y="153"/>
@@ -87,7 +87,7 @@
     </objects>
     <designables>
         <designable name="JGO-ra-olU">
-            <size key="intrinsicContentSize" width="213" height="30"/>
+            <size key="intrinsicContentSize" width="44" height="30"/>
         </designable>
     </designables>
     <resources>
