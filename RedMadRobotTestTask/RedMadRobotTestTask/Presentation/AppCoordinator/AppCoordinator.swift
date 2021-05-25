@@ -30,7 +30,7 @@ final class AppCoordinator: Coordinator {
     // MARK: - Public Properties
     
     func start() {
-        if isTokenInvalid {
+        if !isTokenInvalid {
             let loginCoordinator = LoginCoordinator(navigationController: navigationController)
             childCoordinators.append(loginCoordinator)
             loginCoordinator.start()
