@@ -40,7 +40,8 @@ final class ServiceLayer {
         return AlamofireClient(
             requestInterceptor: UserRequestInterceptor(
                 baseURL: URL(string: "https://interns2021.redmadrobot.com")!,
-                storage: userStorage),
+                storage: userStorage
+            ),
             configuration: .ephemeral)
     }()
 

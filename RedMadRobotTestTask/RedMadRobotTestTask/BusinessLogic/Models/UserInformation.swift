@@ -16,7 +16,7 @@ public struct UserInformation: Equatable, Codable {
     public var lastName: String = ""
     public var nickname: String?
     public var avatarUrl: URL?
-    public var birthDay: String = ""
+    public var birthDay: Date = Date()
     
 }
 

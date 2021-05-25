@@ -15,7 +15,7 @@ public struct UserInformation: Codable, Equatable {
         lastName: String,
         nickname: String?,
         avatarUrl: URL?,
-        birthDay: String
+        birthDay: Date
     ) {
         
         self.id = id
@@ -32,6 +32,6 @@ public struct UserInformation: Codable, Equatable {
     public var lastName: String
     public var nickname: String?
     public var avatarUrl: URL?
-    public var birthDay: String
+    public var birthDay: Date
     
 }

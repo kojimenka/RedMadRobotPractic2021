@@ -66,7 +66,12 @@ public struct UpdateUserInfoEndpoint: Endpoint {
         params["last_name"] = user.lastName.data(using: .utf8)
         params["nickname"] = user.nickname?.data(using: .utf8)
         params["avatar_url"] = user.avatarUrl?.dataRepresentation
-        params["birth_day"] = user.birthDay.data(using: .utf8)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let stringDate = formatter.string(from: user.birthDay)
+        
+        params["birth_day"] = stringDate.data(using: .utf8)
         
         return params
     }
