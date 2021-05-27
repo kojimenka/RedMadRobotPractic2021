@@ -71,11 +71,11 @@ final class FavoritePostsVC: UIViewController {
 // MARK: - Favorite Posts Delegate
 
 extension FavoritePostsVC: PostsFeedDelegate {
-    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
+    func likePostButtonAction(isLiked: Bool, id: String) {
         
     }
-
-    func likePost(id: String) {
-        delegate?.addLikeToPost(id: id)
+    
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
+        
     }
 }

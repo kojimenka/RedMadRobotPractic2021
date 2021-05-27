@@ -17,6 +17,7 @@ public struct PostInfo: Codable, Equatable {
     public var lon: Float?
     public var lat: Float?
     public var likes: Int = 0
+    public var isLikedPost: Bool = false
     
     public var author: UserInformation
 }

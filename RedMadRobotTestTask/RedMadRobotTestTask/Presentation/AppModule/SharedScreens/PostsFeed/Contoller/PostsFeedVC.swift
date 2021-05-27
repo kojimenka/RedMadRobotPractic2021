@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PostsFeedDelegate: AnyObject {
-    func likePost(id: String)
+    func likePostButtonAction(isLiked: Bool, id: String)
     func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void )
 }
 
@@ -120,8 +120,8 @@ extension PostsFeedVC: UIScrollViewDelegate {
 
 extension PostsFeedVC: PostFeedDataViewModelDelegate {
     
-    func likePost(id: String) {
-        delegate?.likePost(id: id)
+    func likePostButtonAction(isLiked: Bool, id: String) {
+        delegate?.likePostButtonAction(isLiked: isLiked, id: id)
     }
     
 }

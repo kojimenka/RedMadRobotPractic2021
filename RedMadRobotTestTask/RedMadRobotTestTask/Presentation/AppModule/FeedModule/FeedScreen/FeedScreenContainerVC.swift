@@ -90,6 +90,7 @@ final class FeedScreenContainerVC: UIViewController {
 // MARK: - All Posts Delegate
 
 extension FeedScreenContainerVC: PostsFeedDelegate {
+    
     func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
         _ = feedService.getFeed { [weak self] result in
             guard let self = self else { return }
@@ -99,13 +100,45 @@ extension FeedScreenContainerVC: PostsFeedDelegate {
                     completion(.failure(LoginValidatorError.emptyLogin))
                     self.showEmptyPostZeroScreen()
                 } else {
-                    completion(result)
-                    self.showFeedScreen()
+                    self.getLikedPosts(
+                        feedPosts: content,
+                        completion: completion
+                    )
                 }
             case .failure:
                 completion(result)
                 self.showErrorZeroScreen()
             }
+        }
+    }
+    
+    func getLikedPosts(
+        feedPosts: [PostInfo],
+        completion: @escaping (Result<[PostInfo], Error>) -> Void
+    ) {
+        _ = feedService.getFavouritePosts(completion: { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let likedPosts):
+                var mutableFeedPost = feedPosts
+                // Отмечаем во всех постах, посты которые пользователь лайкнул 
+                for (index, feedPost) in mutableFeedPost.enumerated() {
+                    mutableFeedPost[index].isLikedPost = likedPosts.contains(feedPost)
+                }
+                completion(.success(mutableFeedPost))
+                self.showFeedScreen()
+            case .failure(let error):
+                completion(.failure(error))
+                self.showErrorZeroScreen()
+            }
+        })
+    }
+    
+    func likePostButtonAction(isLiked: Bool, id: String) {
+        if isLiked {
+            likePost(id: id)
+        } else {
+            unlikePost(id: id)
         }
     }
     
@@ -119,4 +152,16 @@ extension FeedScreenContainerVC: PostsFeedDelegate {
             }
         }
     }
+    
+    func unlikePost(id: String) {
+        _ = feedService.removeLikeFromPost(postID: id) { result in
+            switch result {
+            case .success:
+                print("DEBUG: Success remove like")
+            case .failure(let error):
+                print("DEBUG: Failure remove like with error  \(error.localizedDescription)")
+            }
+        }
+    }
+    
 }

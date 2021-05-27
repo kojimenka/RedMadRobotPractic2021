@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SearchFriendsDelegate: class {
+protocol SearchFriendsDelegate: AnyObject {
     func searchFriend(name: String)
 }
 

@@ -13,7 +13,7 @@ protocol PostFeedDataSourceViewModelProtocol: AnyObject, UITableViewDataSource {
 }
 
 protocol PostFeedDataViewModelDelegate: AnyObject {
-    func likePost(id: String)
+    func likePostButtonAction(isLiked: Bool, id: String)
 }
 
 final class PostFeedDataViewModel: NSObject, PostFeedDataSourceViewModelProtocol {
@@ -44,9 +44,10 @@ extension PostFeedDataViewModel: UITableViewDataSource {
         
         cell.currentPostInfo = currentPost
 
-        cell.likeButtonAction = { [weak self] _ in
+        cell.likeButtonAction = { [weak self] isLiked in
             guard let self = self else { return }
-            self.delegate?.likePost(id: currentPost.id)
+            self.allPosts[indexPath.section].isLikedPost = isLiked
+            self.delegate?.likePostButtonAction(isLiked: isLiked, id: currentPost.id)
         }
         
         return cell

@@ -71,6 +71,10 @@ final class UserPostsVC: UIViewController {
 // MARK: - User Posts Delegate
 
 extension UserPostsVC: PostsFeedDelegate {
+    func likePostButtonAction(isLiked: Bool, id: String) {
+        
+    }
+    
     func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
         
     }
