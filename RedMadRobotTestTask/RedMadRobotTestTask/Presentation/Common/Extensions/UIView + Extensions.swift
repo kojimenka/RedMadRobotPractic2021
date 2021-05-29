@@ -50,6 +50,7 @@ extension NibLoadable where Self: UIView {
 }
 
 // MARK: - Shadows
+
 extension UIView {
     func applyShadow(shadowOffSet: CGSize, shadowOpacity: Float, shadowRadius: CGFloat, color: UIColor) {
         layer.shadowColor = color.cgColor
@@ -87,5 +88,54 @@ extension UIView {
             view.trailingAnchor.constraint(equalTo: trailingAnchor),
             view.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+}
+
+// MARK: - UIView Animate
+
+extension UIView {
+    func shakeView() {
+        let shakeAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+        shakeAnimation.duration = 0.7
+        shakeAnimation.timingFunctions = [CAMediaTimingFunction(name: .easeOut)]
+        shakeAnimation.values = [0.0, -5.0, 5.0, -3.0, 3.0, -2.0, 2.0, 0.0].map { (degres: Double) -> Double in
+            let radios = (Double.pi * degres) / 180
+            return radios
+        }
+        
+        self.layer.add(shakeAnimation, forKey: "shakeIt")
+    }
+}
+
+extension UIView {
+    
+    func animateHide() {
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 0.0
+        }
+    }
+    
+    func animateShow() {
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 1.0
+        }
+    }
+    
+}
+
+extension UIView {
+    func getConstraintsOf(_ view: UIView) -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+        for constraint in self.constraints {
+            if constraint.firstItem as? UIView == view {
+                constraints.append(constraint)
+                continue
+            }
+            
+            if constraint.secondItem as? UIView == view {
+                constraints.append(constraint)
+            }
+        }
+        return constraints
     }
 }

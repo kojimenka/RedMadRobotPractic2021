@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FavoritePostsDelegate: PostsFeedInProfileDelegate {
-
+    func addLikeToPost(id: String)
 }
 
 final class FavoritePostsVC: UIViewController {
@@ -21,12 +21,11 @@ final class FavoritePostsVC: UIViewController {
     
     weak private var delegate: FavoritePostsDelegate?
     
-    private let zeroScreen = ZeroScreenView(screenState: .userFavoritePosts)
+//    private let zeroScreen = ZeroScreenView(screenState: .userFavoritePosts)
     
     lazy private var allPostsVC = PostsFeedVC(
         profileSubscriber: delegate,
-        subscriber: self,
-        requestViewModel: UserPostsRequestViewModel(feedService: ServiceLayer.shared.feedService)
+        subscriber: self
     )
     
     // MARK: - Init
@@ -61,10 +60,10 @@ final class FavoritePostsVC: UIViewController {
     }
     
     private func setupZeroScreen() {
-        zeroScreen.buttonAction = { [weak self] in
-            guard let self = self else { return }
-            self.allPostsVC.updateData()
-        }
+//        zeroScreen.buttonAction = { [weak self] in
+//            guard let self = self else { return }
+//            self.allPostsVC.updateData()
+//        }
     }
     
 }
@@ -72,7 +71,11 @@ final class FavoritePostsVC: UIViewController {
 // MARK: - Favorite Posts Delegate
 
 extension FavoritePostsVC: PostsFeedDelegate {
-    func failureRequest() {
+    func likePostButtonAction(isLiked: Bool, id: String) {
+        
+    }
+    
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void) {
         
     }
 }

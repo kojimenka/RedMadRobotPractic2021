@@ -9,14 +9,13 @@ import Foundation
 
 protocol RegistrationContainerRequestViewModelProtocol {
     func loginUser(
-        email: String,
-        password: String,
+        credentials: Credentials,
         completion: @escaping (Result<Void, Error>) -> Void
     )
     
     func registrateUser(
-        email: String,
-        password: String,
+        credentials: Credentials,
+        userInfo: UserInformation,
         completion: @escaping (Result<Void, Error>) -> Void
     )
 }
@@ -26,29 +25,64 @@ final class RegistrationContainerRequestViewModel: RegistrationContainerRequestV
     // MARK: - Properties
     
     private let registrationService: AuthorizationServiceProtocol
+    private let userService: UserInfoServiceProtocol
+    
+    private var completion: ((Result<Void, Error>) -> Void)?
     
     // MARK: - Init
     
-    init(registrationService: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices) {
+    init(
+        registrationService: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices,
+        userService: UserInfoServiceProtocol = ServiceLayer.shared.userInfoService
+    ) {
+        self.userService = userService
         self.registrationService = registrationService
     }
     
     // MARK: - Methods
     
     func loginUser(
-        email: String,
-        password: String,
+        credentials: Credentials,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
-        completion(.success(()))
+        _ = registrationService.signIn(credentials: credentials) { result in
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
     func registrateUser(
-        email: String,
-        password: String,
+        credentials: Credentials,
+        userInfo: UserInformation,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
-        completion(.success(()))
+        self.completion = completion
+        
+        _ = registrationService.signUp(credentials: credentials) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.addUserInformation(userInfo: userInfo)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func addUserInformation(userInfo: UserInformation) {
+        _ = userService.updateUserInfo(user: userInfo, completion: { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.completion?(.success(()))
+            case .failure(let error):
+                self.completion?(.failure(error))
+            }
+        })
     }
     
 }

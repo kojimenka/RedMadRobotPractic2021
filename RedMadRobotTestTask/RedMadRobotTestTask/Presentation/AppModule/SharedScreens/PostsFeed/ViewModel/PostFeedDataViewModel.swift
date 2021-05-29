@@ -7,36 +7,49 @@
 
 import UIKit
 
-protocol PostFeedDataSourceViewModelProtocol: AnyObject, UICollectionViewDataSource {
-    // В будущем здесь будет массив с данным для коллекции
-    // var allData: [?] { get }
+protocol PostFeedDataSourceViewModelProtocol: AnyObject, UITableViewDataSource {
+    var allPosts: [PostInfo] { get set }
+    var delegate: PostFeedDataViewModelDelegate? { get set }
+}
+
+protocol PostFeedDataViewModelDelegate: AnyObject {
+    func likePostButtonAction(isLiked: Bool, id: String)
 }
 
 final class PostFeedDataViewModel: NSObject, PostFeedDataSourceViewModelProtocol {
     
+    // MARK: - Public Properties
+    
+    public var allPosts = [PostInfo]()
+    public weak var delegate: PostFeedDataViewModelDelegate?
 }
 
 // MARK: - UICollectionView DataSource
 
-extension PostFeedDataViewModel: UICollectionViewDataSource {
+extension PostFeedDataViewModel: UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return allPosts.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
-    -> UICollectionViewCell {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
+    -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+    -> UITableViewCell {
+        let cell: PostTableViewCell = tableView.dequeueCell(for: indexPath)
+        let currentPost = allPosts[indexPath.section]
         
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: PostCollectionViewCell.identifier,
-            for: indexPath
-        ) as! PostCollectionViewCell
-        
-        cell.backgroundColor = .white
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 24
+        cell.currentPostInfo = currentPost
+
+        cell.likeButtonAction = { [weak self] isLiked in
+            guard let self = self else { return }
+            self.allPosts[indexPath.section].isLikedPost = isLiked
+            self.delegate?.likePostButtonAction(isLiked: isLiked, id: currentPost.id)
+        }
         
         return cell
     }
-
 }

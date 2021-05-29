@@ -67,17 +67,21 @@ extension RegistrationContainerVC: SignInDelegate {
         coordinator?.pushSignUpFromSignIn(subscriber: self)
     }
     
-    func loginUser(email: String, password: String) {
+    func loginUser(credentials: Credentials) {
+        self.coordinator?.presentLoader { [weak self] in
+            guard let self = self else { return }
+            self.coordinator?.dismissController(animated: true)
+        }
         requestViewModel.loginUser(
-            email: email,
-            password: password
+            credentials: credentials
         ) { [weak self] result in
             guard let self = self else { return }
+            self.coordinator?.dismissController(animated: true) // Dismiss loader
             switch result {
             case .success:
                 self.coordinator?.pushSuccessRegistration(subscriber: self)
-            case .failure:
-                print("Fail")
+            case .failure(let error):
+                self.showErrorAlert(with: error)
             }
         }
     }
@@ -87,18 +91,22 @@ extension RegistrationContainerVC: SignInDelegate {
 // MARK: - SignUp Delegate
 
 extension RegistrationContainerVC: SignUpContainerDelegate {
-    
-    func registrateUser(email: String, password: String) {
+    func registrateUser(credentials: Credentials, userInfo: UserInformation) {
+        self.coordinator?.presentLoader { [weak self] in
+            guard let self = self else { return }
+            self.coordinator?.dismissController(animated: true)
+        }
         requestViewModel.registrateUser(
-            email: email,
-            password: password
+            credentials: credentials,
+            userInfo: userInfo
         ) { [weak self] result in
             guard let self = self else { return }
+            self.coordinator?.dismissController(animated: true) // Dismiss loader
             switch result {
             case .success:
                 self.coordinator?.pushSuccessRegistration(subscriber: self)
-            case .failure:
-                print("Fail")
+            case .failure(let error):
+                self.showErrorAlert(with: error)
             }
         }
     }

@@ -19,21 +19,42 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         completion: @escaping (Result<UserInformation, Error>) -> Void)
     -> Progress {
         let endpoint = GetUserInfoEndpoint()
-        return apiClient.request(endpoint, completionHandler: completion)
+        return apiClient.request(endpoint) { result in
+            switch result {
+            case .success(let content):
+                completion(.success(UserInformation(content)))
+            case .failure(let error):
+                completion(.failure(error.unwrapAFError()))
+            }
+        }
     }
     
     public func getUserPosts(
         completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress {
         let endpoint = GetUserPostsEndpoint()
-        return apiClient.request(endpoint, completionHandler: completion)
+        return apiClient.request(endpoint) { result in
+            switch result {
+            case .success(let content):
+                completion(.success(content.map { PostInfo($0) }))
+            case .failure(let error):
+                completion(.failure(error.unwrapAFError()))
+            }
+        }
     }
     
     public func getUserFriends(
         completion: @escaping (Result<[UserInformation], Error>) -> Void)
     -> Progress {
         let endpoint = GetUserFriendsEndpoint()
-        return apiClient.request(endpoint, completionHandler: completion)
+        return apiClient.request(endpoint) { result in
+            switch result {
+            case .success(let content):
+                completion(.success(content.map { UserInformation($0) }))
+            case .failure(let error):
+                completion(.failure(error.unwrapAFError()))
+            }
+        }
     }
     
     // MARK: - Post request
@@ -50,9 +71,16 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         postInfo: PostInfo,
         completion: @escaping (Result<PostInfo, Error>) -> Void)
     -> Progress {
-        let endPoint = AddNewPostEndpoint(postInfo: postInfo,
+        let endPoint = AddNewPostEndpoint(postInfo: RedMadRobotTestTaskAPI.PostInfo(postInfo),
                                           token: UserDefaultsUserStorage().accessToken)
-        return apiClient.request(endPoint, completionHandler: completion)
+        return apiClient.request(endPoint) { result in
+            switch result {
+            case .success(let content):
+                completion(.success(PostInfo(content)))
+            case .failure(let error):
+                completion(.failure(error.unwrapAFError()))
+            }
+        }
     }
     
     // MARK: - Put request
@@ -61,9 +89,16 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         user: UserInformation,
         completion: @escaping (Result<Void, Error>) -> Void)
      -> Progress {
-        let endPoint = UpdateUserInfoEndpoint(user: user,
+        let endpoint = UpdateUserInfoEndpoint(user: RedMadRobotTestTaskAPI.UserInformation(user),
                                               token: UserDefaultsUserStorage().accessToken)
-        return apiClient.request(endPoint, completionHandler: completion)
+        return apiClient.request(endpoint) { result in
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error.unwrapAFError()))
+            }
+        }
     }
     
     // MARK: - Delete request

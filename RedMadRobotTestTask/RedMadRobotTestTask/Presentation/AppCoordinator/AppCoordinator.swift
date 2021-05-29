@@ -14,11 +14,15 @@ final class AppCoordinator: Coordinator {
         
     // MARK: - Private Properties
     
-    private let isLaunchedBefore = false
+    private let isTokenInvalid: Bool
         
     // MARK: - Init
     
-    init(navigationController: UINavigationController) {
+    init(
+        navigationController: UINavigationController,
+        userStorage: UserStorage = UserDefaultsUserStorage()
+    ) {
+        isTokenInvalid = userStorage.accessToken != nil
         self.navigationController = navigationController
         navigationController.navigationBar.isHidden = true
     }
@@ -26,7 +30,7 @@ final class AppCoordinator: Coordinator {
     // MARK: - Public Properties
     
     func start() {
-        if !isLaunchedBefore {
+        if !isTokenInvalid {
             let loginCoordinator = LoginCoordinator(navigationController: navigationController)
             childCoordinators.append(loginCoordinator)
             loginCoordinator.start()

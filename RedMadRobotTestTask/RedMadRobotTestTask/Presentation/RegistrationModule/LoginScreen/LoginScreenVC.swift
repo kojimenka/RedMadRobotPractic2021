@@ -17,16 +17,11 @@ final class LoginScreenVC: UIViewController {
     // MARK: - Private Properties
     
     weak private var delegate: LoginScreenDelegate?
-    private let authorizationService: AuthorizationServiceProtocol
     
     // MARK: - Initializers
     
-    init(
-        subscriber: LoginScreenDelegate?,
-        authorizationService: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices
-    ) {
+    init(subscriber: LoginScreenDelegate?) {
         self.delegate = subscriber
-        self.authorizationService = authorizationService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,13 +44,5 @@ final class LoginScreenVC: UIViewController {
     
     @IBAction private func registrationButtonAction(_ sender: Any) {
         delegate?.signUpButtonAction()
-    }
-    
-    @IBAction private func loginWithGoogleAction(_ sender: Any) {
-        authorizationService.authorizationWith(.google(presentationController: self)) { _ in }
-    }
-    
-    @IBAction private func loginWithFacebook(_ sender: Any) {
-        authorizationService.authorizationWith(.facebook) { _ in }
     }
 }

@@ -28,8 +28,11 @@ public struct UserLoginEndpoint: Endpoint {
     // MARK: - Public Methods
     
     public func content(from response: URLResponse?, with body: Data) throws -> AuthTokens? {
-        try ResponseValidator.validate(response, with: body)
         return try JSONDecoder.default.decode(AuthTokens.self, from: body)
+    }
+    
+    public func validate(_ request: URLRequest?, response: HTTPURLResponse, data: Data?) throws {
+        try ResponseValidator.validate(response, with: data ?? Data())
     }
     
     public func makeRequest() throws -> URLRequest {
@@ -50,5 +53,5 @@ public struct UserLoginEndpoint: Endpoint {
         
         return request
     }
-        
+
 }

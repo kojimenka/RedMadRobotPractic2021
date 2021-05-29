@@ -39,6 +39,19 @@ extension UICollectionView {
                                                 withReuseIdentifier: T.identifier,
                                                 for: indexPath) as! T
     }
+
+}
+
+extension UICollectionViewCell {
+    static func nib() -> UINib {
+        return UINib(nibName: self.identifier, bundle: nil)
+    }
+}
+
+extension UITableViewCell {
+    static func nib() -> UINib {
+        return UINib(nibName: self.identifier, bundle: nil)
+    }
 }
  
 // TableView Extensions

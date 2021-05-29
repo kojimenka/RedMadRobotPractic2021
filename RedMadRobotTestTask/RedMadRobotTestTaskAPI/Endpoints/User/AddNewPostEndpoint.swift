@@ -61,7 +61,7 @@ public struct AddNewPostEndpoint: Endpoint {
         var params: [String: Data] = [:]
         
         params["text"] = post.text?.data(using: .utf8)
-        params["image_file"] = post.avatarUrl?.dataRepresentation
+        params["image_file"] = post.imageUrl?.dataRepresentation
         params["lat"] = withUnsafeBytes(of: post.lat) { Data($0) }
         params["lon"] = withUnsafeBytes(of: post.lon) { Data($0) }
         

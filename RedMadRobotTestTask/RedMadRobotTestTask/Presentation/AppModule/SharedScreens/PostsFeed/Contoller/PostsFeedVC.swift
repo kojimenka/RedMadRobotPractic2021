@@ -8,9 +8,9 @@
 import UIKit
 
 protocol PostsFeedDelegate: AnyObject {
-    func failureRequest()
+    func likePostButtonAction(isLiked: Bool, id: String)
+    func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void )
 }
-
 
 protocol PostsFeedInProfileDelegate: AnyObject {
     // Эта переменная необходима для отслеживания текущего оффсета коллекции. Мы его отслеживаем что бы менять констрейнт верхнего чайлда с информацией о пользователе
@@ -21,7 +21,7 @@ final class PostsFeedVC: UIViewController {
 
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var tableView: UITableView!
     
     // MARK: - Private Properties
     
@@ -30,7 +30,6 @@ final class PostsFeedVC: UIViewController {
     
     private var topInset: CGFloat = 0.0
     
-    private var requestViewModel: PostsFeedRequestViewModelProtocol
     private var dataSourceViewModel: PostFeedDataSourceViewModelProtocol
     
     // MARK: - Init
@@ -38,12 +37,10 @@ final class PostsFeedVC: UIViewController {
     init(
         profileSubscriber: PostsFeedInProfileDelegate? = nil,
         subscriber: PostsFeedDelegate?,
-        requestViewModel: PostsFeedRequestViewModelProtocol,
         dataSourceViewModel: PostFeedDataSourceViewModelProtocol = PostFeedDataViewModel()
     ) {
         delegateForProfileScreen = profileSubscriber
         self.delegate = subscriber
-        self.requestViewModel = requestViewModel
         self.dataSourceViewModel = dataSourceViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -65,91 +62,66 @@ final class PostsFeedVC: UIViewController {
     
     public func setTopInset(_ inset: CGFloat) {
         topInset = inset
-        collectionView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
     }
     
-    // Метод нужен для обновления данных 
+    // MARK: - Public Methods
     
-    public func updateData() {
-        requestData()
-    }
-    
-    // MARK: - Private Methods
-    
-    private func requestData() {
-        requestViewModel.getPosts { [weak self] result in
+    public func requestData() {
+        delegate?.getPosts { [weak self] result in
             guard let self = self else { return }
-            
             switch result {
-            case .success:
-                print("DEBUG: post request success")
+            case .success(let content):
+                self.dataSourceViewModel.allPosts = content
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             case .failure:
-                self.delegate?.failureRequest()
                 print("DEBUG: post request failure")
             }
         }
     }
     
     private func setupCollectionView() {
-        collectionView.dataSource = dataSourceViewModel
-        collectionView.contentInsetAdjustmentBehavior = .never
-        
-        collectionView.register(
-            PostCollectionViewCell.nib(),
-            forCellWithReuseIdentifier: PostCollectionViewCell.identifier
+        dataSourceViewModel.delegate = self
+        tableView.dataSource = dataSourceViewModel
+        tableView.estimatedRowHeight = 305
+        tableView.rowHeight = UITableView.automaticDimension
+
+        tableView.register(
+            PostTableViewCell.nib(),
+            forCellReuseIdentifier: PostTableViewCell.identifier
         )
-    }
-    
-//    private func setupZeroScreen() {
-//        zeroScreenLayout()
-//        zeroScreenAction()
-//    }
-//
-//    private func zeroScreenLayout() {
-//        zeroScreenContainer.addFillView(view: zeroScreen)
-//
-//        // Для разных zero экранов нужен разный отступ по высоте
-//        switch screenState {
-//        case .feedScreen:
-//            zeroScreenTopConstraint.constant = view.frame.height * 0.18
-//        case .userPosts, .userFavoritePosts:
-//            zeroScreenTopConstraint.constant = view.frame.height * 0.25 + topInset
-//        }
-//    }
-//
-//    private func zeroScreenAction() {
-//        switch screenState {
-//        case .feedScreen:
-//            zeroScreen.buttonAction = { [weak self] in
-//                guard let self = self else { return }
-//                self.showFindFriendsScreen?()
-//            }
-//        case .userPosts, .userFavoritePosts:
-//            zeroScreen.buttonAction = { [weak self] in
-//                guard let self = self else { return }
-//                self.requestData()
-//            }
-//        }
-//    }
+    }    
     
 }
 
-// MARK: - UICollectionView Delegate
+// MARK: - UITableView Delegate
 
-extension PostsFeedVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath)
-    -> CGSize {
-        return CGSize(width: collectionView.frame.width - 32, height: 300)
+extension PostsFeedVC: UITableViewDelegate {
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
 }
 
 // MARK: - UIScrollView Delegate
 
 extension PostsFeedVC: UIScrollViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegateForProfileScreen?.scrollViewOffSetChanged(inset: scrollView.contentOffset.y + topInset)
     }
+    
+}
+
+// MARK: - DataSource Delegate
+
+extension PostsFeedVC: PostFeedDataViewModelDelegate {
+    
+    func likePostButtonAction(isLiked: Bool, id: String) {
+        delegate?.likePostButtonAction(isLiked: isLiked, id: id)
+    }
+    
 }

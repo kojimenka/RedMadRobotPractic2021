@@ -17,6 +17,7 @@ final class FeedModuleCoordinator: Coordinator {
     // MARK: - Private properties
     
     private let screenFabric: FeedModuleFabricProtocol
+    private let navBarViewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel()
     
     // MARK: - Init
     
@@ -31,28 +32,26 @@ final class FeedModuleCoordinator: Coordinator {
     // MARK: - Public Properties
     
     func start() {
-        let screen = screenFabric.createFeedScreen(outputDelegate: self)
+        let screen = screenFabric.createFeedScreen(coordinator: self)
         pushController(controller: screen, animated: false)
+        
+        navBarViewModel.customizeNavBar(
+            navigationBar: navigationController.navigationBar,
+            navigationItem: navigationController.navigationItem,
+            title: ""
+        )
     }
     
-}
-
-// MARK: - Feed Screen delegate
-
-extension FeedModuleCoordinator: FeedScreenOutPutDelegate {
     func showSearchFriendScreen() {
-        let controller = screenFabric.createSearchFriendsScreen(outputDelegate: self)
+        let controller = screenFabric.createSearchFriendsScreen(coordinator: self)
         pushController(controller: controller, animated: true)
     }
-}
-
-// MARK: - Search Screen delegate
-
-extension FeedModuleCoordinator: SearchFriendsOutputDelegate {
+    
     func backToFeedScreen() {
         for viewController in navigationController.viewControllers {
             guard let feedController = viewController as? FeedScreenContainerVC else { continue }
             feedController.updatePosts()
         }
     }
+    
 }

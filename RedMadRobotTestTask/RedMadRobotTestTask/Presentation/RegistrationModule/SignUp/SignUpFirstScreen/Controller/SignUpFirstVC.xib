@@ -20,20 +20,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEm-is-X9E" customClass="SignUpFirstView" customModule="RedMadRobotTestTask" customModuleProvider="target">
-                    <rect key="frame" x="16" y="27" width="382" height="205"/>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zEm-is-X9E" customClass="NewRegistrationView" customModule="RedMadRobotTestTask" customModuleProvider="target">
+                    <rect key="frame" x="20" y="27" width="374" height="205"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="zEm-is-X9E" secondAttribute="height" multiplier="343:184" id="bFv-od-89B"/>
-                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="zEm-is-X9E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="UmP-Lo-jtj"/>
-                <constraint firstItem="zEm-is-X9E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ZpL-ut-ky8"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zEm-is-X9E" secondAttribute="trailing" constant="16" id="l9m-J6-Gg4"/>
+                <constraint firstAttribute="trailingMargin" secondItem="zEm-is-X9E" secondAttribute="trailing" id="ZaK-Pz-Ttv"/>
+                <constraint firstItem="zEm-is-X9E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="fXa-pl-Wqh"/>
             </constraints>
             <point key="canvasLocation" x="139" y="153"/>
         </view>

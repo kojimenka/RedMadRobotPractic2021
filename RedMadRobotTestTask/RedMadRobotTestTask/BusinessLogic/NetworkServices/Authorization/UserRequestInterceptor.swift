@@ -23,12 +23,38 @@ struct UserRequestInterceptor: RequestInterceptor {
     
     // MARK: - Init
     
-    public init(baseURL: URL, storage: UserStorage) {
+    public init(
+        baseURL: URL,
+        storage: UserStorage
+    ) {
         self.baseURL = baseURL
         self.storage = storage
     }
     
     // MARK: - Public Methods
+    
+    func retry(
+        _ request: Request,
+        for session: Session,
+        dueTo error: Error,
+        completion: @escaping (RetryResult) -> Void
+    ) {
+        // Временный вариант
+        
+        if request.response?.statusCode == 401 {
+            _ = ServiceLayer.shared.authorizationServices.refreshToken { result in
+                switch result {
+                case .success:
+                    completion(.retry)
+                case .failure:
+                    completion(.doNotRetry)
+                }
+            }
+            return
+        }
+
+        completion(.doNotRetry)
+    }
     
     public func adapt(
         _ urlRequest: URLRequest,

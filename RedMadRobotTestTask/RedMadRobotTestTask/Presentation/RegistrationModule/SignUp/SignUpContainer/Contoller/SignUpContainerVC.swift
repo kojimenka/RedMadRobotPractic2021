@@ -9,7 +9,7 @@ import UIKit
 
 public protocol SignUpContainerDelegate: AnyObject {
     func signInButtonActionFromSignUp()
-    func registrateUser(email: String, password: String)
+    func registrateUser(credentials: Credentials, userInfo: UserInformation)
 }
 
 final class SignUpContainerVC: UIViewController {
@@ -36,6 +36,9 @@ final class SignUpContainerVC: UIViewController {
     
     private var isFirstStart = true
     
+    private var userInfo = UserInformation()
+    private var userCredentials = Credentials()
+    
     // MARK: - Initializers
     
     init(
@@ -46,7 +49,7 @@ final class SignUpContainerVC: UIViewController {
         self.delegate = subscriber
         self.navBarViewModel = viewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
-        super.init(nibName: R.nib.signUpContainerVC.name, bundle: R.nib.signInVC.bundle)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -55,7 +58,6 @@ final class SignUpContainerVC: UIViewController {
     
     // MARK: - UIViewController(
     
-    // We set controller in viewDidLayoutSubviews because it's first place where we get final frame size
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         guard isFirstStart == true else { return }
@@ -128,15 +130,10 @@ final class SignUpContainerVC: UIViewController {
     }
     
     private func registrateUser() {
-        delegate?.registrateUser(email: "Test", password: "Test")
-    }
-}
-
-// MARK: - Check user state
-
-extension SignUpContainerVC: RegistrationViewDelegate {
-    func userChangeFillState(isUserFillScreen: Bool) {
-        nextButton.isButtonEnable = isUserFillScreen
+        delegate?.registrateUser(
+            credentials: userCredentials,
+            userInfo: userInfo
+        )
     }
 }
 
@@ -155,4 +152,22 @@ extension SignUpContainerVC: CheckKeyboardViewModelDelegate {
             self.view.layoutIfNeeded()
         }
     }
+}
+
+// MARK: - Sign in first screen delegate
+
+extension SignUpContainerVC: SignUpFirstScreenDelegate {
+    func successFill(userCredentials: Credentials) {
+        self.userCredentials = userCredentials
+    }
+    
+    func currentStatus(isUserFillScreen: Bool) {
+        nextButton.isButtonEnable = isUserFillScreen
+    }
+}
+
+// MARK: - Sign up second screen delegate
+
+extension SignUpContainerVC: SignUpSecondScreenDelegate {
+ 
 }

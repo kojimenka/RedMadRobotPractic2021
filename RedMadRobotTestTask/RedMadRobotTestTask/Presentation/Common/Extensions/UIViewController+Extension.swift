@@ -20,7 +20,7 @@ extension UIViewController {
             if let action = action { action() }
         })
         
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -29,7 +29,7 @@ extension UIViewController {
     func presentSafari(with link: String) {
         guard let url = URL(string: link) else { return }
         let safariVC = SFSafariViewController(url: url)
-        self.present(safariVC, animated: true, completion: nil)
+        present(safariVC, animated: true, completion: nil)
     }
 }
 
@@ -81,5 +81,12 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension UIViewController {
+    func showErrorAlert(with error: Error) {
+        let alert = UIAlertController.createAlert(alertText: error.localizedDescription)
+        self.present(alert, animated: true)
     }
 }

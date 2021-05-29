@@ -9,7 +9,7 @@ import UIKit
 
 public protocol SignInDelegate: AnyObject {
     func signUpButtonActionFromSignIn()
-    func loginUser(email: String, password: String)
+    func loginUser(credentials: Credentials)
 }
 
 final class SignInVC: UIViewController {
@@ -17,12 +17,13 @@ final class SignInVC: UIViewController {
     // MARK: - IBOutlet
     
     @IBOutlet private weak var enterButton: RegistrationNextButton!
-    @IBOutlet private weak var signInView: RegistrationView!
+    @IBOutlet private weak var signInView: TextStackView!
     @IBOutlet private weak var registrationButtonBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Private Properties
     
     weak private var delegate: SignInDelegate?
+    private let registrationDataViewModel: SignInRegistrationViewModelProtocol
     private let uiViewModel: SetupNavBarViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
     
@@ -31,10 +32,12 @@ final class SignInVC: UIViewController {
     init(
         subscriber: SignInDelegate?,
         uiViewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
+        registrationDataViewModel: SignInRegistrationViewModelProtocol = SignInRegistrationViewModel(),
         checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
     ) {
         self.delegate = subscriber
         self.uiViewModel = uiViewModel
+        self.registrationDataViewModel = registrationDataViewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -62,7 +65,6 @@ final class SignInVC: UIViewController {
     }
     
     @IBAction private func enterButtonAction(_ sender: Any) {
-        guard enterButton.isButtonEnable == true else { signInView.checkForWarning(controller: self); return }
         loginUser()
     }
     
@@ -80,22 +82,29 @@ final class SignInVC: UIViewController {
     private func setupViews() {
         checkKeyboardViewModel.delegate = self
         signInView.delegate = self
-        enterButton.isButtonEnable = false
+        
+        signInView.addRegistrationFields(registrationDataViewModel.allRegistrationsFields)
+        
         self.hideKeyboardWhenTappedAround()
     }
     
     private func loginUser() {
         self.view.endEditing(true)
-        delegate?.loginUser(email: "Test", password: "Test")
+        delegate?.loginUser(
+            credentials: Credentials(
+                email: registrationDataViewModel.emailText,
+                password: registrationDataViewModel.passwordText
+            )
+        )
     }
     
 }
 
 // MARK: - Check filling state
 
-extension SignInVC: RegistrationViewDelegate {
-    func userChangeFillState(isUserFillScreen: Bool) {
-        enterButton.isButtonEnable = isUserFillScreen
+extension SignInVC: TextStackViewDelegate {
+    func userChangeValue(in textFiels: UITextField) {
+        registrationDataViewModel.fillNewValues(with: textFiels)
     }
 }
 
