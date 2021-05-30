@@ -7,10 +7,6 @@
 
 import UIKit
 
-import GoogleSignIn
-
-import FBSDKCoreKit
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,13 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool {
         guard !GlobalFlags.isTesting else { return false }
-        
-        // Facebook
-        ApplicationDelegate.shared.application(
-            application,
-            didFinishLaunchingWithOptions: launchOptions
-        )
-        
         return true
     }
 
@@ -39,17 +28,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
-    // Common for auth
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
-        
-        // Facebook
-        ApplicationDelegate.shared.application(
-            app,
-            open: url,
-            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-        )
-        
-        return GIDSignIn.sharedInstance().handle(url)
-    }
 }

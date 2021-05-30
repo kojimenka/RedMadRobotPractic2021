@@ -7,6 +7,12 @@
 
 import UIKit
 
+class PostImageView: UIImageView {
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: 148, height: 100)
+    }
+}
+
 final class PostTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
@@ -15,9 +21,9 @@ final class PostTableViewCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var geolocationStackView: UIStackView!
     @IBOutlet private var cityLabel: UILabel!
-    @IBOutlet private var postImageView: UIImageView!
+    @IBOutlet private var postImageView: PostImageView!
     @IBOutlet private var nickNameLabel: UILabel!
-    @IBOutlet private weak var likeButton: UIButton!
+    @IBOutlet private var likeButton: UIButton!
     
     // MARK: - Public Properties
     
@@ -36,6 +42,7 @@ final class PostTableViewCell: UITableViewCell {
         super.awakeFromNib()
         setupButton()
         setupCell()
+        setupSelectedView()
     }
     
     override func layoutSubviews() {
@@ -54,19 +61,26 @@ final class PostTableViewCell: UITableViewCell {
     // MARK: - Private Methods
     
     private func setupCell() {
+        titleLabel.sizeToFit()
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 24
     }
     
     private func setupButton() {
         likeButton.setImage(R.image.unlikePostIcon(), for: .normal)
-        likeButton.setImage(R.image.likePostIcon(), for: .selected)
+        likeButton.setImage(R.image.likeButton(), for: .selected)
+    }
+    
+    private func setupSelectedView() {
+        let selectedView = UIView()
+        selectedView.backgroundColor = .clear
+        self.selectedBackgroundView = selectedView
     }
     
     private func fillPostInfo(postInfo: PostInfo) {
         titleLabel.text = postInfo.text
         nickNameLabel.text = "@\(postInfo.author.nickname ?? "")"
-                
+
         geolocationStackView.isHidden = postInfo.lat == nil || postInfo.lon == nil
         postImageView.isHidden = postInfo.imageUrl == nil
         

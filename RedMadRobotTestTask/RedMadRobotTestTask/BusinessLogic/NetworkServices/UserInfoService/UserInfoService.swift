@@ -29,20 +29,6 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         }
     }
     
-    public func getUserPosts(
-        completion: @escaping (Result<[PostInfo], Error>) -> Void)
-    -> Progress {
-        let endpoint = GetUserPostsEndpoint()
-        return apiClient.request(endpoint) { result in
-            switch result {
-            case .success(let content):
-                completion(.success(content.map { PostInfo($0) }))
-            case .failure(let error):
-                completion(.failure(error.unwrapAFError()))
-            }
-        }
-    }
-    
     public func getUserFriends(
         completion: @escaping (Result<[UserInformation], Error>) -> Void)
     -> Progress {
@@ -65,22 +51,6 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
     -> Progress {
         let endPoint = AddFriendEndpoint(friendID: friendID)
         return apiClient.request(endPoint, completionHandler: completion)
-    }
-    
-    public func addPost(
-        postInfo: PostInfo,
-        completion: @escaping (Result<PostInfo, Error>) -> Void)
-    -> Progress {
-        let endPoint = AddNewPostEndpoint(postInfo: RedMadRobotTestTaskAPI.PostInfo(postInfo),
-                                          token: UserDefaultsUserStorage().accessToken)
-        return apiClient.request(endPoint) { result in
-            switch result {
-            case .success(let content):
-                completion(.success(PostInfo(content)))
-            case .failure(let error):
-                completion(.failure(error.unwrapAFError()))
-            }
-        }
     }
     
     // MARK: - Put request
@@ -108,14 +78,6 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress {
         let endPoint = DeleteUserFriendEndpoint(userId: friendID)
-        return apiClient.request(endPoint, completionHandler: completion)
-    }
-    
-    public func deletePost(
-        postID: String,
-        completion: @escaping (Result<Void, Error>) -> Void)
-    -> Progress {
-        let endPoint = DeleteUserPostEndpoint(idPostForDelete: postID)
         return apiClient.request(endPoint, completionHandler: completion)
     }
     

@@ -16,9 +16,6 @@ protocol UserInfoServiceProtocol {
     func getUserInfo(
         completion: @escaping (Result<UserInformation, Error>) -> Void)
     -> Progress
-    func getUserPosts(
-        completion: @escaping (Result<[PostInfo], Error>) -> Void)
-    -> Progress
     func getUserFriends(
         completion: @escaping (Result<[UserInformation], Error>) -> Void)
     -> Progress
@@ -28,10 +25,6 @@ protocol UserInfoServiceProtocol {
     func addFriend(
         friendID: String,
         completion: @escaping (Result<Void, Error>) -> Void)
-    -> Progress
-    func addPost(
-        postInfo: PostInfo,
-        completion: @escaping (Result<PostInfo, Error>) -> Void)
     -> Progress
     
     // MARK: - Put request
@@ -45,10 +38,6 @@ protocol UserInfoServiceProtocol {
     
     func deleteFriend(
         friendID: String,
-        completion: @escaping (Result<Void, Error>) -> Void)
-    -> Progress
-    func deletePost(
-        postID: String,
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress
 }

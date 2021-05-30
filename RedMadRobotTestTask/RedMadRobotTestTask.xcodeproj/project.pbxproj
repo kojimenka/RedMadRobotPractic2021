@@ -22,7 +22,6 @@
 		2C15DD332649C15500D50900 /* TestFeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD322649C15500D50900 /* TestFeedCoordinator.swift */; };
 		2C15DD402649C57800D50900 /* TestLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD3F2649C57800D50900 /* TestLoginCoordinator.swift */; };
 		2C15DD54264A7D3F00D50900 /* PostFeedDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD53264A7D3F00D50900 /* PostFeedDataViewModel.swift */; };
-		2C1B88F62647125100B33E49 /* ProfileInfoRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B88F52647125100B33E49 /* ProfileInfoRequestViewModel.swift */; };
 		2C24D1A326389C7F000855B8 /* DeleteUserPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1A226389C7F000855B8 /* DeleteUserPostEndpoint.swift */; };
 		2C24D1AB26389D52000855B8 /* GetFeedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1AA26389D52000855B8 /* GetFeedEndpoint.swift */; };
 		2C24D1B72638A05E000855B8 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1B62638A05E000855B8 /* FeedService.swift */; };
@@ -73,10 +72,6 @@
 		2C4808E7262CBDD40075C0B3 /* AuthorizationWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808E6262CBDD40075C0B3 /* AuthorizationWithButton.swift */; };
 		2C4808F5262CC5E70075C0B3 /* AuthorizationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808F4262CC5E70075C0B3 /* AuthorizationServices.swift */; };
 		2C480902262DAAF20075C0B3 /* AuthorizationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C480901262DAAF20075C0B3 /* AuthorizationTextField.swift */; };
-		2C5530CA264C5D5B002578A1 /* UserPostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5530C8264C5D5B002578A1 /* UserPostsVC.swift */; };
-		2C5530CB264C5D5B002578A1 /* UserPostsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5530C9264C5D5B002578A1 /* UserPostsVC.xib */; };
-		2C5530E1264C60B5002578A1 /* FavoritePostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5530DF264C60B5002578A1 /* FavoritePostsVC.swift */; };
-		2C5530E2264C60B5002578A1 /* FavoritePostsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5530E0264C60B5002578A1 /* FavoritePostsVC.xib */; };
 		2C5F9EB426516EBD0053551D /* SearchFriendsRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F9EB326516EBD0053551D /* SearchFriendsRequestViewModel.swift */; };
 		2C68294826406CB400E76036 /* TestUserAuthenticationEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68294726406CB400E76036 /* TestUserAuthenticationEndpoint.swift */; };
 		2C68294E26406E8700E76036 /* Asserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68294D26406E8700E76036 /* Asserts.swift */; };
@@ -119,6 +114,9 @@
 		2C813C6C2650237100E7E49F /* AuthorizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C6B2650237100E7E49F /* AuthorizationHelper.swift */; };
 		2C813C782650685B00E7E49F /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C772650685B00E7E49F /* UserInformation.swift */; };
 		2C87F6C0264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87F6BF264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift */; };
+		2C8A5EC0266287A70049DE7D /* UserPostsContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A5EBE266287A70049DE7D /* UserPostsContainerVC.swift */; };
+		2C8A5EC4266292010049DE7D /* FavouritePostsContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A5EC2266292010049DE7D /* FavouritePostsContainerVC.swift */; };
+		2C8A5EC92662B0CB0049DE7D /* MainPostScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A5EC72662B0CB0049DE7D /* MainPostScreenVC.swift */; };
 		2C8A73B3262DD62A00A68761 /* SignUpFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A73B1262DD62A00A68761 /* SignUpFirstVC.swift */; };
 		2C8A73B4262DD62A00A68761 /* SignUpFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8A73B2262DD62A00A68761 /* SignUpFirstVC.xib */; };
 		2C8A73BA262DD67700A68761 /* SignUpSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A73B8262DD67700A68761 /* SignUpSecondVC.swift */; };
@@ -265,7 +263,6 @@
 		2C15DD322649C15500D50900 /* TestFeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFeedCoordinator.swift; sourceTree = "<group>"; };
 		2C15DD3F2649C57800D50900 /* TestLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoginCoordinator.swift; sourceTree = "<group>"; };
 		2C15DD53264A7D3F00D50900 /* PostFeedDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedDataViewModel.swift; sourceTree = "<group>"; };
-		2C1B88F52647125100B33E49 /* ProfileInfoRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoRequestViewModel.swift; sourceTree = "<group>"; };
 		2C24D1A226389C7F000855B8 /* DeleteUserPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserPostEndpoint.swift; sourceTree = "<group>"; };
 		2C24D1AA26389D52000855B8 /* GetFeedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedEndpoint.swift; sourceTree = "<group>"; };
 		2C24D1B62638A05E000855B8 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
@@ -317,10 +314,6 @@
 		2C4808E6262CBDD40075C0B3 /* AuthorizationWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationWithButton.swift; sourceTree = "<group>"; };
 		2C4808F4262CC5E70075C0B3 /* AuthorizationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationServices.swift; sourceTree = "<group>"; };
 		2C480901262DAAF20075C0B3 /* AuthorizationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationTextField.swift; sourceTree = "<group>"; };
-		2C5530C8264C5D5B002578A1 /* UserPostsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsVC.swift; sourceTree = "<group>"; };
-		2C5530C9264C5D5B002578A1 /* UserPostsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPostsVC.xib; sourceTree = "<group>"; };
-		2C5530DF264C60B5002578A1 /* FavoritePostsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostsVC.swift; sourceTree = "<group>"; };
-		2C5530E0264C60B5002578A1 /* FavoritePostsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritePostsVC.xib; sourceTree = "<group>"; };
 		2C5F9EB326516EBD0053551D /* SearchFriendsRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsRequestViewModel.swift; sourceTree = "<group>"; };
 		2C68294726406CB400E76036 /* TestUserAuthenticationEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserAuthenticationEndpoint.swift; sourceTree = "<group>"; };
 		2C68294D26406E8700E76036 /* Asserts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asserts.swift; sourceTree = "<group>"; };
@@ -365,6 +358,9 @@
 		2C813C6B2650237100E7E49F /* AuthorizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationHelper.swift; sourceTree = "<group>"; };
 		2C813C772650685B00E7E49F /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		2C87F6BF264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContainerRequestViewModel.swift; sourceTree = "<group>"; };
+		2C8A5EBE266287A70049DE7D /* UserPostsContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsContainerVC.swift; sourceTree = "<group>"; };
+		2C8A5EC2266292010049DE7D /* FavouritePostsContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePostsContainerVC.swift; sourceTree = "<group>"; };
+		2C8A5EC72662B0CB0049DE7D /* MainPostScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostScreenVC.swift; sourceTree = "<group>"; };
 		2C8A73B1262DD62A00A68761 /* SignUpFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFirstVC.swift; sourceTree = "<group>"; };
 		2C8A73B2262DD62A00A68761 /* SignUpFirstVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFirstVC.xib; sourceTree = "<group>"; };
 		2C8A73B8262DD67700A68761 /* SignUpSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSecondVC.swift; sourceTree = "<group>"; };
@@ -619,23 +615,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		2C1B88F32647123000B33E49 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2CF935402645CCA500F51243 /* ProfileInfoVC.swift */,
-				2CF935412645CCA500F51243 /* ProfileInfoVC.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		2C1B88F42647123C00B33E49 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				2C1B88F52647125100B33E49 /* ProfileInfoRequestViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		2C24D1A626389D14000855B8 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,7 +796,7 @@
 				2CE793A0262E038D0070F638 /* ProfileScreenContainer */,
 				2CF9353F2645CC6500F51243 /* ProfileInfo */,
 				2CF935332645C60700F51243 /* ChangeProfileCategory */,
-				2C5530C7264C5D30002578A1 /* UserPosts */,
+				2C8A5EBA2662820E0049DE7D /* UserPosts */,
 				2C5530DC264C6087002578A1 /* FavoritePosts */,
 			);
 			path = ProfileModule;
@@ -943,38 +922,12 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
-		2C5530C7264C5D30002578A1 /* UserPosts */ = {
-			isa = PBXGroup;
-			children = (
-				2C5530D5264C6037002578A1 /* Controller */,
-			);
-			path = UserPosts;
-			sourceTree = "<group>";
-		};
-		2C5530D5264C6037002578A1 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2C5530C8264C5D5B002578A1 /* UserPostsVC.swift */,
-				2C5530C9264C5D5B002578A1 /* UserPostsVC.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		2C5530DC264C6087002578A1 /* FavoritePosts */ = {
 			isa = PBXGroup;
 			children = (
-				2C5530DE264C609A002578A1 /* Controller */,
+				2C8A5EC2266292010049DE7D /* FavouritePostsContainerVC.swift */,
 			);
 			path = FavoritePosts;
-			sourceTree = "<group>";
-		};
-		2C5530DE264C609A002578A1 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2C5530DF264C60B5002578A1 /* FavoritePostsVC.swift */,
-				2C5530E0264C60B5002578A1 /* FavoritePostsVC.xib */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		2C5F9EB126516E9B0053551D /* Controller */ = {
@@ -1237,6 +1190,22 @@
 				2C87F6BF264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C8A5EBA2662820E0049DE7D /* UserPosts */ = {
+			isa = PBXGroup;
+			children = (
+				2C8A5EBE266287A70049DE7D /* UserPostsContainerVC.swift */,
+			);
+			path = UserPosts;
+			sourceTree = "<group>";
+		};
+		2C8A5EC62662B0A60049DE7D /* MainPostScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2C8A5EC72662B0CB0049DE7D /* MainPostScreenVC.swift */,
+			);
+			path = MainPostScreen;
 			sourceTree = "<group>";
 		};
 		2C8A73B0262DD60B00A68761 /* Controller */ = {
@@ -1698,6 +1667,7 @@
 			isa = PBXGroup;
 			children = (
 				2CF9351C2645BBC500F51243 /* PostsFeed */,
+				2C8A5EC62662B0A60049DE7D /* MainPostScreen */,
 			);
 			path = SharedScreens;
 			sourceTree = "<group>";
@@ -1742,8 +1712,8 @@
 		2CF9353F2645CC6500F51243 /* ProfileInfo */ = {
 			isa = PBXGroup;
 			children = (
-				2C1B88F42647123C00B33E49 /* ViewModel */,
-				2C1B88F32647123000B33E49 /* Controller */,
+				2CF935402645CCA500F51243 /* ProfileInfoVC.swift */,
+				2CF935412645CCA500F51243 /* ProfileInfoVC.xib */,
 			);
 			path = ProfileInfo;
 			sourceTree = "<group>";
@@ -1907,7 +1877,6 @@
 				2CDD244D262B3E5400501E77 /* Frameworks */,
 				2CDD244E262B3E5400501E77 /* Resources */,
 				0B8A5F917651128313D26321 /* [CP] Embed Pods Frameworks */,
-				763338057F3C3E5937A6C4E7 /* [CP] Copy Pods Resources */,
 				2CAE1A702637340B006A4417 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -2000,14 +1969,12 @@
 				2CA8A1BB26516468006EEA15 /* SearchFriendsContainerVC.xib in Resources */,
 				2C4808B2262C5BC10075C0B3 /* SignUpContainerVC.xib in Resources */,
 				2CDD2460262B3E5600501E77 /* LaunchScreen.storyboard in Resources */,
-				2C5530CB264C5D5B002578A1 /* UserPostsVC.xib in Resources */,
 				2C7028892653B2DA000992A1 /* ZeroScreenVC.xib in Resources */,
 				2C92EDE0265154250012C359 /* FoundedFriendsListCell.xib in Resources */,
 				2C8A73BB262DD67700A68761 /* SignUpSecondVC.xib in Resources */,
 				2C8A73B4262DD62A00A68761 /* SignUpFirstVC.xib in Resources */,
 				2C4808D4262CB2600075C0B3 /* credentials.plist in Resources */,
 				2C3B72A6262C2C1E0076DF18 /* LoginScreenVC.xib in Resources */,
-				2C5530E2264C60B5002578A1 /* FavoritePostsVC.xib in Resources */,
 				2C7E12CC262B4E0600CA4073 /* Localizable.strings in Resources */,
 				2CF935212645BC0100F51243 /* PostsFeedVC.xib in Resources */,
 				2CDD245D262B3E5600501E77 /* Assets.xcassets in Resources */,
@@ -2096,7 +2063,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2122,23 +2089,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		763338057F3C3E5937A6C4E7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		834EE1F6D9D575DAB0F0C2BF /* [CP] Check Pods Manifest.lock */ = {
@@ -2307,6 +2257,7 @@
 				2C15DD1D2649AF2700D50900 /* ProfileModuleCoordinator.swift in Sources */,
 				2CC8850E2637F0E100375AF8 /* UserRequestInterceptor.swift in Sources */,
 				2C97CD032651B606009D0C75 /* PostInfo.swift in Sources */,
+				2C8A5EC0266287A70049DE7D /* UserPostsContainerVC.swift in Sources */,
 				2C7028792653A631000992A1 /* LoaderVC.swift in Sources */,
 				2CA8A1BA26516468006EEA15 /* SearchFriendsContainerVC.swift in Sources */,
 				2CCA9127262E1FD000D6A635 /* EmailValidator.swift in Sources */,
@@ -2315,7 +2266,6 @@
 				2C7E12B5262B47DA00CA4073 /* UIColor+Extensions.swift in Sources */,
 				2C025EB9262E05860035B84E /* CheckKeyboardViewModel.swift in Sources */,
 				2C9FCD76265AE641008EF433 /* TextStackView.swift in Sources */,
-				2C5530E1264C60B5002578A1 /* FavoritePostsVC.swift in Sources */,
 				2C7E12AF262B47DA00CA4073 /* UICollectionView_UITableView+Extension.swift in Sources */,
 				2C9D815E26558826003B1532 /* PostTableViewCell.swift in Sources */,
 				2CCA9131262E28BC00D6A635 /* NameValidator.swift in Sources */,
@@ -2331,7 +2281,6 @@
 				2C813C50264FFD3600E7E49F /* FirstSignUpRegistrationViewModel.swift in Sources */,
 				2C813C6C2650237100E7E49F /* AuthorizationHelper.swift in Sources */,
 				2C3B72A5262C2C1E0076DF18 /* LoginScreenVC.swift in Sources */,
-				2C5530CA264C5D5B002578A1 /* UserPostsVC.swift in Sources */,
 				2C7E130F262B5D8E00CA4073 /* R.generated.swift in Sources */,
 				2CCA9135262E292C00D6A635 /* CityValidator.swift in Sources */,
 				2C7E12B3262B47DA00CA4073 /* UIDevice+Extensions.swift in Sources */,
@@ -2346,11 +2295,11 @@
 				2CF935422645CCA500F51243 /* ProfileInfoVC.swift in Sources */,
 				2CD9DD122646BE7E003A9319 /* SearchFriendsVC.swift in Sources */,
 				2C92EDD3265118D60012C359 /* FoundedFriendsListVC.swift in Sources */,
-				2C1B88F62647125100B33E49 /* ProfileInfoRequestViewModel.swift in Sources */,
 				2CBF51C52638DE7200B99042 /* SearchServiceProtocol.swift in Sources */,
 				2C0343DB26472C2500CF9F87 /* LoginCoordinator.swift in Sources */,
 				2C7028882653B2DA000992A1 /* ZeroScreenVC.swift in Sources */,
 				2C04C0DB262E3D7C005F493D /* Validator.swift in Sources */,
+				2C8A5EC4266292010049DE7D /* FavouritePostsContainerVC.swift in Sources */,
 				2CE34D59264729C5007DEEA1 /* Coordinator.swift in Sources */,
 				2CDACBB22646F4CC0002D11C /* ZeroScreenHelper.swift in Sources */,
 				2C480902262DAAF20075C0B3 /* AuthorizationTextField.swift in Sources */,
@@ -2372,6 +2321,7 @@
 				2C7E12B4262B47DA00CA4073 /* UIGradientLayer+Extension.swift in Sources */,
 				2C15DD54264A7D3F00D50900 /* PostFeedDataViewModel.swift in Sources */,
 				2CBF51C12638DDE800B99042 /* FeedServiceProtocol.swift in Sources */,
+				2C8A5EC92662B0CB0049DE7D /* MainPostScreenVC.swift in Sources */,
 				2C813C672650051B00E7E49F /* RegistrationViewHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

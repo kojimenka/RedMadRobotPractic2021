@@ -6,9 +6,6 @@ target 'RedMadRobotTestTask' do
   pod 'SwiftLint'
   pod 'R.swift'
 
-  pod 'GoogleSignIn'
-  pod 'FBSDKLoginKit'
-
 end
 
 target 'RedMadRobotTestTaskAPI' do

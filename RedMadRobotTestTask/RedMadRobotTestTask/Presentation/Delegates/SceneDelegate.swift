@@ -7,8 +7,6 @@
 
 import UIKit
 
-import FBSDKCoreKit
-
 struct GlobalFlags {
     static var isTesting: Bool {
         UserDefaults.standard.bool(forKey: "isTesting")
@@ -38,20 +36,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator = AppCoordinator(navigationController: navController)
         appCoordinator?.start()
         window?.rootViewController = appCoordinator?.navigationController
-    }
-    
-    func scene(
-        _ scene: UIScene,
-        openURLContexts URLContexts: Set<UIOpenURLContext>
-    ) {
-        guard let url = URLContexts.first?.url else { return }
-
-        ApplicationDelegate.shared.application(
-            UIApplication.shared,
-            open: url,
-            sourceApplication: nil,
-            annotation: [UIApplication.OpenURLOptionsKey.annotation]
-        )
     }
 
 }

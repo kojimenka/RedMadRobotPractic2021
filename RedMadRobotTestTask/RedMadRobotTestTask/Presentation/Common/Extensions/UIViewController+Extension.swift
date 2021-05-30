@@ -43,6 +43,19 @@ extension String {
     }
 }
 
+extension UIViewController {
+    var navBarHeight: CGFloat {
+        return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+    }
+    
+    var topSafeAreaInset: CGFloat {
+        let window = UIApplication.shared.keyWindow
+        let topPadding = window?.safeAreaInsets.top
+        return topPadding ?? 0.0
+    }
+}
+
 // MARK: - Helpful Childs Extension
 extension UIViewController {
     func addChild (controller: UIViewController, rootView: UIView) {

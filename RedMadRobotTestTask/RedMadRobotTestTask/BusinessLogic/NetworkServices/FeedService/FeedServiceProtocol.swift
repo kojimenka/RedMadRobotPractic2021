@@ -16,6 +16,9 @@ protocol FeedServiceProtocol {
     func getFeed(
         completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress
+    func getUserPosts(
+        completion: @escaping (Result<[PostInfo], Error>) -> Void)
+    -> Progress
     func getFavouritePosts(
         completion: @escaping (Result<[PostInfo], Error>) -> Void)
     -> Progress
@@ -27,10 +30,20 @@ protocol FeedServiceProtocol {
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress
     
+    func addPost(
+        postInfo: PostInfo,
+        completion: @escaping (Result<PostInfo, Error>) -> Void)
+    -> Progress
+    
     // MARK: - Delete request
 
     func removeLikeFromPost(
         postID: String,
         completion: @escaping (Result<Void, Error>) -> Void)
     -> Progress
+    
+    func deletePost(
+        postID: String,
+        completion: @escaping (Result<Void, Error>) -> Void)
+    -> Progress 
 }
