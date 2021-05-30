@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,7 +31,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="288" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="Wvd-Nd-x1y"/>
-                                <constraint firstAttribute="width" constant="200" id="sSd-oI-1Qv"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пустота" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iNK-FF-7XA" userLabel="titleLabel">
@@ -65,11 +63,11 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="WUx-LD-vI0" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="7Rd-cy-FfC"/>
                 <constraint firstItem="WUx-LD-vI0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="AgO-qH-L14"/>
                 <constraint firstAttribute="trailingMargin" secondItem="WUx-LD-vI0" secondAttribute="trailing" id="X48-kC-G8J"/>
-                <constraint firstItem="WUx-LD-vI0" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="vjs-ek-2T9"/>
             </constraints>
             <point key="canvasLocation" x="-181.15942028985509" y="152.67857142857142"/>
         </view>
@@ -81,8 +79,5 @@
         <namedColor name="tintOrange">
             <color red="0.99599999189376831" green="0.2669999897480011" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

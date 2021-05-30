@@ -25,20 +25,31 @@ final class ProfileScreenContainerVC: UIViewController {
     
     // MARK: - Private Properties
     
-    private var isFirstStart = true
-    
     weak private var outputDelegate: ProfileScreenOutputDelegate?
+    private var userService: UserInfoServiceProtocol
+    
+    // Constants
+    private var isFirstStart = true
+    private let topInset: CGFloat = 12.0
+    
+    lazy private var contentInset: CGFloat = {
+        return navBarHeight - topInset
+    }()
     
     // Childs
     lazy private var profileInfoVC = ProfileInfoVC(subscriber: self)
     lazy private var changeProfileCategoryVC = ChangeProfileCategoryVC(subscriber: self)
     
-    lazy private var userPostsVC = UserPostsVC(subscriber: self)
-    lazy private var favoritePostsVC = FavoritePostsVC(subscriber: self)
+    lazy private var userPostsVC = UserPostsContainerVC()
+    lazy private var favoritePostsVC = FavouritePostsContainerVC()
     
     // MARK: - Initializers
     
-    init(outputSubscriber: ProfileScreenOutputDelegate?) {
+    init(
+        userService: UserInfoServiceProtocol = ServiceLayer.shared.userInfoService,
+        outputSubscriber: ProfileScreenOutputDelegate?
+    ) {
+        self.userService = userService
         self.outputDelegate = outputSubscriber
         super.init(nibName: nil, bundle: nil)
     }
@@ -54,25 +65,32 @@ final class ProfileScreenContainerVC: UIViewController {
         guard isFirstStart == true else { return }
         setupScrollView()
         setChilds()
-        setupViews()
         isFirstStart = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserInfo()
+        setupViews()
     }
     
     // MARK: - Private Methods
     
     private func setupViews() {
-        navigationController?.navigationBar.isHidden = true
+        userPostsVC.changeOffSet = { [weak self] inset in
+            guard let self = self else { return }
+            self.userInfoContainerTopConstraint.constant = -inset - self.contentInset
+        }
+        
+        favoritePostsVC.changeOffSet = { [weak self] inset in
+            guard let self = self else { return }
+            self.userInfoContainerTopConstraint.constant = -inset - self.contentInset
+        }
     }
     
     private func setupScrollView() {
-        contentScrollView.contentInsetAdjustmentBehavior = .never
-        
         contentScrollView.backgroundColor = ColorPalette.mainBackgroundColor
-                
+        contentScrollView.contentInsetAdjustmentBehavior = .never
         contentScrollView.contentSize = CGSize(
             width: view.frame.width * 3,
             height: contentScrollView.safeAreaLayoutGuide.layoutFrame.height
@@ -98,13 +116,25 @@ final class ProfileScreenContainerVC: UIViewController {
     }
     
     private func setupInsetsInChilds() {
-        let topSafeAreaInset = UIApplication.shared.windows.first { $0.isKeyWindow }?.safeAreaInsets.top ?? 0.0
-        let fullInset = topSafeAreaInset + userInfoContainerView.frame.height + 2
+        let userContainerHeight = topInset + userInfoContainerView.frame.height + 2
         
-        userPostsVC.setTopInsetInPostCollection(fullInset)
-        favoritePostsVC.setTopInsetInPostCollection(fullInset)
-        
+        userPostsVC.setTopInset(userContainerHeight)
+        favoritePostsVC.setTopInset(userContainerHeight)
+
         view.bringSubviewToFront(userInfoContainerView)
+    }
+    
+    private func getUserInfo() {
+        _ = userService.getUserInfo { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let user):
+                self.profileInfoVC.setUserInfo(user)
+                self.navigationItem.title = user.nickname == nil ? "Профиль" : "@\(user.nickname ?? "")"
+            case .failure:
+                break
+            }
+        }
     }
 
 }
@@ -142,28 +172,5 @@ extension ProfileScreenContainerVC: ChangeProfileCategoryDelegate {
 extension ProfileScreenContainerVC: ProfileInfoDelegate {
     func editProfileAction() {
         print("edit button action")
-    }
-}
-
-// MARK: - User Posts Delegate
-
-extension ProfileScreenContainerVC: UserPostsDelegate {
-
-}
-
-// MARK: - User Favorite Posts Delegate
-
-extension ProfileScreenContainerVC: FavoritePostsDelegate {
-    func addLikeToPost(id: String) {
-        
-    }
-}
-
-// MARK: - User Posts Delegate
-
-// Отслеживаем изменения оффсета в коллекциях для изменений констрейнта в чайлде с информацией о пользователе
-extension ProfileScreenContainerVC: PostsFeedInProfileDelegate {
-    func scrollViewOffSetChanged(inset: CGFloat) {
-        self.userInfoContainerTopConstraint.constant = -inset
     }
 }

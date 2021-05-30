@@ -53,10 +53,11 @@ final class FeedScreenContainerVC: UIViewController {
     
     private func setupView() {
         view.backgroundColor = ColorPalette.mainBackgroundColor
+        allPostsVC.setTopInset(12.0)
     }
     
     private func navBarSetup() {
-        navigationController?.navigationBar.isHidden = false
+        self.navigationItem.title = "Популярное"
     }
     
     private func setNewChild(child: UIViewController) {
@@ -134,34 +135,6 @@ extension FeedScreenContainerVC: PostsFeedDelegate {
         })
     }
     
-    func likePostButtonAction(isLiked: Bool, id: String) {
-        if isLiked {
-            likePost(id: id)
-        } else {
-            unlikePost(id: id)
-        }
-    }
-    
-    func likePost(id: String) {
-        _ = feedService.addLikeToPost(postID: id) { result in
-            switch result {
-            case .success:
-                print("DEBUG: Success add like")
-            case .failure(let error):
-                print("DEBUG: Failure add like with error  \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    func unlikePost(id: String) {
-        _ = feedService.removeLikeFromPost(postID: id) { result in
-            switch result {
-            case .success:
-                print("DEBUG: Success remove like")
-            case .failure(let error):
-                print("DEBUG: Failure remove like with error  \(error.localizedDescription)")
-            }
-        }
-    }
+    func scrollViewOffSetChanged(inset: CGFloat) {}
     
 }

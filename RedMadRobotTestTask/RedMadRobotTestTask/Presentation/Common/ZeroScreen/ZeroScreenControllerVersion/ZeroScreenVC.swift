@@ -21,7 +21,7 @@ final class ZeroScreenVC: UIViewController {
     
     public var buttonAction: (() -> Void)? {
         didSet {
-            updateButton.isHidden = buttonAction == nil
+//            updateButton.isHidden = buttonAction == nil
         }
     }
     

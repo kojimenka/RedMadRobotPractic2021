@@ -8,12 +8,7 @@
 import UIKit
 
 protocol PostsFeedDelegate: AnyObject {
-    func likePostButtonAction(isLiked: Bool, id: String)
     func getPosts(completion: @escaping (Result<[PostInfo], Error>) -> Void )
-}
-
-protocol PostsFeedInProfileDelegate: AnyObject {
-    // Эта переменная необходима для отслеживания текущего оффсета коллекции. Мы его отслеживаем что бы менять констрейнт верхнего чайлда с информацией о пользователе
     func scrollViewOffSetChanged(inset: CGFloat)
 }
 
@@ -26,21 +21,22 @@ final class PostsFeedVC: UIViewController {
     // MARK: - Private Properties
     
     weak private var delegate: PostsFeedDelegate?
-    weak private var delegateForProfileScreen: PostsFeedInProfileDelegate?
+    private let feedService: FeedServiceProtocol
     
     private var topInset: CGFloat = 0.0
+    private var isFirstStart = true
     
     private var dataSourceViewModel: PostFeedDataSourceViewModelProtocol
     
     // MARK: - Init
     
     init(
-        profileSubscriber: PostsFeedInProfileDelegate? = nil,
         subscriber: PostsFeedDelegate?,
+        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService,
         dataSourceViewModel: PostFeedDataSourceViewModelProtocol = PostFeedDataViewModel()
     ) {
-        delegateForProfileScreen = profileSubscriber
         self.delegate = subscriber
+        self.feedService = feedService
         self.dataSourceViewModel = dataSourceViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -50,6 +46,14 @@ final class PostsFeedVC: UIViewController {
     }
     
     // MARK: - UIViewController
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard isFirstStart == true else { return }
+        tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+        tableView.setContentOffset(CGPoint(x: 0, y: -topInset - navBarHeight), animated: false)
+        isFirstStart = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +66,6 @@ final class PostsFeedVC: UIViewController {
     
     public func setTopInset(_ inset: CGFloat) {
         topInset = inset
-        tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
     }
     
     // MARK: - Public Methods
@@ -111,7 +114,7 @@ extension PostsFeedVC: UITableViewDelegate {
 extension PostsFeedVC: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegateForProfileScreen?.scrollViewOffSetChanged(inset: scrollView.contentOffset.y + topInset)
+        delegate?.scrollViewOffSetChanged(inset: scrollView.contentOffset.y + topInset)
     }
     
 }
@@ -121,7 +124,33 @@ extension PostsFeedVC: UIScrollViewDelegate {
 extension PostsFeedVC: PostFeedDataViewModelDelegate {
     
     func likePostButtonAction(isLiked: Bool, id: String) {
-        delegate?.likePostButtonAction(isLiked: isLiked, id: id)
+        if isLiked {
+            likePost(id: id)
+        } else {
+            unlikePost(id: id)
+        }
+    }
+    
+    func likePost(id: String) {
+        _ = feedService.addLikeToPost(postID: id) { result in
+            switch result {
+            case .success:
+                print("DEBUG: Success add like")
+            case .failure(let error):
+                print("DEBUG: Failure add like with error  \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func unlikePost(id: String) {
+        _ = feedService.removeLikeFromPost(postID: id) { result in
+            switch result {
+            case .success:
+                print("DEBUG: Success remove like")
+            case .failure(let error):
+                print("DEBUG: Failure remove like with error  \(error.localizedDescription)")
+            }
+        }
     }
     
 }

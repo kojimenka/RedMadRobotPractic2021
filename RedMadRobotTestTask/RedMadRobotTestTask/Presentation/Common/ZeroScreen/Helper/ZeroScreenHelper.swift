@@ -57,7 +57,7 @@ final class ZeroScreenFabric {
             model = ZeroScreenModel(
                 image: R.image.profileZeroScreenImage(),
                 titleText: "Пустота",
-                descriptionText: "Вы ещё не поставили ни одного лайка\n, но можете из ленты",
+                descriptionText: "Вы ещё не поставили ни одного лайка,\nно можете из ленты",
                 buttonTitle: "Создать пост"
             )
         case .friends:
