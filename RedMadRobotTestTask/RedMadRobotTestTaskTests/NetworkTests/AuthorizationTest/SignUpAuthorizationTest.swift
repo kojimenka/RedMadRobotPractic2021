@@ -47,8 +47,10 @@ final class SignUpAuthorizationTest: XCTestCase {
         client.result = .success(mockModels.tokenData)
         
         _ = authorizationService.signUp(
-            email: mockModels.email,
-            password: mockModels.password) { result in
+            credentials: Credentials(
+                email: mockModels.email,
+                password: mockModels.password)
+            ) { result in
             
             if case .success = result {
                 requestResult = true
@@ -78,9 +80,10 @@ final class SignUpAuthorizationTest: XCTestCase {
         
         client.result = .failure(MockWarnings.mockError)
         
-        _ = authorizationService.signUp(
+        _ = authorizationService.signUp(credentials: Credentials(
             email: mockModels.email,
-            password: mockModels.password) { result in
+            password: mockModels.password)
+        ) { result in
             
             if case .failure(let erorr) = result {
                 requestResult = false

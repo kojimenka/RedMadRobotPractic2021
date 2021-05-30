@@ -40,7 +40,7 @@ final class GetSortedUsersTest: XCTestCase {
         let requestExpectation = expectation(description: #function)
         
         var requestResult: Bool?
-        var requestData: [UserInformation]?
+        var requestData: [RedMadRobotTestTask.UserInformation]?
         
         client.result = .success(mockModels.usersStubArray)
         
@@ -63,7 +63,7 @@ final class GetSortedUsersTest: XCTestCase {
             }
             
             XCTAssertEqual(requestResult, true)
-            XCTAssertEqual(requestData, self.mockModels.usersStubArray)
+            XCTAssertEqual(requestData, self.mockModels.usersStubArray.map { RedMadRobotTestTask.UserInformation($0) })
             XCTAssertEqual(self.client.requestCalled, true)
             XCTAssertEqual(self.client.requestCallCount, 1)
         }

@@ -19,7 +19,7 @@ final class TestUpdateUserInfoEndpoint: XCTestCase {
             lastName: "Bar",
             nickname: "kojimenka",
             avatarUrl: nil,
-            birthDay: "123"
+            birthDay: Date()
         )
 
         let token = "FooBar123"
@@ -43,7 +43,7 @@ final class TestUpdateUserInfoEndpoint: XCTestCase {
             lastName: "Bar",
             nickname: "kojimenka",
             avatarUrl: nil,
-            birthDay: "123"
+            birthDay: Date()
         )
         
         let token: String? = nil

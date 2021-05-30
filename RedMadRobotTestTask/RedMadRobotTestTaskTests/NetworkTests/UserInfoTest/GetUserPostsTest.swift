@@ -16,7 +16,7 @@ final class GetUserPostsTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<GetUserPostsEndpoint>!
-    private var userInfoService: UserInfoServiceProtocol!
+    private var userInfoService: FeedService!
     
     private var mockModels = AuthMockModels()
     
@@ -25,7 +25,7 @@ final class GetUserPostsTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<GetUserPostsEndpoint>()
-        userInfoService = UserInfoService(apiClient: client)
+        userInfoService = FeedService(apiClient: client)
     }
     
     override func tearDown() {
@@ -40,7 +40,7 @@ final class GetUserPostsTest: XCTestCase {
         let requestExpectation = expectation(description: #function)
         
         var requestResult: Bool?
-        var requestData: [PostInfo]?
+        var requestData: [RedMadRobotTestTask.PostInfo]?
         
         client.result = .success(mockModels.postsStubArray)
         
@@ -62,7 +62,7 @@ final class GetUserPostsTest: XCTestCase {
             }
             
             XCTAssertEqual(requestResult, true)
-            XCTAssertEqual(requestData, self.mockModels.postsStubArray)
+            XCTAssertEqual(requestData, self.mockModels.postsStubArray.map { RedMadRobotTestTask.PostInfo($0) })
             XCTAssertEqual(self.client.requestCalled, true)
             XCTAssertEqual(self.client.requestCallCount, 1)
         }
@@ -70,15 +70,15 @@ final class GetUserPostsTest: XCTestCase {
     
     func testFailureGetUserPosts() {
         let requestExpectation = expectation(description: #function)
-        
+
         var requestResult: Bool?
         var requestError: Error?
-        var requestData: [PostInfo]?
-        
+        var requestData: [RedMadRobotTestTask.PostInfo]?
+
         client.result = .failure(MockWarnings.mockError)
-        
+
         _ = userInfoService.getUserPosts { result in
-            
+
             switch result {
             case .success(let data):
                 requestResult = true
@@ -87,15 +87,15 @@ final class GetUserPostsTest: XCTestCase {
                 requestResult = false
                 requestError = error
             }
-            
+
             requestExpectation.fulfill()
         }
-        
+
         waitForExpectations(timeout: 1.0) { error in
             if let error = error {
                 XCTFail(error.localizedDescription)
             }
-            
+
             XCTAssertEqual(requestResult, false)
             XCTAssertEqual(requestData, nil)
             XCTAssertEqual(requestError?.localizedDescription, MockWarnings.mockError.localizedDescription)

@@ -40,7 +40,7 @@ final class GetFeedTest: XCTestCase {
         let requestExpectation = expectation(description: #function)
         
         var requestResult: Bool?
-        var requestData: [PostInfo]?
+        var requestData: [RedMadRobotTestTask.PostInfo]?
         
         client.result = .success(mockModels.postsStubArray)
         
@@ -63,7 +63,7 @@ final class GetFeedTest: XCTestCase {
             }
             
             XCTAssertEqual(requestResult, true)
-            XCTAssertEqual(requestData, self.mockModels.postsStubArray)
+            XCTAssertEqual(requestData, self.mockModels.postsStubArray.map { RedMadRobotTestTask.PostInfo($0) })
             XCTAssertEqual(self.client.requestCalled, true)
             XCTAssertEqual(self.client.requestCallCount, 1)
         }

@@ -1,5 +1,5 @@
 //
-//  AuthorizationHelper.swift
+//  Credentials.swift
 //  RedMadRobotTestTask
 //
 //  Created by Дмитрий Марченков on 15.05.2021.

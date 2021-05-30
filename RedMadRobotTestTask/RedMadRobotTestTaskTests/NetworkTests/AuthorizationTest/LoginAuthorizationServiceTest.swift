@@ -47,8 +47,10 @@ final class LoginAuthorizationServiceTest: XCTestCase {
         client.result = .success(mockModels.tokenData)
         
         _ = authorizationService.signIn(
-            email: mockModels.email,
-            password: mockModels.password) { result in
+            credentials: Credentials(
+                email: mockModels.email,
+                password: mockModels.password)
+        ) { result in
             
             if case .success = result {
                 requestResult = true
@@ -79,8 +81,9 @@ final class LoginAuthorizationServiceTest: XCTestCase {
         client.result = .failure(MockWarnings.mockError)
         
         _ = authorizationService.signIn(
-            email: mockModels.email,
-            password: mockModels.password) { result in
+            credentials: Credentials(
+                email: mockModels.email,
+                password: mockModels.password)) { result in
             
             if case .failure(let erorr) = result {
                 requestResult = false

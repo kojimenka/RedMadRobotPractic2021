@@ -7,7 +7,7 @@
 
 import Alamofire
 
-struct UserRequestInterceptor: RequestInterceptor {
+class UserRequestInterceptor: UserRequestRetrier, RequestInterceptor {
     
     // MARK: - Public Properties
     
@@ -33,34 +33,10 @@ struct UserRequestInterceptor: RequestInterceptor {
     
     // MARK: - Public Methods
     
-    func retry(
-        _ request: Request,
-        for session: Session,
-        dueTo error: Error,
-        completion: @escaping (RetryResult) -> Void
-    ) {
-        // Временный вариант
-        
-        if request.response?.statusCode == 401 {
-            _ = ServiceLayer.shared.authorizationServices.refreshToken { result in
-                switch result {
-                case .success:
-                    completion(.retry)
-                case .failure:
-                    completion(.doNotRetry)
-                }
-            }
-            return
-        }
-
-        completion(.doNotRetry)
-    }
-    
     public func adapt(
         _ urlRequest: URLRequest,
         for session: Session,
-        completion: @escaping (Result<URLRequest, Error>)
-            -> Void
+        completion: @escaping (Result<URLRequest, Error>) -> Void
     ) {
         
         guard let url = urlRequest.url else {

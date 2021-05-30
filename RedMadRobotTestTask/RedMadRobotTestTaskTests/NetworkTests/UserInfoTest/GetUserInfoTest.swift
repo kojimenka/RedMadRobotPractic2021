@@ -40,7 +40,7 @@ final class GetUserInfoTest: XCTestCase {
         let requestExpectation = expectation(description: #function)
         
         var requestResult: Bool?
-        var requestData: UserInformation?
+        var requestData: RedMadRobotTestTask.UserInformation?
         
         client.result = .success(mockModels.userStub)
         
@@ -60,7 +60,7 @@ final class GetUserInfoTest: XCTestCase {
             }
             
             XCTAssertEqual(requestResult, true)
-            XCTAssertEqual(requestData, self.mockModels.userStub)
+            XCTAssertEqual(requestData, RedMadRobotTestTask.UserInformation(self.mockModels.userStub))
             XCTAssertEqual(self.client.requestCalled, true)
             XCTAssertEqual(self.client.requestCallCount, 1)
         }
@@ -71,7 +71,7 @@ final class GetUserInfoTest: XCTestCase {
         
         var requestResult: Bool?
         var requestError: Error?
-        var requestData: UserInformation?
+        var requestData: RedMadRobotTestTask.UserInformation?
         
         client.result = .failure(MockWarnings.mockError)
         
