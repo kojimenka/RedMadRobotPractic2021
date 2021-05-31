@@ -24,11 +24,10 @@ class UserRequestRetrier: RequestRetrier {
     ) {
             
         guard let statusCode = request.response?.statusCode,
-              statusCode > 300,
-              statusCode < 600
+              300..<600 ~= statusCode
         else { return completion(.doNotRetry) }
         
-        // Предотвращает многократное выполнение тела для одного и того же ответа
+        // Предотвращает многократное выполнение body для одного и того же ответа
         guard lastProceededResponse != request.response,
               request.retryCount + 1 < retryLimit
         else {
@@ -38,20 +37,24 @@ class UserRequestRetrier: RequestRetrier {
         lastProceededResponse = request.response
         
         if statusCode == 401 {
-            _ = ServiceLayer.shared.authorizationServices.refreshToken { result in
-                switch result {
-                case .success:
-                    completion(.retry)
-                case .failure:
-                    completion(.doNotRetry)
-                }
-            }
+            refreshToken(completion: completion)
             return
         }
         
         let delay = TimeInterval(request.retryCount) // Задержка следующего запроса равна номеру его попытки в секундах
         
         completion(.retryWithDelay(delay))
+    }
+    
+    private func refreshToken(completion: @escaping (RetryResult) -> Void) {
+        _ = ServiceLayer.shared.authorizationServices.refreshToken { result in
+            switch result {
+            case .success:
+                completion(.retry)
+            case .failure:
+                completion(.doNotRetry)
+            }
+        }
     }
     
 }
