@@ -31,7 +31,7 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         if !isTokenInvalid {
-            let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+            let loginCoordinator = LoginCoordinator(navigationController: navigationController, delegate: nil)
             childCoordinators.append(loginCoordinator)
             loginCoordinator.start()
         } else {

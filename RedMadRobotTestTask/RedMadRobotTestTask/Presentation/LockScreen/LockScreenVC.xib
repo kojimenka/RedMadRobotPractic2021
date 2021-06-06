@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="IBMPlexSans-Regular.ttf">
+            <string>IBMPlexSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LockScreenVC" customModule="RedMadRobotTestTask" customModuleProvider="target">
+            <connections>
+                <outlet property="enterButton" destination="hRd-iZ-oKF" id="LMO-Ld-bM8"/>
+                <outlet property="passwordTextField" destination="gBv-sH-aVA" id="jsg-B5-ZWg"/>
+                <outlet property="titleLabel" destination="dXm-hS-OkZ" id="iLi-6d-ix7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gBv-sH-aVA">
+                    <rect key="frame" x="20" y="316" width="374" height="34"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRd-iZ-oKF" customClass="RegistrationNextButton" customModule="RedMadRobotTestTask" customModuleProvider="target">
+                    <rect key="frame" x="20" y="382" width="374" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="oeV-wf-1YV"/>
+                    </constraints>
+                    <state key="normal" title="Войти"/>
+                    <connections>
+                        <action selector="enterButtonAction:" destination="-1" eventType="touchUpInside" id="uZe-V4-Cec"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXm-hS-OkZ">
+                    <rect key="frame" x="20" y="265" width="374" height="26"/>
+                    <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="20"/>
+                    <color key="textColor" name="middle_grey"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEH-OU-6BO">
+                    <rect key="frame" x="20" y="446" width="374" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="YMt-ZV-eMA"/>
+                    </constraints>
+                    <state key="normal" title="Выйти"/>
+                    <connections>
+                        <action selector="logoutButton:" destination="-1" eventType="touchUpInside" id="h6c-8e-H5s"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailingMargin" secondItem="gBv-sH-aVA" secondAttribute="trailing" id="29E-cB-67j"/>
+                <constraint firstAttribute="trailingMargin" secondItem="hRd-iZ-oKF" secondAttribute="trailing" id="2MN-lw-dQx"/>
+                <constraint firstItem="gBv-sH-aVA" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="953-eD-lQT"/>
+                <constraint firstItem="gBv-sH-aVA" firstAttribute="top" secondItem="dXm-hS-OkZ" secondAttribute="bottom" constant="25" id="GFe-aF-JeM"/>
+                <constraint firstItem="gBv-sH-aVA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="He9-Zn-183"/>
+                <constraint firstItem="kEH-OU-6BO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="HjY-81-f7j"/>
+                <constraint firstItem="dXm-hS-OkZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="PHe-PW-9U1"/>
+                <constraint firstItem="gBv-sH-aVA" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="-120" id="QE5-6j-OgK"/>
+                <constraint firstAttribute="trailingMargin" secondItem="kEH-OU-6BO" secondAttribute="trailing" id="kmp-9u-9QS"/>
+                <constraint firstItem="hRd-iZ-oKF" firstAttribute="top" secondItem="gBv-sH-aVA" secondAttribute="bottom" constant="32" id="pY1-wg-57t"/>
+                <constraint firstItem="hRd-iZ-oKF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="qht-qR-djW"/>
+                <constraint firstAttribute="trailingMargin" secondItem="dXm-hS-OkZ" secondAttribute="trailing" id="wlu-tT-Xvt"/>
+                <constraint firstItem="kEH-OU-6BO" firstAttribute="top" secondItem="hRd-iZ-oKF" secondAttribute="bottom" constant="8" id="z6y-Pa-VDz"/>
+            </constraints>
+            <point key="canvasLocation" x="-70" y="153"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="hRd-iZ-oKF">
+            <size key="intrinsicContentSize" width="44" height="30"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="middle_grey">
+            <color red="0.63529411764705879" green="0.67450980392156867" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

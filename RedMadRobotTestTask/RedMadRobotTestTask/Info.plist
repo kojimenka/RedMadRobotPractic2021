@@ -97,5 +97,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Use biometric for easy unlock</string>
 </dict>
 </plist>

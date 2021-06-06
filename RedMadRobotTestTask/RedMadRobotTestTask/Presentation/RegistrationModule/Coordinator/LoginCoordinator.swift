@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginCoordinatorDelegate: AnyObject {
+    func endRegistrationFlow(token: AuthTokens)
+}
+
 final class LoginCoordinator: Coordinator {
     
     // MARK: - Public properties
@@ -17,14 +21,17 @@ final class LoginCoordinator: Coordinator {
     // MARK: - Private properties
     
     private let screenFabric: RegistrationFabricProtocol
+    weak private var delegate: LoginCoordinatorDelegate?
     
     // MARK: - Init
     
     init(
         navigationController: UINavigationController,
+        delegate: LoginCoordinatorDelegate?,
         screenFabric: RegistrationFabricProtocol = RegistrationFabric()
     ) {
         self.screenFabric = screenFabric
+        self.delegate = delegate
         self.navigationController = navigationController
     }
     
@@ -78,10 +85,8 @@ final class LoginCoordinator: Coordinator {
         pushController(controller: controller, animated: true)
     }
     
-    func presentAppModule() {
-        let tabBarController = AppTabBarController()
-        tabBarController.modalPresentationStyle = .fullScreen
-        presentController(controller: tabBarController, animated: true)
+    func presentAppModule(token: AuthTokens) {
+        delegate?.endRegistrationFlow(token: token)
     }
     
     func presentLoader(stopLoading: @escaping (() -> Void)) {

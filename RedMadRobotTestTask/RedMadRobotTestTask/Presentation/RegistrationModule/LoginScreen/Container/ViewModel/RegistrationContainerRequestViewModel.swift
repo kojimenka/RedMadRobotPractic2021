@@ -10,13 +10,13 @@ import Foundation
 protocol RegistrationContainerRequestViewModelProtocol {
     func loginUser(
         credentials: Credentials,
-        completion: @escaping (Result<Void, Error>) -> Void
+        completion: @escaping (Result<AuthTokens, Error>) -> Void
     )
     
     func registrateUser(
         credentials: Credentials,
         userInfo: UserInformation,
-        completion: @escaping (Result<Void, Error>) -> Void
+        completion: @escaping (Result<AuthTokens, Error>) -> Void
     )
 }
 
@@ -27,7 +27,7 @@ final class RegistrationContainerRequestViewModel: RegistrationContainerRequestV
     private let registrationService: AuthorizationServiceProtocol
     private let userService: UserInfoServiceProtocol
     
-    private var completion: ((Result<Void, Error>) -> Void)?
+    private var completion: ((Result<AuthTokens, Error>) -> Void)?
     
     // MARK: - Init
     
@@ -43,12 +43,12 @@ final class RegistrationContainerRequestViewModel: RegistrationContainerRequestV
     
     func loginUser(
         credentials: Credentials,
-        completion: @escaping (Result<Void, Error>) -> Void
+        completion: @escaping (Result<AuthTokens, Error>) -> Void
     ) {
         _ = registrationService.signIn(credentials: credentials) { result in
             switch result {
-            case .success:
-                completion(.success(()))
+            case .success(let token):
+                completion(.success(token))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -58,27 +58,27 @@ final class RegistrationContainerRequestViewModel: RegistrationContainerRequestV
     func registrateUser(
         credentials: Credentials,
         userInfo: UserInformation,
-        completion: @escaping (Result<Void, Error>) -> Void
+        completion: @escaping (Result<AuthTokens, Error>) -> Void
     ) {
         self.completion = completion
         
         _ = registrationService.signUp(credentials: credentials) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success:
-                self.addUserInformation(userInfo: userInfo)
+            case .success(let token):
+                self.addUserInformation(userInfo: userInfo, token: token)
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
     
-    private func addUserInformation(userInfo: UserInformation) {
+    private func addUserInformation(userInfo: UserInformation, token: AuthTokens) {
         _ = userService.updateUserInfo(user: userInfo, completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success:
-                self.completion?(.success(()))
+                self.completion?(.success(token))
             case .failure(let error):
                 self.completion?(.failure(error))
             }

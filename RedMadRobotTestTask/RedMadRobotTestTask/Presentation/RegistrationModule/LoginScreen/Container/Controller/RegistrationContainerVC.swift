@@ -14,13 +14,18 @@ final class RegistrationContainerVC: UIViewController {
     weak private var coordinator: LoginCoordinator?
     
     private var requestViewModel: RegistrationContainerRequestViewModelProtocol
+    private var keychainManager: KeychainManager
+    
+    private var authToken: AuthTokens?
     
     // MARK: - Init
     
     init(
         requestViewModel: RegistrationContainerRequestViewModelProtocol = RegistrationContainerRequestViewModel(),
+        keychainManager: KeychainManager = KeychainManagerImpl(),
         coordinator: LoginCoordinator
     ) {
+        self.keychainManager = keychainManager
         self.requestViewModel = requestViewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -78,7 +83,8 @@ extension RegistrationContainerVC: SignInDelegate {
             guard let self = self else { return }
             self.coordinator?.dismissController(animated: true) // Dismiss loader
             switch result {
-            case .success:
+            case .success(let token):
+                self.authToken = token
                 self.coordinator?.pushSuccessRegistration(subscriber: self)
             case .failure(let error):
                 self.showErrorAlert(with: error)
@@ -103,7 +109,8 @@ extension RegistrationContainerVC: SignUpContainerDelegate {
             guard let self = self else { return }
             self.coordinator?.dismissController(animated: true) // Dismiss loader
             switch result {
-            case .success:
+            case .success(let token):
+                self.authToken = token
                 self.coordinator?.pushSuccessRegistration(subscriber: self)
             case .failure(let error):
                 self.showErrorAlert(with: error)
@@ -122,7 +129,8 @@ extension RegistrationContainerVC: SignUpContainerDelegate {
 extension RegistrationContainerVC: SuccessLoginScreenDelegate {
     
     func presentFeedAction() {
-        coordinator?.presentAppModule()
+        guard let token = authToken else { return }
+        coordinator?.presentAppModule(token: token)
     }
     
 }

@@ -59,17 +59,34 @@ extension UIViewController {
 // MARK: - Helpful Childs Extension
 extension UIViewController {
     func addChild (controller: UIViewController, rootView: UIView) {
-        addChild(controller)
-        rootView.addSubview(controller.view)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        DispatchQueue.main.async { [self] in
+            addChild(controller)
+            rootView.addSubview(controller.view)
+            controller.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                controller.view.topAnchor.constraint(equalTo: rootView.topAnchor),
+                controller.view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor),
+                controller.view.trailingAnchor.constraint(equalTo: rootView.trailingAnchor),
+                controller.view.bottomAnchor.constraint(equalTo: rootView.bottomAnchor)
+            ])
+            controller.didMove(toParent: self)
+        }
+    }
+    
+    func changeChildWithAnimation(newChild: UIViewController) {
+        DispatchQueue.main.async { [self] in
+            UIView.AnimationTransition.removeAllSubviews(rootView: view)
+            addChild(controller: newChild, rootView: view)
+        }
         
-        NSLayoutConstraint.activate([
-            controller.view.topAnchor.constraint(equalTo: rootView.topAnchor),
-            controller.view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor),
-            controller.view.trailingAnchor.constraint(equalTo: rootView.trailingAnchor),
-            controller.view.bottomAnchor.constraint(equalTo: rootView.bottomAnchor)
-        ])
-        controller.didMove(toParent: self)
+//        guard children.count > 2 else { return }
+//
+//        for i in (0...children.count - 2).reversed() {
+//            children[i].willMove(toParent: nil)
+//            children[i].view.removeFromSuperview()
+//            children[i].removeFromParent()
+//        }
     }
     
     func removeChild(childController: UIViewController) {

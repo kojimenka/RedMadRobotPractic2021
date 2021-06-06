@@ -47,6 +47,11 @@ final class PostsFeedVC: UIViewController {
     
     // MARK: - UIViewController
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         guard isFirstStart == true else { return }
@@ -77,7 +82,9 @@ final class PostsFeedVC: UIViewController {
             case .success(let content):
                 self.dataSourceViewModel.allPosts = content
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    if let tableView = self.tableView {
+                        tableView.reloadData()
+                    }
                 }
             case .failure:
                 print("DEBUG: post request failure")
