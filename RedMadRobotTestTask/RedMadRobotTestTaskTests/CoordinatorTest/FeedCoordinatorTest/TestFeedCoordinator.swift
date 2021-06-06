@@ -36,12 +36,5 @@ final class TestFeedCoordinator: XCTestCase {
         
         XCTAssertEqual(initialScreen is FeedScreenContainerVC, true)
     }
-    
-    func testShowSearchFriends() {
-        feedCoordinator.showSearchFriendScreen()
-        
-        let searchScreen = feedCoordinator.navigationController.topViewController
-        
-        XCTAssertEqual(searchScreen is SearchFriendsVC, true)
-    }
+
 }

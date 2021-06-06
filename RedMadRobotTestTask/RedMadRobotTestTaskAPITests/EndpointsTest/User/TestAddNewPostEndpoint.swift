@@ -19,13 +19,13 @@ final class TestAddNewPostEndpoint: XCTestCase {
             lastName: "Bar",
             nickname: "kojimenka",
             avatarUrl: nil,
-            birthDay: "123"
+            birthDay: Date()
         )
         
         let post = PostInfo(
             id: "1234",
             text: nil,
-            avatarUrl: nil,
+            imageUrl: nil,
             lon: nil,
             lat: nil,
             likes: 0,
@@ -53,13 +53,13 @@ final class TestAddNewPostEndpoint: XCTestCase {
             lastName: "Bar",
             nickname: "kojimenka",
             avatarUrl: nil,
-            birthDay: "123"
+            birthDay: Date()
         )
         
         let post = PostInfo(
             id: "1234",
             text: nil,
-            avatarUrl: nil,
+            imageUrl: nil,
             lon: nil,
             lat: nil,
             likes: 0,

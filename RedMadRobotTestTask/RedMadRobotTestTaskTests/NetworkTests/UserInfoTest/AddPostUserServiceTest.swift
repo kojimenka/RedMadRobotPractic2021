@@ -16,7 +16,7 @@ final class AddPostUserServiceTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<AddNewPostEndpoint>!
-    private var userInfoService: UserInfoServiceProtocol!
+    private var userInfoService: FeedServiceProtocol!
     
     private var mockModels = AuthMockModels()
     
@@ -25,7 +25,7 @@ final class AddPostUserServiceTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<AddNewPostEndpoint>()
-        userInfoService = UserInfoService(apiClient: client)
+        userInfoService = FeedService(apiClient: client)
     }
     
     override func tearDown() {
@@ -40,11 +40,13 @@ final class AddPostUserServiceTest: XCTestCase {
         let requestExpectation = expectation(description: #function)
         
         var requestResult: Bool?
-        var requestData: PostInfo?
+        var requestData: RedMadRobotTestTask.PostInfo?
         
         client.result = .success(mockModels.postStub)
         
-        _ = userInfoService.addPost(postInfo: mockModels.postStub) { result in
+        _ = userInfoService.addPost(
+            postInfo: RedMadRobotTestTask.PostInfo(mockModels.postStub)
+        ) { result in
             
             switch result {
             case .success(let data):
@@ -62,7 +64,7 @@ final class AddPostUserServiceTest: XCTestCase {
             }
             
             XCTAssertEqual(requestResult, true)
-            XCTAssertEqual(requestData, self.mockModels.postStub)
+            XCTAssertEqual(requestData, RedMadRobotTestTask.PostInfo(self.mockModels.postStub))
             XCTAssertEqual(self.client.requestCalled, true)
             XCTAssertEqual(self.client.requestCallCount, 1)
         }
@@ -76,7 +78,9 @@ final class AddPostUserServiceTest: XCTestCase {
         
         client.result = .failure(MockWarnings.mockError)
         
-        _ = userInfoService.addPost(postInfo: mockModels.postStub) { result in
+        _ = userInfoService.addPost(
+            postInfo: RedMadRobotTestTask.PostInfo(mockModels.postStub)
+        ) { result in
             
             switch result {
             case .success:

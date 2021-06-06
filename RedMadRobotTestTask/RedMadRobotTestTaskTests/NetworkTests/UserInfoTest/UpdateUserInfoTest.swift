@@ -43,7 +43,9 @@ final class UpdateUserInfoTest: XCTestCase {
         
         client.result = .success(())
         
-        _ = userInfoService.updateUserInfo(user: mockModels.userStub) { result in
+        _ = userInfoService.updateUserInfo(
+            user: RedMadRobotTestTask.UserInformation(mockModels.userStub)
+        ) { result in
             
             switch result {
             case .success:
@@ -73,7 +75,9 @@ final class UpdateUserInfoTest: XCTestCase {
         
         client.result = .failure(MockWarnings.mockError)
         
-        _ = userInfoService.updateUserInfo(user: mockModels.userStub) { result in
+        _ = userInfoService.updateUserInfo(
+            user: RedMadRobotTestTask.UserInformation(mockModels.userStub)
+        ) { result in
             
             switch result {
             case .success:

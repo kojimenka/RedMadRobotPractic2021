@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PostFeedDataSourceViewModelProtocol: AnyObject, UITableViewDataSource {
+protocol PostFeedDataSourceViewModelProtocol: UITableViewDataSource {
     var allPosts: [PostInfo] { get set }
     var delegate: PostFeedDataViewModelDelegate? { get set }
 }

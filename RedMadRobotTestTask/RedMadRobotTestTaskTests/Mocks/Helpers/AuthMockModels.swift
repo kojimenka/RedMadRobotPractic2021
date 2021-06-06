@@ -28,21 +28,21 @@ final class AuthMockModels {
         refreshToken: "FizBuz799"
     )
     
-    public private(set) var userStub = UserInformation(
+    public private(set) var userStub = RedMadRobotTestTaskAPI.UserInformation(
         id: "1234",
         firstName: "Foo",
         lastName: "Bar",
         nickname: "FooBar",
         avatarUrl: nil,
-        birthDay: ""
+        birthDay: Date()
     )
     
     lazy public private(set) var usersStubArray = [userStub]
 
-    lazy public private(set) var postStub = PostInfo(
+    lazy public private(set) var postStub = RedMadRobotTestTaskAPI.PostInfo(
         id: "5678",
         text: "Test FooBar Test",
-        avatarUrl: nil,
+        imageUrl: nil,
         lon: 1234,
         lat: 5678,
         likes: 1000,
