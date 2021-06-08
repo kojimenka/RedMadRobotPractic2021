@@ -142,7 +142,6 @@
 		2CA6AB4F264DB4ED00B52693 /* RegistrationContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA6AB4D264DB4ED00B52693 /* RegistrationContainerVC.xib */; };
 		2CA8A1BA26516468006EEA15 /* SearchFriendsContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA8A1B826516468006EEA15 /* SearchFriendsContainerVC.swift */; };
 		2CA8A1BB26516468006EEA15 /* SearchFriendsContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA8A1B926516468006EEA15 /* SearchFriendsContainerVC.xib */; };
-		2CAE1A4826372E53006A4417 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A4726372E53006A4417 /* UserStorage.swift */; };
 		2CAE1A5F2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; };
 		2CAE1A682637340B006A4417 /* RedMadRobotTestTaskAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CAE1A6B2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; };
@@ -206,6 +205,7 @@
 		2CFF9F442651771000AFA817 /* FoundedFriendDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9F432651771000AFA817 /* FoundedFriendDataSource.swift */; };
 		70CD53DCDDD56387925AFDE3 /* Pods_RedMadRobotTestTaskAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */; };
 		7111BBDF0A689192F1CC5A57 /* Pods_RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */; };
+		9B8694AB266F7C5000E18195 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8694AA266F7C5000E18195 /* AppNavigationController.swift */; };
 		D926035119ABF5AEBBECDCCB /* Pods_RedMadRobotTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -394,7 +394,6 @@
 		2CA6AB4D264DB4ED00B52693 /* RegistrationContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationContainerVC.xib; sourceTree = "<group>"; };
 		2CA8A1B826516468006EEA15 /* SearchFriendsContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsContainerVC.swift; sourceTree = "<group>"; };
 		2CA8A1B926516468006EEA15 /* SearchFriendsContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchFriendsContainerVC.xib; sourceTree = "<group>"; };
-		2CAE1A4726372E53006A4417 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedMadRobotTestTaskAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedMadRobotTestTaskAPI.h; sourceTree = "<group>"; };
 		2CAE1A592637340A006A4417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -464,6 +463,7 @@
 		45F1A9BBD0AF2E905F756A66 /* Pods-RedMadRobotTestTaskAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPI/Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6BCB8E0327F84C7A3EF35E /* Pods-RedMadRobotTestTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskTests.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskTests/Pods-RedMadRobotTestTaskTests.release.xcconfig"; sourceTree = "<group>"; };
+		9B8694AA266F7C5000E18195 /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC62DFF9388310FEABBE8F23 /* Pods-RedMadRobotTestTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskTests/Pods-RedMadRobotTestTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF99F708E8D8C1F6AEEE220F /* Pods-RedMadRobotTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTask.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask.debug.xcconfig"; sourceTree = "<group>"; };
@@ -712,12 +712,13 @@
 			path = LoginScreen;
 			sourceTree = "<group>";
 		};
-		2C3B7297262C29A70076DF18 /* AppCoordinator */ = {
+		2C3B7297262C29A70076DF18 /* AppViewController */ = {
 			isa = PBXGroup;
 			children = (
 				2C17F0F4266D3D5200418308 /* AppViewController.swift */,
+				9B8694AA266F7C5000E18195 /* AppNavigationController.swift */,
 			);
-			path = AppCoordinator;
+			path = AppViewController;
 			sourceTree = "<group>";
 		};
 		2C3B72A9262C38AF0076DF18 /* SuccessLoginScreen */ = {
@@ -1062,7 +1063,7 @@
 			isa = PBXGroup;
 			children = (
 				2C7E12B9262B4A4F00CA4073 /* Delegates */,
-				2C3B7297262C29A70076DF18 /* AppCoordinator */,
+				2C3B7297262C29A70076DF18 /* AppViewController */,
 				2C7E12BB262B4A7900CA4073 /* SplashScreen */,
 				2C17F0F6266D3D6700418308 /* LockScreen */,
 				2C3B7291262C29490076DF18 /* RegistrationModule */,
@@ -1313,7 +1314,6 @@
 			isa = PBXGroup;
 			children = (
 				2C17F0F0266D3D2600418308 /* SystemStorage.swift */,
-				2CAE1A4726372E53006A4417 /* UserStorage.swift */,
 			);
 			path = "DB Models";
 			sourceTree = "<group>";
@@ -2298,9 +2298,9 @@
 				2CFE538B2648895600D75EF7 /* FeedModuleCoordinator.swift in Sources */,
 				2CF935202645BC0100F51243 /* PostsFeedVC.swift in Sources */,
 				2C0343D526472B2600CF9F87 /* RegistrationFabric.swift in Sources */,
+				9B8694AB266F7C5000E18195 /* AppNavigationController.swift in Sources */,
 				2C9FCD85265AFBCD008EF433 /* SurnameValidator.swift in Sources */,
 				2CBF51BD2638DD9600B99042 /* UserInfoServiceProtocol.swift in Sources */,
-				2CAE1A4826372E53006A4417 /* UserStorage.swift in Sources */,
 				2C8A73BA262DD67700A68761 /* SignUpSecondVC.swift in Sources */,
 				2C3909C12639E44100A81C6E /* ApiService.swift in Sources */,
 				2C7E12B1262B47DA00CA4073 /* UIViewController+Extension.swift in Sources */,

@@ -33,7 +33,7 @@ final class ServiceLayer {
     
     // DataBase
     
-    lazy public var userStorage: UserStorage = UserDefaultsUserStorage()
+//    lazy public var userStorage: UserStorage = UserDefaultsUserStorage()
     
     lazy public private(set) var keychainManager: KeychainManager = KeychainManagerImpl()
     

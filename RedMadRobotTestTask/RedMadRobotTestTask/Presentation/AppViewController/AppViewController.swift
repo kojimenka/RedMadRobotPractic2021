@@ -26,7 +26,7 @@ final class AppViewController: UIViewController {
         delegate: self
     )
     
-    private let appTabBarController = AppTabBarController()
+    lazy private var appTabBarController = AppTabBarController(appTabBarDelegate: self)
     
     lazy private var lockScreen = LockScreenVC(delegate: self)
 
@@ -109,35 +109,15 @@ extension AppViewController: LockScreenDelegate {
     
 }
 
-final class AppNavigationController: UINavigationController {
+// MARK: - AppTabBar Delegate
+
+extension AppViewController: AppTabBarControllerDelegate {
     
-    // MARK: - Life cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupNavBar()
-    }
-    
-    // MARK: - Private Methods
-    
-    private func setupNavBar() {
-        let font = R.font.ibmPlexSans(size: 17) ?? UIFont.systemFont(ofSize: 17, weight: .regular)
-        let color = UIColor(hexString: "#DBE3F5")
+    func logoutFromMain() {
+        try? keychainManager.deleteAllEntries()
         
-        let attributes = [
-            NSAttributedString.Key.font: font,
-            NSAttributedString.Key.foregroundColor: UIColor.black
-        ]
-        
-        navigationBar.titleTextAttributes = attributes
-        navigationItem.title = title
-        
-        // Remove title from back button in navBar
-        navigationBar.topItem?.title = ""
-        
-        navigationBar.tintColor = color
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
+        registrationCoordinator.start()
+        changeChildWithAnimation(newChild: registrationCoordinator.navigationController)
     }
     
 }

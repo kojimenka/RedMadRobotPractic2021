@@ -9,16 +9,16 @@ import UIKit
 
 protocol ProfileModuleScreenFabricProtocol {
     func createProfileScreen(
-        outputDelegate: ProfileScreenOutputDelegate?
+        coordinator: ProfileModuleCoordinator
     ) -> UIViewController
 }
 
 struct ProfileModuleScreenFabric: ProfileModuleScreenFabricProtocol {
     
     public func createProfileScreen(
-        outputDelegate: ProfileScreenOutputDelegate?
+        coordinator: ProfileModuleCoordinator
     ) -> UIViewController {
-        return ProfileScreenContainerVC(outputSubscriber: outputDelegate)
+        return ProfileScreenContainerVC(coordinator: coordinator)
     }
     
 }
