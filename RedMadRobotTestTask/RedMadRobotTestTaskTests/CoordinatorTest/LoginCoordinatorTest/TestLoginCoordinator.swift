@@ -13,13 +13,16 @@ final class TestLoginCoordinator: XCTestCase {
     
     // MARK: - Properties
     
-    private var loginCoordinator: LoginCoordinator!
+    private var loginCoordinator: RegistrationCoordinator!
     
     // MARK: - XCTest
     
     override func setUp() {
         super.setUp()
-        loginCoordinator = LoginCoordinator(navigationController: UINavigationController())
+        loginCoordinator = RegistrationCoordinator(
+            navigationController: UINavigationController(),
+            delegate: nil
+        )
     }
 
     override func tearDown() {
@@ -43,7 +46,7 @@ final class TestLoginCoordinator: XCTestCase {
         let testExpectation = expectation(description: #function)
         
         loginCoordinator.start()
-        loginCoordinator.pushLoginScreen(subscriber: nil)
+        loginCoordinator.pushLoginScreen(delegate: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             testExpectation.fulfill()
@@ -76,7 +79,7 @@ final class TestLoginCoordinator: XCTestCase {
         let testExpectation = expectation(description: #function)
         
         loginCoordinator.start()
-        loginCoordinator.pushLoginScreen(subscriber: nil)
+        loginCoordinator.pushLoginScreen(delegate: nil)
         loginCoordinator.pushSignIn(subscriber: nil)
         loginCoordinator.pushSignUpFromSignIn(subscriber: nil)
         
@@ -94,7 +97,7 @@ final class TestLoginCoordinator: XCTestCase {
         let testExpectation = expectation(description: #function)
         
         loginCoordinator.start()
-        loginCoordinator.pushLoginScreen(subscriber: nil)
+        loginCoordinator.pushLoginScreen(delegate: nil)
         loginCoordinator.pushSignIn(subscriber: nil)
         loginCoordinator.pushSignUpFromSignIn(subscriber: nil)
         loginCoordinator.pushSignInFromSignUp(subscriber: nil)
@@ -113,7 +116,7 @@ final class TestLoginCoordinator: XCTestCase {
         let testExpectation = expectation(description: #function)
 
         loginCoordinator.start()
-        loginCoordinator.pushLoginScreen(subscriber: nil)
+        loginCoordinator.pushLoginScreen(delegate: nil)
         loginCoordinator.pushSignIn(subscriber: nil)
         loginCoordinator.pushSuccessRegistration(subscriber: nil)
         
@@ -134,7 +137,7 @@ final class TestLoginCoordinator: XCTestCase {
         let testExpectation = expectation(description: #function)
 
         loginCoordinator.start()
-        loginCoordinator.pushLoginScreen(subscriber: nil)
+        loginCoordinator.pushLoginScreen(delegate: nil)
         loginCoordinator.pushSignUp(subscriber: nil)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

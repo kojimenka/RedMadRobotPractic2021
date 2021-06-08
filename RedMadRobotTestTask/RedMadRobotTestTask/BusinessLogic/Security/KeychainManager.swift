@@ -8,7 +8,7 @@
 import Foundation
 
 /// Enum со всеми ключами для Keychain
-enum KeychainKeys: String, CaseIterable {
+public enum KeychainKeys: String, CaseIterable {
     case password
     case refreshToken
 }
@@ -27,7 +27,7 @@ enum KeychainErrors: Error {
     case failureDeleteEntry
 }
 
-protocol KeychainManager {
+public protocol KeychainManager {
     
     func saveRefreshToken(tokenData: Data) throws
     func getRefreshToken() throws -> String
@@ -63,7 +63,7 @@ public final class KeychainManagerImpl: KeychainManager {
     
     /// Метод для сохранения пароля. Происходит проверка, существует ли пароль в Keychain, если существует – мы его обновляем, если нет - создаем пароль в Keychain
     /// - Parameter data: Пароль который нужно сохранить, должен приходить в формате Data. Это удобно если мы захотим  пароль как-то обезопасить с помощью шифрования
-    func savePassword(data: Data) throws {
+    public func savePassword(data: Data) throws {
         do {
             try passwordService.updatePassword(data: data)
         } catch let error {
@@ -75,7 +75,7 @@ public final class KeychainManagerImpl: KeychainManager {
     
     /// Метод получения пароля
     /// - Returns: Возможно пароль был сохранен с каким-то шифрованием, и его необходимо декодировать, поэтому возвращаем Data
-    func getPassword() throws -> Data {
+    public func getPassword() throws -> Data {
         return try passwordService.getPassword()
     }
     
@@ -83,7 +83,7 @@ public final class KeychainManagerImpl: KeychainManager {
     
     /// Метод для получения токена.
     /// - Returns: Для удобства возвращаем всегда строку, у нас нет необходимости возвращать токен в сыром Data формате
-    func getRefreshToken() throws -> String {
+    public func getRefreshToken() throws -> String {
         let passwordData = try passwordService.getPassword()
         let tokenData = try refreshTokenService.getRefreshToken(password: passwordData)
         
@@ -95,7 +95,7 @@ public final class KeychainManagerImpl: KeychainManager {
     }
     
     /// Метод для сохранения токена. Происходит проверка, существует ли токен в Keychain, если существует – мы его обновляем, если нет - создаем токен в Keychain
-    func saveRefreshToken(tokenData: Data) throws {
+    public func saveRefreshToken(tokenData: Data) throws {
         do {
             try updateRefreshToken(tokenData: tokenData)
         } catch let error {
@@ -109,7 +109,7 @@ public final class KeychainManagerImpl: KeychainManager {
     
     /// Метод для удаление конретной Entry в Keychain
     /// - Parameter key: передаем ключ Entry которую нужно удалить
-    func deleteEntry(key: KeychainKeys) throws {
+    public func deleteEntry(key: KeychainKeys) throws {
         let query = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key.rawValue
@@ -123,7 +123,7 @@ public final class KeychainManagerImpl: KeychainManager {
     }
     
     /// Метод для удаления всех Entry в Keychain
-    func deleteAllEntries() throws {
+    public func deleteAllEntries() throws {
         try KeychainKeys.allCases.forEach { try deleteEntry(key: $0) }
     }
     

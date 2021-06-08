@@ -25,7 +25,6 @@ final class SignUpContainerVC: UIViewController {
     
     // MARK: - Private Properties
     
-    private let navBarViewModel: SetupNavBarViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
     private let viewViewModel = SignUpContainerViewModel()
     
@@ -43,11 +42,9 @@ final class SignUpContainerVC: UIViewController {
     
     init(
         subscriber: SignUpContainerDelegate?,
-        viewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
         checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
     ) {
         self.delegate = subscriber
-        self.navBarViewModel = viewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -107,11 +104,7 @@ final class SignUpContainerVC: UIViewController {
     
     private func navBarSetup() {
         navigationController?.navigationBar.isHidden = false
-        navBarViewModel?.customizeNavBar(
-            navigationBar: navigationController?.navigationBar,
-            navigationItem: navigationItem,
-            title: R.string.localizable.signUpNavBarTitle()
-        )
+        title = R.string.localizable.signUpNavBarTitle()
     }
     
     private func initialSetup() {

@@ -9,7 +9,7 @@ import UIKit
 
 protocol RegistrationFabricProtocol {
     func createLoginScreen(
-        subscriber: LoginScreenDelegate?
+        delegate: LoginScreenDelegate?
     ) -> UIViewController
     
     func createSignInScreen(
@@ -28,9 +28,9 @@ protocol RegistrationFabricProtocol {
 struct RegistrationFabric: RegistrationFabricProtocol {
     
     public func createLoginScreen(
-        subscriber: LoginScreenDelegate?
+        delegate: LoginScreenDelegate?
     ) -> UIViewController {
-        return LoginScreenVC(subscriber: subscriber)
+        return LoginScreenVC(delegate: delegate)
     }
     
     public func createSignInScreen(

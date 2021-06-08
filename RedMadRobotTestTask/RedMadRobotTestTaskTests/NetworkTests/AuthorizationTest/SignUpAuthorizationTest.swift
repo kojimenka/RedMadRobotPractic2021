@@ -27,7 +27,11 @@ final class SignUpAuthorizationTest: XCTestCase {
         super.setUp()
         client = MockClient<UserRegistrationEndpoint>()
         storage = MockStorage()
-        authorizationService = AuthorizationServices(apiClient: client, storage: storage)
+        authorizationService = AuthorizationServices(
+            apiClient: client,
+            tokenManager: MockTokenManager(),
+            keychainManager: MockKeychainManager()
+        )
     }
     
     override func tearDown() {

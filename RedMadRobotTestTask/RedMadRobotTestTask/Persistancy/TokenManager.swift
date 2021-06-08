@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TokenManager {
+public protocol TokenManager {
     var accessToken: String? { get set }
 }
 

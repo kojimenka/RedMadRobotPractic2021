@@ -11,8 +11,13 @@ final class AppTabBarController: UITabBarController {
     
     // MARK: - Properties
     
-    private let feedCoordinator = FeedModuleCoordinator(navigationController: UINavigationController())
-    private let profileScreenVC = ProfileModuleCoordinator(navigationController: UINavigationController())
+    private let feedCoordinator = FeedModuleCoordinator(
+        navigationController: AppNavigationController()
+    )
+    
+    private let profileScreenVC = ProfileModuleCoordinator(
+        navigationController: AppNavigationController()
+    )
     
     // MARK: - Life Cycle
     

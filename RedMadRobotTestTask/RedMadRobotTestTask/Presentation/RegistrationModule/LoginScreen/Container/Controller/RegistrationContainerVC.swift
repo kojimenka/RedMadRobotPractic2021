@@ -11,7 +11,7 @@ final class RegistrationContainerVC: UIViewController {
     
     // MARK: - Private Properties
     
-    weak private var coordinator: LoginCoordinator?
+    weak private var coordinator: RegistrationCoordinator?
     
     private var requestViewModel: RegistrationContainerRequestViewModelProtocol
     private var keychainManager: KeychainManager
@@ -23,7 +23,7 @@ final class RegistrationContainerVC: UIViewController {
     init(
         requestViewModel: RegistrationContainerRequestViewModelProtocol = RegistrationContainerRequestViewModel(),
         keychainManager: KeychainManager = KeychainManagerImpl(),
-        coordinator: LoginCoordinator
+        coordinator: RegistrationCoordinator
     ) {
         self.keychainManager = keychainManager
         self.requestViewModel = requestViewModel
@@ -45,7 +45,7 @@ final class RegistrationContainerVC: UIViewController {
     // MARK: - Private Methods
     
     private func setFirstScreen() {
-        coordinator?.pushLoginScreen(subscriber: self)
+        coordinator?.pushLoginScreen(delegate: self)
     }
 
 }

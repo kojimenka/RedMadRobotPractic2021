@@ -80,6 +80,7 @@ final class LockScreenVC: UIViewController {
                 if realPassword == passwordData {
                     self.delegate?.showAppModule()
                 } else {
+                    //TODO: - Alert с ошибкой 
                     print("Failure")
                 }
             } catch let error {

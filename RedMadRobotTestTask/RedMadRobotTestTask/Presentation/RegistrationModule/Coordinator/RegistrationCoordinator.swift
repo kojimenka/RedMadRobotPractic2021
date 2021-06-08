@@ -11,7 +11,7 @@ protocol LoginCoordinatorDelegate: AnyObject {
     func endRegistrationFlow(token: AuthTokens)
 }
 
-final class LoginCoordinator: Coordinator {
+final class RegistrationCoordinator: Coordinator {
     
     // MARK: - Public properties
     
@@ -45,8 +45,8 @@ final class LoginCoordinator: Coordinator {
     
     // MARK: - Public Methods
     
-    public func pushLoginScreen(subscriber: LoginScreenDelegate?) {
-        let controller = screenFabric.createLoginScreen(subscriber: subscriber)
+    public func pushLoginScreen(delegate: LoginScreenDelegate?) {
+        let controller = screenFabric.createLoginScreen(delegate: delegate)
         pushController(controller: controller, animated: false)
     }
     
@@ -66,6 +66,7 @@ final class LoginCoordinator: Coordinator {
     }
     
     func pushSignInFromSignUp(subscriber: SignInDelegate?) {
+        /// Проверяем нет ли в стеке нужного контроллера, помогает избежать зациклиново показа 
         for controller in navigationController.viewControllers where controller is SignInVC {
             navigationController.popToViewController(controller, animated: true)
             return

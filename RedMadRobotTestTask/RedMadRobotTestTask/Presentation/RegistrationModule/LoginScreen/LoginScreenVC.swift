@@ -20,8 +20,8 @@ final class LoginScreenVC: UIViewController {
     
     // MARK: - Initializers
     
-    init(subscriber: LoginScreenDelegate?) {
-        self.delegate = subscriber
+    init(delegate: LoginScreenDelegate?) {
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
     

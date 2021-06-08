@@ -9,6 +9,8 @@ import Apexy
 
 import Foundation
 
+import RedMadRobotTestTask
+
 final class MockClient<E: Endpoint>: Client {
     
     // MARK: - Public Properties

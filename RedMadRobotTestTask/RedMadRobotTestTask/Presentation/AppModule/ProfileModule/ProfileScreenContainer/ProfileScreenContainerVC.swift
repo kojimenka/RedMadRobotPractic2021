@@ -95,6 +95,7 @@ final class ProfileScreenContainerVC: UIViewController {
             width: view.frame.width * 3,
             height: contentScrollView.safeAreaLayoutGuide.layoutFrame.height
         )
+        title = "..."
     }
     
     private func setChilds() {

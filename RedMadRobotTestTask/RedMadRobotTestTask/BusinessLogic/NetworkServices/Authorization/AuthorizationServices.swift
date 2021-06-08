@@ -134,11 +134,6 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
                     return
                 }
                 try? self.keychainManager.saveRefreshToken(tokenData: tokenData)
-                
-                print("DEBUG", self.tokenManager.accessToken,
-                      try? self.keychainManager.getRefreshToken(),
-                      token)
-                
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error.unwrapAFError()))
