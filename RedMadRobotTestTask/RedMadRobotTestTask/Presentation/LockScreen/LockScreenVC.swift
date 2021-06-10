@@ -108,7 +108,7 @@ final class LockScreenVC: UIViewController {
         laContext.evaluateAccessControl(
             KeychainManagerImpl.getBioSecAccessControl(),
             operation: .useItem,
-            localizedReason: "Биометрия для авторизации") { [weak self] res, error in
+            localizedReason: "Использовать Face ID для входа в приложение?") { [weak self] res, error in
             guard let self = self else { return }
             if res {
                 do {
@@ -141,7 +141,7 @@ final class LockScreenVC: UIViewController {
     private func presentBiometryAlert(passwordData: Data) {
         if case .lockInRegistration = currentState {
             let alertController = UIAlertController.createAlertWithTwoButtons(
-                alertText: "Использовать биометрию для пароля",
+                alertText: "Использовать Face ID для входа в приложение?",
                 confirmButtonTitle: "Да",
                 cancelButtonTitle: "Нет") { [weak self] isUserConfirm in
                 guard let self = self else { return }
