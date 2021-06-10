@@ -7,14 +7,16 @@
 
 import Foundation
 
-public protocol TokenManager {
+public protocol DataInRamManager {
     var accessToken: String? { get set }
+    var password: Data? { get set }
 }
 
-final class TokenManagerImpl: TokenManager {
+final class DataInRamManagerImpl: DataInRamManager {
     
     // MARK: - Public Properties
     
     public var accessToken: String?
+    public var password: Data?
     
 }

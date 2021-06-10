@@ -25,8 +25,7 @@
 		2C17F0ED266D3CF700418308 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0EA266D3CF700418308 /* KeychainManager.swift */; };
 		2C17F0EE266D3CF700418308 /* PasswordKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0EB266D3CF700418308 /* PasswordKeychainService.swift */; };
 		2C17F0EF266D3CF700418308 /* RefreshTokenKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0EC266D3CF700418308 /* RefreshTokenKeychainService.swift */; };
-		2C17F0F1266D3D2600418308 /* SystemStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0F0266D3D2600418308 /* SystemStorage.swift */; };
-		2C17F0F3266D3D2C00418308 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0F2266D3D2C00418308 /* TokenManager.swift */; };
+		2C17F0F3266D3D2C00418308 /* DataInRamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0F2266D3D2C00418308 /* DataInRamManager.swift */; };
 		2C17F0F5266D3D5200418308 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0F4266D3D5200418308 /* AppViewController.swift */; };
 		2C17F0F9266D3D6700418308 /* LockScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C17F0F7266D3D6700418308 /* LockScreenVC.xib */; };
 		2C17F0FA266D3D6700418308 /* LockScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0F8266D3D6700418308 /* LockScreenVC.swift */; };
@@ -274,8 +273,7 @@
 		2C17F0EA266D3CF700418308 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		2C17F0EB266D3CF700418308 /* PasswordKeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordKeychainService.swift; sourceTree = "<group>"; };
 		2C17F0EC266D3CF700418308 /* RefreshTokenKeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTokenKeychainService.swift; sourceTree = "<group>"; };
-		2C17F0F0266D3D2600418308 /* SystemStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemStorage.swift; sourceTree = "<group>"; };
-		2C17F0F2266D3D2C00418308 /* TokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		2C17F0F2266D3D2C00418308 /* DataInRamManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInRamManager.swift; sourceTree = "<group>"; };
 		2C17F0F4266D3D5200418308 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		2C17F0F7266D3D6700418308 /* LockScreenVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LockScreenVC.xib; sourceTree = "<group>"; };
 		2C17F0F8266D3D6700418308 /* LockScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenVC.swift; sourceTree = "<group>"; };
@@ -1304,18 +1302,9 @@
 		2CAE1A4526372DF3006A4417 /* Persistancy */ = {
 			isa = PBXGroup;
 			children = (
-				2C17F0F2266D3D2C00418308 /* TokenManager.swift */,
-				2CAE1A4626372E32006A4417 /* DB Models */,
+				2C17F0F2266D3D2C00418308 /* DataInRamManager.swift */,
 			);
 			path = Persistancy;
-			sourceTree = "<group>";
-		};
-		2CAE1A4626372E32006A4417 /* DB Models */ = {
-			isa = PBXGroup;
-			children = (
-				2C17F0F0266D3D2600418308 /* SystemStorage.swift */,
-			);
-			path = "DB Models";
 			sourceTree = "<group>";
 		};
 		2CAE1A572637340A006A4417 /* RedMadRobotTestTaskAPI */ = {
@@ -2292,7 +2281,7 @@
 				2C127539264FF34400AACE6A /* SignInRegistrationViewModel.swift in Sources */,
 				2CF935372645C63B00F51243 /* ChangeProfileCategoryVC.swift in Sources */,
 				2CA6AB4E264DB4ED00B52693 /* RegistrationContainerVC.swift in Sources */,
-				2C17F0F3266D3D2C00418308 /* TokenManager.swift in Sources */,
+				2C17F0F3266D3D2C00418308 /* DataInRamManager.swift in Sources */,
 				2CC884FE263756A300375AF8 /* UserInfoService.swift in Sources */,
 				2C8A73B3262DD62A00A68761 /* SignUpFirstVC.swift in Sources */,
 				2CFE538B2648895600D75EF7 /* FeedModuleCoordinator.swift in Sources */,
@@ -2363,7 +2352,6 @@
 				2C813C782650685B00E7E49F /* UserInformation.swift in Sources */,
 				2C034411264859CC00CF9F87 /* CoordinatorNavigationController.swift in Sources */,
 				2CDD2454262B3E5400501E77 /* AppDelegate.swift in Sources */,
-				2C17F0F1266D3D2600418308 /* SystemStorage.swift in Sources */,
 				2C813C5C265002A900E7E49F /* SecondSignUpRegistrationViewModel.swift in Sources */,
 				2C7E12DC262B4F8300CA4073 /* ColorPalette.swift in Sources */,
 				2C5F9EB426516EBD0053551D /* SearchFriendsRequestViewModel.swift in Sources */,

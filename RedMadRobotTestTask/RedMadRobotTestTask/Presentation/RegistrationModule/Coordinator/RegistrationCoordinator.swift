@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol LoginCoordinatorDelegate: AnyObject {
-    func endRegistrationFlow(token: AuthTokens)
-}
-
 final class RegistrationCoordinator: Coordinator {
     
     // MARK: - Public properties
@@ -21,27 +17,20 @@ final class RegistrationCoordinator: Coordinator {
     // MARK: - Private properties
     
     private let screenFabric: RegistrationFabricProtocol
-    weak private var delegate: LoginCoordinatorDelegate?
     
     // MARK: - Init
     
     init(
         navigationController: UINavigationController,
-        delegate: LoginCoordinatorDelegate?,
         screenFabric: RegistrationFabricProtocol = RegistrationFabric()
     ) {
         self.screenFabric = screenFabric
-        self.delegate = delegate
         self.navigationController = navigationController
     }
     
     // MARK: - Coordinator
     
-    func start() {
-        let controller = RegistrationContainerVC(coordinator: self)
-        pushController(controller: controller, animated: false)
-        setupNavBar()
-    }
+    func start() {}
     
     // MARK: - Public Methods
     
@@ -60,13 +49,18 @@ final class RegistrationCoordinator: Coordinator {
         pushController(controller: controller, animated: true)
     }
     
+    func pushLockScreen(delegate: LockScreenDelegate, token: AuthTokens) {
+        let controller = LockScreenVC(currentState: .lockInRegistration(token: token), delegate: delegate)
+        pushController(controller: controller, animated: true)
+    }
+    
     func pushSuccessRegistration(subscriber: SuccessLoginScreenDelegate?) {
         let controller = screenFabric.createSuccessLoginScreen(subscriber: subscriber)
         pushController(controller: controller, animated: true)
     }
     
     func pushSignInFromSignUp(subscriber: SignInDelegate?) {
-        /// Проверяем нет ли в стеке нужного контроллера, помогает избежать зациклиново показа 
+        // Проверяем нет ли в стеке нужного контроллера, помогает избежать зациклиново показа
         for controller in navigationController.viewControllers where controller is SignInVC {
             navigationController.popToViewController(controller, animated: true)
             return
@@ -86,10 +80,6 @@ final class RegistrationCoordinator: Coordinator {
         pushController(controller: controller, animated: true)
     }
     
-    func presentAppModule(token: AuthTokens) {
-        delegate?.endRegistrationFlow(token: token)
-    }
-    
     func presentLoader(stopLoading: @escaping (() -> Void)) {
         let loader = LoaderVC()
         loader.modalPresentationStyle = .overCurrentContext
@@ -100,14 +90,6 @@ final class RegistrationCoordinator: Coordinator {
         }
         
         presentController(controller: loader, animated: false)
-    }
-    
-    // MARK: - Private Methods
-    
-    private func setupNavBar() {
-        navigationController.navigationBar.isHidden = true
-        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController.navigationBar.shadowImage = UIImage()
     }
     
 }

@@ -16,7 +16,7 @@ final class MockStorage: UserStorage {
     
 }
 
-final class MockTokenManager: TokenManager {
+final class MockTokenManager: DataInRamManager {
     
     // MARK: - Public Properties
     

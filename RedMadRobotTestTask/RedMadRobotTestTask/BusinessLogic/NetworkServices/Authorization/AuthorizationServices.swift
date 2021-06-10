@@ -37,18 +37,18 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
     // MARK: - Private Properties
     
     private let apiClient: Client
-    private var tokenManager: TokenManager
+    private var dataInRamManager: DataInRamManager
     private let keychainManager: KeychainManager
     
     // MARK: - Init
     
     public init(
         apiClient: Client,
-        tokenManager: TokenManager,
+        tokenManager: DataInRamManager,
         keychainManager: KeychainManager
     ) {
         self.apiClient = apiClient
-        self.tokenManager = tokenManager
+        self.dataInRamManager = tokenManager
         self.keychainManager = keychainManager
         super.init()
     }
@@ -62,7 +62,7 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
         return apiClient.request(endPoint) { [weak self] _ in
             guard let self = self else { return }
             
-            self.tokenManager.accessToken = nil
+            self.dataInRamManager.accessToken = nil
             try? self.keychainManager.deleteEntry(key: .refreshToken)
             
             completion()
@@ -84,7 +84,7 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
                     completion(.failure(KeychainErrors.failureCastEntry))
                 }
             case .failure(let error):
-                self.tokenManager.accessToken = nil
+                self.dataInRamManager.accessToken = nil
                 try? self.keychainManager.deleteEntry(key: .refreshToken)
                 completion(.failure(error.unwrapAFError()))
             }
@@ -107,7 +107,7 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
                     completion(.failure(KeychainErrors.failureCastEntry))
                 }
             case .failure(let error):
-                self.tokenManager.accessToken = nil
+                self.dataInRamManager.accessToken = nil
                 try? self.keychainManager.deleteEntry(key: .refreshToken)
                 completion(.failure(error.unwrapAFError()))
             }
@@ -117,8 +117,10 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
     public func refreshToken(
         completion: @escaping (Result<Void, Error>) -> Void)
      -> Progress {
-        
-        guard let refreshToken = try? keychainManager.getRefreshToken() else {
+    
+        guard let refreshToken = try? keychainManager.getRefreshToken(
+                passwordData: dataInRamManager.password ?? Data()
+        ) else {
             completion(.failure(KeychainErrors.entryNotExist))
             return Progress()
         }
@@ -128,12 +130,18 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
             guard let self = self else { return }
             switch result {
             case .success(let token):
-                self.tokenManager.accessToken = token.accessToken
+                self.dataInRamManager.accessToken = token.accessToken
+                
                 guard let tokenData = token.refreshToken.data(using: .utf8) else {
                     completion(.failure(KeychainErrors.failureUpdateEntry))
                     return
                 }
-                try? self.keychainManager.saveRefreshToken(tokenData: tokenData)
+                
+                try? self.keychainManager.saveRefreshToken(
+                    tokenData: tokenData,
+                    passwordData: self.dataInRamManager.password ?? Data()
+                )
+                
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error.unwrapAFError()))

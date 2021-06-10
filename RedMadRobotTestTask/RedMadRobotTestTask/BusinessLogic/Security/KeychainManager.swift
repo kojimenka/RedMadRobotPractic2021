@@ -7,6 +7,8 @@
 
 import Foundation
 
+import LocalAuthentication
+
 /// Enum со всеми ключами для Keychain
 public enum KeychainKeys: String, CaseIterable {
     case password
@@ -29,14 +31,16 @@ enum KeychainErrors: Error {
 
 public protocol KeychainManager {
     
-    func saveRefreshToken(tokenData: Data) throws
-    func getRefreshToken() throws -> String
+    func saveRefreshToken(tokenData: Data, passwordData: Data) throws
+    func getRefreshToken(passwordData: Data) throws -> String
     
     func savePassword(data: Data) throws
-    func getPassword() throws -> Data
+    func getPassword(laContext: LAContext?) throws -> Data
     
     func deleteEntry(key: KeychainKeys) throws
     func deleteAllEntries() throws
+    
+    func isEntryExist(key: KeychainKeys) -> Bool
 }
 
 /// Фасад связывающий сервис по сохранению пароля и обновлению токена. Каждый из сервисов независим и его можно использовать без фасад.
@@ -64,27 +68,20 @@ public final class KeychainManagerImpl: KeychainManager {
     /// Метод для сохранения пароля. Происходит проверка, существует ли пароль в Keychain, если существует – мы его обновляем, если нет - создаем пароль в Keychain
     /// - Parameter data: Пароль который нужно сохранить, должен приходить в формате Data. Это удобно если мы захотим  пароль как-то обезопасить с помощью шифрования
     public func savePassword(data: Data) throws {
-        do {
-            try passwordService.updatePassword(data: data)
-        } catch let error {
-            if error as? KeychainErrors == KeychainErrors.entryNotExist {
-                try passwordService.createPassword(data: data)
-            }
-        }
+        try passwordService.createPasswordWithBiometry(data: data)
     }
     
     /// Метод получения пароля
     /// - Returns: Возможно пароль был сохранен с каким-то шифрованием, и его необходимо декодировать, поэтому возвращаем Data
-    public func getPassword() throws -> Data {
-        return try passwordService.getPassword()
+    public func getPassword(laContext: LAContext?) throws -> Data {
+        return try passwordService.loadBioProtectedPassword(context: laContext)
     }
     
     // MARK: - Refresh Token Block
     
     /// Метод для получения токена.
     /// - Returns: Для удобства возвращаем всегда строку, у нас нет необходимости возвращать токен в сыром Data формате
-    public func getRefreshToken() throws -> String {
-        let passwordData = try passwordService.getPassword()
+    public func getRefreshToken(passwordData: Data) throws -> String {
         let tokenData = try refreshTokenService.getRefreshToken(password: passwordData)
         
         guard let stringToken = String(data: tokenData, encoding: .utf8) else {
@@ -95,12 +92,12 @@ public final class KeychainManagerImpl: KeychainManager {
     }
     
     /// Метод для сохранения токена. Происходит проверка, существует ли токен в Keychain, если существует – мы его обновляем, если нет - создаем токен в Keychain
-    public func saveRefreshToken(tokenData: Data) throws {
+    public func saveRefreshToken(tokenData: Data, passwordData: Data) throws {
         do {
-            try updateRefreshToken(tokenData: tokenData)
+            try refreshTokenService.updateToken(tokenData: tokenData, password: passwordData)
         } catch let error {
             if error as? KeychainErrors == KeychainErrors.entryNotExist {
-                try createRefreshToken(tokenData: tokenData)
+                try refreshTokenService.createToken(tokenData: tokenData, password: passwordData)
             }
         }
     }
@@ -122,21 +119,47 @@ public final class KeychainManagerImpl: KeychainManager {
         }
     }
     
+    public func isEntryExist(key: KeychainKeys) -> Bool {
+        let query = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: key.rawValue,
+            kSecReturnData as String: kCFBooleanTrue!,
+            kSecMatchLimit as String: kSecMatchLimitOne,
+            kSecUseAuthenticationUI as String: kSecUseAuthenticationUIFail] as CFDictionary
+        
+        var dataTypeRef: AnyObject?
+        
+        let status = SecItemCopyMatching(query, &dataTypeRef)
+        
+        // errSecInteractionNotAllowed - for a protected item
+        // errSecAuthFailed - when touch Id is locked
+        return status == noErr || status == errSecInteractionNotAllowed || status == errSecAuthFailed
+    }
+    
     /// Метод для удаления всех Entry в Keychain
     public func deleteAllEntries() throws {
         try KeychainKeys.allCases.forEach { try deleteEntry(key: $0) }
     }
     
-    // MARK: - Private Methods
-    
-    private func createRefreshToken(tokenData: Data) throws {
-        let passwordData = try passwordService.getPassword()
-        try refreshTokenService.createToken(tokenData: tokenData, password: passwordData)
-    }
-    
-    private func updateRefreshToken(tokenData: Data) throws {
-        let passwordData = try passwordService.getPassword()
-        try refreshTokenService.updateToken(tokenData: tokenData, password: passwordData)
+    static func getBioSecAccessControl() -> SecAccessControl {
+        var access: SecAccessControl?
+        var error: Unmanaged<CFError>?
+        
+        if #available(iOS 11.3, *) {
+            access = SecAccessControlCreateWithFlags(
+                nil,
+                kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+                .biometryCurrentSet,
+                &error)
+        } else {
+            access = SecAccessControlCreateWithFlags(
+                nil,
+                kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+                .biometryCurrentSet,
+                &error)
+        }
+        precondition(access != nil, "SecAccessControlCreateWithFlags failed")
+        return access!
     }
     
 }

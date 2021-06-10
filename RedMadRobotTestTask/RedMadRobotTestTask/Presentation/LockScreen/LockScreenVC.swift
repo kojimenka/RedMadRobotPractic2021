@@ -10,8 +10,13 @@ import UIKit
 import LocalAuthentication
 
 protocol LockScreenDelegate: AnyObject {
-    func showRegistrationModule()
-    func showAppModule()
+    func logoutAction()
+    func successAuthentification()
+}
+
+enum LoginScreenState {
+    case lockInRegistration(token: AuthTokens)
+    case lockInMainApp
 }
 
 final class LockScreenVC: UIViewController {
@@ -25,20 +30,23 @@ final class LockScreenVC: UIViewController {
     // MARK: - Private Properties
 
     private let keychainManager: KeychainManager
-    private var systemStorage: SystemStorage
+    private var dataInRamManager: DataInRamManager
+    private var currentState: LoginScreenState
     
     weak private var delegate: LockScreenDelegate?
     
     // MARK: - Init
     
     init(
+        currentState: LoginScreenState,
         delegate: LockScreenDelegate?,
-        keychainManager: KeychainManager = KeychainManagerImpl(),
-        systemStorage: SystemStorage = UserDefaultsSystemStorage()
+        dataInRamManager: DataInRamManager = ServiceLayer.shared.dataInRamManager,
+        keychainManager: KeychainManager = KeychainManagerImpl()
     ) {
+        self.currentState = currentState
         self.delegate = delegate
         self.keychainManager = keychainManager
-        self.systemStorage = systemStorage
+        self.dataInRamManager = dataInRamManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,8 +58,7 @@ final class LockScreenVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presentBiometryAlert()
-        useBiometry()
+        isBiometryNeeded()
     }
     
     override func viewDidLoad() {
@@ -63,75 +70,102 @@ final class LockScreenVC: UIViewController {
     // MARK: - IBActions
     
     @IBAction private func enterButtonAction(_ sender: Any) {
-        let passwordText = passwordTextField.text
-        guard let passwordData = passwordText?.data(using: .utf8) else { return }
         
-        if !systemStorage.isUserSetPassword {
+        guard let password = passwordTextField.text else { return }
+        guard let passwordData = password.data(using: .utf8) else { return }
+
+        if keychainManager.isEntryExist(key: .refreshToken) {
             do {
-                try keychainManager.savePassword(data: passwordData)
-                systemStorage.isUserSetPassword = true
-                delegate?.showAppModule()
-            } catch let error {
-                print(error)
+                let _ = try keychainManager.getRefreshToken(passwordData: passwordData)
+                dataInRamManager.password = passwordData
+                delegate?.successAuthentification()
+            } catch {
+                let alert = UIAlertController.createAlert(alertText: "Неверный пароль")
+                present(alert, animated: true)
             }
         } else {
-            do {
-                let realPassword = try keychainManager.getPassword()
-                if realPassword == passwordData {
-                    self.delegate?.showAppModule()
-                } else {
-                    let alert = UIAlertController.createAlert(alertText: "Неверный пароль")
-                    present(alert, animated: true)
+            
+            if case .lockInRegistration(let token) = currentState {
+                let tokenData = token.refreshToken.data(using: .utf8)!
+
+                do {
+                    try keychainManager.saveRefreshToken(tokenData: tokenData, passwordData: passwordData)
+                    dataInRamManager.password = passwordData
+                    self.presentBiometryAlert(passwordData: passwordData)
+                } catch let error {
+                    let alert = UIAlertController.createAlert(alertText: error.localizedDescription)
+                    self.present(alert, animated: true)
                 }
-            } catch let error {
-                print(error)
             }
+            
         }
-    
     }
     
+    func isBiometryNeeded() {
+        guard keychainManager.isEntryExist(key: .password) else { return }
+        let laContext = LAContext()
+        
+        laContext.evaluateAccessControl(
+            KeychainManagerImpl.getBioSecAccessControl(),
+            operation: .useItem,
+            localizedReason: "Биометрия для авторизации") { [weak self] res, error in
+            guard let self = self else { return }
+            if res {
+                do {
+                    let password = try self.keychainManager.getPassword(laContext: laContext)
+                    self.dataInRamManager.password = password
+                    DispatchQueue.main.async {
+                        self.delegate?.successAuthentification()
+                    }
+                } catch let error {
+                    DispatchQueue.main.async {
+                        self.presentAlertWithError(error)
+                    }
+                }
+            }
+            
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.presentAlertWithError(error)
+                }
+            }
+        }
+    }
+        
     @IBAction private func logoutButton(_ sender: Any) {
-        delegate?.showRegistrationModule()
+        delegate?.logoutAction()
     }
     
     // MARK: - Private Methods
     
-    private func presentBiometryAlert() {
-        if !systemStorage.isUserSetPassword {
+    private func presentBiometryAlert(passwordData: Data) {
+        if case .lockInRegistration = currentState {
             let alertController = UIAlertController.createAlertWithTwoButtons(
                 alertText: "Использовать биометрию для пароля",
                 confirmButtonTitle: "Да",
                 cancelButtonTitle: "Нет") { [weak self] isUserConfirm in
                 guard let self = self else { return }
-                self.systemStorage.isUserAccessBiometry = isUserConfirm
+                
+                if isUserConfirm {
+                    do {
+                        let _ = try self.keychainManager.savePassword(data: passwordData)
+                    } catch let error {
+                        DispatchQueue.main.async {
+                            self.presentAlertWithError(error)
+                        }
+                    }
+                }
+                
+                self.delegate?.successAuthentification()
             }
             
             present(alertController, animated: true)
         }
     }
     
-    private func useBiometry() {
-        if systemStorage.isUserAccessBiometry {
-            let context = LAContext()
-            var error: NSError?
-            
-            if context.canEvaluatePolicy(
-                .deviceOwnerAuthenticationWithBiometrics,
-                error: &error
-            ) {
-                let reason = "Use biometric for easy unlock"
-                
-                context.evaluatePolicy(
-                    .deviceOwnerAuthenticationWithBiometrics,
-                    localizedReason: reason
-                ) { [weak self] result, _ in
-                    guard let self = self else { return }
-                    if result {
-                        self.delegate?.showAppModule()
-                    }
-                }
-            }
-        }
+    private func presentAlertWithError(_ error: Error) {
+        let alert = UIAlertController.createAlert(alertText: error.localizedDescription)
+        self.present(alert, animated: true)
     }
     
     private func setupTextField() {
@@ -140,7 +174,7 @@ final class LockScreenVC: UIViewController {
     }
     
     private func setupLabel() {
-        if !systemStorage.isUserSetPassword {
+        if !keychainManager.isEntryExist(key: .refreshToken) {
             titleLabel.text = "Установите пароль"
         } else {
             titleLabel.text = "Введите пароль"

@@ -72,7 +72,7 @@ public final class FeedService: ApiService, FeedServiceProtocol {
         completion: @escaping (Result<PostInfo, Error>) -> Void)
     -> Progress {
         let endPoint = AddNewPostEndpoint(postInfo: RedMadRobotTestTaskAPI.PostInfo(postInfo),
-                                          token: ServiceLayer.shared.tokenManager.accessToken)
+                                          token: ServiceLayer.shared.dataInRamManager.accessToken)
         return apiClient.request(endPoint) { result in
             switch result {
             case .success(let content):

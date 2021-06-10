@@ -7,81 +7,58 @@
 
 import Foundation
 
+import LocalAuthentication
+
 protocol KeychainPasswordService {
-    func createPassword(data: Data) throws
-    func getPassword() throws -> Data
-    func updatePassword(data: Data) throws
-    func deletePassword()
+    func createPasswordWithBiometry(data: Data) throws
+    func loadBioProtectedPassword(context: LAContext?) throws -> Data
 }
 
 final class KeychainPasswordServiceImpl: KeychainPasswordService {
 
     // MARK: - Public Methods
     
-    public func createPassword(data: Data) throws {
+    public func createPasswordWithBiometry(data: Data) throws {
         let query = [
             kSecClass as String: kSecClassGenericPassword as String,
             kSecAttrAccount as String: KeychainKeys.password.rawValue,
-            kSecValueData as String: data
-        ] as CFDictionary
-
+            kSecAttrAccessControl as String: KeychainManagerImpl.getBioSecAccessControl(),
+            kSecValueData as String: data] as CFDictionary
+        
         let status = SecItemAdd(query, nil)
         
         if status != errSecSuccess {
             throw KeychainErrors.failureCreateEntry
         }
     }
-
-    public func getPassword() throws -> Data {
-        let query = [
+    
+    public func loadBioProtectedPassword(context: LAContext? = nil) throws -> Data {
+        var query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: KeychainKeys.password.rawValue,
             kSecReturnData as String: kCFBooleanTrue!,
-            kSecMatchLimit as String: kSecMatchLimitOne
-        ] as CFDictionary
-
+            kSecAttrAccessControl as String: KeychainManagerImpl.getBioSecAccessControl(),
+            kSecMatchLimit as String: kSecMatchLimitOne ]
+        
+        if let context = context {
+            query[kSecUseAuthenticationContext as String] = context
+            
+            // Prevent system UI from automatically requesting Touc ID/Face ID authentication
+            // just in case someone passes here an LAContext instance without
+            // a prior evaluateAccessControl call
+            query[kSecUseAuthenticationUI as String] = kSecUseAuthenticationUISkip
+        }
+        
+        query[kSecUseOperationPrompt as String] = "Биометрия для авторизации"
+        
         var dataTypeRef: AnyObject?
-
-        let status = SecItemCopyMatching(query, &dataTypeRef)
-
+        
+        let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
+        
         if status == noErr {
-            guard let passwordData = dataTypeRef as? Data else {
-                throw KeychainErrors.failureCastEntry
-            }
-            return passwordData
+            return (dataTypeRef! as! Data)
         } else {
             throw KeychainErrors.failureReadEntry
         }
     }
-
-    public func updatePassword(data: Data) throws {
-        let query = [
-            kSecClass as String: kSecClassGenericPassword as String,
-            kSecAttrAccount as String: KeychainKeys.password.rawValue
-        ] as CFDictionary
-
-        let attributes = [
-            kSecValueData as String: data
-        ] as CFDictionary
-        
-        let status = SecItemUpdate(query, attributes)
-        
-        guard status != errSecItemNotFound else {
-            throw KeychainErrors.entryNotExist
-        }
-        
-        guard status == errSecSuccess else {
-            throw KeychainErrors.failureUpdateEntry
-        }
-    }
-    
-    public func deletePassword() {
-        let query = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: KeychainKeys.password.rawValue
-        ] as CFDictionary
-        
-        SecItemDelete(query)
-    }
-
 }

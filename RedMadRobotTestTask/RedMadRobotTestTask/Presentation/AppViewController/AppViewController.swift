@@ -13,33 +13,24 @@ final class AppViewController: UIViewController {
     
     // --- Services
     
-    private let systemStorage: SystemStorage
     private let keychainManager: KeychainManager
-    private let authServices: AuthorizationServiceProtocol
-    
-    private var authToken: AuthTokens?
+    private var dataInRamManager: DataInRamManager
     
     // --- Childs
     
-    lazy private var registrationCoordinator = RegistrationCoordinator(
-        navigationController: AppNavigationController(),
-        delegate: self
-    )
-    
+    lazy private var registrationContainerVC = RegistrationContainerVC(delegate: self)
     lazy private var appTabBarController = AppTabBarController(appTabBarDelegate: self)
     
-    lazy private var lockScreen = LockScreenVC(delegate: self)
+    lazy private var lockScreen = LockScreenVC(currentState: .lockInMainApp, delegate: self)
 
     // MARK: - Init
     
     init(
-        systemStorage: SystemStorage = UserDefaultsSystemStorage(),
-        keychainManager: KeychainManager = KeychainManagerImpl(),
-        authService: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices
+        dataInRamManager: DataInRamManager = ServiceLayer.shared.dataInRamManager,
+        keychainManager: KeychainManager = ServiceLayer.shared.keychainManager
     ) {
-        self.systemStorage = systemStorage
         self.keychainManager = keychainManager
-        self.authServices = authService
+        self.dataInRamManager = dataInRamManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,28 +48,36 @@ final class AppViewController: UIViewController {
     // MARK: - Private Methods
     
     private func setInitialController() {
-        if (try? keychainManager.getRefreshToken()) != nil && systemStorage.isUserSetPassword {
+        if keychainManager.isEntryExist(key: .refreshToken) {
             addChild(controller: lockScreen, rootView: view)
         } else {
-            registrationCoordinator.start()
-            addChild(controller: registrationCoordinator.navigationController, rootView: view)
+            addChild(controller: registrationContainerVC, rootView: view)
         }
     }
     
     private func showRegistrationFlow() {
-        registrationCoordinator.start()
-        addChild(controller: registrationCoordinator.navigationController, rootView: view)
+        addChild(controller: registrationContainerVC, rootView: view)
+    }
+    
+    private func deleteAllUserData() {
+        try? keychainManager.deleteEntry(key: .password)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            try? self.keychainManager.deleteEntry(key: .refreshToken)
+        }
+        
+        dataInRamManager.accessToken = nil
+        dataInRamManager.password = nil
     }
     
 }
 
 // MARK: - RegistrationFlow Delegate
 
-extension AppViewController: LoginCoordinatorDelegate {
+extension AppViewController: RegistrationContainerVCDelegate {
     
-    func endRegistrationFlow(token: AuthTokens) {
-        self.authToken = token
-        changeChildWithAnimation(newChild: lockScreen)
+    func endRegistrationFlow() {
+        changeChildWithAnimation(newChild: appTabBarController)
     }
 
 }
@@ -87,24 +86,13 @@ extension AppViewController: LoginCoordinatorDelegate {
 
 extension AppViewController: LockScreenDelegate {
     
-    func showRegistrationModule() {
-        registrationCoordinator.start()
-        changeChildWithAnimation(newChild: registrationCoordinator.navigationController)
+    func logoutAction() {
+        deleteAllUserData()
+        changeChildWithAnimation(newChild: registrationContainerVC)
     }
     
-    func showAppModule() {
-        if authToken != nil {
-            guard let tokenData = authToken?.refreshToken.data(using: .utf8) else { return }
-            try? keychainManager.saveRefreshToken(tokenData: tokenData)
-            ServiceLayer.shared.tokenManager.accessToken = authToken?.accessToken
-            self.changeChildWithAnimation(newChild: self.appTabBarController)
-        } else {
-            _ = authServices.refreshToken { [weak self] _ in
-                guard let self = self else { return }
-                self.changeChildWithAnimation(newChild: self.appTabBarController)
-            }
-        }
-        
+    func successAuthentification() {
+        self.changeChildWithAnimation(newChild: appTabBarController)
     }
     
 }
@@ -114,10 +102,9 @@ extension AppViewController: LockScreenDelegate {
 extension AppViewController: AppTabBarControllerDelegate {
     
     func logoutFromMain() {
-        try? keychainManager.deleteAllEntries()
-        
-        registrationCoordinator.start()
-        changeChildWithAnimation(newChild: registrationCoordinator.navigationController)
+        deleteAllUserData()
+        appTabBarController = AppTabBarController(appTabBarDelegate: self)
+        changeChildWithAnimation(newChild: registrationContainerVC)
     }
     
 }

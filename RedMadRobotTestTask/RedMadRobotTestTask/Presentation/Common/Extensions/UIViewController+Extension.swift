@@ -79,14 +79,6 @@ extension UIViewController {
             UIView.AnimationTransition.removeAllSubviews(rootView: view)
             addChild(controller: newChild, rootView: view)
         }
-        
-//        guard children.count > 2 else { return }
-//
-//        for i in (0...children.count - 2).reversed() {
-//            children[i].willMove(toParent: nil)
-//            children[i].view.removeFromSuperview()
-//            children[i].removeFromParent()
-//        }
     }
     
     func removeChild(childController: UIViewController) {
@@ -100,6 +92,16 @@ extension UIViewController {
         addChild(child)
         child.didMove(toParent: self)
         scrollView.addSubview(child.view)
+    }
+}
+
+extension UIViewController {
+    func removeChild() {
+        self.children.forEach {
+            $0.willMove(toParent: nil)
+            $0.view.removeFromSuperview()
+            $0.removeFromParent()
+        }
     }
 }
 

@@ -15,7 +15,7 @@ class UserRequestInterceptor: UserRequestRetrier, RequestInterceptor {
     
     // MARK: - Private Properties
     
-    private let storage: TokenManager
+    private let storage: DataInRamManager
     
     private var accessToken: String {
         return storage.accessToken ?? ""
@@ -25,7 +25,7 @@ class UserRequestInterceptor: UserRequestRetrier, RequestInterceptor {
     
     public init(
         baseURL: URL,
-        storage: TokenManager
+        storage: DataInRamManager
     ) {
         self.baseURL = baseURL
         self.storage = storage

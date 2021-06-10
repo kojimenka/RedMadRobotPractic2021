@@ -11,7 +11,6 @@ protocol KeychainRefreshToken {
     func createToken(tokenData: Data, password: Data) throws
     func getRefreshToken(password: Data) throws -> Data
     func updateToken(tokenData: Data, password: Data) throws
-    func deleteRefreshToken()
 }
 
 enum KeychainRefreshTokenError: Error {
@@ -99,16 +98,6 @@ final class KeychainRefreshTokenImpl: KeychainRefreshToken {
         guard status == errSecSuccess else {
             throw KeychainErrors.failureUpdateEntry
         }
-    }
-    
-    public func deleteRefreshToken() {
-        let query = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: KeychainKeys.refreshToken.rawValue
-        ] as CFDictionary
-        
-        let res = SecItemDelete(query)
-        print(res)
     }
     
     // MARK: - Private Methods
