@@ -14,6 +14,8 @@ struct GlobalFlags {
 }
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
+    // MARK: - Properties
 
     var window: UIWindow?
     
