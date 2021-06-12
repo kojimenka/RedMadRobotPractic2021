@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="IBMPlexSans-Regular.ttf">
+            <string>IBMPlexSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendsListContainerVC" customModule="RedMadRobotTestTask" customModuleProvider="target">
+            <connections>
+                <outlet property="findMoreFriends" destination="oEM-UX-H67" id="QGb-cv-7AJ"/>
+                <outlet property="friendsListContainerView" destination="UcL-oG-8gw" id="26a-kZ-Cfq"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oEM-UX-H67">
+                    <rect key="frame" x="20" y="806" width="394" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="eAN-2r-4bx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="17"/>
+                    <state key="normal" title="Найти ещё друзей">
+                        <color key="titleColor" name="tintOrange"/>
+                    </state>
+                    <connections>
+                        <action selector="findMoreFriendsAction:" destination="-1" eventType="touchUpInside" id="tpU-SX-O8K"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcL-oG-8gw" userLabel="userContainer">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="794"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <constraints>
+                <constraint firstAttribute="bottomMargin" secondItem="oEM-UX-H67" secondAttribute="bottom" id="Fbg-Dy-9hm"/>
+                <constraint firstItem="UcL-oG-8gw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GEO-sC-qeH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UcL-oG-8gw" secondAttribute="trailing" id="H1k-qV-hju"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oEM-UX-H67" secondAttribute="trailing" id="JbW-2k-nDB"/>
+                <constraint firstItem="UcL-oG-8gw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="W6V-B3-Enm"/>
+                <constraint firstItem="oEM-UX-H67" firstAttribute="top" secondItem="UcL-oG-8gw" secondAttribute="bottom" constant="12" id="qw7-Nb-UEs"/>
+                <constraint firstItem="oEM-UX-H67" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="sGi-wP-rPZ"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="87"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="tintOrange">
+            <color red="0.99599999189376831" green="0.2669999897480011" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

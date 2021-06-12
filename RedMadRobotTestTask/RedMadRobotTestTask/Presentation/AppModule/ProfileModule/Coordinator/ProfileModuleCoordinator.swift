@@ -46,4 +46,9 @@ final class ProfileModuleCoordinator: Coordinator {
         delegate?.logoutFromMainModule()
     }
     
+    func pushSearchNewFriends() {
+        let controller = SearchFriendsContainerVC()
+        pushController(controller: controller, animated: true)
+    }
+    
 }

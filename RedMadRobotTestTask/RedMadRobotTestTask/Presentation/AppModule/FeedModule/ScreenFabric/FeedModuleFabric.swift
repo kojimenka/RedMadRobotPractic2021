@@ -28,7 +28,7 @@ struct FeedModuleFabric: FeedModuleFabricProtocol {
     public func createSearchFriendsScreen(
         coordinator: FeedModuleCoordinator?
     ) -> UIViewController {
-        return SearchFriendsContainerVC(coordinator: coordinator)
+        return SearchFriendsContainerVC()
     }
     
 }

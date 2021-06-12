@@ -15,7 +15,6 @@ final class SearchFriendsContainerVC: UIViewController {
     
     // MARK: - Private Properties
     
-    private weak var coordinator: FeedModuleCoordinator?
     private var requestViewModel: SearchFriendsRequestViewModel
     
     lazy private var friendsListVC = FoundedFriendsListVC(subscriber: self)
@@ -24,11 +23,9 @@ final class SearchFriendsContainerVC: UIViewController {
     // MARK: - Init
     
     init(
-        coordinator: FeedModuleCoordinator?,
         requestViewModel: SearchFriendsRequestViewModel = SearchFriendsRequestViewModelImpl()
     ) {
         self.requestViewModel = requestViewModel
-        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,13 +35,6 @@ final class SearchFriendsContainerVC: UIViewController {
     
     // MARK: - UIViewController
     
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        if parent == nil {
-            coordinator?.backToFeedScreen()
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupChilds()

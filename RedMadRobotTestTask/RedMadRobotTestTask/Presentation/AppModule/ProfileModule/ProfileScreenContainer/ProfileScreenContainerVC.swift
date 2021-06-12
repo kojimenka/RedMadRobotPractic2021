@@ -23,6 +23,7 @@ final class ProfileScreenContainerVC: UIViewController {
     
     private let coordinator: ProfileModuleCoordinator
     private var userService: UserInfoServiceProtocol
+    lazy private var listOfFriendsVC = FriendsListContainerVC(delegate: self)
     
     // Constants
     private var isFirstStart = true
@@ -82,6 +83,11 @@ final class ProfileScreenContainerVC: UIViewController {
             guard let self = self else { return }
             self.userInfoContainerTopConstraint.constant = -inset - self.contentInset
         }
+        
+        listOfFriendsVC.changeOffSet = { [weak self] inset in
+            guard let self = self else { return }
+            self.userInfoContainerTopConstraint.constant = -inset - self.contentInset
+        }
     }
     
     private func setupScrollView() {
@@ -92,7 +98,7 @@ final class ProfileScreenContainerVC: UIViewController {
             height: contentScrollView.safeAreaLayoutGuide.layoutFrame.height
         )
         
-        title = "..."
+        self.navigationItem.title = "..."
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Выйти",
@@ -117,9 +123,13 @@ final class ProfileScreenContainerVC: UIViewController {
         
         favoritePostsVC.view.frame = contentScrollView.frame
         favoritePostsVC.view.frame.origin = CGPoint(x: view.frame.width, y: 0)
+        
+        listOfFriendsVC.view.frame = contentScrollView.frame
+        listOfFriendsVC.view.frame.origin = CGPoint(x: view.frame.width * 2, y: 0)
 
         addChildControllerToScrollView(child: userPostsVC, scrollView: contentScrollView)
         addChildControllerToScrollView(child: favoritePostsVC, scrollView: contentScrollView)
+        addChildControllerToScrollView(child: listOfFriendsVC, scrollView: contentScrollView)
         
         setupInsetsInChilds()
     }
@@ -129,6 +139,7 @@ final class ProfileScreenContainerVC: UIViewController {
         
         userPostsVC.setTopInset(userContainerHeight)
         favoritePostsVC.setTopInset(userContainerHeight)
+        listOfFriendsVC.setTopInset(userContainerHeight)
 
         view.bringSubviewToFront(userInfoContainerView)
     }
@@ -182,4 +193,14 @@ extension ProfileScreenContainerVC: ProfileInfoDelegate {
     func editProfileAction() {
         print("edit button action")
     }
+}
+
+// MARK: - FriendsListContainerVCDelegate
+
+extension ProfileScreenContainerVC: FriendsListContainerVCDelegate {
+    
+    func showFindFriendsScreen() {
+        coordinator.pushSearchNewFriends()
+    }
+    
 }
