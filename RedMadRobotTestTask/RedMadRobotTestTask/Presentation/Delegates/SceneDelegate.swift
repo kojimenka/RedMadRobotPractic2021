@@ -16,7 +16,6 @@ struct GlobalFlags {
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var appCoordinator: AppCoordinator?
     
     func scene(
         _ scene: UIScene,
@@ -30,12 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
         
-        let navController = CoordinatorNavigationController()
-        navController.start()
-        
-        appCoordinator = AppCoordinator(navigationController: navController)
-        appCoordinator?.start()
-        window?.rootViewController = appCoordinator?.navigationController
+        window?.rootViewController = AppViewController()
     }
 
 }

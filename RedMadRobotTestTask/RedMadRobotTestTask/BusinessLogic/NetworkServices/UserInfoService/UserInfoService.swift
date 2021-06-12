@@ -59,8 +59,10 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
         user: UserInformation,
         completion: @escaping (Result<Void, Error>) -> Void)
      -> Progress {
-        let endpoint = UpdateUserInfoEndpoint(user: RedMadRobotTestTaskAPI.UserInformation(user),
-                                              token: UserDefaultsUserStorage().accessToken)
+        let endpoint = UpdateUserInfoEndpoint(
+            user: RedMadRobotTestTaskAPI.UserInformation(user),
+            token: ServiceLayer.shared.dataInRamManager.accessToken
+        )
         return apiClient.request(endpoint) { result in
             switch result {
             case .success:

@@ -24,19 +24,16 @@ final class SignInVC: UIViewController {
     
     weak private var delegate: SignInDelegate?
     private let registrationDataViewModel: SignInRegistrationViewModelProtocol
-    private let uiViewModel: SetupNavBarViewModelProtocol?
     private let checkKeyboardViewModel: CheckKeyboardViewModel
     
     // MARK: - Initializers
     
     init(
         subscriber: SignInDelegate?,
-        uiViewModel: SetupNavBarViewModelProtocol = SetupNavBarViewModel(),
         registrationDataViewModel: SignInRegistrationViewModelProtocol = SignInRegistrationViewModel(),
         checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
     ) {
         self.delegate = subscriber
-        self.uiViewModel = uiViewModel
         self.registrationDataViewModel = registrationDataViewModel
         self.checkKeyboardViewModel = checkKeyboardViewModel
         super.init(nibName: nil, bundle: nil)
@@ -72,11 +69,7 @@ final class SignInVC: UIViewController {
     
     private func navBarSetup() {
         navigationController?.navigationBar.isHidden = false
-        uiViewModel?.customizeNavBar(
-            navigationBar: navigationController?.navigationBar,
-            navigationItem: navigationItem,
-            title: R.string.localizable.signInNavBarTitle()
-        )
+        title = R.string.localizable.signInNavBarTitle()
     }
     
     private func setupViews() {

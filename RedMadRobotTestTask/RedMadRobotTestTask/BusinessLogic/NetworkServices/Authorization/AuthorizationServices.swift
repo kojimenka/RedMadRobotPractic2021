@@ -11,18 +11,16 @@ import Alamofire
 
 import RedMadRobotTestTaskAPI
 
-public protocol AuthorizationServiceProtocol {
-    
-    var isAuthorized: Bool { get }
-    
+protocol AuthorizationServiceProtocol {
+        
     func signIn(
         credentials: Credentials,
-        completion: @escaping (Result<Void, Error>) -> Void)
+        completion: @escaping (Result<AuthTokens, Error>) -> Void)
     -> Progress
     
     func signUp(
         credentials: Credentials,
-        completion: @escaping (Result<Void, Error>) -> Void)
+        completion: @escaping (Result<AuthTokens, Error>) -> Void)
     -> Progress
     
     func logout(
@@ -34,24 +32,24 @@ public protocol AuthorizationServiceProtocol {
     -> Progress
 }
 
-public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
+final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
         
-    // MARK: - Public Properties
-
-    public var isAuthorized: Bool {
-        return storage.accessToken != nil
-    }
-    
     // MARK: - Private Properties
     
     private let apiClient: Client
-    private var storage: UserStorage
+    private var dataInRamManager: DataInRamManager
+    private let keychainManager: KeychainManager
     
     // MARK: - Init
     
-    public init(apiClient: Client, storage: UserStorage) {
+    public init(
+        apiClient: Client,
+        tokenManager: DataInRamManager,
+        keychainManager: KeychainManager
+    ) {
         self.apiClient = apiClient
-        self.storage = storage
+        self.dataInRamManager = tokenManager
+        self.keychainManager = keychainManager
         super.init()
     }
     
@@ -64,8 +62,8 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
         return apiClient.request(endPoint) { [weak self] _ in
             guard let self = self else { return }
             
-            self.storage.accessToken = nil
-            self.storage.refreshToken = nil
+            self.dataInRamManager.accessToken = nil
+            try? self.keychainManager.deleteEntry(key: .refreshToken)
             
             completion()
         }
@@ -73,19 +71,21 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
     
     public func signIn(
         credentials: Credentials,
-        completion: @escaping (Result<Void, Error>) -> Void)
+        completion: @escaping (Result<AuthTokens, Error>) -> Void)
     -> Progress {
         let endpoint = UserLoginEndpoint(email: credentials.email, password: credentials.password)
         return apiClient.request(endpoint) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
-                self.storage.accessToken = token?.accessToken
-                self.storage.refreshToken = token?.refreshToken
-                completion(.success(()))
+                if let token = token {
+                    completion(.success(AuthTokens(token)))
+                } else {
+                    completion(.failure(KeychainErrors.failureCastEntry))
+                }
             case .failure(let error):
-                self.storage.accessToken = nil
-                self.storage.refreshToken = nil
+                self.dataInRamManager.accessToken = nil
+                try? self.keychainManager.deleteEntry(key: .refreshToken)
                 completion(.failure(error.unwrapAFError()))
             }
         }
@@ -93,7 +93,7 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
     
     public func signUp(
         credentials: Credentials,
-        completion: @escaping (Result<Void, Error>) -> Void)
+        completion: @escaping (Result<AuthTokens, Error>) -> Void)
     -> Progress {
         let endpoint = UserRegistrationEndpoint(email: credentials.email, password: credentials.password)
         
@@ -101,12 +101,14 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
             guard let self = self else { return }
             switch result {
             case .success(let token):
-                self.storage.accessToken = token?.accessToken
-                self.storage.refreshToken = token?.refreshToken
-                completion(.success(()))
+                if let token = token {
+                    completion(.success(AuthTokens(token)))
+                } else {
+                    completion(.failure(KeychainErrors.failureCastEntry))
+                }
             case .failure(let error):
-                self.storage.accessToken = nil
-                self.storage.refreshToken = nil
+                self.dataInRamManager.accessToken = nil
+                try? self.keychainManager.deleteEntry(key: .refreshToken)
                 completion(.failure(error.unwrapAFError()))
             }
         }
@@ -115,13 +117,31 @@ public final class AuthorizationServices: NSObject, AuthorizationServiceProtocol
     public func refreshToken(
         completion: @escaping (Result<Void, Error>) -> Void)
      -> Progress {
-        let endPoint = RefreshUserTokenEndpoint(token: storage.refreshToken ?? "")
+    
+        guard let refreshToken = try? keychainManager.getRefreshToken(
+                passwordData: dataInRamManager.password ?? Data()
+        ) else {
+            completion(.failure(KeychainErrors.entryNotExist))
+            return Progress()
+        }
+        
+        let endPoint = RefreshUserTokenEndpoint(token: refreshToken)
         return apiClient.request(endPoint) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
-                self.storage.accessToken = token.accessToken
-                self.storage.refreshToken = token.refreshToken
+                self.dataInRamManager.accessToken = token.accessToken
+                
+                guard let tokenData = token.refreshToken.data(using: .utf8) else {
+                    completion(.failure(KeychainErrors.failureUpdateEntry))
+                    return
+                }
+                
+                try? self.keychainManager.saveRefreshToken(
+                    tokenData: tokenData,
+                    passwordData: self.dataInRamManager.password ?? Data()
+                )
+                
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error.unwrapAFError()))

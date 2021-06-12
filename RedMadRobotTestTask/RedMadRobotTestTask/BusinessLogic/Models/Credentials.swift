@@ -8,6 +8,8 @@
 import Foundation
 
 public struct Credentials {
+    
     var email: String = ""
     var password: String = ""
+    
 }

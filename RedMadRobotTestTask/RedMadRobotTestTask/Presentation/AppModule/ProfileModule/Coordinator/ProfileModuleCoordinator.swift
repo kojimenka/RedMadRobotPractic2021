@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ProfileModuleCoordinatorDelegate: AnyObject {
+    func logoutFromMainModule()
+}
+
 final class ProfileModuleCoordinator: Coordinator {
     
     // MARK: - Public properties
@@ -17,13 +21,16 @@ final class ProfileModuleCoordinator: Coordinator {
     // MARK: - Private properties
     
     private let screenFabric: ProfileModuleScreenFabricProtocol
+    weak private var delegate: ProfileModuleCoordinatorDelegate?
     
     // MARK: - Init
     
     init(
+        delegate: ProfileModuleCoordinatorDelegate,
         navigationController: UINavigationController,
         screenFabric: ProfileModuleScreenFabricProtocol = ProfileModuleScreenFabric()
     ) {
+        self.delegate = delegate
         self.navigationController = navigationController
         self.screenFabric = screenFabric
     }
@@ -31,12 +38,12 @@ final class ProfileModuleCoordinator: Coordinator {
     // MARK: - Public Properties
     
     func start() {
-        let controller = screenFabric.createProfileScreen(outputDelegate: self)
+        let controller = screenFabric.createProfileScreen(coordinator: self)
         pushController(controller: controller, animated: false)
     }
     
-}
-
-extension ProfileModuleCoordinator: ProfileScreenOutputDelegate {
-
+    func logoutFromApp() {
+        delegate?.logoutFromMainModule()
+    }
+    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginCoordinator: Coordinator {
+final class RegistrationCoordinator: Coordinator {
     
     // MARK: - Public properties
     
@@ -30,16 +30,12 @@ final class LoginCoordinator: Coordinator {
     
     // MARK: - Coordinator
     
-    func start() {
-        let controller = RegistrationContainerVC(coordinator: self)
-        pushController(controller: controller, animated: false)
-        setupNavBar()
-    }
+    func start() {}
     
     // MARK: - Public Methods
     
-    public func pushLoginScreen(subscriber: LoginScreenDelegate?) {
-        let controller = screenFabric.createLoginScreen(subscriber: subscriber)
+    public func pushLoginScreen(delegate: LoginScreenDelegate?) {
+        let controller = screenFabric.createLoginScreen(delegate: delegate)
         pushController(controller: controller, animated: false)
     }
     
@@ -53,12 +49,18 @@ final class LoginCoordinator: Coordinator {
         pushController(controller: controller, animated: true)
     }
     
+    func pushLockScreen(delegate: LockScreenDelegate, token: AuthTokens) {
+        let controller = LockScreenVC(currentState: .lockInRegistration(token: token), delegate: delegate)
+        pushController(controller: controller, animated: true)
+    }
+    
     func pushSuccessRegistration(subscriber: SuccessLoginScreenDelegate?) {
         let controller = screenFabric.createSuccessLoginScreen(subscriber: subscriber)
         pushController(controller: controller, animated: true)
     }
     
     func pushSignInFromSignUp(subscriber: SignInDelegate?) {
+        // Проверяем нет ли в стеке нужного контроллера, помогает избежать зациклиново показа
         for controller in navigationController.viewControllers where controller is SignInVC {
             navigationController.popToViewController(controller, animated: true)
             return
@@ -78,12 +80,6 @@ final class LoginCoordinator: Coordinator {
         pushController(controller: controller, animated: true)
     }
     
-    func presentAppModule() {
-        let tabBarController = AppTabBarController()
-        tabBarController.modalPresentationStyle = .fullScreen
-        presentController(controller: tabBarController, animated: true)
-    }
-    
     func presentLoader(stopLoading: @escaping (() -> Void)) {
         let loader = LoaderVC()
         loader.modalPresentationStyle = .overCurrentContext
@@ -94,14 +90,6 @@ final class LoginCoordinator: Coordinator {
         }
         
         presentController(controller: loader, animated: false)
-    }
-    
-    // MARK: - Private Methods
-    
-    private func setupNavBar() {
-        navigationController.navigationBar.isHidden = true
-        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController.navigationBar.shadowImage = UIImage()
     }
     
 }

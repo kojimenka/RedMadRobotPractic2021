@@ -25,7 +25,11 @@ final class IsUserAuthorizedTest: XCTestCase {
         super.setUp()
         client = MockClient<LogoutEndpoint>()
         storage = MockStorage()
-        authorizationService = AuthorizationServices(apiClient: client, storage: storage)
+        authorizationService = AuthorizationServices(
+            apiClient: client,
+            tokenManager: MockTokenManager(),
+            keychainManager: MockKeychainManager()
+        )
     }
     
     override func tearDown() {
@@ -35,17 +39,4 @@ final class IsUserAuthorizedTest: XCTestCase {
         authorizationService = nil
     }
     
-    // MARK: - Methods
-    
-    func testSuccessAuthorized() {
-        storage.accessToken = "1234"
-        
-        XCTAssertEqual(authorizationService.isAuthorized, true)
-    }
-    
-    func testFailureAuthorized() {
-        storage.accessToken = nil
-        
-        XCTAssertEqual(authorizationService.isAuthorized, false)
-    }
 }

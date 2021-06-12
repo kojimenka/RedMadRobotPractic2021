@@ -10,7 +10,7 @@
 		0FC0FCA1D2EF49294F218932 /* Pods_RedMadRobotTestTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */; };
 		2C025EB9262E05860035B84E /* CheckKeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C025EB8262E05860035B84E /* CheckKeyboardViewModel.swift */; };
 		2C0343D526472B2600CF9F87 /* RegistrationFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0343D426472B2600CF9F87 /* RegistrationFabric.swift */; };
-		2C0343DB26472C2500CF9F87 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0343DA26472C2500CF9F87 /* LoginCoordinator.swift */; };
+		2C0343DB26472C2500CF9F87 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0343DA26472C2500CF9F87 /* RegistrationCoordinator.swift */; };
 		2C034411264859CC00CF9F87 /* CoordinatorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034410264859CC00CF9F87 /* CoordinatorNavigationController.swift */; };
 		2C04C0D7262E2E14005F493D /* SignUpContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */; };
 		2C04C0DB262E3D7C005F493D /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0DA262E3D7C005F493D /* Validator.swift */; };
@@ -22,6 +22,14 @@
 		2C15DD332649C15500D50900 /* TestFeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD322649C15500D50900 /* TestFeedCoordinator.swift */; };
 		2C15DD402649C57800D50900 /* TestLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD3F2649C57800D50900 /* TestLoginCoordinator.swift */; };
 		2C15DD54264A7D3F00D50900 /* PostFeedDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DD53264A7D3F00D50900 /* PostFeedDataViewModel.swift */; };
+		2C17F0ED266D3CF700418308 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0EA266D3CF700418308 /* KeychainManager.swift */; };
+		2C17F0EE266D3CF700418308 /* PasswordKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0EB266D3CF700418308 /* PasswordKeychainService.swift */; };
+		2C17F0EF266D3CF700418308 /* RefreshTokenKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0EC266D3CF700418308 /* RefreshTokenKeychainService.swift */; };
+		2C17F0F3266D3D2C00418308 /* DataInRamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0F2266D3D2C00418308 /* DataInRamManager.swift */; };
+		2C17F0F5266D3D5200418308 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0F4266D3D5200418308 /* AppViewController.swift */; };
+		2C17F0F9266D3D6700418308 /* LockScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C17F0F7266D3D6700418308 /* LockScreenVC.xib */; };
+		2C17F0FA266D3D6700418308 /* LockScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0F8266D3D6700418308 /* LockScreenVC.swift */; };
+		2C17F0FC266D49B900418308 /* AuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17F0FB266D49B900418308 /* AuthTokens.swift */; };
 		2C24D1A326389C7F000855B8 /* DeleteUserPostEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1A226389C7F000855B8 /* DeleteUserPostEndpoint.swift */; };
 		2C24D1AB26389D52000855B8 /* GetFeedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1AA26389D52000855B8 /* GetFeedEndpoint.swift */; };
 		2C24D1B72638A05E000855B8 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24D1B62638A05E000855B8 /* FeedService.swift */; };
@@ -32,7 +40,6 @@
 		2C3909C12639E44100A81C6E /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3909C02639E44100A81C6E /* ApiService.swift */; };
 		2C3909C52639F12100A81C6E /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3909C42639F12100A81C6E /* PostModel.swift */; };
 		2C3909C92639F14600A81C6E /* AuthTokensModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3909C82639F14600A81C6E /* AuthTokensModel.swift */; };
-		2C3B7299262C29C30076DF18 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B7298262C29C30076DF18 /* AppCoordinator.swift */; };
 		2C3B72A5262C2C1E0076DF18 /* LoginScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B72A3262C2C1E0076DF18 /* LoginScreenVC.swift */; };
 		2C3B72A6262C2C1E0076DF18 /* LoginScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3B72A4262C2C1E0076DF18 /* LoginScreenVC.xib */; };
 		2C3B72AD262C38FA0076DF18 /* SuccessLoginScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B72AB262C38FA0076DF18 /* SuccessLoginScreenVC.swift */; };
@@ -64,7 +71,6 @@
 		2C46FA752644A33E00298446 /* GetSortedPostsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA742644A33E00298446 /* GetSortedPostsTest.swift */; };
 		2C480894262C52210075C0B3 /* ProfileScreenContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C480892262C52210075C0B3 /* ProfileScreenContainerVC.swift */; };
 		2C480895262C52210075C0B3 /* ProfileScreenContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C480893262C52210075C0B3 /* ProfileScreenContainerVC.xib */; };
-		2C4808A1262C53F70075C0B3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808A0262C53F70075C0B3 /* SignInViewModel.swift */; };
 		2C4808B1262C5BC10075C0B3 /* SignUpContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4808AF262C5BC10075C0B3 /* SignUpContainerVC.swift */; };
 		2C4808B2262C5BC10075C0B3 /* SignUpContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4808B0262C5BC10075C0B3 /* SignUpContainerVC.xib */; };
 		2C4808D4262CB2600075C0B3 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C4808D3262CB2600075C0B3 /* credentials.plist */; };
@@ -135,7 +141,6 @@
 		2CA6AB4F264DB4ED00B52693 /* RegistrationContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA6AB4D264DB4ED00B52693 /* RegistrationContainerVC.xib */; };
 		2CA8A1BA26516468006EEA15 /* SearchFriendsContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA8A1B826516468006EEA15 /* SearchFriendsContainerVC.swift */; };
 		2CA8A1BB26516468006EEA15 /* SearchFriendsContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA8A1B926516468006EEA15 /* SearchFriendsContainerVC.xib */; };
-		2CAE1A4826372E53006A4417 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE1A4726372E53006A4417 /* UserStorage.swift */; };
 		2CAE1A5F2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; };
 		2CAE1A682637340B006A4417 /* RedMadRobotTestTaskAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CAE1A6B2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; };
@@ -199,6 +204,7 @@
 		2CFF9F442651771000AFA817 /* FoundedFriendDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9F432651771000AFA817 /* FoundedFriendDataSource.swift */; };
 		70CD53DCDDD56387925AFDE3 /* Pods_RedMadRobotTestTaskAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0F3E53CFC81CBD5F4403ED /* Pods_RedMadRobotTestTaskAPITests.framework */; };
 		7111BBDF0A689192F1CC5A57 /* Pods_RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABD4CB166117800D216420F /* Pods_RedMadRobotTestTaskAPI.framework */; };
+		9B8694AB266F7C5000E18195 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8694AA266F7C5000E18195 /* AppNavigationController.swift */; };
 		D926035119ABF5AEBBECDCCB /* Pods_RedMadRobotTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -252,7 +258,7 @@
 		24CF3FDB716A3C816F522AEB /* Pods-RedMadRobotTestTaskAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPI.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPI/Pods-RedMadRobotTestTaskAPI.release.xcconfig"; sourceTree = "<group>"; };
 		2C025EB8262E05860035B84E /* CheckKeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckKeyboardViewModel.swift; sourceTree = "<group>"; };
 		2C0343D426472B2600CF9F87 /* RegistrationFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFabric.swift; sourceTree = "<group>"; };
-		2C0343DA26472C2500CF9F87 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		2C0343DA26472C2500CF9F87 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		2C034410264859CC00CF9F87 /* CoordinatorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorNavigationController.swift; sourceTree = "<group>"; };
 		2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContainerViewModel.swift; sourceTree = "<group>"; };
 		2C04C0DA262E3D7C005F493D /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
@@ -264,6 +270,14 @@
 		2C15DD322649C15500D50900 /* TestFeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFeedCoordinator.swift; sourceTree = "<group>"; };
 		2C15DD3F2649C57800D50900 /* TestLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoginCoordinator.swift; sourceTree = "<group>"; };
 		2C15DD53264A7D3F00D50900 /* PostFeedDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedDataViewModel.swift; sourceTree = "<group>"; };
+		2C17F0EA266D3CF700418308 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		2C17F0EB266D3CF700418308 /* PasswordKeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordKeychainService.swift; sourceTree = "<group>"; };
+		2C17F0EC266D3CF700418308 /* RefreshTokenKeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTokenKeychainService.swift; sourceTree = "<group>"; };
+		2C17F0F2266D3D2C00418308 /* DataInRamManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInRamManager.swift; sourceTree = "<group>"; };
+		2C17F0F4266D3D5200418308 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		2C17F0F7266D3D6700418308 /* LockScreenVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LockScreenVC.xib; sourceTree = "<group>"; };
+		2C17F0F8266D3D6700418308 /* LockScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenVC.swift; sourceTree = "<group>"; };
+		2C17F0FB266D49B900418308 /* AuthTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokens.swift; sourceTree = "<group>"; };
 		2C24D1A226389C7F000855B8 /* DeleteUserPostEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserPostEndpoint.swift; sourceTree = "<group>"; };
 		2C24D1AA26389D52000855B8 /* GetFeedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedEndpoint.swift; sourceTree = "<group>"; };
 		2C24D1B62638A05E000855B8 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
@@ -274,7 +288,6 @@
 		2C3909C02639E44100A81C6E /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		2C3909C42639F12100A81C6E /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		2C3909C82639F14600A81C6E /* AuthTokensModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokensModel.swift; sourceTree = "<group>"; };
-		2C3B7298262C29C30076DF18 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		2C3B72A3262C2C1E0076DF18 /* LoginScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenVC.swift; sourceTree = "<group>"; };
 		2C3B72A4262C2C1E0076DF18 /* LoginScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginScreenVC.xib; sourceTree = "<group>"; };
 		2C3B72AB262C38FA0076DF18 /* SuccessLoginScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessLoginScreenVC.swift; sourceTree = "<group>"; };
@@ -307,7 +320,6 @@
 		2C46FA7A26451FA100298446 /* DefaultServiceErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultServiceErrors.swift; sourceTree = "<group>"; };
 		2C480892262C52210075C0B3 /* ProfileScreenContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenContainerVC.swift; sourceTree = "<group>"; };
 		2C480893262C52210075C0B3 /* ProfileScreenContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileScreenContainerVC.xib; sourceTree = "<group>"; };
-		2C4808A0262C53F70075C0B3 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		2C4808AF262C5BC10075C0B3 /* SignUpContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContainerVC.swift; sourceTree = "<group>"; };
 		2C4808B0262C5BC10075C0B3 /* SignUpContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpContainerVC.xib; sourceTree = "<group>"; };
 		2C4808D3262CB2600075C0B3 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
@@ -380,7 +392,6 @@
 		2CA6AB4D264DB4ED00B52693 /* RegistrationContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationContainerVC.xib; sourceTree = "<group>"; };
 		2CA8A1B826516468006EEA15 /* SearchFriendsContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsContainerVC.swift; sourceTree = "<group>"; };
 		2CA8A1B926516468006EEA15 /* SearchFriendsContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchFriendsContainerVC.xib; sourceTree = "<group>"; };
-		2CAE1A4726372E53006A4417 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedMadRobotTestTaskAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAE1A582637340A006A4417 /* RedMadRobotTestTaskAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedMadRobotTestTaskAPI.h; sourceTree = "<group>"; };
 		2CAE1A592637340A006A4417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -450,6 +461,7 @@
 		45F1A9BBD0AF2E905F756A66 /* Pods-RedMadRobotTestTaskAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskAPI/Pods-RedMadRobotTestTaskAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7E83DE6FD6A92F9C0D9471 /* Pods_RedMadRobotTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6BCB8E0327F84C7A3EF35E /* Pods-RedMadRobotTestTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskTests.release.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskTests/Pods-RedMadRobotTestTaskTests.release.xcconfig"; sourceTree = "<group>"; };
+		9B8694AA266F7C5000E18195 /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		A1F63B8B15EE2CC0881990AB /* Pods_RedMadRobotTestTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedMadRobotTestTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC62DFF9388310FEABBE8F23 /* Pods-RedMadRobotTestTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTaskTests/Pods-RedMadRobotTestTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF99F708E8D8C1F6AEEE220F /* Pods-RedMadRobotTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedMadRobotTestTask.debug.xcconfig"; path = "Target Support Files/Pods-RedMadRobotTestTask/Pods-RedMadRobotTestTask.debug.xcconfig"; sourceTree = "<group>"; };
@@ -539,7 +551,7 @@
 		2C0343D926472C1400CF9F87 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				2C0343DA26472C2500CF9F87 /* LoginCoordinator.swift */,
+				2C0343DA26472C2500CF9F87 /* RegistrationCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -609,12 +621,23 @@
 			path = LoginCoordinatorTest;
 			sourceTree = "<group>";
 		};
-		2C1ACF52262DFBED00371065 /* Common */ = {
+		2C17F0E9266D3CF700418308 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				2C48089F262C53D90075C0B3 /* ViewModel */,
+				2C17F0EA266D3CF700418308 /* KeychainManager.swift */,
+				2C17F0EB266D3CF700418308 /* PasswordKeychainService.swift */,
+				2C17F0EC266D3CF700418308 /* RefreshTokenKeychainService.swift */,
 			);
-			path = Common;
+			path = Security;
+			sourceTree = "<group>";
+		};
+		2C17F0F6266D3D6700418308 /* LockScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2C17F0F7266D3D6700418308 /* LockScreenVC.xib */,
+				2C17F0F8266D3D6700418308 /* LockScreenVC.swift */,
+			);
+			path = LockScreen;
 			sourceTree = "<group>";
 		};
 		2C24D1A626389D14000855B8 /* Feed */ = {
@@ -655,7 +678,6 @@
 				2C3B7295262C29670076DF18 /* SignIn */,
 				2C3B7293262C295B0076DF18 /* SignUp */,
 				2C3B72A9262C38AF0076DF18 /* SuccessLoginScreen */,
-				2C1ACF52262DFBED00371065 /* Common */,
 			);
 			path = RegistrationModule;
 			sourceTree = "<group>";
@@ -688,12 +710,13 @@
 			path = LoginScreen;
 			sourceTree = "<group>";
 		};
-		2C3B7297262C29A70076DF18 /* AppCoordinator */ = {
+		2C3B7297262C29A70076DF18 /* AppViewController */ = {
 			isa = PBXGroup;
 			children = (
-				2C3B7298262C29C30076DF18 /* AppCoordinator.swift */,
+				2C17F0F4266D3D5200418308 /* AppViewController.swift */,
+				9B8694AA266F7C5000E18195 /* AppNavigationController.swift */,
 			);
-			path = AppCoordinator;
+			path = AppViewController;
 			sourceTree = "<group>";
 		};
 		2C3B72A9262C38AF0076DF18 /* SuccessLoginScreen */ = {
@@ -833,14 +856,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		2C48089F262C53D90075C0B3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				2C4808A0262C53F70075C0B3 /* SignInViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		2C4808A4262C5B450075C0B3 /* SignUpContainer */ = {
 			isa = PBXGroup;
 			children = (
@@ -898,8 +913,9 @@
 		2C4808F2262CC5AC0075C0B3 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
-				2C813C76265067BC00E7E49F /* Models */,
 				2CF47D0D2635529800F3C72B /* ServiceLayer.swift */,
+				2C17F0E9266D3CF700418308 /* Security */,
+				2C813C76265067BC00E7E49F /* Models */,
 				2CF47D12263552A200F3C72B /* NetworkServices */,
 				2CCA9120262E1CC800D6A635 /* Validators */,
 			);
@@ -1045,8 +1061,9 @@
 			isa = PBXGroup;
 			children = (
 				2C7E12B9262B4A4F00CA4073 /* Delegates */,
-				2C3B7297262C29A70076DF18 /* AppCoordinator */,
+				2C3B7297262C29A70076DF18 /* AppViewController */,
 				2C7E12BB262B4A7900CA4073 /* SplashScreen */,
+				2C17F0F6266D3D6700418308 /* LockScreen */,
 				2C3B7291262C29490076DF18 /* RegistrationModule */,
 				2C3B72BC262C3F700076DF18 /* AppModule */,
 				2C7E12A3262B474C00CA4073 /* Common */,
@@ -1172,6 +1189,7 @@
 				2C813C6B2650237100E7E49F /* Credentials.swift */,
 				2C813C772650685B00E7E49F /* UserInformation.swift */,
 				2C97CD022651B606009D0C75 /* PostInfo.swift */,
+				2C17F0FB266D49B900418308 /* AuthTokens.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1284,17 +1302,9 @@
 		2CAE1A4526372DF3006A4417 /* Persistancy */ = {
 			isa = PBXGroup;
 			children = (
-				2CAE1A4626372E32006A4417 /* DB Models */,
+				2C17F0F2266D3D2C00418308 /* DataInRamManager.swift */,
 			);
 			path = Persistancy;
-			sourceTree = "<group>";
-		};
-		2CAE1A4626372E32006A4417 /* DB Models */ = {
-			isa = PBXGroup;
-			children = (
-				2CAE1A4726372E53006A4417 /* UserStorage.swift */,
-			);
-			path = "DB Models";
 			sourceTree = "<group>";
 		};
 		2CAE1A572637340A006A4417 /* RedMadRobotTestTaskAPI */ = {
@@ -2000,6 +2010,7 @@
 				2C92EDE0265154250012C359 /* FoundedFriendsListCell.xib in Resources */,
 				2C8A73BB262DD67700A68761 /* SignUpSecondVC.xib in Resources */,
 				2C8A73B4262DD62A00A68761 /* SignUpFirstVC.xib in Resources */,
+				2C17F0F9266D3D6700418308 /* LockScreenVC.xib in Resources */,
 				2C4808D4262CB2600075C0B3 /* credentials.plist in Resources */,
 				2C3B72A6262C2C1E0076DF18 /* LoginScreenVC.xib in Resources */,
 				2C7E12CC262B4E0600CA4073 /* Localizable.strings in Resources */,
@@ -2270,19 +2281,21 @@
 				2C127539264FF34400AACE6A /* SignInRegistrationViewModel.swift in Sources */,
 				2CF935372645C63B00F51243 /* ChangeProfileCategoryVC.swift in Sources */,
 				2CA6AB4E264DB4ED00B52693 /* RegistrationContainerVC.swift in Sources */,
+				2C17F0F3266D3D2C00418308 /* DataInRamManager.swift in Sources */,
 				2CC884FE263756A300375AF8 /* UserInfoService.swift in Sources */,
 				2C8A73B3262DD62A00A68761 /* SignUpFirstVC.swift in Sources */,
 				2CFE538B2648895600D75EF7 /* FeedModuleCoordinator.swift in Sources */,
 				2CF935202645BC0100F51243 /* PostsFeedVC.swift in Sources */,
 				2C0343D526472B2600CF9F87 /* RegistrationFabric.swift in Sources */,
+				9B8694AB266F7C5000E18195 /* AppNavigationController.swift in Sources */,
 				2C9FCD85265AFBCD008EF433 /* SurnameValidator.swift in Sources */,
 				2CBF51BD2638DD9600B99042 /* UserInfoServiceProtocol.swift in Sources */,
-				2CAE1A4826372E53006A4417 /* UserStorage.swift in Sources */,
 				2C8A73BA262DD67700A68761 /* SignUpSecondVC.swift in Sources */,
 				2C3909C12639E44100A81C6E /* ApiService.swift in Sources */,
 				2C7E12B1262B47DA00CA4073 /* UIViewController+Extension.swift in Sources */,
 				2C15DD1D2649AF2700D50900 /* ProfileModuleCoordinator.swift in Sources */,
 				2CC8850E2637F0E100375AF8 /* UserRequestInterceptor.swift in Sources */,
+				2C17F0FA266D3D6700418308 /* LockScreenVC.swift in Sources */,
 				2C97CD032651B606009D0C75 /* PostInfo.swift in Sources */,
 				2C8A5EC0266287A70049DE7D /* UserPostsContainerVC.swift in Sources */,
 				2C7028792653A631000992A1 /* LoaderVC.swift in Sources */,
@@ -2298,12 +2311,11 @@
 				2C9D815E26558826003B1532 /* PostTableViewCell.swift in Sources */,
 				2CCA9131262E28BC00D6A635 /* NameValidator.swift in Sources */,
 				2CB7BB692651BAF700AF8661 /* FeedScreenContainerVC.swift in Sources */,
-				2C4808A1262C53F70075C0B3 /* SignInViewModel.swift in Sources */,
 				2C7E12B0262B47DA00CA4073 /* UIView.AnimationTransition+Extension.swift in Sources */,
 				2C7E12B2262B47DA00CA4073 /* UIImage+Extensions.swift in Sources */,
 				2C15DD292649B01100D50900 /* ProfileModuleScreenFabric.swift in Sources */,
+				2C17F0FC266D49B900418308 /* AuthTokens.swift in Sources */,
 				2CCA9122262E1CEC00D6A635 /* ValidatePassword.swift in Sources */,
-				2C3B7299262C29C30076DF18 /* AppCoordinator.swift in Sources */,
 				2CFF9F442651771000AFA817 /* FoundedFriendDataSource.swift in Sources */,
 				2C127530264FD70800AACE6A /* NewRegistrationView.swift in Sources */,
 				2C813C50264FFD3600E7E49F /* FirstSignUpRegistrationViewModel.swift in Sources */,
@@ -2324,8 +2336,9 @@
 				2CD9DD122646BE7E003A9319 /* SearchFriendsVC.swift in Sources */,
 				2C92EDD3265118D60012C359 /* FoundedFriendsListVC.swift in Sources */,
 				2CBF51C52638DE7200B99042 /* SearchServiceProtocol.swift in Sources */,
-				2C0343DB26472C2500CF9F87 /* LoginCoordinator.swift in Sources */,
+				2C0343DB26472C2500CF9F87 /* RegistrationCoordinator.swift in Sources */,
 				2C7028882653B2DA000992A1 /* ZeroScreenVC.swift in Sources */,
+				2C17F0F5266D3D5200418308 /* AppViewController.swift in Sources */,
 				2C04C0DB262E3D7C005F493D /* Validator.swift in Sources */,
 				2C8A5EC4266292010049DE7D /* FavouritePostsContainerVC.swift in Sources */,
 				2CE34D59264729C5007DEEA1 /* Coordinator.swift in Sources */,
@@ -2333,6 +2346,7 @@
 				2C480902262DAAF20075C0B3 /* AuthorizationTextField.swift in Sources */,
 				2C24D1B72638A05E000855B8 /* FeedService.swift in Sources */,
 				2CFE539426488A5700D75EF7 /* FeedModuleFabric.swift in Sources */,
+				2C17F0EE266D3CF700418308 /* PasswordKeychainService.swift in Sources */,
 				2CBF51B52638D09100B99042 /* SearchService.swift in Sources */,
 				2C4808B1262C5BC10075C0B3 /* SignUpContainerVC.swift in Sources */,
 				2C813C782650685B00E7E49F /* UserInformation.swift in Sources */,
@@ -2341,6 +2355,7 @@
 				2C813C5C265002A900E7E49F /* SecondSignUpRegistrationViewModel.swift in Sources */,
 				2C7E12DC262B4F8300CA4073 /* ColorPalette.swift in Sources */,
 				2C5F9EB426516EBD0053551D /* SearchFriendsRequestViewModel.swift in Sources */,
+				2C17F0ED266D3CF700418308 /* KeychainManager.swift in Sources */,
 				2C04C0D7262E2E14005F493D /* SignUpContainerViewModel.swift in Sources */,
 				2C480894262C52210075C0B3 /* ProfileScreenContainerVC.swift in Sources */,
 				2C938F9C2635A7E5002DF5C8 /* UIAlertController+Extension.swift in Sources */,
@@ -2350,6 +2365,7 @@
 				2C15DD54264A7D3F00D50900 /* PostFeedDataViewModel.swift in Sources */,
 				2CBF51C12638DDE800B99042 /* FeedServiceProtocol.swift in Sources */,
 				2C8A5EC92662B0CB0049DE7D /* MainPostScreenVC.swift in Sources */,
+				2C17F0EF266D3CF700418308 /* RefreshTokenKeychainService.swift in Sources */,
 				2C813C672650051B00E7E49F /* RegistrationViewHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

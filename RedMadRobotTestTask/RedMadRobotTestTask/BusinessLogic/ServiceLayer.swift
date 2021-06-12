@@ -21,18 +21,20 @@ final class ServiceLayer {
     
     lazy public var authorizationServices: AuthorizationServiceProtocol = AuthorizationServices(
         apiClient: apiClient,
-        storage: userStorage
+        tokenManager: dataInRamManager,
+        keychainManager: keychainManager
     )
     
-    lazy public var userInfoService: UserInfoServiceProtocol = UserInfoService(apiClient: apiClient)
+    lazy public private(set) var userInfoService: UserInfoServiceProtocol = UserInfoService(apiClient: apiClient)
     
-    lazy public var feedService: FeedServiceProtocol = FeedService(apiClient: apiClient)
+    lazy public private(set) var feedService: FeedServiceProtocol = FeedService(apiClient: apiClient)
     
-    lazy public var searchService: SearchServiceProtocol = SearchService(apiClient: apiClient)
+    lazy public private(set) var searchService: SearchServiceProtocol = SearchService(apiClient: apiClient)
     
     // DataBase
     
-    lazy public var userStorage: UserStorage = UserDefaultsUserStorage()
+    public private(set) var dataInRamManager: DataInRamManager = DataInRamManagerImpl()
+    lazy public private(set) var keychainManager: KeychainManager = KeychainManagerImpl()
     
     // MARK: - Private Properties
     
@@ -40,7 +42,7 @@ final class ServiceLayer {
         return AlamofireClient(
             requestInterceptor: UserRequestInterceptor(
                 baseURL: URL(string: "https://interns2021.redmadrobot.com")!,
-                storage: userStorage
+                storage: dataInRamManager
             ),
             configuration: .ephemeral)
     }()

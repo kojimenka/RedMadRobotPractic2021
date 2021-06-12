@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol ProfileScreenOutputDelegate: AnyObject {
-    
-}
-
 final class ProfileScreenContainerVC: UIViewController {
     
     // MARK: - IBOutlets
@@ -25,7 +21,7 @@ final class ProfileScreenContainerVC: UIViewController {
     
     // MARK: - Private Properties
     
-    weak private var outputDelegate: ProfileScreenOutputDelegate?
+    private let coordinator: ProfileModuleCoordinator
     private var userService: UserInfoServiceProtocol
     
     // Constants
@@ -47,10 +43,10 @@ final class ProfileScreenContainerVC: UIViewController {
     
     init(
         userService: UserInfoServiceProtocol = ServiceLayer.shared.userInfoService,
-        outputSubscriber: ProfileScreenOutputDelegate?
+        coordinator: ProfileModuleCoordinator
     ) {
         self.userService = userService
-        self.outputDelegate = outputSubscriber
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -95,6 +91,19 @@ final class ProfileScreenContainerVC: UIViewController {
             width: view.frame.width * 3,
             height: contentScrollView.safeAreaLayoutGuide.layoutFrame.height
         )
+        
+        title = "..."
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Выйти",
+            style: .plain,
+            target: self,
+            action: #selector(logoutAction)
+        )
+    }
+    
+    @objc private func logoutAction() {
+        coordinator.logoutFromApp()
     }
     
     private func setChilds() {

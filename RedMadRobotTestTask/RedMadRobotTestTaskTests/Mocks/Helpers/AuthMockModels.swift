@@ -18,12 +18,12 @@ final class AuthMockModels {
     public private(set) var email = "FooBar@gmail.com"
     public private(set) var password = "FooBar"
     
-    public private(set) var tokenData = AuthTokens(
+    public private(set) var tokenData = RedMadRobotTestTaskAPI.AuthTokens(
         accessToken: "FooBar123",
         refreshToken: "FizBuz123"
     )
     
-    public private(set) var differentTokenData = AuthTokens(
+    public private(set) var differentTokenData = RedMadRobotTestTaskAPI.AuthTokens(
         accessToken: "FooBar256",
         refreshToken: "FizBuz799"
     )

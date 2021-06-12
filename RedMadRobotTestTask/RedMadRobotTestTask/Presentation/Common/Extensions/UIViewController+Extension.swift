@@ -59,17 +59,26 @@ extension UIViewController {
 // MARK: - Helpful Childs Extension
 extension UIViewController {
     func addChild (controller: UIViewController, rootView: UIView) {
-        addChild(controller)
-        rootView.addSubview(controller.view)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            controller.view.topAnchor.constraint(equalTo: rootView.topAnchor),
-            controller.view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor),
-            controller.view.trailingAnchor.constraint(equalTo: rootView.trailingAnchor),
-            controller.view.bottomAnchor.constraint(equalTo: rootView.bottomAnchor)
-        ])
-        controller.didMove(toParent: self)
+        DispatchQueue.main.async { [self] in
+            addChild(controller)
+            rootView.addSubview(controller.view)
+            controller.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                controller.view.topAnchor.constraint(equalTo: rootView.topAnchor),
+                controller.view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor),
+                controller.view.trailingAnchor.constraint(equalTo: rootView.trailingAnchor),
+                controller.view.bottomAnchor.constraint(equalTo: rootView.bottomAnchor)
+            ])
+            controller.didMove(toParent: self)
+        }
+    }
+    
+    func changeChildWithAnimation(newChild: UIViewController) {
+        DispatchQueue.main.async { [self] in
+            UIView.AnimationTransition.removeAllSubviews(rootView: view)
+            addChild(controller: newChild, rootView: view)
+        }
     }
     
     func removeChild(childController: UIViewController) {
@@ -83,6 +92,16 @@ extension UIViewController {
         addChild(child)
         child.didMove(toParent: self)
         scrollView.addSubview(child.view)
+    }
+}
+
+extension UIViewController {
+    func removeChild() {
+        self.children.forEach {
+            $0.willMove(toParent: nil)
+            $0.view.removeFromSuperview()
+            $0.removeFromParent()
+        }
     }
 }
 

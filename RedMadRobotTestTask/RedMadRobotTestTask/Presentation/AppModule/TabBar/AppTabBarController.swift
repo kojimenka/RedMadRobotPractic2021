@@ -7,12 +7,35 @@
 
 import UIKit
 
+protocol AppTabBarControllerDelegate: AnyObject {
+    func logoutFromMain()
+}
+
 final class AppTabBarController: UITabBarController {
     
-    // MARK: - Properties
+    // MARK: - Private Properties
     
-    private let feedCoordinator = FeedModuleCoordinator(navigationController: UINavigationController())
-    private let profileScreenVC = ProfileModuleCoordinator(navigationController: UINavigationController())
+    private let feedCoordinator = FeedModuleCoordinator(
+        navigationController: AppNavigationController()
+    )
+    
+    lazy private var profileScreenVC = ProfileModuleCoordinator(
+        delegate: self,
+        navigationController: AppNavigationController()
+    )
+    
+    weak private var appTabBarDelegate: AppTabBarControllerDelegate?
+    
+    // MARK: - Init
+    
+    init(appTabBarDelegate: AppTabBarControllerDelegate?) {
+        self.appTabBarDelegate = appTabBarDelegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -45,6 +68,16 @@ final class AppTabBarController: UITabBarController {
         )
         
         viewControllers = [feedCoordinator.navigationController, profileScreenVC.navigationController]
+    }
+    
+}
+
+// MARK: - Profile Screen Delegate
+
+extension AppTabBarController: ProfileModuleCoordinatorDelegate {
+    
+    func logoutFromMainModule() {
+        appTabBarDelegate?.logoutFromMain()
     }
     
 }
