@@ -19,21 +19,27 @@ final class RegistrationContainerVC: UIViewController {
     
     private let coordinator = RegistrationCoordinator(navigationController: AppNavigationController())
     
-    private var requestViewModel: RegistrationContainerRequestViewModelProtocol
-    private var keychainManager: KeychainManager
+    private let userService: UserInfoServiceProtocol
+    private let registrationService: AuthorizationServiceProtocol
     
+    private var keychainManager: KeychainManager
+    private var dataInRamManager: DataInRamManager
     private var authToken: AuthTokens?
     
     // MARK: - Init
     
     init(
         delegate: RegistrationContainerVCDelegate?,
-        requestViewModel: RegistrationContainerRequestViewModelProtocol = RegistrationContainerRequestViewModel(),
+        userService: UserInfoServiceProtocol = ServiceLayer.shared.userInfoService,
+        registrationService: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices,
+        dataInRamManager: DataInRamManager = ServiceLayer.shared.dataInRamManager,
         keychainManager: KeychainManager = KeychainManagerImpl()
     ) {
         self.delegate = delegate
         self.keychainManager = keychainManager
-        self.requestViewModel = requestViewModel
+        self.userService = userService
+        self.registrationService = registrationService
+        self.dataInRamManager = dataInRamManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -84,13 +90,14 @@ extension RegistrationContainerVC: SignInDelegate {
             guard let self = self else { return }
             self.coordinator.dismissController(animated: true)
         }
-        requestViewModel.loginUser(
+        _ = registrationService.signIn(
             credentials: credentials
         ) { [weak self] result in
             guard let self = self else { return }
             self.coordinator.dismissController(animated: true) // Dismiss loader
             switch result {
             case .success(let token):
+                self.dataInRamManager.accessToken = token.accessToken
                 self.coordinator.pushLockScreen(delegate: self, token: token)
             case .failure(let error):
                 self.showErrorAlert(with: error)
@@ -103,21 +110,42 @@ extension RegistrationContainerVC: SignInDelegate {
 // MARK: - SignUp Delegate
 
 extension RegistrationContainerVC: SignUpContainerDelegate {
-    func registrateUser(credentials: Credentials, userInfo: UserInformation) {
+    func registrateUser(credentials: Credentials) {
         self.coordinator.presentLoader { [weak self] in
             guard let self = self else { return }
             self.coordinator.dismissController(animated: true)
         }
-        requestViewModel.registrateUser(
-            credentials: credentials,
-            userInfo: userInfo
+        
+        _ = registrationService.signUp(
+            credentials: credentials
         ) { [weak self] result in
             guard let self = self else { return }
             self.coordinator.dismissController(animated: true) // Dismiss loader
             switch result {
             case .success(let token):
                 self.authToken = token
-                self.coordinator.pushSuccessRegistration(subscriber: self)
+                self.dataInRamManager.accessToken = token.accessToken
+                self.coordinator.pushSecondSignUpScreen()
+            case .failure(let error):
+                self.showErrorAlert(with: error)
+            }
+        }
+    }
+    
+    func addUserInfo(_ userInfo: AddUserInformationModel) {
+        self.coordinator.presentLoader { [weak self] in
+            guard let self = self else { return }
+            self.coordinator.dismissController(animated: true)
+        }
+        _ = userService.updateUserInfo(
+            user: userInfo
+        ) { [weak self] result in
+            guard let self = self else { return }
+            self.coordinator.dismissController(animated: true) // Dismiss loader
+            switch result {
+            case .success:
+                guard let token = self.authToken else { return }
+                self.coordinator.pushLockScreen(delegate: self, token: token)
             case .failure(let error):
                 self.showErrorAlert(with: error)
             }

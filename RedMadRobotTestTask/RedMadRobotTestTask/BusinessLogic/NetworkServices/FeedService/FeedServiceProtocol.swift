@@ -31,7 +31,7 @@ protocol FeedServiceProtocol {
     -> Progress
     
     func addPost(
-        postInfo: PostInfo,
+        postInfo: AddPostModel,
         completion: @escaping (Result<PostInfo, Error>) -> Void)
     -> Progress
     

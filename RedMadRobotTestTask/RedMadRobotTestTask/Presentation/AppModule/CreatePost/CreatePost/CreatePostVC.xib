@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="IBMPlexSans-Regular.ttf">
+            <string>IBMPlexSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreatePostVC" customModule="RedMadRobotTestTask" customModuleProvider="target">
+            <connections>
+                <outlet property="actionsStackView" destination="wS1-bR-Nag" id="vhg-In-LFM"/>
+                <outlet property="actionsStackViewBottomConstraint" destination="gPZ-jE-PQs" id="Ec6-PN-Lcp"/>
+                <outlet property="contentScrollView" destination="PVh-Sg-XD9" id="jqI-QC-oP3"/>
+                <outlet property="contentStackView" destination="JkT-Qg-PBK" id="toa-Ck-lkY"/>
+                <outlet property="deletePhotoButton" destination="92u-Kv-vgD" id="hro-0u-GEE"/>
+                <outlet property="navigationBar" destination="bvv-T3-LtR" id="xeE-wL-825"/>
+                <outlet property="postImageView" destination="qbL-7U-aZ2" id="EFB-rx-cWP"/>
+                <outlet property="postImageViewHeightConstraint" destination="swz-41-xAA" id="oap-YM-gmG"/>
+                <outlet property="postTextView" destination="yKh-6l-PWZ" id="KCi-5S-GJV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="wS1-bR-Nag" userLabel="actionsStackView">
+                    <rect key="frame" x="20" y="806" width="374" height="36"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QOS-0D-usH" userLabel="leftButtonsStackView">
+                            <rect key="frame" x="0.0" y="0.0" width="84" height="36"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCq-dP-J43" userLabel="geopositionButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                    <state key="normal" image="sendPostGeopositionIcon"/>
+                                    <connections>
+                                        <action selector="geoPositionButtonAction:" destination="-1" eventType="touchUpInside" id="338-NJ-VwP"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gar-MN-vKK" userLabel="albumButton">
+                                    <rect key="frame" x="48" y="0.0" width="36" height="36"/>
+                                    <state key="normal" image="sendPostAddPhotoIcon"/>
+                                    <connections>
+                                        <action selector="addPhotoButtonAction:" destination="-1" eventType="touchUpInside" id="h8l-kE-2A8"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0P-io-O6E" userLabel="sendPostButton">
+                            <rect key="frame" x="338" y="0.0" width="36" height="36"/>
+                            <state key="normal" image="sendPostIcon"/>
+                            <connections>
+                                <action selector="sendPostButtonAction:" destination="-1" eventType="touchUpInside" id="VYX-Z3-Wz7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="PLv-Aq-cVz"/>
+                    </constraints>
+                </stackView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVh-Sg-XD9" userLabel="ContentScrollView">
+                    <rect key="frame" x="20" y="88" width="374" height="808"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="JkT-Qg-PBK" userLabel="ContentStackView">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="106"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWi-JO-oXB" userLabel="EmptyView">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="0.0"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" id="gXs-fj-bSR"/>
+                                    </constraints>
+                                </view>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Чем хотите поделиться?" translatesAutoresizingMaskIntoConstraints="NO" id="yKh-6l-PWZ">
+                                    <rect key="frame" x="0.0" y="32" width="238.5" height="42"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="tintColor" name="tintOrange"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="20"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="veY-fg-rMo"/>
+                                    </connections>
+                                </textView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="746" verticalCompressionResistancePriority="747" translatesAutoresizingMaskIntoConstraints="NO" id="qbL-7U-aZ2">
+                                    <rect key="frame" x="0.0" y="106" width="374" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" id="swz-41-xAA"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="JkT-Qg-PBK" secondAttribute="trailing" id="0h1-TQ-vmR"/>
+                        <constraint firstItem="JkT-Qg-PBK" firstAttribute="leading" secondItem="PVh-Sg-XD9" secondAttribute="leading" id="8tx-3m-z4Y"/>
+                        <constraint firstItem="qbL-7U-aZ2" firstAttribute="width" secondItem="PVh-Sg-XD9" secondAttribute="width" id="LTU-Dv-Oqt"/>
+                        <constraint firstAttribute="bottom" secondItem="JkT-Qg-PBK" secondAttribute="bottom" id="azh-Lp-DER"/>
+                        <constraint firstItem="JkT-Qg-PBK" firstAttribute="width" secondItem="PVh-Sg-XD9" secondAttribute="width" id="kgP-CW-WvN"/>
+                        <constraint firstItem="JkT-Qg-PBK" firstAttribute="top" secondItem="PVh-Sg-XD9" secondAttribute="top" id="nQX-49-9V6"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="0Sl-O6-mv2"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="Rl8-gU-GHf"/>
+                </scrollView>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92u-Kv-vgD" userLabel="deletePhoto">
+                    <rect key="frame" x="370" y="194" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="X65-FD-xKu"/>
+                        <constraint firstAttribute="width" constant="24" id="lWH-A6-5MA"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="removeImage"/>
+                    <connections>
+                        <action selector="removePhoto:" destination="-1" eventType="touchUpInside" id="3Hs-9D-Kjd"/>
+                    </connections>
+                </button>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvv-T3-LtR">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <items>
+                        <navigationItem title="Пост" id="QOU-RM-FgC"/>
+                    </items>
+                </navigationBar>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="92u-Kv-vgD" firstAttribute="top" secondItem="qbL-7U-aZ2" secondAttribute="top" id="0Gc-xZ-sdN"/>
+                <constraint firstItem="bvv-T3-LtR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5ZD-CC-nV7"/>
+                <constraint firstItem="92u-Kv-vgD" firstAttribute="trailing" secondItem="qbL-7U-aZ2" secondAttribute="trailing" id="6oJ-47-cDa"/>
+                <constraint firstAttribute="trailingMargin" secondItem="wS1-bR-Nag" secondAttribute="trailing" id="JxD-CR-OFJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="bvv-T3-LtR" secondAttribute="top" id="Muc-ec-dJI"/>
+                <constraint firstItem="PVh-Sg-XD9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="UoZ-WY-yin"/>
+                <constraint firstItem="wS1-bR-Nag" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="dyT-gJ-13z"/>
+                <constraint firstItem="bvv-T3-LtR" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="gEI-ly-jjV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wS1-bR-Nag" secondAttribute="bottom" constant="20" id="gPZ-jE-PQs"/>
+                <constraint firstItem="PVh-Sg-XD9" firstAttribute="top" secondItem="bvv-T3-LtR" secondAttribute="bottom" id="iHo-iU-rwf"/>
+                <constraint firstItem="PVh-Sg-XD9" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="j6a-wc-CjP"/>
+                <constraint firstAttribute="bottom" secondItem="PVh-Sg-XD9" secondAttribute="bottom" id="t5r-Vo-ygM"/>
+            </constraints>
+            <point key="canvasLocation" x="-23.188405797101453" y="152.67857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="removeImage" width="20" height="20"/>
+        <image name="sendPostAddPhotoIcon" width="36" height="36"/>
+        <image name="sendPostGeopositionIcon" width="36" height="36"/>
+        <image name="sendPostIcon" width="36" height="36"/>
+        <namedColor name="tintOrange">
+            <color red="0.99599999189376831" green="0.2669999897480011" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

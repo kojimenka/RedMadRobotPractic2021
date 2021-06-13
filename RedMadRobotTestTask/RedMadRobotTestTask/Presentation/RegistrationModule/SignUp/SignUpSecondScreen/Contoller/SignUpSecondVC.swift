@@ -9,6 +9,7 @@ import UIKit
 
 protocol SignUpSecondScreenDelegate: AnyObject {
     func currentStatus(isUserFillScreen: Bool)
+    func fullUserData(userModel: AddUserInformationModel)
 }
 
 final class SignUpSecondVC: UIViewController {
@@ -68,5 +69,6 @@ extension SignUpSecondVC: NewRegistrationViewDelegate {
     
     func successFillData(with allRegistrationFieldData: [RegistrationFieldData]) {
         registrationDataViewModel.fillNewValues(with: allRegistrationFieldData)
+        delegate?.fullUserData(userModel: registrationDataViewModel.userInfo)
     }
 }

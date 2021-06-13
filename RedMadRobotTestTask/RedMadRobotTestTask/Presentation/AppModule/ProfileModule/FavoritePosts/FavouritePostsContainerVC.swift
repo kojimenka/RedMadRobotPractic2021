@@ -27,6 +27,11 @@ final class FavouritePostsContainerVC: MainPostScreenVC {
     
     // MARK: - Life cycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateLikes()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupZeroScreen()
@@ -43,14 +48,11 @@ final class FavouritePostsContainerVC: MainPostScreenVC {
         _ = feedService.getFavouritePosts(completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(var content):
+            case .success(let content):
                 if content.isEmpty {
                     completion(.failure(LoginValidatorError.emptyLogin))
                     self.showZeroScreen()
                 } else {
-                    for index in content.indices {
-                        content[index].isLikedPost = true
-                    }
                     self.showPostsScreen()
                     completion(.success(content))
                 }
@@ -61,12 +63,19 @@ final class FavouritePostsContainerVC: MainPostScreenVC {
         })
     }
     
+    func updateLikes() {
+        if updateManager.isUpdateFavoritePostsNeeded {
+            super.userPostsVC.requestData()
+            updateManager.isUpdateFavoritePostsNeeded = false
+        }
+    }
+    
     // MARK: - Private Methods
     
     private func setupZeroScreen() {
         zeroScreen.buttonAction = { [weak self] in
             guard let self = self else { return }
-            self.userPostsVC.requestData()
+            self.navigationController?.tabBarController?.selectedIndex = 0
         }
     }
 

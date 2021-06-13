@@ -63,7 +63,11 @@ final class ZeroScreenVC: UIViewController {
         zeroImageView.image = model.image
         titleLabel.text = model.titleText
         descriptionLabel.text = model.descriptionText
-        updateButton.setTitle(model.buttonTitle, for: .normal)        
+        updateButton.setTitle(model.buttonTitle, for: .normal)
+        
+        if model.image == nil {
+            zeroImageView.isHidden = true
+        }
     }
     
     // MARK: - Private Methods

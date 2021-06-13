@@ -60,7 +60,7 @@ final class RegistrationCoordinator: Coordinator {
     }
     
     func pushSignInFromSignUp(subscriber: SignInDelegate?) {
-        // Проверяем нет ли в стеке нужного контроллера, помогает избежать зациклиново показа
+        // Проверяем нет ли в стеке нужного контроллера, помогает избежать зациклинности показа 
         for controller in navigationController.viewControllers where controller is SignInVC {
             navigationController.popToViewController(controller, animated: true)
             return
@@ -78,6 +78,11 @@ final class RegistrationCoordinator: Coordinator {
         
         let controller = screenFabric.createSignUpScreen(subscriber: subscriber)
         pushController(controller: controller, animated: true)
+    }
+    
+    func pushSecondSignUpScreen() {
+        guard let signUpController = navigationController.viewControllers.last as? SignUpContainerVC else { return }
+        signUpController.showSecondScreen()
     }
     
     func presentLoader(stopLoading: @escaping (() -> Void)) {

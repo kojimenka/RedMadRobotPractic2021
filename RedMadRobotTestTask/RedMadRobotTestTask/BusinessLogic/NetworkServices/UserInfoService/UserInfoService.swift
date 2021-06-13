@@ -55,18 +55,18 @@ public final class UserInfoService: ApiService, UserInfoServiceProtocol {
     
     // MARK: - Put request
     
-    public func updateUserInfo(
-        user: UserInformation,
-        completion: @escaping (Result<Void, Error>) -> Void)
-     -> Progress {
+    func updateUserInfo(
+        user: AddUserInformationModel,
+        completion: @escaping (Result<UserInformation, Error>) -> Void)
+    -> Progress {
         let endpoint = UpdateUserInfoEndpoint(
-            user: RedMadRobotTestTaskAPI.UserInformation(user),
-            token: ServiceLayer.shared.dataInRamManager.accessToken
+            user: RedMadRobotTestTaskAPI.AddUserInformationModel(user)
         )
+        
         return apiClient.request(endpoint) { result in
             switch result {
-            case .success:
-                completion(.success(()))
+            case .success(let content):
+                completion(.success(UserInformation(content)))
             case .failure(let error):
                 completion(.failure(error.unwrapAFError()))
             }

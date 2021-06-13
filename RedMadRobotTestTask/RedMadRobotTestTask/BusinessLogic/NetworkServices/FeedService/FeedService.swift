@@ -68,11 +68,10 @@ public final class FeedService: ApiService, FeedServiceProtocol {
     }
     
     public func addPost(
-        postInfo: PostInfo,
+        postInfo: AddPostModel,
         completion: @escaping (Result<PostInfo, Error>) -> Void)
     -> Progress {
-        let endPoint = AddNewPostEndpoint(postInfo: RedMadRobotTestTaskAPI.PostInfo(postInfo),
-                                          token: ServiceLayer.shared.dataInRamManager.accessToken)
+        let endPoint = AddNewPostEndpoint(postInfo: RedMadRobotTestTaskAPI.AddPostModel(postInfo))
         return apiClient.request(endPoint) { result in
             switch result {
             case .success(let content):
@@ -80,6 +79,7 @@ public final class FeedService: ApiService, FeedServiceProtocol {
             case .failure(let error):
                 completion(.failure(error.unwrapAFError()))
             }
+
         }
     }
     
@@ -99,5 +99,23 @@ public final class FeedService: ApiService, FeedServiceProtocol {
     -> Progress {
         let endPoint = DeleteUserPostEndpoint(idPostForDelete: postID)
         return apiClient.request(endPoint, completionHandler: completion)
+    }
+    
+    // MARK: - Private Properties
+    
+    private func createParameterForPostDictionary(post: AddPostModel) -> [String: Data]? {
+        var params: [String: Data] = [:]
+        
+        if let text = post.text {
+            params["text"] = text.data(using: .utf8)
+        }
+        
+        if let lat = post.lat, let lon = post.lon {
+            params["lat"] = "\(lat)".data(using: .utf8)
+            params["lon"] = "\(lon)".data(using: .utf8)
+            print("Check", post)
+        }
+        
+        return params
     }
 }

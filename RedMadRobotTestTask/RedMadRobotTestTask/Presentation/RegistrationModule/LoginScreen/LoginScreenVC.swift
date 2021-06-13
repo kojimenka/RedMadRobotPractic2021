@@ -18,7 +18,7 @@ final class LoginScreenVC: UIViewController {
     
     weak private var delegate: LoginScreenDelegate?
     
-    // MARK: - Initializers
+    // MARK: - Init
     
     init(delegate: LoginScreenDelegate?) {
         self.delegate = delegate

@@ -9,7 +9,8 @@ import UIKit
 
 public protocol SignUpContainerDelegate: AnyObject {
     func signInButtonActionFromSignUp()
-    func registrateUser(credentials: Credentials, userInfo: UserInformation)
+    func registrateUser(credentials: Credentials)
+    func addUserInfo(_ userInfo: AddUserInformationModel)
 }
 
 final class SignUpContainerVC: UIViewController {
@@ -26,26 +27,35 @@ final class SignUpContainerVC: UIViewController {
     // MARK: - Private Properties
     
     private let checkKeyboardViewModel: CheckKeyboardViewModel
-    private let viewViewModel = SignUpContainerViewModel()
+    private let dataInRamManager: DataInRamManager
     
     weak private var delegate: SignUpContainerDelegate?
     
     lazy private var signUpFirstScreen = SignUpFirstVC(subscriber: self)
     lazy private var signUpSecondScreen = SignUpSecondVC(subscriber: self)
     
-    private var isFirstStart = true
+    private var isFirstLayout = true
     
-    private var userInfo = UserInformation()
+    private var userInfo = AddUserInformationModel()
     private var userCredentials = Credentials()
+    
+    enum ScreenState {
+        case firstScreen
+        case secondScreen
+    }
+    
+    public var currentScreen = ScreenState.firstScreen
     
     // MARK: - Initializers
     
     init(
         subscriber: SignUpContainerDelegate?,
-        checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
+        checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil),
+        dataInRamManager: DataInRamManager = ServiceLayer.shared.dataInRamManager
     ) {
         self.delegate = subscriber
         self.checkKeyboardViewModel = checkKeyboardViewModel
+        self.dataInRamManager = dataInRamManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,8 +67,8 @@ final class SignUpContainerVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        guard isFirstStart == true else { return }
-        isFirstStart = false
+        guard isFirstLayout == true else { return }
+        isFirstLayout = false
         setupScrollView()
     }
     
@@ -80,7 +90,7 @@ final class SignUpContainerVC: UIViewController {
     
     @IBAction private func nextButtonAction(_ sender: Any) {
         guard nextButton.isButtonEnable == true else {
-            switch viewViewModel.currentScreen {
+            switch currentScreen {
             case .firstScreen:
                 signUpFirstScreen.checkForWarnings()
             case .secondScreen:
@@ -89,15 +99,35 @@ final class SignUpContainerVC: UIViewController {
             return
         }
         
-        // True - Second Screen, False - First Screen
-        guard viewViewModel.nextButtonAction(
-                rootView: view,
-                scrollView: scrollView,
-                progressViewTrailingConstraint: progressViewTrailingConstraint,
-                registeredButton: registeredButton,
-                nextButton: nextButton) == true else { return }
+        switch currentScreen {
+        case .firstScreen:
+            delegate?.registrateUser(credentials: userCredentials)
+        case .secondScreen:
+            delegate?.addUserInfo(userInfo)
+        }
+    }
+    
+    // MARK: - Public Methods
+    
+    public func showSecondScreen() {
+        let width = view.frame.width
+        scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: true)
+        progressViewTrailingConstraint.constant = -width
         
-        registrateUser()
+        UIView.AnimationTransition.transitionChangeButtonTitle(
+            button: nextButton,
+            title: R.string.localizable.signUpRegistrationButton()
+        )
+        
+        UIView.animate(withDuration: 0.3) {
+            self.registeredButton.alpha = 0.0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.registeredButton.isHidden = true
+        }
+        
+        nextButton.isButtonEnable = false
+        currentScreen = .secondScreen
     }
     
     // MARK: - Private Methods
@@ -114,19 +144,22 @@ final class SignUpContainerVC: UIViewController {
     }
     
     private func setupScrollView() {
-        viewViewModel.setupScrollView(
-            rootVC: self,
-            signUpFirstScreen: signUpFirstScreen,
-            signUpSecondScreen: signUpSecondScreen,
-            scrollView: scrollView
-        )
+        let width = view.frame.width
+        
+        scrollView.contentSize = CGSize(width: width * 2, height: scrollView.frame.height)
+        
+        signUpFirstScreen.view.frame = scrollView.frame
+        signUpFirstScreen.view.frame.origin = CGPoint.zero
+        
+        signUpSecondScreen.view.frame = scrollView.frame
+        signUpSecondScreen.view.frame.origin = CGPoint(x: width, y: 0)
+        
+        addChildControllerToScrollView(child: signUpFirstScreen, scrollView: scrollView)
+        addChildControllerToScrollView(child: signUpSecondScreen, scrollView: scrollView)
     }
     
     private func registrateUser() {
-        delegate?.registrateUser(
-            credentials: userCredentials,
-            userInfo: userInfo
-        )
+        delegate?.registrateUser(credentials: userCredentials)
     }
 }
 
@@ -162,5 +195,9 @@ extension SignUpContainerVC: SignUpFirstScreenDelegate {
 // MARK: - Sign up second screen delegate
 
 extension SignUpContainerVC: SignUpSecondScreenDelegate {
- 
+    
+    func fullUserData(userModel: AddUserInformationModel) {
+        self.userInfo = userModel
+    }
+    
 }

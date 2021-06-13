@@ -84,7 +84,7 @@ final class NewAuthorizationTextField: UITextFieldWithInset {
         bottomLine.frame = CGRect(
             x: 0,
             y: self.frame.size.height - 2,
-            width: self.frame.size.width,
+            width: self.frame.size.width - 10,
             height: 2
         )
         layer.addSublayer(bottomLine)

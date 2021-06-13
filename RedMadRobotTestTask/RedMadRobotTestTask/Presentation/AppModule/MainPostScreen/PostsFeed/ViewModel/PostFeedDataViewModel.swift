@@ -13,7 +13,7 @@ protocol PostFeedDataSourceViewModelProtocol: UITableViewDataSource {
 }
 
 protocol PostFeedDataViewModelDelegate: AnyObject {
-    func likePostButtonAction(isLiked: Bool, id: String)
+    func likePostButtonAction(isLiked: Bool, post: PostInfo)
 }
 
 final class PostFeedDataViewModel: NSObject, PostFeedDataSourceViewModelProtocol {
@@ -21,7 +21,19 @@ final class PostFeedDataViewModel: NSObject, PostFeedDataSourceViewModelProtocol
     // MARK: - Public Properties
     
     public var allPosts = [PostInfo]()
+    
+    public var allFavoritePosts: [PostInfo] {
+        return favoritePostsManager.allPosts
+    }
+    
     public weak var delegate: PostFeedDataViewModelDelegate?
+    
+    private var favoritePostsManager: FavouritePostsManager
+    
+    init(favoritePostsManager: FavouritePostsManager = ServiceLayer.shared.favouritePostsManager) {
+        self.favoritePostsManager = favoritePostsManager
+    }
+    
 }
 
 // MARK: - UICollectionView DataSource
@@ -43,11 +55,12 @@ extension PostFeedDataViewModel: UITableViewDataSource {
         let currentPost = allPosts[indexPath.section]
         
         cell.currentPostInfo = currentPost
+        cell.isFavoritePost = allFavoritePosts.contains(where: { $0.id == currentPost.id })
 
         cell.likeButtonAction = { [weak self] isLiked in
             guard let self = self else { return }
             self.allPosts[indexPath.section].isLikedPost = isLiked
-            self.delegate?.likePostButtonAction(isLiked: isLiked, id: currentPost.id)
+            self.delegate?.likePostButtonAction(isLiked: isLiked, post: currentPost)
         }
         
         return cell

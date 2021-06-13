@@ -14,7 +14,6 @@ class MainPostScreenVC: UIViewController {
     private var zeroScreenContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-//        view.backgroundColor = .orange
         return view
     }()
     
@@ -23,6 +22,7 @@ class MainPostScreenVC: UIViewController {
     // MARK: - Public Properties
     
     public var changeOffSet: ((CGFloat) -> Void)?
+    public var updateManager: UpdateManager
     
     // MARK: - Private Properties
     
@@ -37,8 +37,12 @@ class MainPostScreenVC: UIViewController {
     
     // MARK: - Init
     
-    init(zeroScreen: ZeroScreenVC) {
+    init(
+        zeroScreen: ZeroScreenVC,
+        updateManager: UpdateManager = ServiceLayer.shared.updateManager
+    ) {
         self.zeroScreen = zeroScreen
+        self.updateManager = updateManager
         super.init(nibName: nil, bundle: nil)
     }
     

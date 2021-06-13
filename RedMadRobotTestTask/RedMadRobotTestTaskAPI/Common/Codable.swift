@@ -17,7 +17,7 @@ extension JSONEncoder {
 }
 
 extension JSONDecoder {
-    internal static let `default`: JSONDecoder = {
+    public static let `default`: JSONDecoder = {
         let decoder = JSONDecoder()
         
         let formatter = DateFormatter()

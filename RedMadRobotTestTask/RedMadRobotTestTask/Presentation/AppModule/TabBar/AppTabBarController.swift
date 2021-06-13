@@ -15,6 +15,8 @@ final class AppTabBarController: UITabBarController {
     
     // MARK: - Private Properties
     
+    private let emptyVC = UIViewController()
+    
     private let feedCoordinator = FeedModuleCoordinator(
         navigationController: AppNavigationController()
     )
@@ -25,6 +27,15 @@ final class AppTabBarController: UITabBarController {
     )
     
     weak private var appTabBarDelegate: AppTabBarControllerDelegate?
+    
+    override var selectedViewController: UIViewController? {
+        didSet {
+            if selectedViewController === emptyVC {
+                presentPostScreen()
+                selectedViewController = oldValue
+            }
+        }
+    }
     
     // MARK: - Init
     
@@ -45,6 +56,14 @@ final class AppTabBarController: UITabBarController {
         setController()
     }
     
+    // MARK: - Public Methods
+    
+    public func presentPostScreen() {
+        let vc = CreatePostContainerVC()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
+    
     // MARK: - Private Methods
     
     private func customizeTabBar() {
@@ -61,13 +80,23 @@ final class AppTabBarController: UITabBarController {
             tag: 0
         )
         
-        profileScreenVC.navigationController.tabBarItem = UITabBarItem(
+        emptyVC.tabBarItem = UITabBarItem(
             title: "",
-            image: R.image.accountTabBarIcon(),
+            image: R.image.newPostTabBarIcon(),
             tag: 1
         )
         
-        viewControllers = [feedCoordinator.navigationController, profileScreenVC.navigationController]
+        profileScreenVC.navigationController.tabBarItem = UITabBarItem(
+            title: "",
+            image: R.image.accountTabBarIcon(),
+            tag: 2
+        )
+        
+        viewControllers = [
+            feedCoordinator.navigationController,
+            emptyVC,
+            profileScreenVC.navigationController
+        ]
     }
     
 }

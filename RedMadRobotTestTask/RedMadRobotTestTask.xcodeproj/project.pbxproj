@@ -12,7 +12,6 @@
 		2C0343D526472B2600CF9F87 /* RegistrationFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0343D426472B2600CF9F87 /* RegistrationFabric.swift */; };
 		2C0343DB26472C2500CF9F87 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0343DA26472C2500CF9F87 /* RegistrationCoordinator.swift */; };
 		2C034411264859CC00CF9F87 /* CoordinatorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C034410264859CC00CF9F87 /* CoordinatorNavigationController.swift */; };
-		2C04C0D7262E2E14005F493D /* SignUpContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */; };
 		2C04C0DB262E3D7C005F493D /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C04C0DA262E3D7C005F493D /* Validator.swift */; };
 		2C0A83E2263A026A00DB6841 /* RefreshUserTokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A83E1263A026A00DB6841 /* RefreshUserTokenEndpoint.swift */; };
 		2C127530264FD70800AACE6A /* NewRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12752F264FD70800AACE6A /* NewRegistrationView.swift */; };
@@ -119,7 +118,6 @@
 		2C813C672650051B00E7E49F /* RegistrationViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C662650051B00E7E49F /* RegistrationViewHelper.swift */; };
 		2C813C6C2650237100E7E49F /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C6B2650237100E7E49F /* Credentials.swift */; };
 		2C813C782650685B00E7E49F /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813C772650685B00E7E49F /* UserInformation.swift */; };
-		2C87F6C0264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87F6BF264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift */; };
 		2C8A5EC0266287A70049DE7D /* UserPostsContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A5EBE266287A70049DE7D /* UserPostsContainerVC.swift */; };
 		2C8A5EC4266292010049DE7D /* FavouritePostsContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A5EC2266292010049DE7D /* FavouritePostsContainerVC.swift */; };
 		2C8A5EC92662B0CB0049DE7D /* MainPostScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A5EC72662B0CB0049DE7D /* MainPostScreenVC.swift */; };
@@ -138,7 +136,6 @@
 		2C9FCD76265AE641008EF433 /* TextStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FCD75265AE641008EF433 /* TextStackView.swift */; };
 		2C9FCD85265AFBCD008EF433 /* SurnameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FCD84265AFBCD008EF433 /* SurnameValidator.swift */; };
 		2CA6AB4E264DB4ED00B52693 /* RegistrationContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA6AB4C264DB4ED00B52693 /* RegistrationContainerVC.swift */; };
-		2CA6AB4F264DB4ED00B52693 /* RegistrationContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA6AB4D264DB4ED00B52693 /* RegistrationContainerVC.xib */; };
 		2CA8A1BA26516468006EEA15 /* SearchFriendsContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA8A1B826516468006EEA15 /* SearchFriendsContainerVC.swift */; };
 		2CA8A1BB26516468006EEA15 /* SearchFriendsContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA8A1B926516468006EEA15 /* SearchFriendsContainerVC.xib */; };
 		2CAE1A5F2637340B006A4417 /* RedMadRobotTestTaskAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */; };
@@ -206,6 +203,18 @@
 		2CFC3A9F26749EF5004327AC /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFC3A9726749EF5004327AC /* FriendTableViewCell.xib */; };
 		2CFC3AA026749EF5004327AC /* FriendsListContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFC3A9926749EF5004327AC /* FriendsListContainerVC.xib */; };
 		2CFC3AA126749EF5004327AC /* FriendsListContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3A9A26749EF5004327AC /* FriendsListContainerVC.swift */; };
+		2CFC3AA52674AA45004327AC /* CreatePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AA32674AA45004327AC /* CreatePostVC.swift */; };
+		2CFC3AA62674AA46004327AC /* CreatePostVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFC3AA42674AA45004327AC /* CreatePostVC.xib */; };
+		2CFC3AAB2674C1DD004327AC /* SetGeopositionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AA92674C1DD004327AC /* SetGeopositionVC.swift */; };
+		2CFC3AAC2674C1DD004327AC /* SetGeopositionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFC3AAA2674C1DD004327AC /* SetGeopositionVC.xib */; };
+		2CFC3AB12674D8BF004327AC /* CreatePostContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AB02674D8BF004327AC /* CreatePostContainerVC.swift */; };
+		2CFC3AB32675070C004327AC /* AddPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AB22675070C004327AC /* AddPostModel.swift */; };
+		2CFC3AB5267507E4004327AC /* AddPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AB4267507E4004327AC /* AddPostModel.swift */; };
+		2CFC3AB72675B438004327AC /* AddUserInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AB62675B438004327AC /* AddUserInformationModel.swift */; };
+		2CFC3AB92675B4FC004327AC /* AddUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AB82675B4FB004327AC /* AddUserModel.swift */; };
+		2CFC3ABC26761BBD004327AC /* BirthdayValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3ABB26761BBD004327AC /* BirthdayValidator.swift */; };
+		2CFC3ABE26765550004327AC /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3ABD26765550004327AC /* UpdateManager.swift */; };
+		2CFC3AC326769FE1004327AC /* FavouritePostsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AC226769FE1004327AC /* FavouritePostsManager.swift */; };
 		2CFE538B2648895600D75EF7 /* FeedModuleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE538A2648895600D75EF7 /* FeedModuleCoordinator.swift */; };
 		2CFE539426488A5700D75EF7 /* FeedModuleFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE539326488A5700D75EF7 /* FeedModuleFabric.swift */; };
 		2CFF9F442651771000AFA817 /* FoundedFriendDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9F432651771000AFA817 /* FoundedFriendDataSource.swift */; };
@@ -267,7 +276,6 @@
 		2C0343D426472B2600CF9F87 /* RegistrationFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFabric.swift; sourceTree = "<group>"; };
 		2C0343DA26472C2500CF9F87 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		2C034410264859CC00CF9F87 /* CoordinatorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorNavigationController.swift; sourceTree = "<group>"; };
-		2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContainerViewModel.swift; sourceTree = "<group>"; };
 		2C04C0DA262E3D7C005F493D /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		2C0A83E1263A026A00DB6841 /* RefreshUserTokenEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshUserTokenEndpoint.swift; sourceTree = "<group>"; };
 		2C12752F264FD70800AACE6A /* NewRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRegistrationView.swift; sourceTree = "<group>"; };
@@ -377,7 +385,6 @@
 		2C813C662650051B00E7E49F /* RegistrationViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewHelper.swift; sourceTree = "<group>"; };
 		2C813C6B2650237100E7E49F /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		2C813C772650685B00E7E49F /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
-		2C87F6BF264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContainerRequestViewModel.swift; sourceTree = "<group>"; };
 		2C8A5EBE266287A70049DE7D /* UserPostsContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsContainerVC.swift; sourceTree = "<group>"; };
 		2C8A5EC2266292010049DE7D /* FavouritePostsContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePostsContainerVC.swift; sourceTree = "<group>"; };
 		2C8A5EC72662B0CB0049DE7D /* MainPostScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostScreenVC.swift; sourceTree = "<group>"; };
@@ -396,7 +403,6 @@
 		2C9FCD75265AE641008EF433 /* TextStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStackView.swift; sourceTree = "<group>"; };
 		2C9FCD84265AFBCD008EF433 /* SurnameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurnameValidator.swift; sourceTree = "<group>"; };
 		2CA6AB4C264DB4ED00B52693 /* RegistrationContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContainerVC.swift; sourceTree = "<group>"; };
-		2CA6AB4D264DB4ED00B52693 /* RegistrationContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationContainerVC.xib; sourceTree = "<group>"; };
 		2CA8A1B826516468006EEA15 /* SearchFriendsContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsContainerVC.swift; sourceTree = "<group>"; };
 		2CA8A1B926516468006EEA15 /* SearchFriendsContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchFriendsContainerVC.xib; sourceTree = "<group>"; };
 		2CAE1A562637340A006A4417 /* RedMadRobotTestTaskAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedMadRobotTestTaskAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -468,6 +474,18 @@
 		2CFC3A9726749EF5004327AC /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		2CFC3A9926749EF5004327AC /* FriendsListContainerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsListContainerVC.xib; sourceTree = "<group>"; };
 		2CFC3A9A26749EF5004327AC /* FriendsListContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListContainerVC.swift; sourceTree = "<group>"; };
+		2CFC3AA32674AA45004327AC /* CreatePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostVC.swift; sourceTree = "<group>"; };
+		2CFC3AA42674AA45004327AC /* CreatePostVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePostVC.xib; sourceTree = "<group>"; };
+		2CFC3AA92674C1DD004327AC /* SetGeopositionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGeopositionVC.swift; sourceTree = "<group>"; };
+		2CFC3AAA2674C1DD004327AC /* SetGeopositionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetGeopositionVC.xib; sourceTree = "<group>"; };
+		2CFC3AB02674D8BF004327AC /* CreatePostContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostContainerVC.swift; sourceTree = "<group>"; };
+		2CFC3AB22675070C004327AC /* AddPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostModel.swift; sourceTree = "<group>"; };
+		2CFC3AB4267507E4004327AC /* AddPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostModel.swift; sourceTree = "<group>"; };
+		2CFC3AB62675B438004327AC /* AddUserInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserInformationModel.swift; sourceTree = "<group>"; };
+		2CFC3AB82675B4FB004327AC /* AddUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserModel.swift; sourceTree = "<group>"; };
+		2CFC3ABB26761BBD004327AC /* BirthdayValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayValidator.swift; sourceTree = "<group>"; };
+		2CFC3ABD26765550004327AC /* UpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
+		2CFC3AC226769FE1004327AC /* FavouritePostsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePostsManager.swift; sourceTree = "<group>"; };
 		2CFE538A2648895600D75EF7 /* FeedModuleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleCoordinator.swift; sourceTree = "<group>"; };
 		2CFE539326488A5700D75EF7 /* FeedModuleFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleFabric.swift; sourceTree = "<group>"; };
 		2CFF9F432651771000AFA817 /* FoundedFriendDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundedFriendDataSource.swift; sourceTree = "<group>"; };
@@ -568,14 +586,6 @@
 				2C0343DA26472C2500CF9F87 /* RegistrationCoordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		2C04C0D5262E2DFD005F493D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				2C04C0D6262E2E14005F493D /* SignUpContainerViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2C04C0D9262E3D62005F493D /* Validaror */ = {
@@ -755,9 +765,9 @@
 			isa = PBXGroup;
 			children = (
 				2C3B72BD262C3F950076DF18 /* TabBar */,
-				2CF935162645BAFE00F51243 /* SharedScreens */,
+				2CF935162645BAFE00F51243 /* MainPostScreen */,
 				2C480897262C522E0075C0B3 /* FeedModule */,
-				2C480898262C52380075C0B3 /* NewPostScreen */,
+				2CFC3AA22674AA1D004327AC /* CreatePost */,
 				2C480890262C51EC0075C0B3 /* ProfileModule */,
 			);
 			path = AppModule;
@@ -853,13 +863,6 @@
 			path = FeedModule;
 			sourceTree = "<group>";
 		};
-		2C480898262C52380075C0B3 /* NewPostScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NewPostScreen;
-			sourceTree = "<group>";
-		};
 		2C48089D262C53480075C0B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,8 +877,8 @@
 		2C4808A4262C5B450075C0B3 /* SignUpContainer */ = {
 			isa = PBXGroup;
 			children = (
-				2C04C0D5262E2DFD005F493D /* ViewModel */,
-				2C4808AE262C5BAA0075C0B3 /* Contoller */,
+				2C4808AF262C5BC10075C0B3 /* SignUpContainerVC.swift */,
+				2C4808B0262C5BC10075C0B3 /* SignUpContainerVC.xib */,
 			);
 			path = SignUpContainer;
 			sourceTree = "<group>";
@@ -896,15 +899,6 @@
 				2C8A73B0262DD60B00A68761 /* Controller */,
 			);
 			path = SignUpFirstScreen;
-			sourceTree = "<group>";
-		};
-		2C4808AE262C5BAA0075C0B3 /* Contoller */ = {
-			isa = PBXGroup;
-			children = (
-				2C4808AF262C5BC10075C0B3 /* SignUpContainerVC.swift */,
-				2C4808B0262C5BC10075C0B3 /* SignUpContainerVC.xib */,
-			);
-			path = Contoller;
 			sourceTree = "<group>";
 		};
 		2C4808BC262CA3E50075C0B3 /* ZeroScreen */ = {
@@ -1205,25 +1199,10 @@
 				2C813C772650685B00E7E49F /* UserInformation.swift */,
 				2C97CD022651B606009D0C75 /* PostInfo.swift */,
 				2C17F0FB266D49B900418308 /* AuthTokens.swift */,
+				2CFC3AB4267507E4004327AC /* AddPostModel.swift */,
+				2CFC3AB82675B4FB004327AC /* AddUserModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		2C87F6BD264DD1C5000ED2A8 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2CA6AB4C264DB4ED00B52693 /* RegistrationContainerVC.swift */,
-				2CA6AB4D264DB4ED00B52693 /* RegistrationContainerVC.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		2C87F6BE264DD1CC000ED2A8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				2C87F6BF264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2C8A5EBA2662820E0049DE7D /* UserPosts */ = {
@@ -1318,6 +1297,8 @@
 			isa = PBXGroup;
 			children = (
 				2C17F0F2266D3D2C00418308 /* DataInRamManager.swift */,
+				2CFC3ABD26765550004327AC /* UpdateManager.swift */,
+				2CFC3AC226769FE1004327AC /* FavouritePostsManager.swift */,
 			);
 			path = Persistancy;
 			sourceTree = "<group>";
@@ -1374,6 +1355,8 @@
 				2CF47D152635560E00F3C72B /* UserInformationModel.swift */,
 				2C3909C42639F12100A81C6E /* PostModel.swift */,
 				2C3909C82639F14600A81C6E /* AuthTokensModel.swift */,
+				2CFC3AB22675070C004327AC /* AddPostModel.swift */,
+				2CFC3AB62675B438004327AC /* AddUserInformationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1426,8 +1409,7 @@
 		2CBE8245264DAE1700731606 /* Container */ = {
 			isa = PBXGroup;
 			children = (
-				2C87F6BE264DD1CC000ED2A8 /* ViewModel */,
-				2C87F6BD264DD1C5000ED2A8 /* Controller */,
+				2CA6AB4C264DB4ED00B52693 /* RegistrationContainerVC.swift */,
 			);
 			name = Container;
 			path = LoginScreen/Container;
@@ -1485,6 +1467,7 @@
 				2CCA9125262E1FC300D6A635 /* Email */,
 				2CCA9124262E1FB900D6A635 /* Password */,
 				2CCA912D262E288700D6A635 /* Name */,
+				2CFC3ABA26761BA0004327AC /* Birthday */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -1715,13 +1698,13 @@
 			path = NetworkServices;
 			sourceTree = "<group>";
 		};
-		2CF935162645BAFE00F51243 /* SharedScreens */ = {
+		2CF935162645BAFE00F51243 /* MainPostScreen */ = {
 			isa = PBXGroup;
 			children = (
 				2CF9351C2645BBC500F51243 /* PostsFeed */,
 				2C8A5EC62662B0A60049DE7D /* MainPostScreen */,
 			);
-			path = SharedScreens;
+			path = MainPostScreen;
 			sourceTree = "<group>";
 		};
 		2CF9351C2645BBC500F51243 /* PostsFeed */ = {
@@ -1822,6 +1805,50 @@
 				2CFC3A9A26749EF5004327AC /* FriendsListContainerVC.swift */,
 			);
 			path = Container;
+			sourceTree = "<group>";
+		};
+		2CFC3AA22674AA1D004327AC /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				2CFC3AAD2674D88D004327AC /* Container */,
+				2CFC3AA72674C1AD004327AC /* CreatePost */,
+				2CFC3AA82674C1B8004327AC /* SetGeoposition */,
+			);
+			path = CreatePost;
+			sourceTree = "<group>";
+		};
+		2CFC3AA72674C1AD004327AC /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				2CFC3AA32674AA45004327AC /* CreatePostVC.swift */,
+				2CFC3AA42674AA45004327AC /* CreatePostVC.xib */,
+			);
+			path = CreatePost;
+			sourceTree = "<group>";
+		};
+		2CFC3AA82674C1B8004327AC /* SetGeoposition */ = {
+			isa = PBXGroup;
+			children = (
+				2CFC3AA92674C1DD004327AC /* SetGeopositionVC.swift */,
+				2CFC3AAA2674C1DD004327AC /* SetGeopositionVC.xib */,
+			);
+			path = SetGeoposition;
+			sourceTree = "<group>";
+		};
+		2CFC3AAD2674D88D004327AC /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				2CFC3AB02674D8BF004327AC /* CreatePostContainerVC.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		2CFC3ABA26761BA0004327AC /* Birthday */ = {
+			isa = PBXGroup;
+			children = (
+				2CFC3ABB26761BBD004327AC /* BirthdayValidator.swift */,
+			);
+			path = Birthday;
 			sourceTree = "<group>";
 		};
 		2CFE53882648892C00D75EF7 /* Coordinator */ = {
@@ -2074,6 +2101,7 @@
 				2C3B72AE262C38FA0076DF18 /* SuccessLoginScreenVC.xib in Resources */,
 				2CFC3AA026749EF5004327AC /* FriendsListContainerVC.xib in Resources */,
 				2CA8A1BB26516468006EEA15 /* SearchFriendsContainerVC.xib in Resources */,
+				2CFC3AAC2674C1DD004327AC /* SetGeopositionVC.xib in Resources */,
 				2C4808B2262C5BC10075C0B3 /* SignUpContainerVC.xib in Resources */,
 				2CDD2460262B3E5600501E77 /* LaunchScreen.storyboard in Resources */,
 				2C7028892653B2DA000992A1 /* ZeroScreenVC.xib in Resources */,
@@ -2094,10 +2122,10 @@
 				2C480895262C52210075C0B3 /* ProfileScreenContainerVC.xib in Resources */,
 				2C70287A2653A631000992A1 /* LoaderVC.xib in Resources */,
 				2C3B72B6262C39F10076DF18 /* SignInVC.xib in Resources */,
+				2CFC3AA62674AA46004327AC /* CreatePostVC.xib in Resources */,
 				2CFC3A9C26749EF5004327AC /* AllFriendsListVC.xib in Resources */,
 				2CD9DD132646BE7E003A9319 /* SearchFriendsVC.xib in Resources */,
 				2C7E1325262B6C8A00CA4073 /* IBMPlexSans-Medium.ttf in Resources */,
-				2CA6AB4F264DB4ED00B52693 /* RegistrationContainerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2261,6 +2289,7 @@
 				2CC8850226375EEA00375AF8 /* GetUserPostsEndpoint.swift in Sources */,
 				2C3909C92639F14600A81C6E /* AuthTokensModel.swift in Sources */,
 				2CAE1AB72637389B006A4417 /* UserLoginEndpoint.swift in Sources */,
+				2CFC3AB32675070C004327AC /* AddPostModel.swift in Sources */,
 				2CC885062637661800375AF8 /* AddFriendEndpoint.swift in Sources */,
 				2C0A83E2263A026A00DB6841 /* RefreshUserTokenEndpoint.swift in Sources */,
 				2CAE1ABC263738CC006A4417 /* UserInformationModel.swift in Sources */,
@@ -2277,6 +2306,7 @@
 				2C24D1AB26389D52000855B8 /* GetFeedEndpoint.swift in Sources */,
 				2C3909C52639F12100A81C6E /* PostModel.swift in Sources */,
 				2CAE1A7926373489006A4417 /* APIError.swift in Sources */,
+				2CFC3AB72675B438004327AC /* AddUserInformationModel.swift in Sources */,
 				2CBF51B02638D02A00B99042 /* GetSortedPostsEndpoint.swift in Sources */,
 				2CBF51AA2638CF9300B99042 /* GetSearchedUserEndpoint.swift in Sources */,
 			);
@@ -2358,10 +2388,12 @@
 				2CC884FE263756A300375AF8 /* UserInfoService.swift in Sources */,
 				2C8A73B3262DD62A00A68761 /* SignUpFirstVC.swift in Sources */,
 				2CFE538B2648895600D75EF7 /* FeedModuleCoordinator.swift in Sources */,
+				2CFC3ABE26765550004327AC /* UpdateManager.swift in Sources */,
 				2CF935202645BC0100F51243 /* PostsFeedVC.swift in Sources */,
 				2CFC3A9D26749EF5004327AC /* AllFriendsListVC.swift in Sources */,
 				2C0343D526472B2600CF9F87 /* RegistrationFabric.swift in Sources */,
 				9B8694AB266F7C5000E18195 /* AppNavigationController.swift in Sources */,
+				2CFC3ABC26761BBD004327AC /* BirthdayValidator.swift in Sources */,
 				2C9FCD85265AFBCD008EF433 /* SurnameValidator.swift in Sources */,
 				2CBF51BD2638DD9600B99042 /* UserInfoServiceProtocol.swift in Sources */,
 				2C8A73BA262DD67700A68761 /* SignUpSecondVC.swift in Sources */,
@@ -2388,11 +2420,14 @@
 				2CB7BB692651BAF700AF8661 /* FeedScreenContainerVC.swift in Sources */,
 				2C7E12B0262B47DA00CA4073 /* UIView.AnimationTransition+Extension.swift in Sources */,
 				2C7E12B2262B47DA00CA4073 /* UIImage+Extensions.swift in Sources */,
+				2CFC3AA52674AA45004327AC /* CreatePostVC.swift in Sources */,
 				2C15DD292649B01100D50900 /* ProfileModuleScreenFabric.swift in Sources */,
 				2C17F0FC266D49B900418308 /* AuthTokens.swift in Sources */,
 				2CCA9122262E1CEC00D6A635 /* ValidatePassword.swift in Sources */,
 				2CFF9F442651771000AFA817 /* FoundedFriendDataSource.swift in Sources */,
 				2C127530264FD70800AACE6A /* NewRegistrationView.swift in Sources */,
+				2CFC3AB5267507E4004327AC /* AddPostModel.swift in Sources */,
+				2CFC3AB12674D8BF004327AC /* CreatePostContainerVC.swift in Sources */,
 				2C813C50264FFD3600E7E49F /* FirstSignUpRegistrationViewModel.swift in Sources */,
 				2C813C6C2650237100E7E49F /* Credentials.swift in Sources */,
 				2C3B72A5262C2C1E0076DF18 /* LoginScreenVC.swift in Sources */,
@@ -2402,7 +2437,6 @@
 				2C4808E7262CBDD40075C0B3 /* AuthorizationWithButton.swift in Sources */,
 				2CCA912B262E251300D6A635 /* LoginValidator.swift in Sources */,
 				2C4808E4262CBCFE0075C0B3 /* RegistrationNextButton.swift in Sources */,
-				2C87F6C0264DD1E9000ED2A8 /* RegistrationContainerRequestViewModel.swift in Sources */,
 				2C3B72B5262C39F10076DF18 /* SignInVC.swift in Sources */,
 				2C7E12B6262B47DA00CA4073 /* UIView + Extensions.swift in Sources */,
 				2CF47D0E2635529800F3C72B /* ServiceLayer.swift in Sources */,
@@ -2413,10 +2447,12 @@
 				2CBF51C52638DE7200B99042 /* SearchServiceProtocol.swift in Sources */,
 				2C0343DB26472C2500CF9F87 /* RegistrationCoordinator.swift in Sources */,
 				2C7028882653B2DA000992A1 /* ZeroScreenVC.swift in Sources */,
+				2CFC3AB92675B4FC004327AC /* AddUserModel.swift in Sources */,
 				2C17F0F5266D3D5200418308 /* AppViewController.swift in Sources */,
 				2C04C0DB262E3D7C005F493D /* Validator.swift in Sources */,
 				2C8A5EC4266292010049DE7D /* FavouritePostsContainerVC.swift in Sources */,
 				2CE34D59264729C5007DEEA1 /* Coordinator.swift in Sources */,
+				2CFC3AC326769FE1004327AC /* FavouritePostsManager.swift in Sources */,
 				2CDACBB22646F4CC0002D11C /* ZeroScreenHelper.swift in Sources */,
 				2C480902262DAAF20075C0B3 /* AuthorizationTextField.swift in Sources */,
 				2C24D1B72638A05E000855B8 /* FeedService.swift in Sources */,
@@ -2431,7 +2467,6 @@
 				2C7E12DC262B4F8300CA4073 /* ColorPalette.swift in Sources */,
 				2C5F9EB426516EBD0053551D /* SearchFriendsRequestViewModel.swift in Sources */,
 				2C17F0ED266D3CF700418308 /* KeychainManager.swift in Sources */,
-				2C04C0D7262E2E14005F493D /* SignUpContainerViewModel.swift in Sources */,
 				2C480894262C52210075C0B3 /* ProfileScreenContainerVC.swift in Sources */,
 				2C938F9C2635A7E5002DF5C8 /* UIAlertController+Extension.swift in Sources */,
 				2C3B72BF262C3FAF0076DF18 /* AppTabBarController.swift in Sources */,
@@ -2441,6 +2476,7 @@
 				2CFC3A9E26749EF5004327AC /* FriendTableViewCell.swift in Sources */,
 				2CBF51C12638DDE800B99042 /* FeedServiceProtocol.swift in Sources */,
 				2C8A5EC92662B0CB0049DE7D /* MainPostScreenVC.swift in Sources */,
+				2CFC3AAB2674C1DD004327AC /* SetGeopositionVC.swift in Sources */,
 				2C17F0EF266D3CF700418308 /* RefreshTokenKeychainService.swift in Sources */,
 				2C813C672650051B00E7E49F /* RegistrationViewHelper.swift in Sources */,
 			);

@@ -15,6 +15,7 @@ final class AppViewController: UIViewController {
     
     private let keychainManager: KeychainManager
     private var dataInRamManager: DataInRamManager
+    private let favoritePostsManager: FavouritePostsManager
     
     // --- Childs
     
@@ -27,8 +28,10 @@ final class AppViewController: UIViewController {
     
     init(
         dataInRamManager: DataInRamManager = ServiceLayer.shared.dataInRamManager,
-        keychainManager: KeychainManager = ServiceLayer.shared.keychainManager
+        keychainManager: KeychainManager = ServiceLayer.shared.keychainManager,
+        favoritePostsManager: FavouritePostsManager = ServiceLayer.shared.favouritePostsManager
     ) {
+        self.favoritePostsManager = favoritePostsManager
         self.keychainManager = keychainManager
         self.dataInRamManager = dataInRamManager
         super.init(nibName: nil, bundle: nil)
@@ -78,6 +81,7 @@ extension AppViewController: RegistrationContainerVCDelegate {
     
     func endRegistrationFlow() {
         changeChildWithAnimation(newChild: appTabBarController)
+        self.favoritePostsManager.getFavouritePosts()
     }
 
 }
@@ -93,6 +97,9 @@ extension AppViewController: LockScreenDelegate {
     
     func successAuthentification() {
         self.changeChildWithAnimation(newChild: appTabBarController)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.favoritePostsManager.getFavouritePosts()
+        }
     }
     
 }

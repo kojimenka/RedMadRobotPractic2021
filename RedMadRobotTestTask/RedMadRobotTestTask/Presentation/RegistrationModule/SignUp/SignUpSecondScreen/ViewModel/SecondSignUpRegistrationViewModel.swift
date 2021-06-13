@@ -8,16 +8,14 @@
 import Foundation
 
 protocol SecondSignUpRegistrationViewModelProtocol: RegistrationFillViewModel {
-    var userInfo: UserInformation { get }
+    var userInfo: AddUserInformationModel { get }
 }
 
 final class SecondSignUpRegistrationViewModel: SecondSignUpRegistrationViewModelProtocol {
     
     // MARK: - Public properties
-    
-    public var nameText = String()
-    public var cityText = String()
-    public var userInfo = UserInformation()
+
+    public var userInfo = AddUserInformationModel()
     
     public var allRegistrationFieldData = [
         RegistrationFieldData(
@@ -33,6 +31,11 @@ final class SecondSignUpRegistrationViewModel: SecondSignUpRegistrationViewModel
         RegistrationFieldData(
             fieldData: RegistrationTextFieldData(placeHolder: "Surname"),
             validator: SurnameValidator(),
+            textField: nil),
+        
+        RegistrationFieldData(
+            fieldData: RegistrationTextFieldData(placeHolder: "Birthday", isDatePickerNeeded: true),
+            validator: BirthdayValidator(),
             textField: nil)
     ]
     
@@ -47,10 +50,20 @@ final class SecondSignUpRegistrationViewModel: SecondSignUpRegistrationViewModel
                 userInfo.lastName = data.textField?.text ?? ""
             case is LoginValidator:
                 userInfo.nickname = data.textField?.text ?? ""
+            case is BirthdayValidator:
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                
+                guard let stringDate = data.textField?.text,
+                      let date = dateFormatter.date(from: stringDate) else { return }
+
+                userInfo.birthDay = date
             default:
                 break
             }
         }
+        
+        print(userInfo)
     }
     
 }
