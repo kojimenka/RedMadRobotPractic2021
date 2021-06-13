@@ -12,73 +12,22 @@ import XCTest
 final class TestAddNewPostEndpoint: XCTestCase {
 
     func testMakeRequest() throws {
-        
-        let userInfo = UserInformation(
-            id: "1234",
-            firstName: "Foo",
-            lastName: "Bar",
-            nickname: "kojimenka",
-            avatarUrl: nil,
-            birthDay: Date()
-        )
-        
-        let post = PostInfo(
-            id: "1234",
+    
+        let post = AddPostModel(
             text: nil,
-            imageUrl: nil,
+            imageData: nil,
             lon: nil,
-            lat: nil,
-            likes: 0,
-            author: userInfo
+            lat: nil
         )
-        
-        let token = "FooBar123"
         
         let endpoint = AddNewPostEndpoint(
-            postInfo: post,
-            token: token
+            postInfo: post
         )
 
         let urlRequest = try endpoint.makeRequest()
       
         assertPOST(urlRequest)
-        assertURL(urlRequest, "https://interns2021.redmadrobot.com/me/posts")
+        assertURL(urlRequest, "me/posts")
     }
     
-    func testMakeFailureRequest() throws {
-        
-        let userInfo = UserInformation(
-            id: "1234",
-            firstName: "Foo",
-            lastName: "Bar",
-            nickname: "kojimenka",
-            avatarUrl: nil,
-            birthDay: Date()
-        )
-        
-        let post = PostInfo(
-            id: "1234",
-            text: nil,
-            imageUrl: nil,
-            lon: nil,
-            lat: nil,
-            likes: 0,
-            author: userInfo
-        )
-        
-        let token: String? = nil
-        
-        let endpoint = AddNewPostEndpoint(
-            postInfo: post,
-            token: token
-        )
-
-        do {
-            _ = try endpoint.makeRequest()
-            XCTFail("Failure work wrong")
-        } catch let error {
-            XCTAssertEqual(error.localizedDescription, DefaultServiceErrors.nilToken.localizedDescription)
-        }
-    }
-
 }

@@ -16,7 +16,6 @@ final class LogoutAuthorizationTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<LogoutEndpoint>!
-    private var storage: UserStorage!
     private var authorizationService: AuthorizationServiceProtocol!
     
     private var mockModels = AuthMockModels()
@@ -26,7 +25,6 @@ final class LogoutAuthorizationTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<LogoutEndpoint>()
-        storage = MockStorage()
         authorizationService = AuthorizationServices(
             apiClient: client,
             tokenManager: MockTokenManager(),
@@ -37,7 +35,6 @@ final class LogoutAuthorizationTest: XCTestCase {
     override func tearDown() {
         super.tearDown()
         client = nil
-        storage = nil
         authorizationService = nil
     }
     
@@ -45,9 +42,6 @@ final class LogoutAuthorizationTest: XCTestCase {
     
     func testLogout() {
         let requestExpectation = expectation(description: #function)
-        
-        self.storage.accessToken = "FooBar"
-        self.storage.refreshToken = "FizzBuzz"
         
         client.result = .success(())
         
@@ -62,8 +56,6 @@ final class LogoutAuthorizationTest: XCTestCase {
             
             XCTAssertEqual(self.client.requestCalled, true)
             XCTAssertEqual(self.client.requestCallCount, 1)
-            XCTAssertEqual(self.storage.accessToken, nil)
-            XCTAssertEqual(self.storage.refreshToken, nil)
         }
     }
     

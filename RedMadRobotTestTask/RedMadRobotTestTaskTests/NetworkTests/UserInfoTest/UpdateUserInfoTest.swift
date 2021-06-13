@@ -41,10 +41,10 @@ final class UpdateUserInfoTest: XCTestCase {
         
         var requestResult: Bool?
         
-        client.result = .success(())
+        client.result = .success((mockModels.userStub))
         
         _ = userInfoService.updateUserInfo(
-            user: RedMadRobotTestTask.UserInformation(mockModels.userStub)
+            user: RedMadRobotTestTask.AddUserInformationModel(mockModels.addUserModelStub)
         ) { result in
             
             switch result {
@@ -76,7 +76,7 @@ final class UpdateUserInfoTest: XCTestCase {
         client.result = .failure(MockWarnings.mockError)
         
         _ = userInfoService.updateUserInfo(
-            user: RedMadRobotTestTask.UserInformation(mockModels.userStub)
+            user: RedMadRobotTestTask.AddUserInformationModel(mockModels.addUserModelStub)
         ) { result in
             
             switch result {

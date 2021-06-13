@@ -14,6 +14,7 @@ protocol FavouritePostsManager {
     func getFavouritePosts()
 }
 
+/// Класс ответственный за хранение лайкнутых пользователем постов 
 final class FavouritePostsManagerImpl: FavouritePostsManager {
     
     // MARK: - Public Properties

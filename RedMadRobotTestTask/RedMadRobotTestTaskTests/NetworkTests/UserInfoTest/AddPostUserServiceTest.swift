@@ -45,7 +45,7 @@ final class AddPostUserServiceTest: XCTestCase {
         client.result = .success(mockModels.postStub)
         
         _ = userInfoService.addPost(
-            postInfo: RedMadRobotTestTask.PostInfo(mockModels.postStub)
+            postInfo: RedMadRobotTestTask.AddPostModel(mockModels.addPostStub)
         ) { result in
             
             switch result {
@@ -79,7 +79,7 @@ final class AddPostUserServiceTest: XCTestCase {
         client.result = .failure(MockWarnings.mockError)
         
         _ = userInfoService.addPost(
-            postInfo: RedMadRobotTestTask.PostInfo(mockModels.postStub)
+            postInfo: RedMadRobotTestTask.AddPostModel(mockModels.addPostStub)
         ) { result in
             
             switch result {

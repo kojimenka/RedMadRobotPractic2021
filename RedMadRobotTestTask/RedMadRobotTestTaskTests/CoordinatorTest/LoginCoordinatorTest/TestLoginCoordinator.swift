@@ -19,10 +19,7 @@ final class TestLoginCoordinator: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        loginCoordinator = RegistrationCoordinator(
-            navigationController: UINavigationController(),
-            delegate: nil
-        )
+        loginCoordinator = RegistrationCoordinator(navigationController: UINavigationController())
     }
 
     override func tearDown() {
@@ -31,14 +28,6 @@ final class TestLoginCoordinator: XCTestCase {
     }
     
     // MARK: - Methods
-    
-    func testStartCoordinator() {
-        loginCoordinator.start()
-        
-        let initialScreen = loginCoordinator.navigationController.topViewController
-        
-        XCTAssertEqual(initialScreen is RegistrationContainerVC, true)
-    }
     
     // MARK: - Sign In Flow
     

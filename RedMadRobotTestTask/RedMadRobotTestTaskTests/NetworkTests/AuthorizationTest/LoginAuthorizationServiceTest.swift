@@ -16,7 +16,6 @@ final class LoginAuthorizationServiceTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<UserLoginEndpoint>!
-    private var storage: UserStorage!
     private var authorizationService: AuthorizationServiceProtocol!
     
     private var mockModels = AuthMockModels()
@@ -26,7 +25,6 @@ final class LoginAuthorizationServiceTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<UserLoginEndpoint>()
-        storage = MockStorage()
         authorizationService = AuthorizationServices(
             apiClient: client,
             tokenManager: MockTokenManager(),
@@ -37,7 +35,6 @@ final class LoginAuthorizationServiceTest: XCTestCase {
     override func tearDown() {
         super.tearDown()
         client = nil
-        storage = nil
         authorizationService = nil
     }
     
@@ -71,8 +68,6 @@ final class LoginAuthorizationServiceTest: XCTestCase {
             XCTAssertEqual(requestResult, true)
             XCTAssertEqual(self.client.requestCalled, true)
             XCTAssertEqual(self.client.requestCallCount, 1)
-            XCTAssertEqual(self.storage.accessToken, self.mockModels.tokenData.accessToken)
-            XCTAssertEqual(self.storage.refreshToken, self.mockModels.tokenData.refreshToken)
         }
     }
     
@@ -106,8 +101,6 @@ final class LoginAuthorizationServiceTest: XCTestCase {
             XCTAssertEqual(requestError?.localizedDescription, MockWarnings.mockError.localizedDescription)
             XCTAssertEqual(self.client.requestCalled, true)
             XCTAssertEqual(self.client.requestCallCount, 1)
-            XCTAssertEqual(self.storage.accessToken, nil)
-            XCTAssertEqual(self.storage.refreshToken, nil)
         }
 
     }

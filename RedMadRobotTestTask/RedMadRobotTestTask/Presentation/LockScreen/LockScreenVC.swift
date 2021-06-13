@@ -76,7 +76,7 @@ final class LockScreenVC: UIViewController {
 
         if keychainManager.isEntryExist(key: .refreshToken) {
             do {
-                let _ = try keychainManager.getRefreshToken(passwordData: passwordData)
+                _ = try keychainManager.getRefreshToken(passwordData: passwordData)
                 dataInRamManager.password = passwordData
                 delegate?.successAuthentification()
             } catch {
@@ -148,7 +148,7 @@ final class LockScreenVC: UIViewController {
                 
                 if isUserConfirm {
                     do {
-                        let _ = try self.keychainManager.savePassword(data: passwordData)
+                        _ = try self.keychainManager.savePassword(data: passwordData)
                     } catch let error {
                         DispatchQueue.main.async {
                             self.presentAlertWithError(error)

@@ -9,19 +9,15 @@ import Foundation
 
 import RedMadRobotTestTask
 
-final class MockStorage: UserStorage {
-    
-    var refreshToken: String?
-    var accessToken: String?
-    
-}
+import LocalAuthentication
 
 final class MockTokenManager: DataInRamManager {
     
     // MARK: - Public Properties
     
     public var accessToken: String?
-
+    public var password: Data?
+    
 }
 
 final class MockKeychainManager: KeychainManager {
@@ -33,20 +29,24 @@ final class MockKeychainManager: KeychainManager {
     
     // MARK: - Public Methods
     
-    func saveRefreshToken(tokenData: Data) throws {
+    func saveRefreshToken(tokenData: Data, passwordData: Data) throws {
         savedToken = String(data: tokenData, encoding: .utf8) ?? ""
     }
     
-    func getRefreshToken() throws -> String {
+    func getRefreshToken(passwordData: Data) throws -> String {
         return savedToken
+    }
+    
+    func getPassword(laContext: LAContext?) throws -> Data {
+        return savedPassword
+    }
+    
+    func isEntryExist(key: KeychainKeys) -> Bool {
+        return false
     }
     
     func savePassword(data: Data) throws {
         savedPassword = data
-    }
-    
-    func getPassword() throws -> Data {
-        return savedPassword
     }
     
     func deleteEntry(key: KeychainKeys) throws {

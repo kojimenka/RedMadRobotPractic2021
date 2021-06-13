@@ -13,51 +13,22 @@ final class TestUpdateUserInfoEndpoint: XCTestCase {
 
     func testMakeRequest() throws {
         
-        let userInfo = UserInformation(
-            id: "1234",
+        let userInfo = AddUserInformationModel(
             firstName: "Foo",
             lastName: "Bar",
             nickname: "kojimenka",
-            avatarUrl: nil,
+            imageData: nil,
             birthDay: Date()
         )
-
-        let token = "FooBar123"
         
         let endpoint = UpdateUserInfoEndpoint(
-            user: userInfo,
-            token: token
+            user: userInfo
         )
 
         let urlRequest = try endpoint.makeRequest()
       
         assertPATCH(urlRequest)
-        assertURL(urlRequest, "https://interns2021.redmadrobot.com/me")
+        assertURL(urlRequest, "me")
     }
 
-    func testMakeFailureRequest() throws {
-        
-        let userInfo = UserInformation(
-            id: "1234",
-            firstName: "Foo",
-            lastName: "Bar",
-            nickname: "kojimenka",
-            avatarUrl: nil,
-            birthDay: Date()
-        )
-        
-        let token: String? = nil
-        
-        let endpoint = UpdateUserInfoEndpoint(
-            user: userInfo,
-            token: token
-        )
-        
-        do {
-            _ = try endpoint.makeRequest()
-            XCTFail("Failure work wrong")
-        } catch let error {
-            XCTAssertEqual(error.localizedDescription, DefaultServiceErrors.nilToken.localizedDescription)
-        }
-    }
 }

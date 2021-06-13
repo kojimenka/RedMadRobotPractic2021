@@ -126,7 +126,6 @@ final class PostTableViewCell: UITableViewCell {
                   let city = city,
                   let country = country,
                   error == nil else {
-                self?.cityLabel.text = "Неверные координаты"
                 return
             }
             

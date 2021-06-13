@@ -14,6 +14,7 @@ protocol UpdateManager {
     var isUpdateFriendsNeeded: Bool { get set }
 }
 
+/// Класс для оптимизации обновления экранов пользователя
 final class UpdateManagerImpl: UpdateManager {
     
     // MARK: - Public Properties

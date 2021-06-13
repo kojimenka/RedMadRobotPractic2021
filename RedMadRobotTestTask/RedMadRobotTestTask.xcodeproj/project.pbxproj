@@ -188,7 +188,6 @@
 		2CECFCAD264520EE00B3BD09 /* DefaultServiceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA7A26451FA100298446 /* DefaultServiceErrors.swift */; };
 		2CECFCB52645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECFCB42645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift */; };
 		2CECFCDF26452DB300B3BD09 /* IsUserAuthorizedTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECFCDE26452DB300B3BD09 /* IsUserAuthorizedTest.swift */; };
-		2CECFCE626452FC600B3BD09 /* UserDefaultsStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CECFCE526452FC600B3BD09 /* UserDefaultsStorageTest.swift */; };
 		2CF47D0E2635529800F3C72B /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF47D0D2635529800F3C72B /* ServiceLayer.swift */; };
 		2CF935202645BC0100F51243 /* PostsFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF9351E2645BC0100F51243 /* PostsFeedVC.swift */; };
 		2CF935212645BC0100F51243 /* PostsFeedVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF9351F2645BC0100F51243 /* PostsFeedVC.xib */; };
@@ -458,7 +457,6 @@
 		2CE34D58264729C5007DEEA1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2CECFCB42645234200B3BD09 /* TestUpdateUserInfoEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUpdateUserInfoEndpoint.swift; sourceTree = "<group>"; };
 		2CECFCDE26452DB300B3BD09 /* IsUserAuthorizedTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsUserAuthorizedTest.swift; sourceTree = "<group>"; };
-		2CECFCE526452FC600B3BD09 /* UserDefaultsStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageTest.swift; sourceTree = "<group>"; };
 		2CF47D0D2635529800F3C72B /* ServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
 		2CF47D152635560E00F3C72B /* UserInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationModel.swift; sourceTree = "<group>"; };
 		2CF9351E2645BC0100F51243 /* PostsFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsFeedVC.swift; sourceTree = "<group>"; };
@@ -1519,7 +1517,6 @@
 				2CECFCE326452F8300B3BD09 /* NetworkTests */,
 				2CCCF415263F2C0500D15877 /* ValidatorsTest */,
 				2C15DD312649C13500D50900 /* CoordinatorTest */,
-				2CECFCE426452FA800B3BD09 /* StorageTest */,
 				2CCCF40C263F1D5200D15877 /* Info.plist */,
 			);
 			path = RedMadRobotTestTaskTests;
@@ -1676,14 +1673,6 @@
 				2C46FA6B2644A24800298446 /* SearchServiceTest */,
 			);
 			path = NetworkTests;
-			sourceTree = "<group>";
-		};
-		2CECFCE426452FA800B3BD09 /* StorageTest */ = {
-			isa = PBXGroup;
-			children = (
-				2CECFCE526452FC600B3BD09 /* UserDefaultsStorageTest.swift */,
-			);
-			path = StorageTest;
 			sourceTree = "<group>";
 		};
 		2CF47D12263552A200F3C72B /* NetworkServices */ = {
@@ -2365,7 +2354,6 @@
 				2C46FA6D2644A27D00298446 /* GetSortedUsersTest.swift in Sources */,
 				2C46FA4726449CE000298446 /* DeleteFriendUserServiceTest.swift in Sources */,
 				2CCCF42A263F377900D15877 /* TestPasswordValidator.swift in Sources */,
-				2CECFCE626452FC600B3BD09 /* UserDefaultsStorageTest.swift in Sources */,
 				2C15DD402649C57800D50900 /* TestLoginCoordinator.swift in Sources */,
 				2C15DD332649C15500D50900 /* TestFeedCoordinator.swift in Sources */,
 				2C46FA0C2644859A00298446 /* AuthMockModels.swift in Sources */,

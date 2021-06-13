@@ -49,5 +49,20 @@ final class AuthMockModels {
         author: userStub
     )
     
+    public private(set) var addPostStub = RedMadRobotTestTaskAPI.AddPostModel(
+        text: "foo",
+        imageData: nil,
+        lon: 1234,
+        lat: 5678
+    )
+    
+    public private(set) var addUserModelStub = RedMadRobotTestTaskAPI.AddUserInformationModel(
+        firstName: "Foo",
+        lastName: "Bar",
+        nickname: "FooBar",
+        imageData: nil,
+        birthDay: Date()
+    )
+    
     lazy public private(set) var postsStubArray = [postStub]
 }

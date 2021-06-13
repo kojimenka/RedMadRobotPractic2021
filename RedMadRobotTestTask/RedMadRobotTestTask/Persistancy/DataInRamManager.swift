@@ -12,6 +12,7 @@ public protocol DataInRamManager {
     var password: Data? { get set }
 }
 
+/// Класс для хранения данных которые нужны только во время работы приложения 
 final class DataInRamManagerImpl: DataInRamManager {
     
     // MARK: - Public Properties
