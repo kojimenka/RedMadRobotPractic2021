@@ -29,6 +29,14 @@ final class UserPostsContainerVC: MainPostScreenVC {
     
     // MARK: - Life cycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if updateManager.isUpdateUserPostNeeded == true {
+            super.userPostsVC.requestData()
+            updateManager.isUpdateUserPostNeeded = false
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupZeroScreen()
@@ -61,12 +69,18 @@ final class UserPostsContainerVC: MainPostScreenVC {
         }
     }
     
+    public func updateLikes() {
+        super.userPostsVC.reloadTableView()
+    }
+    
     // MARK: - Private Methods
     
     private func setupZeroScreen() {
         zeroScreen.buttonAction = { [weak self] in
-            guard let self = self else { return }
-            self.userPostsVC.requestData()
+            guard let self = self,
+                  let appTabBar = self.navigationController?.tabBarController as? AppTabBarController
+            else { return }
+            appTabBar.presentPostScreen()
         }
     }
     

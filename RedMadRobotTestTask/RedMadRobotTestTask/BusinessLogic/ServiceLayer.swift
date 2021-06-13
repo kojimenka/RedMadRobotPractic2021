@@ -31,10 +31,15 @@ final class ServiceLayer {
     
     lazy public private(set) var searchService: SearchServiceProtocol = SearchService(apiClient: apiClient)
     
-    // DataBase
+    // Persistancy
     
     public private(set) var dataInRamManager: DataInRamManager = DataInRamManagerImpl()
-    lazy public private(set) var keychainManager: KeychainManager = KeychainManagerImpl()
+    public private(set) var updateManager: UpdateManager = UpdateManagerImpl()
+    public private(set) var keychainManager: KeychainManager = KeychainManagerImpl()
+    
+    lazy public private(set) var favouritePostsManager: FavouritePostsManager = FavouritePostsManagerImpl(
+        feedService: feedService
+    )
     
     // MARK: - Private Properties
     

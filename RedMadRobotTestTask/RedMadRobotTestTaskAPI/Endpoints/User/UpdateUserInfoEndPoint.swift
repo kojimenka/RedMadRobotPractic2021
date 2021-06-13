@@ -7,72 +7,85 @@
 
 import Apexy
 
-import Alamofire
-
+// swiftlint:disable line_length
 public struct UpdateUserInfoEndpoint: Endpoint {
     
     // MARK: - Public Properties
     
-    public typealias Content = Void
+    public typealias Content = UserInformation
     
     // MARK: - Private Properties
 
-    public let user: UserInformation
-    public let token: String?
+    public let user: AddUserInformationModel
     
     // MARK: - Init
     
-    public init(user: UserInformation, token: String?) {
+    public init(user: AddUserInformationModel) {
         self.user = user
-        self.token = token
     }
     
     // MARK: - Public Methods
     
-    public func content(from response: URLResponse?, with body: Data) throws {
-        try ResponseValidator.validate(response, with: body)
+    public func content(from response: URLResponse?, with body: Data) throws -> UserInformation {
+        return try JSONDecoder.default.decode(UserInformation.self, from: body)
     }
     
     public func makeRequest() throws -> URLRequest {
-    
-        guard let token = token else { throw DefaultServiceErrors.nilToken }
         
-        let parameterS = createParameterDictionary(user: user)!
-        
-        let headerS: HTTPHeaders = [
-            "Authorization": "Bearer \(token)"
-        ]
-        
-        let requst = AF.upload(
-            multipartFormData: { multipartFormData in
-                for (key, value) in parameterS {
-                    multipartFormData.append(value, withName: key)
+        let url = URL(string: "me")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
 
-                }
-            },
-            to: "https://interns2021.redmadrobot.com/me", method: .patch, headers: headerS)
-            .validate(statusCode: 200...300)
-            .response { _ in }
+        var parameters: [String: String] = [:]
         
-        return requst.convertible.urlRequest!
-    }
-    
-    // MARK: - Private Methods
-    
-    private func createParameterDictionary(user: UserInformation) -> [String: Data]? {
-        var params: [String: Data] = [:]
-        
-        params["first_name"] = user.firstName.data(using: .utf8)
-        params["last_name"] = user.lastName.data(using: .utf8)
-        params["nickname"] = user.nickname?.data(using: .utf8)
-        params["avatar_url"] = user.avatarUrl?.dataRepresentation
+        parameters["first_name"] = user.firstName
+        parameters["last_name"] = user.lastName
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let stringDate = formatter.string(from: user.birthDay)
+        parameters["birth_day"] = stringDate
         
-        params["birth_day"] = stringDate.data(using: .utf8)
+        if let nickname = user.nickname {
+            parameters["nickname"] = nickname
+        }
         
-        return params
+        let boundary = UUID().uuidString
+        
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        request.httpBody = createBody(
+            boundary: boundary,
+            with: parameters,
+            imageData: user.imageData
+        )
+        
+        return request
+    }
+
+    // MARK: - Private Methods
+    
+    private func createBody(boundary: String, with parameters: [String: String], imageData: Data?) -> Data {
+        var body = Data()
+        let imageName = "\(UUID().uuidString).jpeg"
+        let paramName = "avatar_file"
+        
+        for (key, value) in parameters {
+            body.append(string: "--\(boundary)\r\n")
+            body.append(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+            body.append(string: "\(value)\r\n")
+        }
+        
+        if let imageData = imageData {
+            body.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"\(paramName)\"; filename=\"\(imageName)\"\r\n".data(using: .utf8)!)
+            body.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+            body.append(imageData)
+            
+            body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        }
+        
+        body.append(string: "--\(boundary)--\r\n")
+        return body
     }
 }

@@ -24,10 +24,12 @@ final class FriendsListContainerVC: UIViewController {
     
     // MARK: - Private Properties
     
-    lazy private var allFriendsListVC = AllFriendsListVC(delegate: self)
     weak private var delegate: FriendsListContainerVCDelegate?
-    private let userService: UserInfoServiceProtocol
     
+    private let userService: UserInfoServiceProtocol
+    private var updateManager: UpdateManager
+    
+    lazy private var allFriendsListVC = AllFriendsListVC(delegate: self)
     private let zeroScreen = ZeroScreenFabric().createZeroModel(state: .friends)
     
     private var zeroScreenContainer: UIView = {
@@ -42,8 +44,10 @@ final class FriendsListContainerVC: UIViewController {
     
     init(
         delegate: FriendsListContainerVCDelegate?,
+        updateManager: UpdateManager = ServiceLayer.shared.updateManager,
         userService: UserInfoServiceProtocol = ServiceLayer.shared.userInfoService
     ) {
+        self.updateManager = updateManager
         self.userService = userService
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
@@ -54,12 +58,21 @@ final class FriendsListContainerVC: UIViewController {
     }
     
     // MARK: - Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if updateManager.isUpdateFriendsNeeded {
+            updateManager.isUpdateFriendsNeeded = false
+            allFriendsListVC.makeRequest()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         childsAction()
         setConstraints()
         setupZeroScreen()
+        addChilds()
     }
     
     // MARK: - IBActions
@@ -71,19 +84,35 @@ final class FriendsListContainerVC: UIViewController {
     // MARK: - Public Methods
     
     public func setTopInset(_ inset: CGFloat) {
-        zeroScreenTopConstraint.constant = inset
+        zeroScreenTopConstraint.constant = inset + navBarHeight
         allFriendsListVC.setTopInset(inset)
     }
     
     // MARK: - Private Methods
     
-    private func showFriendList() {
+    private func addChilds() {
         addChild(controller: allFriendsListVC, rootView: friendsListContainerView)
+        addChild(controller: zeroScreen, rootView: zeroScreenContainer)
+        
+        allFriendsListVC.view.alpha = 0.0
+        zeroScreen.view.alpha = 0.0
+    }
+    
+    private func showFriendList() {
+        allFriendsListVC.view.animateShow()
+        zeroScreen.view.animateHide()
+    
+        view.sendSubviewToBack(zeroScreenContainer)
+        
         findMoreFriends.animateShow()
     }
     
     private func showZeroScreen() {
-        changeChildWithAnimation(newChild: zeroScreen, customView: zeroScreenContainer)
+        allFriendsListVC.view.animateHide()
+        zeroScreen.view.animateShow()
+        
+        view.bringSubviewToFront(zeroScreenContainer)
+        
         findMoreFriends.animateHide()
     }
     
@@ -110,7 +139,6 @@ final class FriendsListContainerVC: UIViewController {
             zeroScreenContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
-        view.sendSubviewToBack(zeroScreenContainer)
     }
     
 }
@@ -120,7 +148,15 @@ final class FriendsListContainerVC: UIViewController {
 extension FriendsListContainerVC: AllFriendsListVCDelegate {
     
     func deleteFriend(id: String) {
-        _ = userService.deleteFriend(friendID: id) { _ in }
+        _ = userService.deleteFriend(friendID: id) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.updateManager.isUpdateFeedNeeded = true
+            case .failure:
+                break
+            }
+        }
     }
     
     func allFriendsDeleted() {
@@ -132,8 +168,12 @@ extension FriendsListContainerVC: AllFriendsListVCDelegate {
             guard let self = self else { return }
             switch result {
             case .success(let friends):
-                self.showFriendList()
-                completion(friends)
+                if friends.isEmpty {
+                    self.showZeroScreen()
+                } else {
+                    self.showFriendList()
+                    completion(friends)
+                }
             case .failure:
                 self.showZeroScreen()
             }

@@ -169,8 +169,10 @@ extension ProfileScreenContainerVC: ChangeProfileCategoryDelegate {
         switch category {
         case .posts:
             xOffSet = 0.0
+            userPostsVC.updateLikes()
         case .favoritePosts:
             xOffSet = width
+            favoritePostsVC.updateLikes()
         case .friends:
             xOffSet = width * 2
         }

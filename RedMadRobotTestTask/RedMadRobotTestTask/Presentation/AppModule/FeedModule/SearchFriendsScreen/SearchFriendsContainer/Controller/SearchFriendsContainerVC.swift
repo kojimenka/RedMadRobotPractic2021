@@ -19,12 +19,15 @@ final class SearchFriendsContainerVC: UIViewController {
     
     lazy private var friendsListVC = FoundedFriendsListVC(subscriber: self)
     lazy private var searchScreen = SearchFriendsVC(subscriber: self, friendsListVC: friendsListVC)
+    private var updateManager: UpdateManager
     
     // MARK: - Init
     
     init(
+        updateManager: UpdateManager = ServiceLayer.shared.updateManager,
         requestViewModel: SearchFriendsRequestViewModel = SearchFriendsRequestViewModelImpl()
     ) {
+        self.updateManager = updateManager
         self.requestViewModel = requestViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -75,6 +78,8 @@ extension SearchFriendsContainerVC: FoundedFriendsListDelegate {
             guard let self = self else { return }
             switch result {
             case .success:
+                self.updateManager.isUpdateFeedNeeded = true
+                self.updateManager.isUpdateFriendsNeeded = true
                 self.getUserFriends()
             case .failure:
                 break

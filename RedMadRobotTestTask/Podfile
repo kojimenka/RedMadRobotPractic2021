@@ -5,6 +5,7 @@ target 'RedMadRobotTestTask' do
 
   pod 'SwiftLint'
   pod 'R.swift'
+  pod 'Nuke' 
 
 end
 

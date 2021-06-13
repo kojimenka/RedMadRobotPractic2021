@@ -7,11 +7,9 @@
 
 import UIKit
 
-class PostImageView: UIImageView {
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 148, height: 100)
-    }
-}
+import Nuke
+
+import MapKit
 
 final class PostTableViewCell: UITableViewCell {
     
@@ -21,9 +19,10 @@ final class PostTableViewCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var geolocationStackView: UIStackView!
     @IBOutlet private var cityLabel: UILabel!
-    @IBOutlet private var postImageView: PostImageView!
+    @IBOutlet private var postImageView: UIImageView!
     @IBOutlet private var nickNameLabel: UILabel!
     @IBOutlet private var likeButton: UIButton!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Public Properties
     
@@ -31,6 +30,13 @@ final class PostTableViewCell: UITableViewCell {
         didSet {
             guard let currentPostInfo = currentPostInfo else { return }
             fillPostInfo(postInfo: currentPostInfo)
+        }
+    }
+    
+    public var isFavoritePost: Bool? {
+        didSet {
+            guard let isFavoritePost = isFavoritePost else { return }
+            likeButton.isSelected = isFavoritePost
         }
     }
     
@@ -79,12 +85,63 @@ final class PostTableViewCell: UITableViewCell {
     
     private func fillPostInfo(postInfo: PostInfo) {
         titleLabel.text = postInfo.text
+        
         nickNameLabel.text = "@\(postInfo.author.nickname ?? "")"
 
         geolocationStackView.isHidden = postInfo.lat == nil || postInfo.lon == nil
         postImageView.isHidden = postInfo.imageUrl == nil
         
-        likeButton.isSelected = postInfo.isLikedPost
+        downloadImage(imageUrl: postInfo.imageUrl)
+        
+        setGeoPosition(postInfo: postInfo)
     }
     
+    private func downloadImage(imageUrl: URL?) {
+        activityIndicator.startAnimating()
+        if let imageURL = imageUrl {
+            
+            let options = ImageLoadingOptions(
+                transition: .fadeIn(duration: 0.3)
+            )
+            
+            Nuke.loadImage(
+                with: imageURL,
+                options: options,
+                into: postImageView
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.activityIndicator.animateHide()
+            }
+        }
+    }
+    
+    private func setGeoPosition(postInfo: PostInfo) {
+        let currentLocation = CLLocation(
+            latitude: Double(postInfo.lat ?? 0.0),
+            longitude: Double(postInfo.lon ?? 0.0)
+        )
+        
+        currentLocation.fetchCityAndCountry { [weak self] city, country, error in
+            guard let self = self,
+                  let city = city,
+                  let country = country,
+                  error == nil else {
+                self?.cityLabel.text = "Неверные координаты"
+                return
+            }
+            
+            let addressText = "\(country), \(city)"
+            DispatchQueue.main.async {
+                self.cityLabel.text = addressText
+            }
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        postImageView.image = nil
+        activityIndicator.alpha = 1.0
+        activityIndicator.isHidden = false
+        likeButton.isSelected = false
+    }
 }

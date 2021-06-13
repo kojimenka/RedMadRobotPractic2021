@@ -30,8 +30,8 @@ protocol UserInfoServiceProtocol {
     // MARK: - Put request
     
     func updateUserInfo(
-        user: UserInformation,
-        completion: @escaping (Result<Void, Error>) -> Void)
+        user: AddUserInformationModel,
+        completion: @escaping (Result<UserInformation, Error>) -> Void)
     -> Progress
     
     // MARK: - Delete request

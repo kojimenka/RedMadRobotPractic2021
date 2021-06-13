@@ -12,8 +12,9 @@ final class FeedScreenContainerVC: UIViewController {
     // MARK: - Private Properties
     
     weak private var coordinator: FeedModuleCoordinator?
-    private let feedService: FeedServiceProtocol
     private let zeroScreenFabric = ZeroScreenFabric()
+    private let feedService: FeedServiceProtocol
+    private var updateManager: UpdateManager
 
     // Childs
 
@@ -23,10 +24,12 @@ final class FeedScreenContainerVC: UIViewController {
     
     init(
         coordinator: FeedModuleCoordinator?,
-        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService
+        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService,
+        updateManager: UpdateManager = ServiceLayer.shared.updateManager
     ) {
         self.coordinator = coordinator
         self.feedService = feedService
+        self.updateManager = updateManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,6 +38,14 @@ final class FeedScreenContainerVC: UIViewController {
     }
     
     // MARK: - UIViewController
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if updateManager.isUpdateFeedNeeded {
+            updatePosts()
+            updateManager.isUpdateFeedNeeded = false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

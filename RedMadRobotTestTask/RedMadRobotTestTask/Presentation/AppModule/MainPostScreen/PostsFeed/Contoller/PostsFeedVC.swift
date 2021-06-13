@@ -21,22 +21,25 @@ final class PostsFeedVC: UIViewController {
     // MARK: - Private Properties
     
     weak private var delegate: PostsFeedDelegate?
-    private let feedService: FeedServiceProtocol
+    private let favouritePostsManager: FavouritePostsManager
     
     private var topInset: CGFloat = 0.0
     private var isFirstStart = true
     
     private var dataSourceViewModel: PostFeedDataSourceViewModelProtocol
+    private var updateManager: UpdateManager
     
     // MARK: - Init
     
     init(
         subscriber: PostsFeedDelegate?,
-        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService,
-        dataSourceViewModel: PostFeedDataSourceViewModelProtocol = PostFeedDataViewModel()
+        favouritePostsManager: FavouritePostsManager = ServiceLayer.shared.favouritePostsManager,
+        dataSourceViewModel: PostFeedDataSourceViewModelProtocol = PostFeedDataViewModel(),
+        updateManager: UpdateManager = ServiceLayer.shared.updateManager
     ) {
         self.delegate = subscriber
-        self.feedService = feedService
+        self.favouritePostsManager = favouritePostsManager
+        self.updateManager = updateManager
         self.dataSourceViewModel = dataSourceViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -92,6 +95,14 @@ final class PostsFeedVC: UIViewController {
         }
     }
     
+    public func reloadTableView() {
+        if let tableView = tableView {
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+        }
+    }
+    
     private func setupCollectionView() {
         dataSourceViewModel.delegate = self
         tableView.dataSource = dataSourceViewModel
@@ -130,34 +141,20 @@ extension PostsFeedVC: UIScrollViewDelegate {
 
 extension PostsFeedVC: PostFeedDataViewModelDelegate {
     
-    func likePostButtonAction(isLiked: Bool, id: String) {
+    func likePostButtonAction(isLiked: Bool, post: PostInfo) {
         if isLiked {
-            likePost(id: id)
+            likePost(post: post)
         } else {
-            unlikePost(id: id)
+            unlikePost(id: post.id)
         }
     }
     
-    func likePost(id: String) {
-        _ = feedService.addLikeToPost(postID: id) { result in
-            switch result {
-            case .success:
-                print("DEBUG: Success add like")
-            case .failure(let error):
-                print("DEBUG: Failure add like with error  \(error.localizedDescription)")
-            }
-        }
+    func likePost(post: PostInfo) {
+        favouritePostsManager.addLikedPost(post: post)
     }
     
     func unlikePost(id: String) {
-        _ = feedService.removeLikeFromPost(postID: id) { result in
-            switch result {
-            case .success:
-                print("DEBUG: Success remove like")
-            case .failure(let error):
-                print("DEBUG: Failure remove like with error  \(error.localizedDescription)")
-            }
-        }
+        favouritePostsManager.removeLikeFromPost(id: id)
     }
     
 }

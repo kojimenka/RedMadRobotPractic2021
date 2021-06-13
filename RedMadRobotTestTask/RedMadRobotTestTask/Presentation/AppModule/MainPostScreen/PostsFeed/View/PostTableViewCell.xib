@@ -15,24 +15,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" rowHeight="286" id="KGk-i7-Jjw" customClass="PostTableViewCell" customModule="RedMadRobotTestTask" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="359" height="290"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" rowHeight="308" id="KGk-i7-Jjw" customClass="PostTableViewCell" customModule="RedMadRobotTestTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="312"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="359" height="290"/>
+                <rect key="frame" x="0.0" y="0.0" width="359" height="312"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7h0-J0-Ffs">
-                        <rect key="frame" x="16" y="8" width="327" height="266"/>
+                        <rect key="frame" x="16" y="8" width="327" height="288"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" text="Soprano, we like to keep it on a high note. It's levels to it, you and I know" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ov3-Bf-CQt" userLabel="titleLabel">
-                                <rect key="frame" x="0.0" y="0.0" width="325" height="123"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" text="Soprano, we like to keep it on a high note. It's levels to it, you and I know" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ov3-Bf-CQt" userLabel="titleLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="111"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="VEF-Gh-Ekf" userLabel="geoPositionStackView">
-                                <rect key="frame" x="0.0" y="139" width="113.5" height="16"/>
+                                <rect key="frame" x="0.0" y="127" width="117" height="16"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="postGeoPosition" translatesAutoresizingMaskIntoConstraints="NO" id="N6h-B2-WRi">
                                         <rect key="frame" x="0.0" y="0.0" width="12.5" height="16"/>
@@ -42,19 +42,28 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Россия, Москва" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLJ-gg-Hhe" userLabel="cityLabel">
-                                        <rect key="frame" x="18.5" y="0.0" width="95" height="16"/>
+                                        <rect key="frame" x="18.5" y="0.0" width="98.5" height="16"/>
                                         <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="13"/>
                                         <color key="textColor" name="middle_grey"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vcG-ur-hCY" userLabel="postImageView" customClass="PostImageView" customModule="RedMadRobotTestTask" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="171" width="148" height="64.5"/>
-                                <color key="backgroundColor" name="tintOrange"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vcG-ur-hCY" userLabel="postImageView">
+                                <rect key="frame" x="0.0" y="159" width="148" height="100"/>
+                                <color key="backgroundColor" name="light_grey_blue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="9mX-Eu-o4b"/>
+                                    <constraint firstAttribute="width" constant="148" id="Y2c-LD-zLM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@kojimenka" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3P-vE-o3R">
-                                <rect key="frame" x="0.0" y="251.5" width="61" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="900" verticalHuggingPriority="900" horizontalCompressionResistancePriority="900" verticalCompressionResistancePriority="900" text="@kojimenka" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3P-vE-o3R">
+                                <rect key="frame" x="0.0" y="275" width="59" height="13"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="11"/>
                                 <color key="textColor" name="middle_grey"/>
                                 <nil key="highlightedColor"/>
@@ -62,7 +71,7 @@
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdg-1w-NkN">
-                        <rect key="frame" x="303" y="234" width="40" height="40"/>
+                        <rect key="frame" x="303" y="256" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="8kt-YY-Wud"/>
                             <constraint firstAttribute="height" constant="40" id="a5V-fd-0AJ"/>
@@ -72,12 +81,18 @@
                             <action selector="addLike:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MBE-bL-Ca7"/>
                         </connections>
                     </button>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="QIm-yK-Sb4">
+                        <rect key="frame" x="80" y="207" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="Ov3-Bf-CQt" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.905292" id="B9x-bd-jlN"/>
                     <constraint firstAttribute="bottom" secondItem="7h0-J0-Ffs" secondAttribute="bottom" constant="16" id="BtY-fo-WyE"/>
+                    <constraint firstItem="QIm-yK-Sb4" firstAttribute="centerY" secondItem="vcG-ur-hCY" secondAttribute="centerY" id="Bul-XY-E7h"/>
                     <constraint firstAttribute="trailing" secondItem="7h0-J0-Ffs" secondAttribute="trailing" constant="16" id="Kfz-Ol-dsM"/>
                     <constraint firstItem="7h0-J0-Ffs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="LeH-QJ-edt"/>
+                    <constraint firstItem="QIm-yK-Sb4" firstAttribute="centerX" secondItem="vcG-ur-hCY" secondAttribute="centerX" id="P0e-2G-VQJ"/>
                     <constraint firstAttribute="trailing" secondItem="vdg-1w-NkN" secondAttribute="trailing" constant="16" id="c9e-HO-lmV"/>
                     <constraint firstItem="7h0-J0-Ffs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="vOW-QV-44M"/>
                     <constraint firstAttribute="bottom" secondItem="vdg-1w-NkN" secondAttribute="bottom" constant="16" id="ymp-jD-a6M"/>
@@ -86,6 +101,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
             <connections>
+                <outlet property="activityIndicator" destination="QIm-yK-Sb4" id="u6q-UF-l6x"/>
                 <outlet property="cityLabel" destination="KLJ-gg-Hhe" id="e00-tE-fWV"/>
                 <outlet property="contentStackView" destination="7h0-J0-Ffs" id="4gz-zI-MNO"/>
                 <outlet property="geolocationStackView" destination="VEF-Gh-Ekf" id="eC2-dC-AOh"/>
@@ -94,17 +110,17 @@
                 <outlet property="postImageView" destination="vcG-ur-hCY" id="Fbk-v5-wWg"/>
                 <outlet property="titleLabel" destination="Ov3-Bf-CQt" id="52y-w9-LB4"/>
             </connections>
-            <point key="canvasLocation" x="-18.115942028985508" y="195.53571428571428"/>
+            <point key="canvasLocation" x="-18.115942028985508" y="202.90178571428569"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="postGeoPosition" width="12" height="16"/>
         <image name="unlikePostIcon" width="40" height="40"/>
+        <namedColor name="light_grey_blue">
+            <color red="0.96862745098039216" green="0.97254901960784312" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="middle_grey">
             <color red="0.63529411764705879" green="0.67450980392156867" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="tintOrange">
-            <color red="0.99599999189376831" green="0.2669999897480011" blue="0.027000000700354576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

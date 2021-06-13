@@ -7,65 +7,90 @@
 
 import Apexy
 
-import Alamofire
-
+// swiftlint:disable line_length
 public struct AddNewPostEndpoint: Endpoint {
-    
+
     // MARK: - Public Properties
     
     public typealias Content = PostInfo
     
     // MARK: - Private Properties
     
-    private let postInfo: PostInfo
-    public let token: String?
+    private let postInfo: AddPostModel
     
     // MARK: - Init
     
-    public init(postInfo: PostInfo, token: String?) {
+    public init(postInfo: AddPostModel) {
         self.postInfo = postInfo
-        self.token = token
     }
     
     // MARK: - Public Methods
-    
     public func content(from response: URLResponse?, with body: Data) throws -> PostInfo {
         return try JSONDecoder.default.decode(PostInfo.self, from: body)
     }
     
     public func makeRequest() throws -> URLRequest {
-        
-        guard let token = token else { throw DefaultServiceErrors.nilToken }
-        
-        let parameterS = createParameterDictionary(post: postInfo)!
 
-        let headerS: HTTPHeaders = [
-            "Authorization": "Bearer \(token)"
-        ]
+        let url = URL(string: "me/posts")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
         
-        let requst = AF.upload(
-            multipartFormData: { multipartFormData in
-                for (key, value) in parameterS {
-                    multipartFormData.append(value, withName: key)
+        var parameters: [String: String] = [:]
+        
+        if let text = postInfo.text {
+            parameters["text"] = text
+        }
+        
+        if let lon = postInfo.lon {
+            parameters["lon"] = String(lon)
+        }
+        
+        if let lat = postInfo.lat {
+            parameters["lat"] = String(lat)
+        }
+        
+        let boundary = UUID().uuidString
+        
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        request.httpBody = createBody(
+            boundary: boundary,
+            with: parameters,
+            imageData: postInfo.imageData
+        )
 
-                }
-            },
-            to: "https://interns2021.redmadrobot.com/me/posts", method: .post, headers: headerS)
-            .validate(statusCode: 200...300)
-            .response { _ in }
-        
-        return requst.convertible.urlRequest!
+        return request
     }
     
-    private func createParameterDictionary(post: PostInfo) -> [String: Data]? {
-        var params: [String: Data] = [:]
+    private func createBody(boundary: String, with parameters: [String: String], imageData: Data?) -> Data {
+        var body = Data()
+        let imageName = "\(UUID().uuidString).jpeg"
+        let paramName = "image_file"
         
-        params["text"] = post.text?.data(using: .utf8)
-        params["image_file"] = post.imageUrl?.dataRepresentation
-        params["lat"] = withUnsafeBytes(of: post.lat) { Data($0) }
-        params["lon"] = withUnsafeBytes(of: post.lon) { Data($0) }
+        for (key, value) in parameters {
+            body.append(string: "--\(boundary)\r\n")
+            body.append(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+            body.append(string: "\(value)\r\n")
+        }
         
-        return params
+        if let imageData = imageData {
+            body.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"\(paramName)\"; filename=\"\(imageName)\"\r\n".data(using: .utf8)!)
+            body.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+            body.append(imageData)
+            
+            body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        }
+        
+        body.append(string: "--\(boundary)--\r\n")
+        return body
     }
-        
+    
+}
+
+extension Data {
+    mutating func append(string: String) {
+        guard let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true) else { return }
+        append(data)
+    }
 }

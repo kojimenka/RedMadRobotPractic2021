@@ -26,6 +26,26 @@ extension UIAlertController {
         return alert
     }
     
+    static func createAlert(
+        alertText: String,
+        alertMessage: String? = nil,
+        completion: @escaping () -> Void,
+        buttonTitle: String? = "ОK")
+    -> UIAlertController {
+        
+        let alert = UIAlertController(
+            title: alertText,
+            message: alertMessage,
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: buttonTitle, style: .default) { _ in
+            completion()
+        })
+        
+        return alert
+    }
+    
     static func createAlertWithTwoButtons(
         alertText: String,
         alertMessage: String? = nil,

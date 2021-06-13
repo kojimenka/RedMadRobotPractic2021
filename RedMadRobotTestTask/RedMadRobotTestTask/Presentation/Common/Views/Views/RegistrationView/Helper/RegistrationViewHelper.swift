@@ -10,6 +10,7 @@ import Foundation
 struct RegistrationTextFieldData {
     let placeHolder: String
     var isSecure: Bool = false
+    var isDatePickerNeeded: Bool = false
 }
 
 struct RegistrationFieldData {
