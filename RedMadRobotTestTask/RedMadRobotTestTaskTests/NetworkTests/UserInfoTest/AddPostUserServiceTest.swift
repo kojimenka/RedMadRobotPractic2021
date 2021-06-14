@@ -16,7 +16,7 @@ final class AddPostUserServiceTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<AddNewPostEndpoint>!
-    private var userInfoService: FeedServiceProtocol!
+    private var userInfoService: FeedService!
     
     private var mockModels = AuthMockModels()
     
@@ -25,7 +25,7 @@ final class AddPostUserServiceTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<AddNewPostEndpoint>()
-        userInfoService = FeedService(apiClient: client)
+        userInfoService = FeedServiceImpl(apiClient: client)
     }
     
     override func tearDown() {

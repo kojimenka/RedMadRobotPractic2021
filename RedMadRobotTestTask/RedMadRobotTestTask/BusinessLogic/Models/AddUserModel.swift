@@ -9,6 +9,7 @@ import Foundation
 
 import RedMadRobotTestTaskAPI
 
+/// Модель для добавления информации о пользователе
 public struct AddUserInformationModel: Codable, Equatable {
     
     public var firstName: String = ""
@@ -18,6 +19,8 @@ public struct AddUserInformationModel: Codable, Equatable {
     public var birthDay: Date = Date()
     
 }
+
+// MARK: - Мапперы для связывания структур между таргетами
 
 extension AddUserInformationModel {
     

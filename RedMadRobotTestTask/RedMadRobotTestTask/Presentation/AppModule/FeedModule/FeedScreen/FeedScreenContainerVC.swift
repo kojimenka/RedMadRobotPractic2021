@@ -7,15 +7,21 @@
 
 import UIKit
 
+/// Контейнер для флоу экранов всех постов.
 final class FeedScreenContainerVC: UIViewController {
 
     // MARK: - Private Properties
     
     weak private var coordinator: FeedModuleCoordinator?
     private let zeroScreenFabric = ZeroScreenFabric()
-    private let feedService: FeedServiceProtocol
+    private let feedService: FeedService
+    
+    /// Менеджер хранящий данные, каким экраном нужно обновить данные
     private var updateManager: UpdateManager
-
+    
+    /// Менеджер который содержит текущие любимые посты
+    private let favoritePostsManager: FavouritePostsManager
+    
     // Childs
 
     lazy private var allPostsVC = PostsFeedVC(subscriber: self)
@@ -24,9 +30,11 @@ final class FeedScreenContainerVC: UIViewController {
     
     init(
         coordinator: FeedModuleCoordinator?,
-        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService,
-        updateManager: UpdateManager = ServiceLayer.shared.updateManager
+        feedService: FeedService = ServiceLayer.shared.feedService,
+        updateManager: UpdateManager = ServiceLayer.shared.updateManager,
+        favoritePostsManager: FavouritePostsManager = ServiceLayer.shared.favouritePostsManager
     ) {
+        self.favoritePostsManager = favoritePostsManager
         self.coordinator = coordinator
         self.feedService = feedService
         self.updateManager = updateManager
@@ -39,6 +47,7 @@ final class FeedScreenContainerVC: UIViewController {
     
     // MARK: - UIViewController
     
+    /// Если менеджер сообщает об обновлениях, делаем запрос на новые данные.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if updateManager.isUpdateFeedNeeded {
@@ -80,6 +89,7 @@ final class FeedScreenContainerVC: UIViewController {
         setNewChild(child: allPostsVC)
     }
     
+    /// Zero screen если у пользователя нет постов
     private func showEmptyPostZeroScreen() {
         let zeroScreen = zeroScreenFabric.createZeroModel(state: .feedScreen) { [weak self] in
             guard let self = self else { return }
@@ -89,6 +99,7 @@ final class FeedScreenContainerVC: UIViewController {
         setNewChild(child: zeroScreen)
     }
     
+    /// Zero screen для отображения сетевой ошибки
     private func showErrorZeroScreen() {
         let zeroScreen = zeroScreenFabric.createZeroModel(state: .genericError) { [weak self] in
             guard let self = self else { return }
@@ -109,41 +120,20 @@ extension FeedScreenContainerVC: PostsFeedDelegate {
             switch result {
             case .success(let content):
                 if content.isEmpty {
-                    completion(.failure(LoginValidatorError.emptyLogin))
+                    completion(.failure(NetworkErrors.genericError))
                     self.showEmptyPostZeroScreen()
                 } else {
-                    self.getLikedPosts(
-                        feedPosts: content,
-                        completion: completion
-                    )
+                    self.favoritePostsManager.getFavouritePosts { [weak self] in
+                        guard let self = self else { return }
+                        completion(.success(content))
+                        self.showFeedScreen()
+                    }
                 }
             case .failure:
                 completion(result)
                 self.showErrorZeroScreen()
             }
         }
-    }
-    
-    func getLikedPosts(
-        feedPosts: [PostInfo],
-        completion: @escaping (Result<[PostInfo], Error>) -> Void
-    ) {
-        _ = feedService.getFavouritePosts(completion: { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let likedPosts):
-                var mutableFeedPost = feedPosts
-                // Отмечаем во всех постах, посты которые пользователь лайкнул 
-                for (index, feedPost) in mutableFeedPost.enumerated() {
-                    mutableFeedPost[index].isLikedPost = likedPosts.contains(feedPost)
-                }
-                completion(.success(mutableFeedPost))
-                self.showFeedScreen()
-            case .failure(let error):
-                completion(.failure(error))
-                self.showErrorZeroScreen()
-            }
-        })
     }
     
     func scrollViewOffSetChanged(inset: CGFloat) {}

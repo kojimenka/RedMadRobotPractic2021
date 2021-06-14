@@ -13,6 +13,7 @@ public protocol SignUpContainerDelegate: AnyObject {
     func addUserInfo(_ userInfo: AddUserInformationModel)
 }
 
+/// Контейнер для регистрации пользователей. Внутри этого экрана есть два чайлда. Первый чайлд ответственен за регистрацию, второй за добавления дополнительной информации о пользователе.
 final class SignUpContainerVC: UIViewController {
     
     // MARK: - IBOutlet
@@ -21,23 +22,27 @@ final class SignUpContainerVC: UIViewController {
     @IBOutlet private weak var registeredButton: UIButton!
     @IBOutlet private weak var nextButton: RegistrationNextButton!
     
+    /// Констрейнт который меняет текущий прогресс регистарации
     @IBOutlet private weak var progressViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var nextButtonBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Private Properties
     
-    private let checkKeyboardViewModel: CheckKeyboardViewModel
-    private let dataInRamManager: DataInRamManager
-    
     weak private var delegate: SignUpContainerDelegate?
     
+    /// ViewModel для отслеживания клавиатуры
+    private let checkKeyboardViewModel: CheckKeyboardViewModel
+    
+    private let dataInRamManager: DataInRamManager
+    
+    // Childs Controllers
     lazy private var signUpFirstScreen = SignUpFirstVC(subscriber: self)
     lazy private var signUpSecondScreen = SignUpSecondVC(subscriber: self)
     
     private var isFirstLayout = true
     
-    private var userInfo = AddUserInformationModel()
     private var userCredentials = Credentials()
+    private var userInfo = AddUserInformationModel()
     
     enum ScreenState {
         case firstScreen
@@ -50,7 +55,7 @@ final class SignUpContainerVC: UIViewController {
     
     init(
         subscriber: SignUpContainerDelegate?,
-        checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil),
+        checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(),
         dataInRamManager: DataInRamManager = ServiceLayer.shared.dataInRamManager
     ) {
         self.delegate = subscriber
@@ -65,6 +70,7 @@ final class SignUpContainerVC: UIViewController {
     
     // MARK: - UIViewController(
     
+    /// Как можно раньше узнаем размеры экрана и настраиваем scrollView
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         guard isFirstLayout == true else { return }
@@ -89,6 +95,7 @@ final class SignUpContainerVC: UIViewController {
     }
     
     @IBAction private func nextButtonAction(_ sender: Any) {
+        /// Проверяем на ошибки заполнения данных
         guard nextButton.isButtonEnable == true else {
             switch currentScreen {
             case .firstScreen:
@@ -99,6 +106,7 @@ final class SignUpContainerVC: UIViewController {
             return
         }
         
+        /// После успешного заполнения экрана, передаем контейнеру нужные данные, контейнер делает запрос и дальше уже решает что нужно делать
         switch currentScreen {
         case .firstScreen:
             delegate?.registrateUser(credentials: userCredentials)
@@ -109,6 +117,7 @@ final class SignUpContainerVC: UIViewController {
     
     // MARK: - Public Methods
     
+    /// Показываем экран в добавлением пользовательской информации
     public func showSecondScreen() {
         let width = view.frame.width
         scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: true)
@@ -183,19 +192,25 @@ extension SignUpContainerVC: CheckKeyboardViewModelDelegate {
 // MARK: - Sign in first screen delegate
 
 extension SignUpContainerVC: SignUpFirstScreenDelegate {
+    
+    /// Если пользователь успешно ввел все поля регистрации, то мы сохраняем эти данные здесь для совершения регистрации
+    /// - Parameter userCredentials: Данные необходимые для регистрации
     func successFill(userCredentials: Credentials) {
         self.userCredentials = userCredentials
     }
     
+    /// В зависимости от статуса заполнения данных, меняем статус кнопки
     func currentStatus(isUserFillScreen: Bool) {
         nextButton.isButtonEnable = isUserFillScreen
     }
+    
 }
 
 // MARK: - Sign up second screen delegate
 
 extension SignUpContainerVC: SignUpSecondScreenDelegate {
     
+    /// Если пользователь успешно ввел все поля данных, то мы сохраняем эти данные здесь для совершения запроса на сервер
     func fullUserData(userModel: AddUserInformationModel) {
         self.userInfo = userModel
     }

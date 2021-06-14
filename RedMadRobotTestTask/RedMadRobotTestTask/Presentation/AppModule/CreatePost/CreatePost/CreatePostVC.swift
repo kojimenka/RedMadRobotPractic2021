@@ -15,6 +15,7 @@ protocol CreatePostVCDelegate: AnyObject {
     func currentPostText(_ text: String?)
 }
 
+/// Экран ответственный за заполнение поста
 final class CreatePostVC: UIViewController {
 
     // MARK: - IBOutlets
@@ -33,8 +34,11 @@ final class CreatePostVC: UIViewController {
     // MARK: - Private Methods
     
     weak private var delegate: CreatePostVCDelegate?
+    
+    /// ViewModel для отслеживания клавиатуры
     private let checkKeyboardViewModel: CheckKeyboardViewModel
     
+    /// Прозрачная вьюха которая имеет размер клавиутуру, она нужна чтобы пользователь мог скролить содержания поста когда клавиатура поднята
     private var emptyKeyboardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +51,7 @@ final class CreatePostVC: UIViewController {
     
     init(
         delegate: CreatePostVCDelegate?,
-        checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel(subscriber: nil)
+        checkKeyboardViewModel: CheckKeyboardViewModel = CheckKeyboardViewModel()
     ) {
         self.delegate = delegate
         self.checkKeyboardViewModel = checkKeyboardViewModel
@@ -93,9 +97,13 @@ final class CreatePostVC: UIViewController {
     // MARK: - Public Methods
     
     public func changePhoto(image: UIImage) {
+        /// Считаем соотношение сторон фотографии
         let imageAspectRatio = image.size.height / image.size.width
         
+        /// Ширина фотографии равна ширине scrollView
         let width = contentScrollView.frame.width
+        
+        /// Рассчитываем высоту картинки основываясь на ширине и соотношение сторон
         let height = width * imageAspectRatio
         
         postImageView.image = image
@@ -112,19 +120,22 @@ final class CreatePostVC: UIViewController {
     // MARK: - Private Methods
     
     private func setupViews() {
+        /// Настраиваем пустую вьюху для клавиатуры
         emptyKeyboardViewHeightConstraint = emptyKeyboardView.heightAnchor.constraint(equalToConstant: 0)
         emptyKeyboardViewHeightConstraint.isActive = true
         
+        /// Настраиваем ViewModel для отслеживания клавиатуры
         checkKeyboardViewModel.delegate = self
         self.hideKeyboardWhenTappedAround()
         
         view.bringSubviewToFront(actionsStackView)
         contentStackView.addArrangedSubview(emptyKeyboardView)
         
-        addCloseButton()
+        setupNavBar()
     }
     
-    private func addCloseButton() {
+    /// Настраиваем NavBar
+    private func setupNavBar() {
         let play = UIBarButtonItem(
             image: R.image.removeFriendIcon(),
             style: .plain,
@@ -155,20 +166,9 @@ extension CreatePostVC: CheckKeyboardViewModelDelegate {
         case .hideKeyboard:
             actionsStackViewBottomConstraint.constant = 20
             emptyKeyboardViewHeightConstraint.constant = 0
-            
-//            contentScrollView.contentOffset = CGPoint(
-//                x: 0,
-//                y: 0.0
-//            )
-            
         case .showKeyboard(keyboardHeight: let height):
             actionsStackViewBottomConstraint.constant = height + 10
             emptyKeyboardViewHeightConstraint.constant = height + 10
-            
-//            contentScrollView.contentOffset = CGPoint(
-//                x: 0,
-//                y: emptyKeyboardViewHeightConstraint.constant
-//            )
         }
         
         UIView.animate(withDuration: 0.3) {
@@ -182,6 +182,7 @@ extension CreatePostVC: CheckKeyboardViewModelDelegate {
 
 extension CreatePostVC: UITextViewDelegate {
     
+    /// Только так правильно работает установка tint color в textView
     func textViewDidBeginEditing(_ textView: UITextView) {
         
         let color = textView.tintColor
@@ -194,6 +195,7 @@ extension CreatePostVC: UITextViewDelegate {
         }
     }
     
+    /// Эмуляция PlaceHolder-a
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Чем хотите поделиться?"

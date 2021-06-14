@@ -16,7 +16,7 @@ final class RefreshTokenAuthorizationTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<RefreshUserTokenEndpoint>!
-    private var authorizationService: AuthorizationServiceProtocol!
+    private var authorizationService: AuthorizationService!
     
     private var mockModels = AuthMockModels()
     
@@ -25,7 +25,7 @@ final class RefreshTokenAuthorizationTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<RefreshUserTokenEndpoint>()
-        authorizationService = AuthorizationServices(
+        authorizationService = AuthorizationServiceImpl(
             apiClient: client,
             tokenManager: MockTokenManager(),
             keychainManager: MockKeychainManager()

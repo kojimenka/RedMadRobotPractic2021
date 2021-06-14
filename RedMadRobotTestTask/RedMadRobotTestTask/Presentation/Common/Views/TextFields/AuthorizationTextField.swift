@@ -7,17 +7,14 @@
 
 import UIKit
 
-enum KeyboardAction {
-    case showKeyboard(keyboardHeight: CGFloat)
-    case hideKeyboard
-}
-
-final class NewAuthorizationTextField: UITextFieldWithInset {
+/// Кастомный TextField с полоской отображающей состояние поля
+final class AuthorizationTextField: UITextFieldWithInset {
     
     // MARK: - Private Properties
     
     private var isFirstDraw = true
     
+    /// Полоска отображающая состояние
     private let bottomLine: CALayer = {
         let layer = CALayer()
         layer.cornerRadius = 1.0
@@ -59,6 +56,7 @@ final class NewAuthorizationTextField: UITextFieldWithInset {
         addTarget(self, action: #selector(setEditColor), for: .editingDidBegin)
     }
     
+    /// Если поле не валидно, меняем цвет полоски и трясем вьюху
     public func isValidFill(_ isValid: Bool) {
         let neededColor = !isValid ? ColorPalette.tintOrangeColor : ColorPalette.notActive
         bottomLine.backgroundColor = neededColor.cgColor
@@ -92,6 +90,7 @@ final class NewAuthorizationTextField: UITextFieldWithInset {
     
 }
 
+/// Кастомный TextField c возможностью установки отступов
 class UITextFieldWithInset: UITextField {
     
     public var textInsets = UIEdgeInsets.zero {

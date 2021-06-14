@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Изначально настроенный UINavigationController под дизайн приложения
 final class AppNavigationController: UINavigationController {
     
     // MARK: - Life cycle

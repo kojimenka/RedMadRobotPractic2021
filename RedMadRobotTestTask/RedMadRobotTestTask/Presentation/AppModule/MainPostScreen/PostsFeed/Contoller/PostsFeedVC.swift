@@ -12,6 +12,7 @@ protocol PostsFeedDelegate: AnyObject {
     func scrollViewOffSetChanged(inset: CGFloat)
 }
 
+/// Основной экран для отображение постов, переиспользуется 3 раза: новостная лента, посты пользователя и все посты с лайками.
 final class PostsFeedVC: UIViewController {
 
     // MARK: - IBOutlets
@@ -21,15 +22,23 @@ final class PostsFeedVC: UIViewController {
     // MARK: - Private Properties
     
     weak private var delegate: PostsFeedDelegate?
-    private let favouritePostsManager: FavouritePostsManager
-    private let feedService: FeedServiceProtocol
     
-    private var topInset: CGFloat = 0.0
-    private var isUserCanDeletePost = false
-    private var isFirstLayout = true
+    private let feedService: FeedService
     
     private var dataSourceViewModel: PostFeedDataSourceViewModelProtocol
+    
+    /// Менеджер который содержит текущие любимые посты
+    private let favouritePostsManager: FavouritePostsManager
+    
+    /// Менеджер хранящий данные каким экраном нужно обновить данные
     private var updateManager: UpdateManager
+    
+    /// Отступ равный высоте шапки с профилем
+    private var topInset: CGFloat = 0.0
+    
+    /// Возможность удаления постов есть только на экране с поставим пользователе
+    private var isUserCanDeletePost = false
+    private var isFirstLayout = true
     
     // MARK: - Init
     
@@ -38,7 +47,7 @@ final class PostsFeedVC: UIViewController {
         favouritePostsManager: FavouritePostsManager = ServiceLayer.shared.favouritePostsManager,
         dataSourceViewModel: PostFeedDataSourceViewModelProtocol = PostFeedDataViewModel(),
         updateManager: UpdateManager = ServiceLayer.shared.updateManager,
-        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService
+        feedService: FeedService = ServiceLayer.shared.feedService
     ) {
         self.delegate = subscriber
         self.favouritePostsManager = favouritePostsManager
@@ -59,6 +68,7 @@ final class PostsFeedVC: UIViewController {
         tableView.reloadData()
     }
     
+    /// Незаметно для пользователе ставим отступ для таблицы с размеров в шапку пользователя
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         guard isFirstLayout == true else { return }
@@ -69,23 +79,22 @@ final class PostsFeedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
+        setupTableView()
     }
     
     // MARK: - Public Methods
     
-    // Метод вызывается после установки всех чайлдов в родительском классе, он необходим для установки правильного отступа для коллекции, что бы она не заслоняла чайлд с профилем
-    
+    /// Метод вызывается после установки всех чайлдов в родительском классе, он необходим для установки правильного отступа для коллекции, что бы она не заслоняла чайлд с профилем
     public func setTopInset(_ inset: CGFloat) {
         topInset = inset
     }
     
+    /// Вызывается экраном с постами пользователя для разрешения удаления постов
     public func activateDeleteAction() {
         isUserCanDeletePost = true
     }
     
-    // MARK: - Public Methods
-    
+    /// Так как данные для отображения всегда разные, контейнер который хранит этот экран, сам дает необходимые данные
     public func requestData() {
         delegate?.getPosts { [weak self] result in
             guard let self = self else { return }
@@ -111,7 +120,7 @@ final class PostsFeedVC: UIViewController {
         }
     }
     
-    private func setupCollectionView() {
+    private func setupTableView() {
         dataSourceViewModel.delegate = self
         tableView.dataSource = dataSourceViewModel
         tableView.estimatedRowHeight = 305
@@ -143,6 +152,7 @@ final class PostsFeedVC: UIViewController {
 
 extension PostsFeedVC: UITableViewDelegate {
     
+    /// Метод для возможности удаления ячеек с помощью свайпа
      func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
@@ -169,6 +179,7 @@ extension PostsFeedVC: UITableViewDelegate {
 
 extension PostsFeedVC: UIScrollViewDelegate {
     
+    /// Передаем контейнеру текущий оффсет, для изменения положения шапки пользователя
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.scrollViewOffSetChanged(inset: scrollView.contentOffset.y + topInset)
     }

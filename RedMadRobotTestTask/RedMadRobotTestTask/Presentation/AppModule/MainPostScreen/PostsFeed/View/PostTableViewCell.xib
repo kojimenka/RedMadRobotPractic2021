@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="VEF-Gh-Ekf" userLabel="geoPositionStackView">
-                                <rect key="frame" x="0.0" y="127" width="117" height="16"/>
+                                <rect key="frame" x="0.0" y="127" width="213" height="16"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="postGeoPosition" translatesAutoresizingMaskIntoConstraints="NO" id="N6h-B2-WRi">
                                         <rect key="frame" x="0.0" y="0.0" width="12.5" height="16"/>
@@ -41,8 +41,8 @@
                                             <constraint firstAttribute="height" constant="16" id="oxr-OW-GoE"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Россия, Москва" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLJ-gg-Hhe" userLabel="cityLabel">
-                                        <rect key="frame" x="18.5" y="0.0" width="98.5" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Недействительные координаты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLJ-gg-Hhe" userLabel="cityLabel">
+                                        <rect key="frame" x="18.5" y="0.0" width="194.5" height="16"/>
                                         <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="13"/>
                                         <color key="textColor" name="middle_grey"/>
                                         <nil key="highlightedColor"/>

@@ -13,6 +13,7 @@ protocol ProfileInfoDelegate: AnyObject {
     func editProfileAction()
 }
 
+/// Экран шапка с информацией о пользователе
 final class ProfileInfoVC: UIViewController {
     
     // MARK: - IBOutlets

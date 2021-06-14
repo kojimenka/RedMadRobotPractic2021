@@ -7,10 +7,14 @@
 
 import UIKit
 
+/// Delegate на который подписан AppViewController
 protocol RegistrationContainerVCDelegate: AnyObject {
+    
+    /// После выполнения flow регистрации, AppViewController решает какой экран показывать следующим
     func endRegistrationFlow()
 }
 
+/// Основной контейнер flow для регистрации пользователя, именно этот контроллер делает сетевые запросы и совершает управление координатором для навигации между экранами
 final class RegistrationContainerVC: UIViewController {
         
     // MARK: - Private Properties
@@ -19,8 +23,8 @@ final class RegistrationContainerVC: UIViewController {
     
     private let coordinator = RegistrationCoordinator(navigationController: AppNavigationController())
     
-    private let userService: UserInfoServiceProtocol
-    private let registrationService: AuthorizationServiceProtocol
+    private let userService: UserInfoService
+    private let registrationService: AuthorizationService
     
     private var keychainManager: KeychainManager
     private var dataInRamManager: DataInRamManager
@@ -30,8 +34,8 @@ final class RegistrationContainerVC: UIViewController {
     
     init(
         delegate: RegistrationContainerVCDelegate?,
-        userService: UserInfoServiceProtocol = ServiceLayer.shared.userInfoService,
-        registrationService: AuthorizationServiceProtocol = ServiceLayer.shared.authorizationServices,
+        userService: UserInfoService = ServiceLayer.shared.userInfoService,
+        registrationService: AuthorizationService = ServiceLayer.shared.authorizationServices,
         dataInRamManager: DataInRamManager = ServiceLayer.shared.dataInRamManager,
         keychainManager: KeychainManager = KeychainManagerImpl()
     ) {
@@ -165,8 +169,10 @@ extension RegistrationContainerVC: SuccessLoginScreenDelegate {
     func presentFeedAction() {
         delegate?.endRegistrationFlow()
         
+        /// Убираем весь стек контроллеров из navigationController-a, так как у пользователе есть возможность выйти из своего аккаунта и пройти регистрацию заново
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.coordinator.popToRoot(animated: true)
+            self.coordinator.enableSwipePopUp()
         }
     }
     

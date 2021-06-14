@@ -15,27 +15,33 @@ final class AppTabBarController: UITabBarController {
     
     // MARK: - Private Properties
     
-    private let emptyVC = UIViewController()
-    
-    private let feedCoordinator = FeedModuleCoordinator(
-        navigationController: AppNavigationController()
-    )
-    
-    lazy private var profileScreenVC = ProfileModuleCoordinator(
-        delegate: self,
-        navigationController: AppNavigationController()
-    )
-    
     weak private var appTabBarDelegate: AppTabBarControllerDelegate?
     
+    /// Если выбранный контроллер является addPostVC, то мы показываем экран с добавлением постов с помощью present,  а выбранным контроллером назначаем прошлый выбранный контроллер
     override var selectedViewController: UIViewController? {
         didSet {
-            if selectedViewController === emptyVC {
+            if selectedViewController === addPostVC {
                 presentPostScreen()
                 selectedViewController = oldValue
             }
         }
     }
+    
+    // Контроллеры
+    
+    /// Контроллер для добавления нового поста, используем болванку, так как настоящий экран с добавлением фото мы представляем с помощью Present
+    private let addPostVC = UIViewController()
+    
+    /// Координатор с флоу новостной лентой
+    private let feedCoordinator = FeedModuleCoordinator(
+        navigationController: AppNavigationController()
+    )
+    
+    /// Координатор с флоу пользовательским экраном
+    lazy private var profileScreenCoordinator = ProfileModuleCoordinator(
+        delegate: self,
+        navigationController: AppNavigationController()
+    )
     
     // MARK: - Init
     
@@ -58,10 +64,11 @@ final class AppTabBarController: UITabBarController {
     
     // MARK: - Public Methods
     
+    /// Метод для представления экрана с постами, он объявлен как public, так как у одного Zero Screen-a есть экшен на создание поста
     public func presentPostScreen() {
-        let vc = CreatePostContainerVC()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        let createPostVC = CreatePostContainerVC()
+        createPostVC.modalPresentationStyle = .fullScreen
+        self.present(createPostVC, animated: true)
     }
     
     // MARK: - Private Methods
@@ -72,7 +79,7 @@ final class AppTabBarController: UITabBarController {
     
     private func setController() {
         feedCoordinator.start()
-        profileScreenVC.start()
+        profileScreenCoordinator.start()
         
         feedCoordinator.navigationController.tabBarItem = UITabBarItem(
             title: "",
@@ -80,13 +87,13 @@ final class AppTabBarController: UITabBarController {
             tag: 0
         )
         
-        emptyVC.tabBarItem = UITabBarItem(
+        addPostVC.tabBarItem = UITabBarItem(
             title: "",
             image: R.image.newPostTabBarIcon(),
             tag: 1
         )
         
-        profileScreenVC.navigationController.tabBarItem = UITabBarItem(
+        profileScreenCoordinator.navigationController.tabBarItem = UITabBarItem(
             title: "",
             image: R.image.accountTabBarIcon(),
             tag: 2
@@ -94,8 +101,8 @@ final class AppTabBarController: UITabBarController {
         
         viewControllers = [
             feedCoordinator.navigationController,
-            emptyVC,
-            profileScreenVC.navigationController
+            addPostVC,
+            profileScreenCoordinator.navigationController
         ]
     }
     

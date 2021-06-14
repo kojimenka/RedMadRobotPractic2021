@@ -16,7 +16,7 @@ final class GetUserFriendsTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<GetUserFriendsEndpoint>!
-    private var userInfoService: UserInfoServiceProtocol!
+    private var userInfoService: UserInfoService!
     
     private var mockModels = AuthMockModels()
     
@@ -25,7 +25,7 @@ final class GetUserFriendsTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<GetUserFriendsEndpoint>()
-        userInfoService = UserInfoService(apiClient: client)
+        userInfoService = UserInfoServiceImpl(apiClient: client)
     }
     
     override func tearDown() {

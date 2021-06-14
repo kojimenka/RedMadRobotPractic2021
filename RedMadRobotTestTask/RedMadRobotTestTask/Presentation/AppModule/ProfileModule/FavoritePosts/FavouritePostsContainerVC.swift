@@ -7,15 +7,16 @@
 
 import UIKit
 
+/// Экран отображающий список любимых постов
 final class FavouritePostsContainerVC: MainPostScreenVC {
     
     private let zeroScreen = ZeroScreenFabric().createZeroModel(state: .userFavoritePosts)
-    private let feedService: FeedServiceProtocol
+    private let feedService: FeedService
     
     // MARK: - Init
     
     init(
-        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService
+        feedService: FeedService = ServiceLayer.shared.feedService
     ) {
         self.feedService = feedService
         super.init(zeroScreen: zeroScreen)
@@ -63,7 +64,7 @@ final class FavouritePostsContainerVC: MainPostScreenVC {
         })
     }
     
-    func updateLikes() {
+    public func updateLikes() {
         if updateManager.isUpdateFavoritePostsNeeded {
             super.userPostsVC.requestData()
             updateManager.isUpdateFavoritePostsNeeded = false

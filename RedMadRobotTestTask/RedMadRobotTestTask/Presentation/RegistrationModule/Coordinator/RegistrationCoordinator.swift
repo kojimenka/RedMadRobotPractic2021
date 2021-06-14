@@ -50,11 +50,13 @@ final class RegistrationCoordinator: Coordinator {
     }
     
     func pushLockScreen(delegate: LockScreenDelegate, token: AuthTokens) {
+        disableSwipePopUp()
         let controller = LockScreenVC(currentState: .lockInRegistration(token: token), delegate: delegate)
         pushController(controller: controller, animated: true)
     }
     
     func pushSuccessRegistration(subscriber: SuccessLoginScreenDelegate?) {
+        disableSwipePopUp()
         let controller = screenFabric.createSuccessLoginScreen(subscriber: subscriber)
         pushController(controller: controller, animated: true)
     }

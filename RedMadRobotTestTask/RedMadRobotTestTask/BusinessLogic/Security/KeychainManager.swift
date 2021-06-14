@@ -38,7 +38,6 @@ public protocol KeychainManager {
     func getPassword(laContext: LAContext?) throws -> Data
     
     func deleteEntry(key: KeychainKeys) throws
-    func deleteAllEntries() throws
     
     func isEntryExist(key: KeychainKeys) -> Bool
 }
@@ -65,7 +64,7 @@ public final class KeychainManagerImpl: KeychainManager {
     
     // MARK: - Password Block
     
-    /// Метод для сохранения пароля. Происходит проверка, существует ли пароль в Keychain, если существует – мы его обновляем, если нет - создаем пароль в Keychain
+    /// Метод для сохранения пароля.
     /// - Parameter data: Пароль который нужно сохранить, должен приходить в формате Data. Это удобно если мы захотим  пароль как-то обезопасить с помощью шифрования
     public func savePassword(data: Data) throws {
         try passwordService.createPasswordWithBiometry(data: data)
@@ -119,6 +118,8 @@ public final class KeychainManagerImpl: KeychainManager {
         }
     }
     
+    /// Метод для получение инфомации о существованиии нужного элемента в keychain
+    /// - Parameter key: Один из ключей внутри enum-a KeychainKeys
     public func isEntryExist(key: KeychainKeys) -> Bool {
         let query = [
             kSecClass as String: kSecClassGenericPassword,
@@ -131,16 +132,10 @@ public final class KeychainManagerImpl: KeychainManager {
         
         let status = SecItemCopyMatching(query, &dataTypeRef)
         
-        // errSecInteractionNotAllowed - for a protected item
-        // errSecAuthFailed - when touch Id is locked
         return status == noErr || status == errSecInteractionNotAllowed || status == errSecAuthFailed
     }
     
-    /// Метод для удаления всех Entry в Keychain
-    public func deleteAllEntries() throws {
-        try KeychainKeys.allCases.forEach { try deleteEntry(key: $0) }
-    }
-    
+    /// Для заполнения AccessControl для биометрии всегда используем один и тот же код
     static func getBioSecAccessControl() -> SecAccessControl {
         var access: SecAccessControl?
         var error: Unmanaged<CFError>?

@@ -11,6 +11,7 @@ protocol FoundedFriendsListDelegate: AnyObject {
     func addNewFriend(id: String)
 }
 
+/// Экран для отображения найденых друзей
 final class FoundedFriendsListVC: UIViewController {
     
     // MARK: - IBOutlets
@@ -48,6 +49,10 @@ final class FoundedFriendsListVC: UIViewController {
     
     // MARK: - Public Methods
     
+    /// Устанавливаем список новых друзей
+    /// - Parameters:
+    ///   - users: список друзей для отображения
+    ///   - isTextEmpty: введен ли текст в SearchBar
     public func setNewFriends(users: [UserInformation], isTextEmpty: Bool) {
         
         if !users.isEmpty && isTextEmpty {
@@ -67,6 +72,8 @@ final class FoundedFriendsListVC: UIViewController {
         collectionView.reloadSections(IndexSet(integer: 0))
     }
     
+    /// Метод для первого отображения пользователей, происходит без анимации
+    /// - Parameter users: список друзей для отображения
     public func setUserFriends(users: [UserInformation]) {
         dataSource.userFriends = users
         collectionView.reloadSections(IndexSet(integer: 0))

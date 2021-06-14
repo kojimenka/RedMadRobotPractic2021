@@ -16,7 +16,7 @@ final class GetSortedUsersTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<GetSearchedUserEndpoint>!
-    private var searchService: SearchServiceProtocol!
+    private var searchService: SearchService!
     
     private var mockModels = AuthMockModels()
     
@@ -25,7 +25,7 @@ final class GetSortedUsersTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<GetSearchedUserEndpoint>()
-        searchService = SearchService(apiClient: client)
+        searchService = SearchServiceImpl(apiClient: client)
     }
     
     override func tearDown() {

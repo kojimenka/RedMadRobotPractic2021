@@ -7,43 +7,43 @@
 */
 
 // MARK: - TabBar
-"feedTabBarTitle" = "Feed";
-"profileTabBarTitle" = "Profile";
+"feedTabBarTitle" = "Лента";
+"profileTabBarTitle" = "Профиль";
 
 // MARK: - RegistrationModule
 // Login
-"loginScreenTitle" = "Find your place";
-"loginRegistrationWithMail" = "RegistrationWithMail";
+"loginScreenTitle" = "Найди своё место";
+"loginRegistrationWithMail" = "Регистрация по почте";
 
 // SignInScreen
-"signInNavBarTitle" = "Enter with login";
-"signInEmailPlaceHolder" = "Your e-mail or login";
-"signInPasswordPlaceHolder" = "Password";
-"signInRegistrationButton" = "Registration";
-"signInEnterButton" = "Enter";
+"signInNavBarTitle" = "Вход по логину";
+"signInEmailPlaceHolder" = "Ваш e-mail или логин";
+"signInPasswordPlaceHolder" = "Пароль";
+"signInRegistrationButton" = "Регистрация";
+"signInEnterButton" = "Войти";
 
 // SignUpScreen
-"signUpNavBarTitle" = "Registation";
-"signUpLoginPlaceHolder" = "Create Login";
+"signUpNavBarTitle" = "Регистрация";
+"signUpLoginPlaceHolder" = "Придумайте логин";
 "signUpEmailPlaceHolder" = "E-mail";
-"signUpPasswordPlaceHolder" = "Password";
-"signUpAlreadyRegistration" = "Already Registration";
-"signUpNextButtonTitle" = "Next";
-"signUpNamePlaceHolder" = "Name";
-"signUpBirthDayPlaceHolder" = "Birthday";
-"signUpCityPlaceHolder" = "City";
-"signUpRegistrationButton" = "Registrate";
+"signUpPasswordPlaceHolder" = "Пароль";
+"signUpAlreadyRegistration" = "Уже зарегистрирован";
+"signUpNextButtonTitle" = "Далее";
+"signUpNamePlaceHolder" = "Имя";
+"signUpBirthDayPlaceHolder" = "Дата рождения";
+"signUpCityPlaceHolder" = "Город";
+"signUpRegistrationButton" = "Зарегистрироваться";
 
 // Success Login
-"successLoginDescriptionTitle" = "Now you can watch \nand post publication";
-"successLoginButtonTitle" = "Go to feed";
+"successLoginDescriptionTitle" = "Теперь ты можешь смотреть\nи делать публикации";
+"successLoginButtonTitle" = "Перейти к ленте";
 
 // MARK: - Feed Screen
-"feedScreenZeroScreenTitle" = "Oops...";
-"feedScreenZeroScreenDescription" = "Something wrong";
-"feedScreenZeroScreenTitle" = "Update";
+"feedScreenZeroScreenTitle" = "Упс...";
+"feedScreenZeroScreenDescription" = "Что-то пошло не так";
+"feedScreenZeroScreenTitle" = "Обновить";
 
 // MARK: - Profile Screen
-"feedScreenZeroScreenTitle" = "Empty";
-"feedScreenZeroScreenDescription" = "If you keep silent, other people\nwill not know about you";
-"feedScreenZeroScreenTitle" = "Create post";
+"feedScreenZeroScreenTitle" = "Пустота";
+"feedScreenZeroScreenDescription" = "Если молчать, люди никогда\nне узнают о вас";
+"feedScreenZeroScreenTitle" = "Создать пост";

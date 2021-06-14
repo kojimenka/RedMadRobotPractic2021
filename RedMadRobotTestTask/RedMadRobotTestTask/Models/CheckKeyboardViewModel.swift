@@ -7,10 +7,16 @@
 
 import UIKit
 
+enum KeyboardAction {
+    case showKeyboard(keyboardHeight: CGFloat)
+    case hideKeyboard
+}
+
 protocol CheckKeyboardViewModelDelegate: AnyObject {
     func keyboardAction(action: KeyboardAction)
 }
 
+/// Класс для отслеживания появления/исчезновения клавиатуры
 final class CheckKeyboardViewModel {
     
     // MARK: - Public Properties
@@ -18,13 +24,14 @@ final class CheckKeyboardViewModel {
     weak public var delegate: CheckKeyboardViewModelDelegate?
     
     // MARK: - Init
-    init(subscriber: CheckKeyboardViewModelDelegate?) {
-        self.delegate = subscriber
+    
+    init() {
         registerForKeyboardNotification()
     }
     
     // MARK: - Private Methods
     
+    /// Подписываемся на системные нотификации
     private func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(
             self,
@@ -40,7 +47,7 @@ final class CheckKeyboardViewModel {
             object: nil
         )
     }
-    
+
     @objc private func kbWillShow(_ notification: Notification) {
         let userInfo = notification.userInfo
         let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue

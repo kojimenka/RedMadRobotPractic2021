@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Модель данных необходимая для регистрации/авторизации пользователя
 public struct Credentials {
     
     var email: String = ""

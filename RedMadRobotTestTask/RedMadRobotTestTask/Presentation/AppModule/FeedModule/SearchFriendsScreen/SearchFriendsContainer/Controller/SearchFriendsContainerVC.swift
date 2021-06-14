@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Контейнер для экрана поиска друзей.
 final class SearchFriendsContainerVC: UIViewController {
     
     // MARK: - IBOulets
@@ -15,10 +16,16 @@ final class SearchFriendsContainerVC: UIViewController {
     
     // MARK: - Private Properties
     
+    /// ViewModel для совершения запросов
     private var requestViewModel: SearchFriendsRequestViewModel
     
+    /// Экран для отображения списка друзей
     lazy private var friendsListVC = FoundedFriendsListVC(subscriber: self)
+    
+    /// Экран который объединяет в UI SerchBar и экран с отображением друзей
     lazy private var searchScreen = SearchFriendsVC(subscriber: self, friendsListVC: friendsListVC)
+    
+    /// Менеджер хранящий данные, каким экраном нужно обновить данные
     private var updateManager: UpdateManager
     
     // MARK: - Init
@@ -61,8 +68,8 @@ final class SearchFriendsContainerVC: UIViewController {
             switch result {
             case .success(let users):
                 self.friendsListVC.setUserFriends(users: users)
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure:
+                break
             }
         }
     }

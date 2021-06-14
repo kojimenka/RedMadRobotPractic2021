@@ -21,6 +21,7 @@ extension Coordinator {
     }
     
     func popController(animated: Bool) {
+        enableSwipePopUp()
         navigationController.popViewController(animated: animated)
     }
     

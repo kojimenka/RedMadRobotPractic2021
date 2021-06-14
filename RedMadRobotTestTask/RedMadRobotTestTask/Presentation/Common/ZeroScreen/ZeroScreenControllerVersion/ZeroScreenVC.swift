@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Экран для отображения ошибок
 final class ZeroScreenVC: UIViewController {
     
     // MARK: - IBOutlets
@@ -19,11 +20,7 @@ final class ZeroScreenVC: UIViewController {
     
     // MARK: - Public Properties
     
-    public var buttonAction: (() -> Void)? {
-        didSet {
-//            updateButton.isHidden = buttonAction == nil
-        }
-    }
+    public var buttonAction: (() -> Void)?
     
     // MARK: - Private Properties
     

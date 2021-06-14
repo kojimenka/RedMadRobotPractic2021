@@ -19,17 +19,17 @@ final class ServiceLayer {
     
     // Networks
     
-    lazy public var authorizationServices: AuthorizationServiceProtocol = AuthorizationServices(
+    lazy public var authorizationServices: AuthorizationService = AuthorizationServiceImpl(
         apiClient: apiClient,
-        tokenManager: dataInRamManager,
+        dataInRamManager: dataInRamManager,
         keychainManager: keychainManager
     )
     
-    lazy public private(set) var userInfoService: UserInfoServiceProtocol = UserInfoService(apiClient: apiClient)
+    lazy public private(set) var userInfoService: UserInfoService = UserInfoServiceImpl(apiClient: apiClient)
     
-    lazy public private(set) var feedService: FeedServiceProtocol = FeedService(apiClient: apiClient)
+    lazy public private(set) var feedService: FeedService = FeedServiceImpl(apiClient: apiClient)
     
-    lazy public private(set) var searchService: SearchServiceProtocol = SearchService(apiClient: apiClient)
+    lazy public private(set) var searchService: SearchService = SearchServiceImpl(apiClient: apiClient)
     
     // Persistancy
     
@@ -49,7 +49,8 @@ final class ServiceLayer {
                 baseURL: URL(string: "https://interns2021.redmadrobot.com")!,
                 storage: dataInRamManager
             ),
-            configuration: .ephemeral)
+            configuration: .ephemeral
+        )
     }()
 
     // MARK: - Init

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Экран сигнализирующий начало долгой загрузки
 final class LoaderVC: UIViewController {
     
     // MARK: - IBOutlets
@@ -32,6 +33,7 @@ final class LoaderVC: UIViewController {
     
     // MARK: - IBAction
     
+    /// При тапе на экран сообщаем об остановки загрузки
     @IBAction private func tapGesture(_ sender: Any) {
         stopLoad?()
     }

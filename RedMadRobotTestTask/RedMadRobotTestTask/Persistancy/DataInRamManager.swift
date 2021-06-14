@@ -16,8 +16,10 @@ public protocol DataInRamManager {
 final class DataInRamManagerImpl: DataInRamManager {
     
     // MARK: - Public Properties
-    
+
     public var accessToken: String?
+    
+    /// Пароль хранится в памяти устройства для возможности обновления токенов
     public var password: Data?
     
 }

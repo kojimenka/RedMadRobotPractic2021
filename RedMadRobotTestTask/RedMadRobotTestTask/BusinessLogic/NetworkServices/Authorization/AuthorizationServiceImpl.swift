@@ -11,7 +11,7 @@ import Alamofire
 
 import RedMadRobotTestTaskAPI
 
-protocol AuthorizationServiceProtocol {
+protocol AuthorizationService {
         
     func signIn(
         credentials: Credentials,
@@ -32,7 +32,7 @@ protocol AuthorizationServiceProtocol {
     -> Progress
 }
 
-final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
+final class AuthorizationServiceImpl: NSObject, AuthorizationService {
         
     // MARK: - Private Properties
     
@@ -44,11 +44,11 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
     
     public init(
         apiClient: Client,
-        tokenManager: DataInRamManager,
+        dataInRamManager: DataInRamManager,
         keychainManager: KeychainManager
     ) {
         self.apiClient = apiClient
-        self.dataInRamManager = tokenManager
+        self.dataInRamManager = dataInRamManager
         self.keychainManager = keychainManager
         super.init()
     }
@@ -81,7 +81,7 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
                 if let token = token {
                     completion(.success(AuthTokens(token)))
                 } else {
-                    completion(.failure(KeychainErrors.failureCastEntry))
+                    completion(.failure(NetworkErrors.tokensNotExist))
                 }
             case .failure(let error):
                 self.dataInRamManager.accessToken = nil
@@ -104,7 +104,7 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
                 if let token = token {
                     completion(.success(AuthTokens(token)))
                 } else {
-                    completion(.failure(KeychainErrors.failureCastEntry))
+                    completion(.failure(NetworkErrors.tokensNotExist))
                 }
             case .failure(let error):
                 self.dataInRamManager.accessToken = nil
@@ -117,25 +117,27 @@ final class AuthorizationServices: NSObject, AuthorizationServiceProtocol {
     public func refreshToken(
         completion: @escaping (Result<Void, Error>) -> Void)
      -> Progress {
-    
-        guard let refreshToken = try? keychainManager.getRefreshToken(
-                passwordData: dataInRamManager.password ?? Data()
-        ) else {
-            completion(.failure(KeychainErrors.entryNotExist))
+        
+        guard let passwordData = dataInRamManager.password,
+              let refreshToken = try? keychainManager.getRefreshToken(passwordData: passwordData)
+        else {
+            completion(.failure(NetworkErrors.genericError))
             return Progress()
         }
         
         let endPoint = RefreshUserTokenEndpoint(token: refreshToken)
+        
         return apiClient.request(endPoint) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
-                self.dataInRamManager.accessToken = token.accessToken
-                
+            
                 guard let tokenData = token.refreshToken.data(using: .utf8) else {
-                    completion(.failure(KeychainErrors.failureUpdateEntry))
+                    completion(.failure(NetworkErrors.genericError))
                     return
                 }
+                
+                self.dataInRamManager.accessToken = token.accessToken
                 
                 try? self.keychainManager.saveRefreshToken(
                     tokenData: tokenData,

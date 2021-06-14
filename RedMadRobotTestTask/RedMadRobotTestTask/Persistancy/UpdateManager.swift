@@ -19,9 +19,16 @@ final class UpdateManagerImpl: UpdateManager {
     
     // MARK: - Public Properties
     
+    /// Активируется при необходимости обновления новостной ленты
     public var isUpdateFeedNeeded: Bool = false
+    
+    /// Активируется при необходимости обновления постов пользователя
     public var isUpdateUserPostNeeded: Bool = false
+    
+    /// Активируется при необходимости обновления любимых постов
     public var isUpdateFavoritePostsNeeded: Bool = false
+    
+    /// Активируется при необходимости обновления списка друзей
     public var isUpdateFriendsNeeded: Bool = false
     
 }

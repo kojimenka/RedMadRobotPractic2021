@@ -16,14 +16,14 @@ final class IsUserAuthorizedTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<LogoutEndpoint>!
-    private var authorizationService: AuthorizationServiceProtocol!
+    private var authorizationService: AuthorizationService!
 
     // MARK: - XCTest
     
     override func setUp() {
         super.setUp()
         client = MockClient<LogoutEndpoint>()
-        authorizationService = AuthorizationServices(
+        authorizationService = AuthorizationServiceImpl(
             apiClient: client,
             tokenManager: MockTokenManager(),
             keychainManager: MockKeychainManager()

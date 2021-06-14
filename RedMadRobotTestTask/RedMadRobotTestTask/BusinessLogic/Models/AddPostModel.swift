@@ -9,6 +9,7 @@ import Foundation
 
 import RedMadRobotTestTaskAPI
 
+/// Модель для добавления нового поста
 public struct AddPostModel: Codable, Equatable {
     
     public var text: String?
@@ -16,6 +17,8 @@ public struct AddPostModel: Codable, Equatable {
     public var lon: Double?
     public var lat: Double?
 }
+
+// MARK: - Мапперы для связывания структур между таргетами
 
 extension AddPostModel {
     

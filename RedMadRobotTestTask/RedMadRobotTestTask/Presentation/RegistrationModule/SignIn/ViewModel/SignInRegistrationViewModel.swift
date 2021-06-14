@@ -26,17 +26,17 @@ final class SignInRegistrationViewModel: SignInRegistrationViewModelProtocol {
     public var emailText = String()
     public var passwordText = String()
     
-    public let emailTextField: NewAuthorizationTextField = {
-        let textField = NewAuthorizationTextField()
+    public let emailTextField: AuthorizationTextField = {
+        let textField = AuthorizationTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Email"
+        textField.placeholder = "Электронная почта"
         textField.autocapitalizationType = .none
         return textField
     }()
     
-    public let passwordTextField: NewAuthorizationTextField = {
-        let textField = NewAuthorizationTextField()
-        textField.placeholder = "Password"
+    public let passwordTextField: AuthorizationTextField = {
+        let textField = AuthorizationTextField()
+        textField.placeholder = "Пароль"
         textField.isSecureTextEntry = true
         return textField
     }()

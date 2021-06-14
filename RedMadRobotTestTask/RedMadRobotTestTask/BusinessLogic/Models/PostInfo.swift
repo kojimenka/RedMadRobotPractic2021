@@ -9,6 +9,7 @@ import Foundation
 
 import RedMadRobotTestTaskAPI
 
+/// Информация о посте постопующая с сервера
 public struct PostInfo: Codable, Equatable {
     
     public var id: String = ""
@@ -21,6 +22,8 @@ public struct PostInfo: Codable, Equatable {
     
     public var author: UserInformation
 }
+
+// MARK: - Мапперы для связывания структур между таргетами
 
 extension PostInfo {
     

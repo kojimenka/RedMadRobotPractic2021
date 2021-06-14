@@ -19,13 +19,13 @@ final class FirstSignUpRegistrationViewModel: FirstSignUpRegistrationViewModelPr
     
     public var allRegistrationFieldData = [
         RegistrationFieldData(
-            fieldData: RegistrationTextFieldData(placeHolder: "Email"),
+            fieldData: RegistrationTextFieldData(placeHolder: "Электронная почта"),
             validator: EmailValidator(),
             textField: nil),
         
         RegistrationFieldData(
             fieldData: RegistrationTextFieldData(
-                placeHolder: "Password",
+                placeHolder: "Пароль",
                 isSecure: true
             ),
             validator: PasswordValidator(),
@@ -34,6 +34,7 @@ final class FirstSignUpRegistrationViewModel: FirstSignUpRegistrationViewModelPr
     
     // MARK: - Pubic Methods
     
+    /// Пробегаемся по заполненному данными массиву и заполняем этими данными модель данных
     public func fillNewValues(with allRegistrationFieldData: [RegistrationFieldData]) {
         for data in allRegistrationFieldData {
             switch data.validator {

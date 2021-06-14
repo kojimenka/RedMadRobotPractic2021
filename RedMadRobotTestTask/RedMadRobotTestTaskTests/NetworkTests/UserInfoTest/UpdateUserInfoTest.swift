@@ -16,7 +16,7 @@ final class UpdateUserInfoTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<UpdateUserInfoEndpoint>!
-    private var userInfoService: UserInfoServiceProtocol!
+    private var userInfoService: UserInfoService!
     
     private var mockModels = AuthMockModels()
     
@@ -25,7 +25,7 @@ final class UpdateUserInfoTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<UpdateUserInfoEndpoint>()
-        userInfoService = UserInfoService(apiClient: client)
+        userInfoService = UserInfoServiceImpl(apiClient: client)
     }
     
     override func tearDown() {

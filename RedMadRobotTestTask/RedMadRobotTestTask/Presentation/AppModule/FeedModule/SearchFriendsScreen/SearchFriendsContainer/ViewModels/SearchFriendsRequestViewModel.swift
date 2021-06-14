@@ -17,8 +17,8 @@ final class SearchFriendsRequestViewModelImpl: SearchFriendsRequestViewModel {
     
     // MARK: - Properties
     
-    private let searchService: SearchServiceProtocol
-    private let userService: UserInfoServiceProtocol
+    private let searchService: SearchService
+    private let userService: UserInfoService
     
     private var userFriendsCompletion: (((Result<[UserInformation], Error>) -> Void)?)
     private var userFriends = [UserInformation]()
@@ -26,8 +26,8 @@ final class SearchFriendsRequestViewModelImpl: SearchFriendsRequestViewModel {
     // MARK: - Init
     
     init(
-        searchService: SearchServiceProtocol = ServiceLayer.shared.searchService,
-        userService: UserInfoServiceProtocol = ServiceLayer.shared.userInfoService
+        searchService: SearchService = ServiceLayer.shared.searchService,
+        userService: UserInfoService = ServiceLayer.shared.userInfoService
     ) {
         self.userService = userService
         self.searchService = searchService

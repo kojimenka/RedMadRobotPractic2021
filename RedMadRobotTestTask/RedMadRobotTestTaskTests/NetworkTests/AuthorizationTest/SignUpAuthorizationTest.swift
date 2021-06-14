@@ -16,7 +16,7 @@ final class SignUpAuthorizationTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<UserRegistrationEndpoint>!
-    private var authorizationService: AuthorizationServiceProtocol!
+    private var authorizationService: AuthorizationService!
     
     private var mockModels = AuthMockModels()
     
@@ -25,7 +25,7 @@ final class SignUpAuthorizationTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<UserRegistrationEndpoint>()
-        authorizationService = AuthorizationServices(
+        authorizationService = AuthorizationServiceImpl(
             apiClient: client,
             tokenManager: MockTokenManager(),
             keychainManager: MockKeychainManager()

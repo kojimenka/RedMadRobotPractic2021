@@ -7,17 +7,18 @@
 
 import UIKit
 
+/// Экран отображающий список пользовательских постов
 final class UserPostsContainerVC: MainPostScreenVC {
     
     // MARK: - Private Methods
     
     private let zeroScreen = ZeroScreenFabric().createZeroModel(state: .userPosts)
-    private let feedService: FeedServiceProtocol
+    private let feedService: FeedService
     
     // MARK: - Init
     
     init(
-        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService
+        feedService: FeedService = ServiceLayer.shared.feedService
     ) {
         self.feedService = feedService
         super.init(zeroScreen: zeroScreen)
@@ -29,6 +30,7 @@ final class UserPostsContainerVC: MainPostScreenVC {
     
     // MARK: - Life cycle
     
+    /// Если менеджер сообщает об обновлениях, делаем запрос на новые данные.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if updateManager.isUpdateUserPostNeeded == true {

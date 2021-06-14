@@ -50,7 +50,7 @@ extension UIViewController {
     }
     
     var topSafeAreaInset: CGFloat {
-        let window = UIApplication.shared.keyWindow
+        let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
         let topPadding = window?.safeAreaInsets.top
         return topPadding ?? 0.0
     }
@@ -92,16 +92,6 @@ extension UIViewController {
         addChild(child)
         child.didMove(toParent: self)
         scrollView.addSubview(child.view)
-    }
-}
-
-extension UIViewController {
-    func removeChild() {
-        self.children.forEach {
-            $0.willMove(toParent: nil)
-            $0.view.removeFromSuperview()
-            $0.removeFromParent()
-        }
     }
 }
 

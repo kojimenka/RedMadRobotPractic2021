@@ -11,6 +11,7 @@ protocol SearchFriendsDelegate: AnyObject {
     func searchFriend(name: String)
 }
 
+/// Экран объединяющий SearchBar и чайлд с отображением друзей
 final class SearchFriendsVC: UIViewController {
 
     // MARK: - IBOutlets
@@ -62,6 +63,7 @@ final class SearchFriendsVC: UIViewController {
 // MARK: - Search Bar Delegate
 
 extension SearchFriendsVC: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         delegate?.searchFriend(name: searchText)
     }
@@ -69,4 +71,5 @@ extension SearchFriendsVC: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
+    
 }

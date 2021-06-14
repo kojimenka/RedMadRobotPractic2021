@@ -9,6 +9,7 @@ import Foundation
 
 import RedMadRobotTestTaskAPI
 
+/// Вся информация поступающая о пользователе с сервере
 public struct UserInformation: Equatable, Codable {
     
     public var id: String = ""
@@ -19,6 +20,8 @@ public struct UserInformation: Equatable, Codable {
     public var birthDay: Date = Date()
     
 }
+
+// MARK: - Мапперы для связывания структур между таргетами
 
 extension UserInformation {
     

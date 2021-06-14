@@ -26,7 +26,7 @@ final class FriendsListContainerVC: UIViewController {
     
     weak private var delegate: FriendsListContainerVCDelegate?
     
-    private let userService: UserInfoServiceProtocol
+    private let userService: UserInfoService
     private var updateManager: UpdateManager
     
     lazy private var allFriendsListVC = AllFriendsListVC(delegate: self)
@@ -45,7 +45,7 @@ final class FriendsListContainerVC: UIViewController {
     init(
         delegate: FriendsListContainerVCDelegate?,
         updateManager: UpdateManager = ServiceLayer.shared.updateManager,
-        userService: UserInfoServiceProtocol = ServiceLayer.shared.userInfoService
+        userService: UserInfoService = ServiceLayer.shared.userInfoService
     ) {
         self.updateManager = updateManager
         self.userService = userService

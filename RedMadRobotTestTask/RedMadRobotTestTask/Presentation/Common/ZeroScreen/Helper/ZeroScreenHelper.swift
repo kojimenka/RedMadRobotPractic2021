@@ -22,6 +22,7 @@ struct ZeroScreenModel {
     let buttonTitle: String?
 }
 
+/// Фабрика для создания любого Zero Screen-a
 final class ZeroScreenFabric {
     
     public func createZeroModel(

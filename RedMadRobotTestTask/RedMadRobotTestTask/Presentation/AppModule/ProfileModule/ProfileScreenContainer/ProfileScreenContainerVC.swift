@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Основной контейнер для экрана flow экранов пользовательской информации
 final class ProfileScreenContainerVC: UIViewController {
     
     // MARK: - IBOutlets
@@ -22,11 +23,10 @@ final class ProfileScreenContainerVC: UIViewController {
     // MARK: - Private Properties
     
     private let coordinator: ProfileModuleCoordinator
-    private var userService: UserInfoServiceProtocol
-    lazy private var listOfFriendsVC = FriendsListContainerVC(delegate: self)
+    private var userService: UserInfoService
     
     // Constants
-    private var isFirstStart = true
+    private var isFirstLayout = true
     private let topInset: CGFloat = 12.0
     
     lazy private var contentInset: CGFloat = {
@@ -34,16 +34,26 @@ final class ProfileScreenContainerVC: UIViewController {
     }()
     
     // Childs
+    
+    /// Child Шапка с информацией о пользователе
     lazy private var profileInfoVC = ProfileInfoVC(subscriber: self)
+    
+    /// Child ответственный за изменение категории
     lazy private var changeProfileCategoryVC = ChangeProfileCategoryVC(subscriber: self)
     
+    /// Child со списком всех постов пользователя
     lazy private var userPostsVC = UserPostsContainerVC()
+    
+    /// Child со списком любимых постов пользователя
     lazy private var favoritePostsVC = FavouritePostsContainerVC()
     
-    // MARK: - Initializers
+    /// Child со списком всех друзей пользователя
+    lazy private var listOfFriendsVC = FriendsListContainerVC(delegate: self)
+    
+    // MARK: - Init
     
     init(
-        userService: UserInfoServiceProtocol = ServiceLayer.shared.userInfoService,
+        userService: UserInfoService = ServiceLayer.shared.userInfoService,
         coordinator: ProfileModuleCoordinator
     ) {
         self.userService = userService
@@ -59,20 +69,22 @@ final class ProfileScreenContainerVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        guard isFirstStart == true else { return }
+        guard isFirstLayout == true else { return }
         setupScrollView()
         setChilds()
-        isFirstStart = false
+        isFirstLayout = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getUserInfo()
         setupViews()
+        setupNavBar()
     }
     
     // MARK: - Private Methods
     
+    /// Отслеживаем изменения offSet-a на всех экранах с таблицами, и с его помощью меняем положение шапки с информацией о пользователе
     private func setupViews() {
         userPostsVC.changeOffSet = { [weak self] inset in
             guard let self = self else { return }
@@ -97,9 +109,9 @@ final class ProfileScreenContainerVC: UIViewController {
             width: view.frame.width * 3,
             height: contentScrollView.safeAreaLayoutGuide.layoutFrame.height
         )
-        
-        self.navigationItem.title = "..."
-        
+    }
+    
+    private func setupNavBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Выйти",
             style: .plain,
@@ -134,6 +146,7 @@ final class ProfileScreenContainerVC: UIViewController {
         setupInsetsInChilds()
     }
     
+    /// Передаем чайлдам размер шапки пользователя
     private func setupInsetsInChilds() {
         let userContainerHeight = topInset + userInfoContainerView.frame.height + 2
         
@@ -144,6 +157,7 @@ final class ProfileScreenContainerVC: UIViewController {
         view.bringSubviewToFront(userInfoContainerView)
     }
     
+    /// Получаем информацию о пользователе
     private func getUserInfo() {
         _ = userService.getUserInfo { [weak self] result in
             guard let self = self else { return }
@@ -162,6 +176,9 @@ final class ProfileScreenContainerVC: UIViewController {
 // MARK: - ChangeCategory Delegate
 
 extension ProfileScreenContainerVC: ChangeProfileCategoryDelegate {
+    
+    /// Ставим нужный offSet для scrollView, для отображения нужного экрана
+    /// - Parameter category: одна из категорий
     func changeCategory(_ category: ProfileCategories) {
         let xOffSet: CGFloat
         let width = view.frame.width
@@ -187,14 +204,17 @@ extension ProfileScreenContainerVC: ChangeProfileCategoryDelegate {
             self.contentScrollView.contentOffset = CGPoint(x: xOffSet, y: 0)
         }
     }
+    
 }
 
 // MARK: - Profile screen delegate
 
 extension ProfileScreenContainerVC: ProfileInfoDelegate {
+    
     func editProfileAction() {
         print("edit button action")
     }
+    
 }
 
 // MARK: - FriendsListContainerVCDelegate

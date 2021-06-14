@@ -16,7 +16,7 @@ final class GetFeedTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<GetFeedEndpoint>!
-    private var feedService: FeedServiceProtocol!
+    private var feedService: FeedService!
     
     private var mockModels = AuthMockModels()
     
@@ -25,7 +25,7 @@ final class GetFeedTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<GetFeedEndpoint>()
-        feedService = FeedService(apiClient: client)
+        feedService = FeedServiceImpl(apiClient: client)
     }
     
     override func tearDown() {

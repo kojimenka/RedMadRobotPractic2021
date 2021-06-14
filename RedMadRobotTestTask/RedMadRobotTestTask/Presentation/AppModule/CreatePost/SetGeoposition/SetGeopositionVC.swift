@@ -20,6 +20,7 @@ protocol SetGeopositionVCDelegate: AnyObject {
     func userSetCoordinates(_ coordinated: Coordinates)
 }
 
+/// Экран с картой, нужен для установки координат поста пользователя
 final class SetGeopositionVC: UIViewController {
     
     // MARK: - IBOutlets
@@ -70,6 +71,7 @@ final class SetGeopositionVC: UIViewController {
     
     // MARK: - Private Properties
     
+    /// Проверяем доступен ли CLLocationManager на устройстве
     private func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             locationAuthorization()
@@ -80,6 +82,7 @@ final class SetGeopositionVC: UIViewController {
     private func locationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
+            /// Проводим регистрацию на использование карт
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
             break
@@ -105,6 +108,7 @@ final class SetGeopositionVC: UIViewController {
         centerUserLocation()
     }
     
+    /// Зуммим карту на текущем положение пользователя
     private func centerUserLocation() {
         let mapScale: Double = 10000.0
         if let location = locationManager.location?.coordinate {
@@ -135,6 +139,7 @@ extension SetGeopositionVC: CLLocationManagerDelegate {
 
 extension SetGeopositionVC: MKMapViewDelegate {
     
+    /// Отслеживаем текущую геопозицию пользователе
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
         currentLocation = CLLocation(

@@ -17,6 +17,7 @@ protocol ChangeProfileCategoryDelegate: AnyObject {
     func changeCategory(_ category: ProfileCategories)
 }
 
+/// Экран содержащий на себе список всех категорий 
 final class ChangeProfileCategoryVC: UIViewController {
     
     // MARK: - IBOutlets

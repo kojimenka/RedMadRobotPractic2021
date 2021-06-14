@@ -12,15 +12,19 @@ protocol SignUpFirstScreenDelegate: AnyObject {
     func successFill(userCredentials: Credentials)
 }
 
+/// Экран с заполнением данных для регистрации
 final class SignUpFirstVC: UIViewController {
 
     // MARK: - IBOutlet
     
-    @IBOutlet weak private var signUpView: NewRegistrationView!
+    /// Кастомный StackView который добавляет textfield-ы c нужными параметрами
+    @IBOutlet weak private var signUpView: RegistrationView!
     
     // MARK: - Private Properties
     
     weak private var delegate: SignUpFirstScreenDelegate?
+    
+    /// ViewModel которая содержит введенные пользователем данные и данные о первоначальной настройки полей
     private let registrationDataViewModel: FirstSignUpRegistrationViewModelProtocol
 
     // MARK: - Initializers
@@ -47,6 +51,7 @@ final class SignUpFirstVC: UIViewController {
     
     // MARK: - Public Methods
     
+    /// Проверяем введенные поля на ошибки, если ошибки обнаружены, показываем alert с ошибкой
     public func checkForWarnings() {
         signUpView.checkForWarning(controller: self)
     }
@@ -54,6 +59,7 @@ final class SignUpFirstVC: UIViewController {
     // MARK: - Private Methods
     
     private func setupViews() {
+        /// Настраиваем StackView со всеми полями
         signUpView.delegate = self
         signUpView.addRegistrationFields(registrationDataViewModel.allRegistrationFieldData)
     }
@@ -63,10 +69,13 @@ final class SignUpFirstVC: UIViewController {
 // MARK: - RegistrationView Delegate
 
 extension SignUpFirstVC: NewRegistrationViewDelegate {
+    
+    /// Текущий статус заполненотси полей, нужен для активации активации кнопки регистрации
     func currentStatus(isUserFillScreen: Bool) {
         delegate?.currentStatus(isUserFillScreen: isUserFillScreen)
     }
     
+    /// Если пользователь успешно ввел все поля, получаем данные с этих полей
     func successFillData(with allRegistrationFieldData: [RegistrationFieldData]) {
         registrationDataViewModel.fillNewValues(with: allRegistrationFieldData)
         
@@ -74,4 +83,5 @@ extension SignUpFirstVC: NewRegistrationViewDelegate {
             userCredentials: registrationDataViewModel.userCredentials
         )
     }
+    
 }

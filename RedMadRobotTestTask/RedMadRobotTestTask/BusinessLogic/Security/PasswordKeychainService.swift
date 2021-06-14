@@ -56,7 +56,11 @@ final class KeychainPasswordServiceImpl: KeychainPasswordService {
         let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
         
         if status == noErr {
-            return (dataTypeRef! as! Data)
+            if let unwrappedData = dataTypeRef as? Data {
+                return unwrappedData
+            } else {
+                throw KeychainErrors.failureCastEntry
+            }
         } else {
             throw KeychainErrors.failureReadEntry
         }

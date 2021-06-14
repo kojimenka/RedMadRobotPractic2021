@@ -12,7 +12,7 @@ protocol NewRegistrationViewDelegate: AnyObject {
     func successFillData(with allRegistrationFieldData: [RegistrationFieldData])
 }
 
-final class NewRegistrationView: UIStackView {
+final class RegistrationView: UIStackView {
     
     // MARK: - Public properties
     
@@ -41,7 +41,25 @@ final class NewRegistrationView: UIStackView {
             picker.preferredDatePickerStyle = .wheels
         }
         picker.datePickerMode = .date
-        picker.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200.0)
+        picker.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width,
+                              height: UIDevice.current.isSmallDevice ? 200.0 : 270.0
+        )
+        
+        // Устанвливаем максимальную и минимальную дату регистрации 
+        let calendar = Calendar(identifier: .gregorian)
+        
+        let currentDate = Date()
+        var components = DateComponents()
+        components.calendar = calendar
+        
+        let maxDate = Date()
+        
+        components.year = -110
+        let minDate = calendar.date(byAdding: components, to: currentDate)!
+        
+        picker.minimumDate = minDate
+        picker.maximumDate = maxDate
+        
         return picker
     }()
     
@@ -54,6 +72,7 @@ final class NewRegistrationView: UIStackView {
     
     // MARK: - Public Methods
     
+    /// Заполняем StackView с помощью структур
     public func addRegistrationFields(_ allRegistrationFieldData: [RegistrationFieldData]) {
         self.allRegistrationFieldData = allRegistrationFieldData
         
@@ -64,6 +83,8 @@ final class NewRegistrationView: UIStackView {
         }
     }
     
+    /// Пробегаемся по всем данным и ищем ошибки
+    /// - Parameter controller: контроллер на котором будет показана ошибка
     public func checkForWarning(controller: UIViewController) {
         var isAlertShow = false
         for data in allRegistrationFieldData {
@@ -88,8 +109,8 @@ final class NewRegistrationView: UIStackView {
         spacing = 20
     }
     
-    private func createAuthorizationTextField(data: RegistrationTextFieldData) -> NewAuthorizationTextField {
-        let textField = NewAuthorizationTextField()
+    private func createAuthorizationTextField(data: RegistrationTextFieldData) -> AuthorizationTextField {
+        let textField = AuthorizationTextField()
         textField.placeholder = data.placeHolder
         textField.isSecureTextEntry = data.isSecure
         textField.addTarget(self, action: #selector(changeText), for: .editingChanged)
@@ -150,7 +171,7 @@ final class NewRegistrationView: UIStackView {
 
 // MARK: - TextField Delegate
 
-extension NewRegistrationView: UITextFieldDelegate {
+extension RegistrationView: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         for data in allRegistrationFieldData where data.fieldData.isDatePickerNeeded {

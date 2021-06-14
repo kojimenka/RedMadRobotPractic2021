@@ -22,7 +22,7 @@ final class PostTableViewCell: UITableViewCell {
     @IBOutlet private var postImageView: UIImageView!
     @IBOutlet private var nickNameLabel: UILabel!
     @IBOutlet private var likeButton: UIButton!
-    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Public Properties
     
@@ -51,6 +51,7 @@ final class PostTableViewCell: UITableViewCell {
         setupSelectedView()
     }
     
+    /// Добавляем отступы для ячейки
     override func layoutSubviews() {
         super.layoutSubviews()
         let margins = UIEdgeInsets(top: 0, left: 16, bottom: 2, right: 16)
@@ -84,15 +85,18 @@ final class PostTableViewCell: UITableViewCell {
     }
     
     private func fillPostInfo(postInfo: PostInfo) {
+        /// Заполняем обязательные лейблы
         titleLabel.text = postInfo.text
-        
         nickNameLabel.text = "@\(postInfo.author.nickname ?? "")"
 
+        /// При необходимости прячем вьюхи которые не нужны для поста
         geolocationStackView.isHidden = postInfo.lat == nil || postInfo.lon == nil
         postImageView.isHidden = postInfo.imageUrl == nil
         
+        /// Если есть фотка, загружаем ее
         downloadImage(imageUrl: postInfo.imageUrl)
         
+        /// Если есть геопозиция, отображаем ее
         setGeoPosition(postInfo: postInfo)
     }
     
@@ -116,11 +120,12 @@ final class PostTableViewCell: UITableViewCell {
     }
     
     private func setGeoPosition(postInfo: PostInfo) {
+    
         let currentLocation = CLLocation(
             latitude: Double(postInfo.lat ?? 0.0),
             longitude: Double(postInfo.lon ?? 0.0)
         )
-        
+
         currentLocation.fetchCityAndCountry { [weak self] city, country, error in
             guard let self = self,
                   let city = city,
@@ -128,7 +133,7 @@ final class PostTableViewCell: UITableViewCell {
                   error == nil else {
                 return
             }
-            
+
             let addressText = "\(country), \(city)"
             DispatchQueue.main.async {
                 self.cityLabel.text = addressText
@@ -142,5 +147,6 @@ final class PostTableViewCell: UITableViewCell {
         activityIndicator.alpha = 1.0
         activityIndicator.isHidden = false
         likeButton.isSelected = false
+        cityLabel.text = "Недействительные координаты"
     }
 }

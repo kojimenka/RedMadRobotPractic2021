@@ -7,24 +7,33 @@
 
 import UIKit
 
+/// Контейнер для создания постов
 final class CreatePostContainerVC: UIViewController {
     
     // MARK: - Private Properties
     
-    lazy private var createPostVC = CreatePostVC(delegate: self)
+    private let feedService: FeedService
+    
     private let loaderVC = LoaderVC()
     
+    /// Модель данных для нового поста
     private var addPostModel = AddPostModel()
+    
+    /// Валидатор для текста постав
     private var postValidator: Validator
-
-    private let feedService: FeedServiceProtocol
+    
+    /// Менеджер хранящий данные, каким экраном нужно обновить данные
     private var updateManager: UpdateManager
+    
+    // Chilf
+    
+    lazy private var createPostVC = CreatePostVC(delegate: self)
     
     // MARK: - Init
     
     init(
         updateManager: UpdateManager = ServiceLayer.shared.updateManager,
-        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService,
+        feedService: FeedService = ServiceLayer.shared.feedService,
         postValidator: Validator = TextOnPostValidatorValidator()
     ) {
         self.updateManager = updateManager
@@ -64,16 +73,6 @@ extension CreatePostContainerVC: CreatePostVCDelegate {
         addPostModel.imageData = nil
     }
     
-    func showMapScreen() {
-        let mapVC = SetGeopositionVC(delegate: self)
-        mapVC.modalPresentationStyle = .fullScreen
-        self.present(mapVC, animated: true)
-    }
-    
-    func showGallery() {
-        presentImagePicker()
-    }
-    
     func sendPost() {
         do {
             _ = try postValidator.isValid(value: addPostModel.text ?? "")
@@ -99,6 +98,16 @@ extension CreatePostContainerVC: CreatePostVCDelegate {
                 }
             }
         }
+    }
+    
+    func showMapScreen() {
+        let mapVC = SetGeopositionVC(delegate: self)
+        mapVC.modalPresentationStyle = .fullScreen
+        self.present(mapVC, animated: true)
+    }
+    
+    func showGallery() {
+        presentImagePicker()
     }
     
     func presentLoader() {
@@ -140,6 +149,8 @@ extension CreatePostContainerVC: SetGeopositionVCDelegate {
     }
     
 }
+
+// MARK: - ImagePicker Delegate
 
 extension CreatePostContainerVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     

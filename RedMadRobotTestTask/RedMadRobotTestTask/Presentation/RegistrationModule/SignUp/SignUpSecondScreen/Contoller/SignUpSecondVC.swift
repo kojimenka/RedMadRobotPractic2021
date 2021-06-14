@@ -16,11 +16,14 @@ final class SignUpSecondVC: UIViewController {
 
     // MARK: - IBOutlet
     
-    @IBOutlet private weak var registrationView: NewRegistrationView!
+    /// Кастомный StackView который добавляет textfield-ы c нужными параметрами
+    @IBOutlet private weak var registrationView: RegistrationView!
     
     // MARK: - Private Properties
     
     weak private var delegate: SignUpSecondScreenDelegate?
+    
+    /// ViewModel которая содержит введенные пользователем данные и данные о первоначальной настройки полей
     private let registrationDataViewModel: SecondSignUpRegistrationViewModelProtocol
     
     // MARK: - Initializers
@@ -47,6 +50,7 @@ final class SignUpSecondVC: UIViewController {
     
     // MARK: - Public Methods
 
+    /// Проверяем введенные поля на ошибки, если ошибки обнаружены, показываем alert с ошибкой
     public func checkForWarnings() {
         registrationView.checkForWarning(controller: self)
     }
@@ -54,6 +58,7 @@ final class SignUpSecondVC: UIViewController {
     // MARK: - Private Methods
     
     private func setupViews() {
+        /// Настраиваем StackView со всеми полями
         registrationView.delegate = self
         registrationView.addRegistrationFields(registrationDataViewModel.allRegistrationFieldData)
     }
@@ -63,12 +68,16 @@ final class SignUpSecondVC: UIViewController {
 // MARK: - RegistrationView Delegate
 
 extension SignUpSecondVC: NewRegistrationViewDelegate {
+    
+    /// Текущий статус заполненотси полей, нужен для активации активации кнопки регистрации
     func currentStatus(isUserFillScreen: Bool) {
         delegate?.currentStatus(isUserFillScreen: isUserFillScreen)
     }
     
+    /// Если пользователь успешно ввел все поля, получаем данные с этих полей
     func successFillData(with allRegistrationFieldData: [RegistrationFieldData]) {
         registrationDataViewModel.fillNewValues(with: allRegistrationFieldData)
         delegate?.fullUserData(userModel: registrationDataViewModel.userInfo)
     }
+    
 }

@@ -19,28 +19,29 @@ final class SecondSignUpRegistrationViewModel: SecondSignUpRegistrationViewModel
     
     public var allRegistrationFieldData = [
         RegistrationFieldData(
-            fieldData: RegistrationTextFieldData(placeHolder: "Nickname"),
+            fieldData: RegistrationTextFieldData(placeHolder: "Никнейм"),
             validator: LoginValidator(),
             textField: nil),
         
         RegistrationFieldData(
-            fieldData: RegistrationTextFieldData(placeHolder: "Name"),
+            fieldData: RegistrationTextFieldData(placeHolder: "Имя"),
             validator: NameValidator(),
             textField: nil),
         
         RegistrationFieldData(
-            fieldData: RegistrationTextFieldData(placeHolder: "Surname"),
+            fieldData: RegistrationTextFieldData(placeHolder: "Фамилия"),
             validator: SurnameValidator(),
             textField: nil),
         
         RegistrationFieldData(
-            fieldData: RegistrationTextFieldData(placeHolder: "Birthday", isDatePickerNeeded: true),
+            fieldData: RegistrationTextFieldData(placeHolder: "Дата рождения", isDatePickerNeeded: true),
             validator: BirthdayValidator(),
             textField: nil)
     ]
     
     // MARK: - Pubic Methods
     
+    /// Пробегаемся по заполненному данными массиву и заполняем этими данными модель данных
     public func fillNewValues(with allRegistrationFieldData: [RegistrationFieldData]) {
         for data in allRegistrationFieldData {
             switch data.validator {
@@ -62,8 +63,6 @@ final class SecondSignUpRegistrationViewModel: SecondSignUpRegistrationViewModel
                 break
             }
         }
-        
-        print(userInfo)
     }
     
 }

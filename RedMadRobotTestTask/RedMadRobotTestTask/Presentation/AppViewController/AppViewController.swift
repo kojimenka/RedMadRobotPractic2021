@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Рутовый ViewController который руководит изменениям сценариев для пользователя
 final class AppViewController: UIViewController {
     
     // MARK: - Private Properties
@@ -15,23 +16,19 @@ final class AppViewController: UIViewController {
     
     private let keychainManager: KeychainManager
     private var dataInRamManager: DataInRamManager
-    private let favoritePostsManager: FavouritePostsManager
     
     // --- Childs
     
     lazy private var registrationContainerVC = RegistrationContainerVC(delegate: self)
-    lazy private var appTabBarController = AppTabBarController(appTabBarDelegate: self)
-    
     lazy private var lockScreen = LockScreenVC(currentState: .lockInMainApp, delegate: self)
+    lazy private var appTabBarController = AppTabBarController(appTabBarDelegate: self)
 
     // MARK: - Init
     
     init(
         dataInRamManager: DataInRamManager = ServiceLayer.shared.dataInRamManager,
-        keychainManager: KeychainManager = ServiceLayer.shared.keychainManager,
-        favoritePostsManager: FavouritePostsManager = ServiceLayer.shared.favouritePostsManager
+        keychainManager: KeychainManager = ServiceLayer.shared.keychainManager
     ) {
-        self.favoritePostsManager = favoritePostsManager
         self.keychainManager = keychainManager
         self.dataInRamManager = dataInRamManager
         super.init(nibName: nil, bundle: nil)
@@ -50,6 +47,7 @@ final class AppViewController: UIViewController {
     
     // MARK: - Private Methods
     
+    /// Метод для установки нужного экрана, если токен не существует, показываем экран авторизации. Если токен есть, показываем экран с пин кодом
     private func setInitialController() {
         if keychainManager.isEntryExist(key: .refreshToken) {
             addChild(controller: lockScreen, rootView: view)
@@ -58,10 +56,7 @@ final class AppViewController: UIViewController {
         }
     }
     
-    private func showRegistrationFlow() {
-        addChild(controller: registrationContainerVC, rootView: view)
-    }
-    
+    /// После выхода из профиля, нужно удалить все данные о пользователе
     private func deleteAllUserData() {
         try? keychainManager.deleteEntry(key: .password)
         
@@ -81,7 +76,6 @@ extension AppViewController: RegistrationContainerVCDelegate {
     
     func endRegistrationFlow() {
         changeChildWithAnimation(newChild: appTabBarController)
-        self.favoritePostsManager.getFavouritePosts()
     }
 
 }
@@ -97,9 +91,6 @@ extension AppViewController: LockScreenDelegate {
     
     func successAuthentification() {
         self.changeChildWithAnimation(newChild: appTabBarController)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.favoritePostsManager.getFavouritePosts()
-        }
     }
     
 }
