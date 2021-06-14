@@ -22,9 +22,11 @@ final class PostsFeedVC: UIViewController {
     
     weak private var delegate: PostsFeedDelegate?
     private let favouritePostsManager: FavouritePostsManager
+    private let feedService: FeedServiceProtocol
     
     private var topInset: CGFloat = 0.0
-    private var isFirstStart = true
+    private var isUserCanDeletePost = false
+    private var isFirstLayout = true
     
     private var dataSourceViewModel: PostFeedDataSourceViewModelProtocol
     private var updateManager: UpdateManager
@@ -35,12 +37,14 @@ final class PostsFeedVC: UIViewController {
         subscriber: PostsFeedDelegate?,
         favouritePostsManager: FavouritePostsManager = ServiceLayer.shared.favouritePostsManager,
         dataSourceViewModel: PostFeedDataSourceViewModelProtocol = PostFeedDataViewModel(),
-        updateManager: UpdateManager = ServiceLayer.shared.updateManager
+        updateManager: UpdateManager = ServiceLayer.shared.updateManager,
+        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService
     ) {
         self.delegate = subscriber
         self.favouritePostsManager = favouritePostsManager
         self.updateManager = updateManager
         self.dataSourceViewModel = dataSourceViewModel
+        self.feedService = feedService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,10 +61,10 @@ final class PostsFeedVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        guard isFirstStart == true else { return }
+        guard isFirstLayout == true else { return }
         tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
         tableView.setContentOffset(CGPoint(x: 0, y: -topInset - navBarHeight), animated: false)
-        isFirstStart = false
+        isFirstLayout = false
     }
     
     override func viewDidLoad() {
@@ -74,6 +78,10 @@ final class PostsFeedVC: UIViewController {
     
     public func setTopInset(_ inset: CGFloat) {
         topInset = inset
+    }
+    
+    public func activateDeleteAction() {
+        isUserCanDeletePost = true
     }
     
     // MARK: - Public Methods
@@ -113,16 +121,46 @@ final class PostsFeedVC: UIViewController {
             PostTableViewCell.nib(),
             forCellReuseIdentifier: PostTableViewCell.identifier
         )
-    }    
+    }
+    
+    // MARK: - Private Properties
+    
+    private func deletePost(id: String) {
+        _ = feedService.deletePost(postID: id) { [weak self] res in
+            guard let self = self else { return }
+            switch res {
+            case .success:
+                self.updateManager.isUpdateFeedNeeded = true
+            case .failure:
+                break
+            }
+        }
+    }
     
 }
 
 // MARK: - UITableView Delegate
 
 extension PostsFeedVC: UITableViewDelegate {
-   
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    
+     func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+     -> UISwipeActionsConfiguration? {
+        
+        guard isUserCanDeletePost == true else { return nil }
+
+        let delete = UIContextualAction(style: .destructive, title: "Удалить") { [weak self] _, _, _ in
+            guard let self = self else { return }
+            self.deletePost(id: self.dataSourceViewModel.allPosts[indexPath.section].id)
+            self.dataSourceViewModel.allPosts.remove(at: indexPath.section)
+            self.tableView.deleteSections(IndexSet(integer: indexPath.section), with: .left)
+        }
+
+        let swipeActionConfig = UISwipeActionsConfiguration(actions: [delete])
+        swipeActionConfig.performsFirstActionWithFullSwipe = true
+        
+        return swipeActionConfig
     }
     
 }

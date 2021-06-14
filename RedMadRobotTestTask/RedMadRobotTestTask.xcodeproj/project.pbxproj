@@ -214,6 +214,7 @@
 		2CFC3ABC26761BBD004327AC /* BirthdayValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3ABB26761BBD004327AC /* BirthdayValidator.swift */; };
 		2CFC3ABE26765550004327AC /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3ABD26765550004327AC /* UpdateManager.swift */; };
 		2CFC3AC326769FE1004327AC /* FavouritePostsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AC226769FE1004327AC /* FavouritePostsManager.swift */; };
+		2CFC3AC52677C407004327AC /* TextOnPostValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC3AC42677C407004327AC /* TextOnPostValidator.swift */; };
 		2CFE538B2648895600D75EF7 /* FeedModuleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE538A2648895600D75EF7 /* FeedModuleCoordinator.swift */; };
 		2CFE539426488A5700D75EF7 /* FeedModuleFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE539326488A5700D75EF7 /* FeedModuleFabric.swift */; };
 		2CFF9F442651771000AFA817 /* FoundedFriendDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9F432651771000AFA817 /* FoundedFriendDataSource.swift */; };
@@ -484,6 +485,7 @@
 		2CFC3ABB26761BBD004327AC /* BirthdayValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayValidator.swift; sourceTree = "<group>"; };
 		2CFC3ABD26765550004327AC /* UpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
 		2CFC3AC226769FE1004327AC /* FavouritePostsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePostsManager.swift; sourceTree = "<group>"; };
+		2CFC3AC42677C407004327AC /* TextOnPostValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnPostValidator.swift; sourceTree = "<group>"; };
 		2CFE538A2648895600D75EF7 /* FeedModuleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleCoordinator.swift; sourceTree = "<group>"; };
 		2CFE539326488A5700D75EF7 /* FeedModuleFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleFabric.swift; sourceTree = "<group>"; };
 		2CFF9F432651771000AFA817 /* FoundedFriendDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundedFriendDataSource.swift; sourceTree = "<group>"; };
@@ -1466,6 +1468,7 @@
 				2CCA9124262E1FB900D6A635 /* Password */,
 				2CCA912D262E288700D6A635 /* Name */,
 				2CFC3ABA26761BA0004327AC /* Birthday */,
+				2CFC3AC62677C40C004327AC /* Text */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -1838,6 +1841,14 @@
 				2CFC3ABB26761BBD004327AC /* BirthdayValidator.swift */,
 			);
 			path = Birthday;
+			sourceTree = "<group>";
+		};
+		2CFC3AC62677C40C004327AC /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				2CFC3AC42677C407004327AC /* TextOnPostValidator.swift */,
+			);
+			path = Text;
 			sourceTree = "<group>";
 		};
 		2CFE53882648892C00D75EF7 /* Coordinator */ = {
@@ -2446,6 +2457,7 @@
 				2C24D1B72638A05E000855B8 /* FeedService.swift in Sources */,
 				2CFE539426488A5700D75EF7 /* FeedModuleFabric.swift in Sources */,
 				2C17F0EE266D3CF700418308 /* PasswordKeychainService.swift in Sources */,
+				2CFC3AC52677C407004327AC /* TextOnPostValidator.swift in Sources */,
 				2CBF51B52638D09100B99042 /* SearchService.swift in Sources */,
 				2C4808B1262C5BC10075C0B3 /* SignUpContainerVC.swift in Sources */,
 				2C813C782650685B00E7E49F /* UserInformation.swift in Sources */,

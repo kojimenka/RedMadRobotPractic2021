@@ -15,6 +15,7 @@ final class CreatePostContainerVC: UIViewController {
     private let loaderVC = LoaderVC()
     
     private var addPostModel = AddPostModel()
+    private var postValidator: Validator
 
     private let feedService: FeedServiceProtocol
     private var updateManager: UpdateManager
@@ -23,10 +24,12 @@ final class CreatePostContainerVC: UIViewController {
     
     init(
         updateManager: UpdateManager = ServiceLayer.shared.updateManager,
-        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService
+        feedService: FeedServiceProtocol = ServiceLayer.shared.feedService,
+        postValidator: Validator = TextOnPostValidatorValidator()
     ) {
         self.updateManager = updateManager
         self.feedService = feedService
+        self.postValidator = postValidator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -72,17 +75,28 @@ extension CreatePostContainerVC: CreatePostVCDelegate {
     }
     
     func sendPost() {
+        do {
+            _ = try postValidator.isValid(value: addPostModel.text ?? "")
+        } catch let error {
+            self.showAlert(alertText: error.localizedDescription)
+            return
+        }
+        
         presentLoader()
+        
         _ = feedService.addPost(postInfo: addPostModel) { [weak self] result in
             guard let self = self else { return }
-            self.loaderVC.dismiss(animated: true)
             switch result {
             case .success:
                 self.updateManager.isUpdateUserPostNeeded = true
                 self.updateManager.isUpdateFeedNeeded = true
-                self.showSuccessPostAlert()
+                self.loaderVC.dismiss(animated: true) {
+                    self.showSuccessPostAlert()
+                }
             case .failure:
-                self.showFailurePostAlert()
+                self.loaderVC.dismiss(animated: true) {
+                    self.showFailurePostAlert()
+                }
             }
         }
     }

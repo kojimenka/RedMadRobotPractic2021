@@ -65,4 +65,5 @@ extension PostFeedDataViewModel: UITableViewDataSource {
         
         return cell
     }
+    
 }

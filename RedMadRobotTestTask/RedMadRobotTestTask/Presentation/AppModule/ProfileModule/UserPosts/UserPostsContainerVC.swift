@@ -45,7 +45,9 @@ final class UserPostsContainerVC: MainPostScreenVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupZeroScreen()
+        
         super.userPostsVC.requestData()
+        super.userPostsVC.activateDeleteAction()
     }
     
     // MARK: - Public Methods
