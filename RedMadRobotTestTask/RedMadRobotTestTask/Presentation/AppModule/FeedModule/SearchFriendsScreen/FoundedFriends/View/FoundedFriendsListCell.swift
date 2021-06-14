@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Nuke
+
 final class FoundedFriendsListCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
@@ -53,6 +55,20 @@ final class FoundedFriendsListCell: UICollectionViewCell {
     private func setupView(user: UserInformation) {
         nameLabel.text = "\(user.firstName) \(user.lastName)"
         nickNameLabel.text = "@\(user.nickname ?? "")"
+        
+        if let imageURL = user.avatarUrl {
+            let options = ImageLoadingOptions(
+                placeholder: R.image.emptyUserPhoto(),
+                transition: .fadeIn(duration: 0.3),
+                failureImage: R.image.emptyUserPhoto()
+            )
+            Nuke.loadImage(with: imageURL, options: options, into: userImageView)
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userImageView.image = R.image.emptyUserPhoto()
     }
     
 }

@@ -15,7 +15,7 @@ extension TextOnPostValidatorError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .toLongPost:
-            return "Текст не должен содержать больше 80 слов"
+            return "Текст не должен содержать больше 80 симвалов"
         }
     }
 }
@@ -26,10 +26,7 @@ final class TextOnPostValidatorValidator: Validator {
     
     public func isValid(value: String) throws -> Bool {
     
-        let components = value.components(separatedBy: .whitespacesAndNewlines)
-        let words = components.filter { !$0.isEmpty }
-        
-        if words.count > 80 {
+        if value.count > 80 {
             throw TextOnPostValidatorError.toLongPost
         }
         

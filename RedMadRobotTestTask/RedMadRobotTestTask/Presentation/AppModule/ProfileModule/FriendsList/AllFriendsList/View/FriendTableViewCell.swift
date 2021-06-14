@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Nuke
+
 final class FriendTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
@@ -15,6 +17,7 @@ final class FriendTableViewCell: UITableViewCell {
     @IBOutlet private weak var deleteFriendButton: UIButton!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var nickNameLabel: UILabel!
+    @IBOutlet private weak var userImageView: UIImageView!
     
     // MARK: - Public Properties
     
@@ -23,6 +26,15 @@ final class FriendTableViewCell: UITableViewCell {
             guard let currentUser = currentUser else { return }
             nameLabel.text = "\(currentUser.firstName) \(currentUser.lastName)"
             nickNameLabel.text = "@\(currentUser.nickname ?? "")"
+            
+            if let imageURL = currentUser.avatarUrl {
+                let options = ImageLoadingOptions(
+                    placeholder: R.image.emptyUserPhoto(),
+                    transition: .fadeIn(duration: 0.3),
+                    failureImage: R.image.emptyUserPhoto()
+                )
+                Nuke.loadImage(with: imageURL, options: options, into: userImageView)
+            }
         }
     }
     
@@ -68,6 +80,11 @@ final class FriendTableViewCell: UITableViewCell {
         let selectedView = UIView()
         selectedView.backgroundColor = .clear
         self.selectedBackgroundView = selectedView
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userImageView.image = R.image.emptyUserPhoto()
     }
     
 }

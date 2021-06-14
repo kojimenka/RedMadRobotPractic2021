@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Nuke
+
 protocol ProfileInfoDelegate: AnyObject {
     func editProfileAction()
 }
@@ -56,6 +58,11 @@ final class ProfileInfoVC: UIViewController {
         let userAge = Date().years(from: user.birthDay)
         userNameLabel.text = "\(user.firstName) \(user.lastName)"
         userAgeLabel.text = "\(userAge) лет"
+        
+        if let imageURL = user.avatarUrl {
+            let options = ImageLoadingOptions(transition: .fadeIn(duration: 0.3))
+            Nuke.loadImage(with: imageURL, options: options, into: userImageView)
+        }
     }
     
     // MARK: - Private Methods
