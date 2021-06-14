@@ -27,7 +27,7 @@ final class LoginAuthorizationServiceTest: XCTestCase {
         client = MockClient<UserLoginEndpoint>()
         authorizationService = AuthorizationServiceImpl(
             apiClient: client,
-            tokenManager: MockTokenManager(),
+            dataInRamManager: MockTokenManager(),
             keychainManager: MockKeychainManager()
         )
     }

@@ -52,7 +52,6 @@
 		2C46FA112644874600298446 /* MockWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA102644874600298446 /* MockWarnings.swift */; };
 		2C46FA1626448B0400298446 /* LogoutAuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA1526448B0400298446 /* LogoutAuthorizationTest.swift */; };
 		2C46FA1B26448C4C00298446 /* SignUpAuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA1A26448C4C00298446 /* SignUpAuthorizationTest.swift */; };
-		2C46FA2026448D1100298446 /* RefreshTokenAuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA1F26448D1100298446 /* RefreshTokenAuthorizationTest.swift */; };
 		2C46FA26264493E400298446 /* GetUserInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA25264493E400298446 /* GetUserInfoTest.swift */; };
 		2C46FA2E2644964C00298446 /* GetUserPostsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA2D2644964C00298446 /* GetUserPostsTest.swift */; };
 		2C46FA332644973900298446 /* GetUserFriendsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FA322644973900298446 /* GetUserFriendsTest.swift */; };
@@ -314,7 +313,6 @@
 		2C46FA102644874600298446 /* MockWarnings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWarnings.swift; sourceTree = "<group>"; };
 		2C46FA1526448B0400298446 /* LogoutAuthorizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAuthorizationTest.swift; sourceTree = "<group>"; };
 		2C46FA1A26448C4C00298446 /* SignUpAuthorizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAuthorizationTest.swift; sourceTree = "<group>"; };
-		2C46FA1F26448D1100298446 /* RefreshTokenAuthorizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenAuthorizationTest.swift; sourceTree = "<group>"; };
 		2C46FA25264493E400298446 /* GetUserInfoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfoTest.swift; sourceTree = "<group>"; };
 		2C46FA2D2644964C00298446 /* GetUserPostsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPostsTest.swift; sourceTree = "<group>"; };
 		2C46FA322644973900298446 /* GetUserFriendsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserFriendsTest.swift; sourceTree = "<group>"; };
@@ -767,7 +765,6 @@
 				2C46F9F226447C0B00298446 /* LoginAuthorizationServiceTest.swift */,
 				2C46FA1526448B0400298446 /* LogoutAuthorizationTest.swift */,
 				2C46FA1A26448C4C00298446 /* SignUpAuthorizationTest.swift */,
-				2C46FA1F26448D1100298446 /* RefreshTokenAuthorizationTest.swift */,
 				2CECFCDE26452DB300B3BD09 /* IsUserAuthorizedTest.swift */,
 			);
 			path = AuthorizationTest;
@@ -2346,7 +2343,6 @@
 				2C46FA4226449C2500298446 /* UpdateUserInfoTest.swift in Sources */,
 				2C46FA112644874600298446 /* MockWarnings.swift in Sources */,
 				2C46FA4C26449D6800298446 /* DeletePostUserServiceTest.swift in Sources */,
-				2C46FA2026448D1100298446 /* RefreshTokenAuthorizationTest.swift in Sources */,
 				2C46FA5526449EB400298446 /* GetFeedTest.swift in Sources */,
 				2C46FA6D2644A27D00298446 /* GetSortedUsersTest.swift in Sources */,
 				2C46FA4726449CE000298446 /* DeleteFriendUserServiceTest.swift in Sources */,

@@ -16,7 +16,7 @@ final class DeletePostUserServiceTest: XCTestCase {
     // MARK: - Properties
     
     private var client: MockClient<DeleteUserPostEndpoint>!
-    private var userInfoService: FeedServiceProtocol!
+    private var userInfoService: FeedService!
     
     private var mockModels = AuthMockModels()
     
@@ -25,13 +25,12 @@ final class DeletePostUserServiceTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<DeleteUserPostEndpoint>()
-        userInfoService = FeedService(apiClient: client)
+        userInfoService = FeedServiceImpl(apiClient: client)
     }
     
     override func tearDown() {
         super.tearDown()
         client = nil
-        userInfoService = nil
     }
     
     // MARK: - Methods

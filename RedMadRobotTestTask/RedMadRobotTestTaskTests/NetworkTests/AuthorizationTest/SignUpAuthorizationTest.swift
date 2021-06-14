@@ -27,7 +27,7 @@ final class SignUpAuthorizationTest: XCTestCase {
         client = MockClient<UserRegistrationEndpoint>()
         authorizationService = AuthorizationServiceImpl(
             apiClient: client,
-            tokenManager: MockTokenManager(),
+            dataInRamManager: MockTokenManager(),
             keychainManager: MockKeychainManager()
         )
     }

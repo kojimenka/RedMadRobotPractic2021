@@ -46,7 +46,7 @@ final class FavouritePostsManagerImpl: FavouritePostsManager {
             switch result {
             case .success(let posts):
                 self.allPosts = posts
-            case .failure(let error):
+            case .failure:
                 break
             }
         }

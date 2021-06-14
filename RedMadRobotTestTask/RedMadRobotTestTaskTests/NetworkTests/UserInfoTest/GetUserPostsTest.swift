@@ -25,7 +25,7 @@ final class GetUserPostsTest: XCTestCase {
     override func setUp() {
         super.setUp()
         client = MockClient<GetUserPostsEndpoint>()
-        userInfoService = FeedService(apiClient: client)
+        userInfoService = FeedServiceImpl(apiClient: client)
     }
     
     override func tearDown() {

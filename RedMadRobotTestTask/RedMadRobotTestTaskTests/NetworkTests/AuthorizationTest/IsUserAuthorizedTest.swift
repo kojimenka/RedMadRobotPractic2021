@@ -25,7 +25,7 @@ final class IsUserAuthorizedTest: XCTestCase {
         client = MockClient<LogoutEndpoint>()
         authorizationService = AuthorizationServiceImpl(
             apiClient: client,
-            tokenManager: MockTokenManager(),
+            dataInRamManager: MockTokenManager(),
             keychainManager: MockKeychainManager()
         )
     }
